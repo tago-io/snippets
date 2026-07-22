@@ -22,7 +22,7 @@ export const GET: APIRoute = async ({ params }) => {
   const runtimeData = snippetsData.tagosql[runtime as keyof typeof snippetsData.tagosql];
   if (!runtimeData) return new Response("Runtime not found", { status: 404 });
 
-  const snippet = runtimeData.snippets.find((s: any) => s.filename === filename);
+  const snippet = runtimeData.snippets.find((s) => s.filename === filename);
   if (!snippet) return new Response("File not found", { status: 404 });
 
   return new Response(snippet.code, {

@@ -1,44 +1,53 @@
+<br/>
+<p align="center">
+  <img src="https://assets.tago.io/tagoio/tagoio.png" width="200px" alt="TagoIO"></img>
+</p>
+
 # TagoIO Snippets
 
-This repository hosts code snippets for TagoIO, combining both Analysis and Payload Parser snippets in a single project and website. The site is built with Astro and styled with a shadcn-inspired Tailwind theme.
+Code samples for TagoIO Analysis, Payload Parser, and TagoSQL, published as a static site and JSON APIs.
+
+---
 
 ## Public URLs
 
-- Analysis JSON: https://snippets.tago.io/analysis/{runtime}.json (e.g., deno-rt2025.json)
+- Analysis JSON: https://snippets.tago.io/analysis/{runtime}.json (for example `deno-rt2025.json`)
 - Analysis files: https://snippets.tago.io/analysis/{runtime}/{filename}
-- Payload Parser JSON: https://snippets.tago.io/payload-parser/{runtime}.json (javascript)
+- Payload Parser JSON: https://snippets.tago.io/payload-parser/{runtime}.json (`javascript`)
 - Payload Parser files: https://snippets.tago.io/payload-parser/{runtime}/{filename}
 - TagoSQL JSON: https://snippets.tago.io/tagosql/sql.json
 - TagoSQL files: https://snippets.tago.io/tagosql/sql/{filename}
 
-The JSON files contain metadata only. The code is served as individual files from their runtime directories.
+JSON responses hold metadata only. Source files are served from the matching runtime directories.
 
 ## Structure
 
-- snippets/
-  - analysis/
-    - node-legacy/
-    - node-rt2025/
-    - deno-rt2025/
-    - python-legacy/
-    - python-rt2025/
-  - payload-parser/
-    - javascript/
-  - tagosql/
-    - sql/
-- scripts/
-  - prepare-snippets.mjs (build pre-step that generates JSON and exposes files)
-- src/ (Astro site)
-- public/ (static files; JSON and code are generated into here)
-- dist/ (Astro build output)
+```
+snippets/
+├── analysis/
+│   ├── node-legacy/
+│   ├── node-rt2025/
+│   ├── deno-rt2025/
+│   ├── python-legacy/
+│   └── python-rt2025/
+├── payload-parser/
+│   └── javascript/
+└── tagosql/
+    └── sql/
+scripts/
+└── prepare-data.ts    # Collects metadata into src/data/snippets.json
+src/                   # Astro site, pages, and lib
+public/                # Static assets (CNAME, robots, logos)
+dist/                  # Build output (site + prerendered JSON and file routes)
+```
 
-Each runtime folder contains code files with metadata embedded in comments.
+Each snippet file carries title, description, and tags in header comments.
 
 ## JSON schema
 
-Each per-runtime JSON produced in `public/{category}/` has the following shape:
+Per-runtime JSON looks like this:
 
-```
+```json
 {
   "runtime": "deno-rt2025",
   "schema_version": 1,
@@ -57,18 +66,30 @@ Each per-runtime JSON produced in `public/{category}/` has the following shape:
 }
 ```
 
-## Local development / build
+## Local development
 
-- Requirements: Node.js 18+ (or 22 LTS)
-- Install deps: `npm install`
-- Dev server: `npm run dev`
-- Build site: `npm run build`
+- Node.js 24 (see `.node-version`)
+- pnpm (see `packageManager` in `package.json`)
 
-The build will:
-- Collect snippet metadata and write JSON + code files to `public/analysis/`, `public/payload-parser/`, and `public/tagosql/`
-- Also write backward-compatible Analysis JSON/files to `public/{runtime}.json` and `public/{runtime}/`
-- Build the Astro site into `dist/`
+```bash
+pnpm install
+pnpm dev       # Astro dev server
+pnpm build     # prepare-data + Astro build into dist/
+pnpm check     # oxlint, oxfmt --check, ruff
+pnpm fmt       # oxfmt + ruff format
+pnpm lint      # oxlint + ruff check
+```
 
-## GitHub Pages deployment
+`pnpm build` runs `scripts/prepare-data.ts` before Astro, so snippet JSON is regenerated as part of the build.
 
-A GitHub Actions workflow builds the Astro site (including JSON and files) and deploys `dist/` to GitHub Pages on each push to `main`. The site includes friendly pages, while JSON and code files are served directly from the built output. Legacy Analysis endpoints remain functional.
+## Deployment
+
+GitHub Actions builds with pnpm and deploys `dist/` to the `gh-pages` branch on push to `main`.
+
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE.md). TagoIO logos and branding are not covered by Apache-2.0; see [Copyright Notice](LICENSE.md#copyright-notice) in `LICENSE.md`.
+
+---
+
+Built by the TagoIO team. Software licensed under [Apache-2.0](LICENSE.md). TagoIO logos and branding are not covered by Apache-2.0; see [Copyright Notice](LICENSE.md#copyright-notice) in LICENSE.md.

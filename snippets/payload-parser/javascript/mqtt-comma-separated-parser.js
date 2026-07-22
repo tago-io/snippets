@@ -16,9 +16,7 @@
  */
 
 // Find MQTT payload data
-const mqttPayload = payload.find(
-  (data) => data.variable === "payload" || data.metadata?.mqtt_topic
-);
+const mqttPayload = payload.find((data) => data.variable === "payload" || data.metadata?.mqtt_topic);
 
 if (mqttPayload?.value) {
   try {

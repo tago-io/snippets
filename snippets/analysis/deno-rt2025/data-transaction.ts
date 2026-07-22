@@ -37,9 +37,7 @@ async function calculateUserTransactions(
   // Collect the data amount for each device.
   // Result of bucket_results is:
   // [0, 120, 500, 0, 1000]
-  const bucket_results = await Promise.all(
-    device_list.map((device) => account.buckets.amount(device.bucket))
-  );
+  const bucket_results = await Promise.all(device_list.map((device) => account.buckets.amount(device.bucket)));
   const total_transactions = _.sum(bucket_results);
 
   // Get the total transactions of the last analysis run.

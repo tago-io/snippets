@@ -60,9 +60,7 @@ async function startAnalysis(context: TagoContext): Promise<void> {
   const devices = await Resources.devices.list(deviceQuery);
 
   if (!devices.length) {
-    return context.log(
-      `No device found with given tags. Key: ${env.tag_key}, Value: ${env.tag_value} `
-    );
+    return context.log(`No device found with given tags. Key: ${env.tag_key}, Value: ${env.tag_value} `);
   }
 
   context.log("Checking devices: ", devices.map((x) => x.name).join(", "));

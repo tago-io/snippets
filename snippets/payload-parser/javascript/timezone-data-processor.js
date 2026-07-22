@@ -13,9 +13,7 @@
 
 // Find timestamp data in payload
 const timestampItem = payload.find(
-  (item) =>
-    item.variable?.toLowerCase().includes("timestamp") ||
-    item.variable?.toLowerCase().includes("time")
+  (item) => item.variable?.toLowerCase().includes("timestamp") || item.variable?.toLowerCase().includes("time")
 );
 
 if (timestampItem?.value) {
@@ -37,11 +35,7 @@ if (timestampItem?.value) {
     if (typeof timeUtils !== "undefined") {
       try {
         // Convert to New York timezone
-        const nyTime = timeUtils.formatInTimezone(
-          originalTime,
-          "America/New_York",
-          "%Y-%m-%d %H:%M:%S %z"
-        );
+        const nyTime = timeUtils.formatInTimezone(originalTime, "America/New_York", "%Y-%m-%d %H:%M:%S %z");
         payload.push({
           variable: "time_ny",
           value: nyTime,
@@ -49,11 +43,7 @@ if (timestampItem?.value) {
         });
 
         // Convert to Tokyo timezone
-        const tokyoTime = timeUtils.formatInTimezone(
-          originalTime,
-          "Asia/Tokyo",
-          "%Y-%m-%d %H:%M:%S %z"
-        );
+        const tokyoTime = timeUtils.formatInTimezone(originalTime, "Asia/Tokyo", "%Y-%m-%d %H:%M:%S %z");
         payload.push({
           variable: "time_tokyo",
           value: tokyoTime,

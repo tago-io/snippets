@@ -1,8 +1,14 @@
 ---
 import "../styles/globals.css";
-const { title = "TagoIO Snippets", description = "Code snippets for TagoIO Analysis and Payload Parser development" } = Astro.props;
+import TagoLogo from "../components/TagoLogo.astro";
+
+const {
+  title = "TagoIO Snippets",
+  description = "Code snippets for TagoIO Analysis and Payload Parser development",
+} = Astro.props;
 ---
-<html lang="en" class="h-full">
+
+<html lang="en" class="light h-full">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,7 +27,45 @@ const { title = "TagoIO Snippets", description = "Code snippets for TagoIO Analy
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="/tago-social-card.png" />
   </head>
-  <body class="min-h-screen bg-background text-foreground">
-    <slot />
+  <body class="min-h-screen flex flex-col bg-background text-foreground font-sans antialiased">
+    <header class="bg-background">
+      <div class="container max-w-6xl mx-auto px-4 pt-8 pb-0 flex items-center justify-center">
+        <a
+          href="/"
+          class="inline-flex items-center justify-center text-foreground hover:opacity-80 transition-opacity"
+          aria-label="TagoIO Snippets home"
+        >
+          <TagoLogo class="h-10 w-auto text-foreground" />
+        </a>
+      </div>
+    </header>
+
+    <div class="flex-1 w-full min-w-0">
+      <slot />
+    </div>
+
+    <footer class="bg-background mt-auto">
+      <div class="container max-w-6xl mx-auto px-4 py-12">
+        <nav
+          class="flex flex-col items-center justify-center gap-5 text-sm"
+          aria-label="Site links"
+        >
+          <p class="text-muted-foreground m-0">
+            {"Built by "}
+            <a href="https://tago.io" class="text-info hover:underline font-medium">TagoIO</a>
+          </p>
+          <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 list-none m-0 p-0">
+            <li>
+              <a href="https://github.com/tago-io/snippets" class="text-info hover:underline">
+                Source code
+              </a>
+            </li>
+            <li>
+              <a href="https://docs.tago.io" class="text-info hover:underline">Documentation</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
   </body>
 </html>

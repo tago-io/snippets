@@ -2,37 +2,41 @@
   "name": "@tago-io/snippets",
   "type": "module",
   "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@11.15.1",
+  "engines": {
+    "node": ">=24",
+    "pnpm": ">=11"
+  },
   "scripts": {
+    "preinstall": "node -e \"if(!/pnpm/.test(process.env.npm_execpath||'')){console.error('Use pnpm install (npm and yarn are not supported).');process.exit(1)}\"",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "tsx scripts/prepare-data.ts && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fmt": "biome format --write . && ruff format snippets/analysis/",
-    "fmt:js": "biome format --write .",
+    "fmt": "oxfmt . && ruff format snippets/analysis/",
+    "fmt:js": "oxfmt .",
     "fmt:py": "ruff format snippets/analysis/",
-    "lint": "biome lint . && ruff check snippets/analysis/",
-    "lint:js": "biome lint .",
+    "fmt:check": "oxfmt --check .",
+    "lint": "oxlint . && ruff check snippets/analysis/",
+    "lint:js": "oxlint .",
     "lint:py": "ruff check snippets/analysis/",
-    "lint:fix": "biome lint --write . && ruff check --fix snippets/analysis/"
+    "lint:fix": "oxlint --fix . && ruff check --fix snippets/analysis/",
+    "check": "oxlint --deny-warnings . && oxfmt --check . && ruff check snippets/analysis/"
   },
   "dependencies": {
-    "@astrojs/react": "^4.3.0",
-    "@astrojs/tailwind": "^6.0.2",
-    "astro": "^5.13.4",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "tailwindcss": "^3.4.13",
-    "tailwindcss-animate": "^1.0.7"
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource/monaspace-neon": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.1.3",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.2",
-    "@types/node": "^24.3.0",
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.8",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
-    "tsx": "^4.20.5",
-    "typescript": "^5.9.2"
+    "@types/node": "^24.13.3",
+    "oxfmt": "^0.59.0",
+    "oxlint": "^1.74.0",
+    "tsx": "^4.23.1",
+    "typescript": "^5.9.3"
   }
 }

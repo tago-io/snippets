@@ -63,13 +63,9 @@ interface AWSPayload {
  */
 function _getConfiguration(context: TagoContext): EstimatedConfiguration {
   const awsAccessKeyId = context.environment.find((x) => x.key === "AWS_ACCESSKEYID")?.value;
-  const awsSecretAccessKey = context.environment.find(
-    (x) => x.key === "AWS_SECRETACCESSKEY"
-  )?.value;
+  const awsSecretAccessKey = context.environment.find((x) => x.key === "AWS_SECRETACCESSKEY")?.value;
   const awsRegion = context.environment.find((x) => x.key === "AWS_REGION")?.value;
-  const desireableAccuracyPercent = context.environment.find(
-    (x) => x.key === "DESIREABLE_ACCURACY_PERCENT"
-  )?.value;
+  const desireableAccuracyPercent = context.environment.find((x) => x.key === "DESIREABLE_ACCURACY_PERCENT")?.value;
 
   if (!awsAccessKeyId) {
     throw new Error("Missing AWS_ACCESSKEYID in environment variables");
@@ -95,11 +91,7 @@ function _getConfiguration(context: TagoContext): EstimatedConfiguration {
 /**
  * Create AWS payload for position estimate command
  */
-function _createAWSPayload(
-  gnssValue?: string,
-  ipAddress?: string,
-  wifiAddresses?: Record<string, number>
-): AWSPayload {
+function _createAWSPayload(gnssValue?: string, ipAddress?: string, wifiAddresses?: Record<string, number>): AWSPayload {
   if (!gnssValue && !ipAddress && !wifiAddresses) {
     throw new Error("No data to create the payload");
   }
@@ -172,8 +164,7 @@ function _createDataForDevice(
   const verticalAccuracy = estimatedLocation.properties?.VerticalAccuracy;
 
   const accuracy =
-    horizontalAccuracy >= parseFloat(desireableAccuracy) ||
-    verticalAccuracy >= parseFloat(desireableAccuracy);
+    horizontalAccuracy >= parseFloat(desireableAccuracy) || verticalAccuracy >= parseFloat(desireableAccuracy);
 
   const dataReturn: Data = {
     variable: "estimated_location",
@@ -211,10 +202,8 @@ async function getEstimatedDeviceLocation(context: TagoContext, scope: Data[]): 
   }
 
   // Get variable names from environment or use defaults
-  const gnssSolverVariable =
-    context.environment.find((x) => x.key === "GNSS_SOLVER_VARIABLE")?.value || "gnss_solver";
-  const ipAddressVariable =
-    context.environment.find((x) => x.key === "IP_ADDRESS_VARIABLE")?.value || "ip_addresses";
+  const gnssSolverVariable = context.environment.find((x) => x.key === "GNSS_SOLVER_VARIABLE")?.value || "gnss_solver";
+  const ipAddressVariable = context.environment.find((x) => x.key === "IP_ADDRESS_VARIABLE")?.value || "ip_addresses";
   const wifiAdressesVariable =
     context.environment.find((x) => x.key === "WIFI_ADDRESSES_VARIABLE")?.value || "wifi_addresses";
 
@@ -222,10 +211,7 @@ async function getEstimatedDeviceLocation(context: TagoContext, scope: Data[]): 
   const gnssValue = scope.find((x) => x.variable === gnssSolverVariable)?.value as string;
   const ipAddressValue = scope.find((x) => x.variable === ipAddressVariable)?.value as string;
   const ipAddress = ipAddressValue?.split(";");
-  const wifiAddresses = scope.find((x) => x.variable === wifiAdressesVariable)?.metadata as Record<
-    string,
-    number
-  >;
+  const wifiAddresses = scope.find((x) => x.variable === wifiAdressesVariable)?.metadata as Record<string, number>;
 
   try {
     // Create payload for AWS position estimate

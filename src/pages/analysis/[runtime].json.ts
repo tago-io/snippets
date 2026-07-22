@@ -1,22 +1,22 @@
-import type { APIRoute } from 'astro';
+import type { APIRoute } from "astro";
 // @ts-ignore
-import snippetsData from '../../data/snippets.json';
+import snippetsData from "../../data/snippets.json";
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  return Object.keys(snippetsData.analysis).map(runtime => ({
-    params: { runtime }
+  return Object.keys(snippetsData.analysis).map((runtime) => ({
+    params: { runtime },
   }));
 }
 
 export const GET: APIRoute = async ({ params }) => {
   const runtimeData = snippetsData.analysis[params.runtime!];
   if (!runtimeData) {
-    return new Response('Runtime not found', { status: 404 });
+    return new Response("Runtime not found", { status: 404 });
   }
 
-  const metadata = runtimeData.snippets.map(({ code, ...meta }) => meta);
+  const metadata = runtimeData.snippets.map(({ code: _code, ...meta }) => meta);
 
   const data = {
     runtime: params.runtime,
@@ -27,7 +27,7 @@ export const GET: APIRoute = async ({ params }) => {
 
   return new Response(JSON.stringify(data), {
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   });
 };

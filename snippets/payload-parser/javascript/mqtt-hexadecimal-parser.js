@@ -12,9 +12,7 @@
 
 // Prevent the code from running for other types of data insertions.
 // We search for a variable named "payload" or a variable with metadata.mqtt_topic
-const mqtt_payload = payload.find(
-  (data) => data.variable === "payload" || data.metadata?.mqtt_topic
-);
+const mqtt_payload = payload.find((data) => data.variable === "payload" || data.metadata?.mqtt_topic);
 if (mqtt_payload) {
   // Cast the hexadecimal string to a buffer
   const buffer = Buffer.from(mqtt_payload.value, "hex");

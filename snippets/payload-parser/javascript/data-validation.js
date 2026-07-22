@@ -34,9 +34,7 @@ for (const item of payload) {
           group: item.group || String(Date.now()),
         });
 
-        console.log(
-          `Validation error: ${item.variable} = ${item.value} (expected: ${range.min}-${range.max})`
-        );
+        console.log(`Validation error: ${item.variable} = ${item.value} (expected: ${range.min}-${range.max})`);
       } else {
         // Add unit if not present
         if (!item.unit) {

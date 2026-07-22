@@ -1,6 +1,6 @@
-import type { APIRoute } from 'astro';
+import type { APIRoute } from "astro";
 // @ts-ignore
-import snippetsData from '../../data/snippets.json';
+import snippetsData from "../../data/snippets.json";
 
 export const prerender = true;
 
@@ -14,10 +14,10 @@ export const GET: APIRoute = async ({ params }) => {
   const runtime = params.runtime!;
   const runtimeData = snippetsData.payloadParser[runtime as keyof typeof snippetsData.payloadParser];
   if (!runtimeData) {
-    return new Response('Runtime not found', { status: 404 });
+    return new Response("Runtime not found", { status: 404 });
   }
 
-  const metadata = runtimeData.snippets.map(({ code, ...meta }: any) => meta);
+  const metadata = runtimeData.snippets.map(({ code: _code, ...meta }) => meta);
 
   const data = {
     runtime,
@@ -28,8 +28,7 @@ export const GET: APIRoute = async ({ params }) => {
 
   return new Response(JSON.stringify(data), {
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   });
 };
-
