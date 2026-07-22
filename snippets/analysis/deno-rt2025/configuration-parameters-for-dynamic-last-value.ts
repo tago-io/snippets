@@ -26,13 +26,7 @@ let timezone = "America/New_York";
 const getParam = (params: ConfigurationParams[], key: string): ConfigurationParams =>
   params.find((x) => x.key === key) || { key, value: "-", sent: false };
 
-async function applyDeviceCalculation({
-  id: deviceID,
-  name,
-}: {
-  id: string;
-  name: string;
-}): Promise<void> {
+async function applyDeviceCalculation({ id: deviceID, name }: { id: string; name: string }): Promise<void> {
   const deviceInfoText = `${name}(${deviceID})`;
   console.info(`Processing Device ${deviceInfoText}`);
 

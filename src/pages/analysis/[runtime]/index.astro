@@ -1,94 +1,106 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { ANALYSIS_RUNTIMES, collectSnippets } from '../../../lib/snippets.ts';
+import SnippetCard from "../../../components/SnippetCard.astro";
+import { ANALYSIS_RUNTIMES, collectSnippets } from "../../../lib/snippets.ts";
 
 export async function getStaticPaths() {
   const paths = [];
-  
+
   for (const runtime of ANALYSIS_RUNTIMES) {
     const snippets = await collectSnippets(runtime);
-    const metadata = snippets.map(({ code, ...meta }) => meta);
-    
+
     paths.push({
       params: { runtime: runtime.name },
-      props: { 
+      props: {
         runtime,
-        snippets: metadata 
-      }
+        snippets,
+      },
     });
   }
-  
+
   return paths;
 }
 
 const { runtime, snippets } = Astro.props;
+const jsonName = `${runtime.name}.json`;
 ---
 
 <BaseLayout title={`${runtime.displayName} • Analysis • TagoIO Snippets`}>
-  <main class="container max-w-4xl mx-auto px-4 py-10">
-    <!-- Header -->
+  <main class="container max-w-5xl mx-auto px-4 pt-6 pb-16 min-w-0">
     <div class="mb-8">
       <nav class="text-sm text-muted-foreground mb-4">
-        <a href="/" class="hover:underline">Home</a> 
-        <span class="mx-2">›</span>
+        <a href="/" class="text-info hover:underline">Home</a>
+        <span class="mx-2">/</span>
         <span>Analysis</span>
-        <span class="mx-2">›</span>
+        <span class="mx-2">/</span>
         <span>{runtime.displayName}</span>
       </nav>
-      
-      <h1 class="text-3xl font-bold mb-4">{runtime.displayName} Analysis Snippets</h1>
-      <p class="text-muted-foreground mb-6">
+
+      <h1 class="text-3xl font-semibold mb-4">{runtime.displayName} Analysis snippets</h1>
+      <p class="text-muted-foreground mb-8">
         Browse all available code snippets for the {runtime.displayName} runtime.
       </p>
-      
-      <div class="flex space-x-4 mb-8">
-        <a href={`/analysis/${runtime.name}.json`} class="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 text-sm">
-          📄 Download JSON Metadata
+
+      <div class="flex flex-wrap gap-4 mb-8">
+        <a
+          href={`/analysis/${runtime.name}.json`}
+          download={jsonName}
+          class="inline-flex items-center px-6 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-medium"
+        >
+          Download JSON metadata
         </a>
       </div>
+
+      {
+        snippets.length > 3 && (
+          <nav
+            class="mb-8 p-4 border border-border bg-card rounded-lg"
+            aria-label="Snippet index"
+          >
+            <p class="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-3">
+              On this page
+            </p>
+            <ul class="flex flex-wrap gap-x-4 gap-y-2 list-none m-0 p-0">
+              {snippets.map((snippet) => (
+                <li>
+                  <a href={`#${snippet.id}`} class="text-info hover:underline text-sm">
+                    {snippet.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
     </div>
 
-    <!-- Snippets List -->
-    {snippets.length > 0 ? (
-      <div class="grid gap-4">
-        {snippets.map((snippet) => (
-          <div class="border rounded-lg p-6 hover:bg-muted/50 transition-colors">
-            <div class="flex items-start justify-between mb-3">
-              <h2 class="text-lg font-semibold">{snippet.title}</h2>
-              <div class="flex flex-wrap gap-1 ml-4">
-                {snippet.tags.map((tag) => (
-                  <span class="px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-            
-            <p class="text-sm text-muted-foreground mb-4">{snippet.description}</p>
-            
-            <div class="flex items-center space-x-4">
-              <a 
-                href={`/analysis/${runtime.name}/${snippet.filename}`}
-                class="text-primary hover:underline text-sm font-medium"
-              >
-                📄 {snippet.filename}
-              </a>
-              <span class="text-xs text-muted-foreground">
-                {snippet.language}
-              </span>
-            </div>
+    <div class="min-h-64">
+      {
+        snippets.length > 0 ? (
+          <div class="grid gap-8 min-w-0">
+            {snippets.map((snippet) => (
+              <SnippetCard
+                id={snippet.id}
+                title={snippet.title}
+                description={snippet.description}
+                tags={snippet.tags}
+                filename={snippet.filename}
+                language={snippet.language}
+                code={snippet.code}
+                fileHref={`/analysis/${runtime.name}/${snippet.filename}`}
+              />
+            ))}
           </div>
-        ))}
-      </div>
-    ) : (
-      <div class="text-center py-12">
-        <p class="text-muted-foreground">No snippets available for this runtime.</p>
-      </div>
-    )}
+        ) : (
+          <div class="flex items-center justify-center min-h-64 border border-border bg-card rounded-lg p-6">
+            <p class="text-muted-foreground">No snippets available for this runtime.</p>
+          </div>
+        )
+      }
+    </div>
 
-    <!-- Back to Home -->
-    <div class="mt-12 text-center">
-      <a href="/" class="text-primary hover:underline">← Back to Home</a>
+    <div class="mt-16 text-center">
+      <a href="/" class="text-info hover:underline text-sm">Back to home</a>
     </div>
   </main>
 </BaseLayout>

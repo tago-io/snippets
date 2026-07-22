@@ -2,8 +2,18 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Not Found • TagoIO Snippets">
-  <main class="container py-16">
-    <h1 class="text-3xl font-bold mb-4">404</h1>
-    <p class="text-muted-foreground">The page you are looking for could not be found.</p>
+  <main class="container max-w-4xl mx-auto px-4 pt-6 pb-16">
+    <div class="min-h-64 flex flex-col items-start justify-center">
+      <h1 class="text-3xl font-semibold mb-4">Page not found</h1>
+      <p class="text-muted-foreground mb-8">
+        The page you are looking for could not be found.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center px-6 py-2 rounded-full border border-border bg-background text-foreground hover:bg-muted text-sm font-medium"
+      >
+        Back to home
+      </a>
+    </div>
   </main>
 </BaseLayout>

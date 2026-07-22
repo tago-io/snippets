@@ -1,0 +1,126 @@
+---
+import { Code } from "astro:components";
+
+type Props = {
+  title: string;
+  description: string;
+  tags: string[];
+  filename: string;
+  language: string;
+  code: string;
+  fileHref: string;
+  id?: string;
+};
+
+const { title, description, tags, filename, language, code, fileHref, id } = Astro.props;
+
+const langMap: Record<string, string> = {
+  javascript: "javascript",
+  typescript: "typescript",
+  python: "python",
+  sql: "sql",
+  js: "javascript",
+  ts: "typescript",
+  py: "python",
+};
+
+const shikiLang = langMap[language.toLowerCase()] ?? "plaintext";
+---
+
+<article
+  id={id}
+  class="snippet-card flex flex-col gap-4 border border-border bg-card rounded-lg p-6 min-w-0 scroll-mt-8"
+>
+  <header class="flex flex-col gap-3 min-w-0">
+    <h2 class="text-lg font-semibold text-card-foreground min-w-0 break-words">{title}</h2>
+    {
+      tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 min-w-0">
+          {tags.map((tag) => (
+            <span class="px-3 py-1 bg-muted text-muted-foreground text-xs rounded-full">{tag}</span>
+          ))}
+        </div>
+      )
+    }
+    {
+      description && (
+        <p class="text-sm text-muted-foreground">{description}</p>
+      )
+    }
+  </header>
+
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between min-w-0">
+    <div class="flex flex-wrap items-center gap-2 min-w-0">
+      <span class="px-3 py-1 bg-muted text-muted-foreground text-xs rounded-full shrink-0">
+        {language}
+      </span>
+      <span class="text-xs text-muted-foreground font-mono truncate max-w-full" title={filename}>
+        {filename}
+      </span>
+    </div>
+    <div class="flex flex-wrap items-center gap-3 shrink-0">
+      <a
+        href={fileHref}
+        download={filename}
+        class="inline-flex items-center justify-center min-w-28 px-6 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-medium"
+      >
+        Download
+      </a>
+      <a href={fileHref} class="text-info hover:underline text-sm whitespace-nowrap">
+        Open raw
+      </a>
+    </div>
+  </div>
+
+  <div class="snippet-code font-mono min-w-0 max-w-full rounded-lg border border-border bg-muted">
+    <div class="snippet-code__scroll max-h-64 overflow-auto overscroll-contain">
+      <Code
+        code={code}
+        lang={shikiLang}
+        theme="github-light"
+        class="snippet-code__pre font-mono"
+      />
+    </div>
+  </div>
+</article>
+
+<style>
+  .snippet-code,
+  .snippet-code :global(*),
+  .snippet-code :global(pre),
+  .snippet-code :global(code),
+  .snippet-code :global(span) {
+    font-family:
+      "Monaspace Neon", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+      monospace !important;
+  }
+
+  .snippet-code :global(pre.astro-code),
+  .snippet-code :global(pre.snippet-code__pre) {
+    margin: 0;
+    padding: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.625;
+    border-radius: 0;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    background: transparent !important;
+    tab-size: 2;
+  }
+
+  .snippet-code :global(pre code) {
+    font-size: inherit;
+    line-height: inherit;
+    background: transparent;
+    padding: 0;
+    white-space: pre;
+    display: block;
+    min-width: min-content;
+  }
+
+  .snippet-code :global(.astro-code .line) {
+    display: inline-block;
+    min-width: 100%;
+  }
+</style>

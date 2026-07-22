@@ -61,16 +61,11 @@ function checkAutoScale(currentUsage: number, allocated: number, scale: number):
 /**
  *  Get next valid service limit
  */
-function getNextTier(
-  serviceValues: { amount: number }[],
-  accountLimit: number
-): number | undefined {
+function getNextTier(serviceValues: { amount: number }[], accountLimit: number): number | undefined {
   if (!accountLimit) {
     return undefined;
   }
-  const nextValue = serviceValues
-    .sort((a, b) => a.amount - b.amount)
-    .find(({ amount }) => amount > accountLimit);
+  const nextValue = serviceValues.sort((a, b) => a.amount - b.amount).find(({ amount }) => amount > accountLimit);
 
   return nextValue?.amount || undefined;
 }
@@ -78,9 +73,7 @@ function getNextTier(
 /**
  * Parses the current limit of the account
  */
-function getAccountLimit(
-  servicesLimit: Record<string, unknown>
-): Record<string, { limit: number }> {
+function getAccountLimit(servicesLimit: Record<string, unknown>): Record<string, { limit: number }> {
   return Object.keys(servicesLimit).reduce((result: Record<string, { limit: number }>, key) => {
     result[key] = servicesLimit[key] as { limit: number };
 
@@ -128,17 +121,11 @@ function calculateAutoScale(
     }
 
     if (Number.isNaN(scale)) {
-      console.error(
-        `[ERROR] Ignoring ${statisticKey}, because the environment variable value is not a number.\n`
-      );
+      console.error(`[ERROR] Ignoring ${statisticKey}, because the environment variable value is not a number.\n`);
       continue;
     }
 
-    const needAutoScale = checkAutoScale(
-      profileLimitUsed[statisticKey],
-      profileLimit[statisticKey],
-      scale
-    );
+    const needAutoScale = checkAutoScale(profileLimitUsed[statisticKey], profileLimit[statisticKey], scale);
 
     if (!needAutoScale) {
       continue;
@@ -244,19 +231,11 @@ async function startAnalysis(context: TagoContext): Promise<void> {
   // Check each service to see if it needs scaling
   // Extract the limits from the ProfileLimit objects
   const profileLimits =
-    (limit as { limits?: Record<string, number> })?.limits ||
-    (limit as unknown as Record<string, number>);
+    (limit as { limits?: Record<string, number> })?.limits || (limit as unknown as Record<string, number>);
   const profileLimitsUsed =
-    (limit_used as { limits?: Record<string, number> })?.limits ||
-    (limit_used as unknown as Record<string, number>);
+    (limit_used as { limits?: Record<string, number> })?.limits || (limit_used as unknown as Record<string, number>);
 
-  const autoScaleServices = calculateAutoScale(
-    billing,
-    profileLimits,
-    profileLimitsUsed,
-    accountLimit,
-    environment
-  );
+  const autoScaleServices = calculateAutoScale(billing, profileLimits, profileLimitsUsed, accountLimit, environment);
 
   // Stop if no auto-scale needed
   if (!autoScaleServices) {
@@ -266,9 +245,7 @@ async function startAnalysis(context: TagoContext): Promise<void> {
 
   console.info("Auto-scaling the services:");
   for (const service in autoScaleServices) {
-    console.info(
-      `${service} from ${accountLimit?.[service]?.limit} to ${autoScaleServices?.[service]?.limit}`
-    );
+    console.info(`${service} from ${accountLimit?.[service]?.limit} to ${autoScaleServices?.[service]?.limit}`);
   }
 
   // Update our subscription, so we are actually scaling the account.
@@ -295,9 +272,7 @@ async function startAnalysis(context: TagoContext): Promise<void> {
     console.info("New allocation:");
     if (amountToReallocate) {
       for (const service in amountToReallocate) {
-        console.info(
-          `${service} from ${profileLimits?.[service]} to ${amountToReallocate?.[service]}`
-        );
+        console.info(`${service} from ${profileLimits?.[service]} to ${amountToReallocate?.[service]}`);
       }
 
       // Allocate all the subscribed limit to the profile.

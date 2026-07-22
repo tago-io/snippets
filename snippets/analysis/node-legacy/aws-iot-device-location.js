@@ -21,9 +21,7 @@ var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __commonJS = (cb, mod) =>
   function __require() {
-    return (
-      mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports
-    );
+    return (mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports);
   };
 var __export = (target, all) => {
   for (var name in all) __defProp(target, name, { get: all[name], enumerable: true });
@@ -42,9 +40,7 @@ var __copyProps = (to, from, except, desc) => {
 var __toESM = (mod, isNodeMode, target) => (
   (target = mod != null ? __create(__getProtoOf(mod)) : {}),
   __copyProps(
-    isNodeMode || !mod || !mod.__esModule
-      ? __defProp(target, "default", { value: mod, enumerable: true })
-      : target,
+    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
     mod
   )
 );
@@ -223,14 +219,11 @@ var require_dist_cjs2 = __commonJS({
         },
       };
     }, "getHttpHandlerExtensionConfiguration");
-    var resolveHttpHandlerRuntimeConfig = /* @__PURE__ */ __name(
-      (httpHandlerExtensionConfiguration) => {
-        return {
-          httpHandler: httpHandlerExtensionConfiguration.httpHandler(),
-        };
-      },
-      "resolveHttpHandlerRuntimeConfig"
-    );
+    var resolveHttpHandlerRuntimeConfig = /* @__PURE__ */ __name((httpHandlerExtensionConfiguration) => {
+      return {
+        httpHandler: httpHandlerExtensionConfiguration.httpHandler(),
+      };
+    }, "resolveHttpHandlerRuntimeConfig");
     var import_types = require_dist_cjs();
     var _Field = class _Field {
       constructor({ name, kind = import_types.FieldPosition.HEADER, values = [] }) {
@@ -248,9 +241,7 @@ var require_dist_cjs2 = __commonJS({
         this.values = this.values.filter((v) => v !== value);
       }
       toString() {
-        return this.values
-          .map((v) => (v.includes(",") || v.includes(" ") ? `"${v}"` : v))
-          .join(", ");
+        return this.values.map((v) => (v.includes(",") || v.includes(" ") ? `"${v}"` : v)).join(", ");
       }
       get() {
         return this.values;
@@ -292,11 +283,7 @@ var require_dist_cjs2 = __commonJS({
             ? `${options.protocol}:`
             : options.protocol
           : "https:";
-        this.path = options.path
-          ? options.path.charAt(0) !== "/"
-            ? `/${options.path}`
-            : options.path
-          : "/";
+        this.path = options.path ? (options.path.charAt(0) !== "/" ? `/${options.path}` : options.path) : "/";
         this.username = options.username;
         this.password = options.password;
         this.fragment = options.fragment;
@@ -400,8 +387,7 @@ var require_dist_cjs3 = __commonJS({
         const { handlerProtocol = "" } = options.requestHandler.metadata || {};
         if (handlerProtocol.indexOf("h2") >= 0 && !request.headers[":authority"]) {
           delete request.headers["host"];
-          request.headers[":authority"] =
-            request.hostname + (request.port ? ":" + request.port : "");
+          request.headers[":authority"] = request.hostname + (request.port ? ":" + request.port : "");
         } else if (!request.headers["host"]) {
           let host = request.hostname;
           if (request.port != null) host += `:${request.port}`;
@@ -465,12 +451,9 @@ var require_dist_cjs4 = __commonJS({
         try {
           const response = await next(args);
           const { clientName, commandName, logger, dynamoDbDocumentClientOptions = {} } = context;
-          const { overrideInputFilterSensitiveLog, overrideOutputFilterSensitiveLog } =
-            dynamoDbDocumentClientOptions;
-          const inputFilterSensitiveLog =
-            overrideInputFilterSensitiveLog ?? context.inputFilterSensitiveLog;
-          const outputFilterSensitiveLog =
-            overrideOutputFilterSensitiveLog ?? context.outputFilterSensitiveLog;
+          const { overrideInputFilterSensitiveLog, overrideOutputFilterSensitiveLog } = dynamoDbDocumentClientOptions;
+          const inputFilterSensitiveLog = overrideInputFilterSensitiveLog ?? context.inputFilterSensitiveLog;
+          const outputFilterSensitiveLog = overrideOutputFilterSensitiveLog ?? context.outputFilterSensitiveLog;
           const { $metadata, ...outputWithoutMetadata } = response.output;
           (_a = logger == null ? void 0 : logger.info) == null
             ? void 0
@@ -485,8 +468,7 @@ var require_dist_cjs4 = __commonJS({
         } catch (error) {
           const { clientName, commandName, logger, dynamoDbDocumentClientOptions = {} } = context;
           const { overrideInputFilterSensitiveLog } = dynamoDbDocumentClientOptions;
-          const inputFilterSensitiveLog =
-            overrideInputFilterSensitiveLog ?? context.inputFilterSensitiveLog;
+          const inputFilterSensitiveLog = overrideInputFilterSensitiveLog ?? context.inputFilterSensitiveLog;
           (_b = logger == null ? void 0 : logger.error) == null
             ? void 0
             : _b.call(logger, {
@@ -588,10 +570,7 @@ var require_dist_cjs5 = __commonJS({
     var getRecursionDetectionPlugin = /* @__PURE__ */ __name(
       (options) => ({
         applyToStack: (clientStack) => {
-          clientStack.add(
-            recursionDetectionMiddleware(options),
-            addRecursionDetectionMiddlewareOptions
-          );
+          clientStack.add(recursionDetectionMiddleware(options), addRecursionDetectionMiddlewareOptions);
         },
       }),
       "getRecursionDetectionPlugin"
@@ -672,10 +651,7 @@ var require_dist_cjs6 = __commonJS({
     };
     __name(_EndpointError, "EndpointError");
     var EndpointError2 = _EndpointError;
-    var booleanEquals = /* @__PURE__ */ __name(
-      (value1, value2) => value1 === value2,
-      "booleanEquals"
-    );
+    var booleanEquals = /* @__PURE__ */ __name((value1, value2) => value1 === value2, "booleanEquals");
     var getAttrPathList = /* @__PURE__ */ __name((path) => {
       const parts = path.split(".");
       const pathList = [];
@@ -703,9 +679,7 @@ var require_dist_cjs6 = __commonJS({
       (value, path) =>
         getAttrPathList(path).reduce((acc, index) => {
           if (typeof acc !== "object") {
-            throw new EndpointError2(
-              `Index '${index}' in '${path}' not found in '${JSON.stringify(value)}'`
-            );
+            throw new EndpointError2(`Index '${index}' in '${path}' not found in '${JSON.stringify(value)}'`);
           } else if (Array.isArray(acc)) {
             return acc[parseInt(index)];
           }
@@ -727,13 +701,7 @@ var require_dist_cjs6 = __commonJS({
             return value;
           }
           if (typeof value === "object" && "hostname" in value) {
-            const {
-              hostname: hostname2,
-              port,
-              protocol: protocol2 = "",
-              path = "",
-              query = {},
-            } = value;
+            const { hostname: hostname2, port, protocol: protocol2 = "", path = "", query = {} } = value;
             const url = new URL(`${protocol2}//${hostname2}${port ? `:${port}` : ""}${path}`);
             url.search = Object.entries(query)
               .map(([k, v]) => `${k}=${v}`)
@@ -771,10 +739,7 @@ var require_dist_cjs6 = __commonJS({
         isIp,
       };
     }, "parseURL");
-    var stringEquals = /* @__PURE__ */ __name(
-      (value1, value2) => value1 === value2,
-      "stringEquals"
-    );
+    var stringEquals = /* @__PURE__ */ __name((value1, value2) => value1 === value2, "stringEquals");
     var substring = /* @__PURE__ */ __name((input, start, stop, reverse) => {
       if (start >= stop || input.length < stop) {
         return null;
@@ -785,11 +750,7 @@ var require_dist_cjs6 = __commonJS({
       return input.substring(input.length - stop, input.length - start);
     }, "substring");
     var uriEncode = /* @__PURE__ */ __name(
-      (value) =>
-        encodeURIComponent(value).replace(
-          /[!*'()]/g,
-          (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`
-        ),
+      (value) => encodeURIComponent(value).replace(/[!*'()]/g, (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`),
       "uriEncode"
     );
     var endpointFunctions = {
@@ -852,9 +813,7 @@ var require_dist_cjs6 = __commonJS({
       } else if (obj["ref"]) {
         return getReferenceValue(obj, options);
       }
-      throw new EndpointError2(
-        `'${keyName}': ${String(obj)} is not a string, function or reference.`
-      );
+      throw new EndpointError2(`'${keyName}': ${String(obj)} is not a string, function or reference.`);
     }, "evaluateExpression");
     var callFunction = /* @__PURE__ */ __name(({ fn, argv }, options) => {
       const evaluatedArgs = argv.map((arg) =>
@@ -874,10 +833,7 @@ var require_dist_cjs6 = __commonJS({
       const value = callFunction(fnArgs, options);
       (_b = (_a = options.logger) == null ? void 0 : _a.debug) == null
         ? void 0
-        : _b.call(
-            _a,
-            `${debugId} evaluateCondition: ${toDebugString(fnArgs)} = ${toDebugString(value)}`
-          );
+        : _b.call(_a, `${debugId} evaluateCondition: ${toDebugString(fnArgs)} = ${toDebugString(value)}`);
       return {
         result: value === "" ? true : !!value,
         ...(assign != null && { toAssign: { name: assign, value } }),
@@ -901,10 +857,7 @@ var require_dist_cjs6 = __commonJS({
           conditionsReferenceRecord[toAssign.name] = toAssign.value;
           (_b = (_a = options.logger) == null ? void 0 : _a.debug) == null
             ? void 0
-            : _b.call(
-                _a,
-                `${debugId} assign: ${toAssign.name} := ${toDebugString(toAssign.value)}`
-              );
+            : _b.call(_a, `${debugId} assign: ${toAssign.name} := ${toDebugString(toAssign.value)}`);
         }
       }
       return { result: true, referenceRecord: conditionsReferenceRecord };
@@ -915,15 +868,9 @@ var require_dist_cjs6 = __commonJS({
           (acc, [headerKey, headerVal]) => ({
             ...acc,
             [headerKey]: headerVal.map((headerValEntry) => {
-              const processedExpr = evaluateExpression(
-                headerValEntry,
-                "Header value entry",
-                options
-              );
+              const processedExpr = evaluateExpression(headerValEntry, "Header value entry", options);
               if (typeof processedExpr !== "string") {
-                throw new EndpointError2(
-                  `Header '${headerKey}' value '${processedExpr}' is not a string`
-                );
+                throw new EndpointError2(`Header '${headerKey}' value '${processedExpr}' is not a string`);
               }
               return processedExpr;
             }),
@@ -1442,10 +1389,7 @@ var require_dist_cjs7 = __commonJS({
     var useDefaultPartitionInfo = /* @__PURE__ */ __name(() => {
       setPartitionInfo(partitions_default, "");
     }, "useDefaultPartitionInfo");
-    var getUserAgentPrefix = /* @__PURE__ */ __name(
-      () => selectedUserAgentPrefix,
-      "getUserAgentPrefix"
-    );
+    var getUserAgentPrefix = /* @__PURE__ */ __name(() => selectedUserAgentPrefix, "getUserAgentPrefix");
     var awsEndpointFunctions = {
       isVirtualHostableS3Bucket,
       parseArn,
@@ -1489,10 +1433,7 @@ var require_dist_cjs8 = __commonJS({
     function resolveUserAgentConfig(input) {
       return {
         ...input,
-        customUserAgent:
-          typeof input.customUserAgent === "string"
-            ? [[input.customUserAgent]]
-            : input.customUserAgent,
+        customUserAgent: typeof input.customUserAgent === "string" ? [[input.customUserAgent]] : input.customUserAgent,
       };
     }
     __name(resolveUserAgentConfig, "resolveUserAgentConfig");
@@ -1512,14 +1453,10 @@ var require_dist_cjs8 = __commonJS({
         if (!import_protocol_http.HttpRequest.isInstance(request)) return next(args);
         const { headers } = request;
         const userAgent =
-          ((_a = context == null ? void 0 : context.userAgent) == null
-            ? void 0
-            : _a.map(escapeUserAgent)) || [];
+          ((_a = context == null ? void 0 : context.userAgent) == null ? void 0 : _a.map(escapeUserAgent)) || [];
         const defaultUserAgent = (await options.defaultUserAgentProvider()).map(escapeUserAgent);
         const customUserAgent =
-          ((_b = options == null ? void 0 : options.customUserAgent) == null
-            ? void 0
-            : _b.map(escapeUserAgent)) || [];
+          ((_b = options == null ? void 0 : options.customUserAgent) == null ? void 0 : _b.map(escapeUserAgent)) || [];
         const prefix = (0, import_util_endpoints.getUserAgentPrefix)();
         const sdkUserAgentValue = (prefix ? [prefix] : [])
           .concat([...defaultUserAgent, ...userAgent, ...customUserAgent])
@@ -1551,10 +1488,7 @@ var require_dist_cjs8 = __commonJS({
         .split(UA_NAME_SEPARATOR)
         .map((part) => part.replace(UA_NAME_ESCAPE_REGEX, UA_ESCAPE_CHAR))
         .join(UA_NAME_SEPARATOR);
-      const version =
-        (_a = userAgentPair[1]) == null
-          ? void 0
-          : _a.replace(UA_VALUE_ESCAPE_REGEX, UA_ESCAPE_CHAR);
+      const version = (_a = userAgentPair[1]) == null ? void 0 : _a.replace(UA_VALUE_ESCAPE_REGEX, UA_ESCAPE_CHAR);
       const prefixSeparatorIndex = name.indexOf(UA_NAME_SEPARATOR);
       const prefix = name.substring(0, prefixSeparatorIndex);
       let uaName = name.substring(prefixSeparatorIndex + 1);
@@ -1675,8 +1609,7 @@ var require_dist_cjs10 = __commonJS({
     module2.exports = __toCommonJS2(src_exports);
     var import_types = require_dist_cjs();
     var getSmithyContext2 = /* @__PURE__ */ __name(
-      (context) =>
-        context[import_types.SMITHY_CONTEXT_KEY] || (context[import_types.SMITHY_CONTEXT_KEY] = {}),
+      (context) => context[import_types.SMITHY_CONTEXT_KEY] || (context[import_types.SMITHY_CONTEXT_KEY] = {}),
       "getSmithyContext"
     );
     var normalizeProvider = /* @__PURE__ */ __name((input) => {
@@ -1777,9 +1710,7 @@ var require_dist_cjs11 = __commonJS({
           typeof endpoint === "string" ? urlParser(endpoint) : endpoint
         ),
         isCustomEndpoint: true,
-        useDualstackEndpoint: (0, import_util_middleware.normalizeProvider)(
-          input.useDualstackEndpoint ?? false
-        ),
+        useDualstackEndpoint: (0, import_util_middleware.normalizeProvider)(input.useDualstackEndpoint ?? false),
       };
     }, "resolveCustomEndpointsConfig");
     var getEndpointFromRegion = /* @__PURE__ */ __name(async (input) => {
@@ -1791,25 +1722,20 @@ var require_dist_cjs11 = __commonJS({
       }
       const useDualstackEndpoint = await input.useDualstackEndpoint();
       const useFipsEndpoint = await input.useFipsEndpoint();
-      const { hostname } =
-        (await input.regionInfoProvider(region, { useDualstackEndpoint, useFipsEndpoint })) ?? {};
+      const { hostname } = (await input.regionInfoProvider(region, { useDualstackEndpoint, useFipsEndpoint })) ?? {};
       if (!hostname) {
         throw new Error("Cannot resolve hostname from client config");
       }
       return input.urlParser(`${tls ? "https:" : "http:"}//${hostname}`);
     }, "getEndpointFromRegion");
     var resolveEndpointsConfig = /* @__PURE__ */ __name((input) => {
-      const useDualstackEndpoint = (0, import_util_middleware.normalizeProvider)(
-        input.useDualstackEndpoint ?? false
-      );
+      const useDualstackEndpoint = (0, import_util_middleware.normalizeProvider)(input.useDualstackEndpoint ?? false);
       const { endpoint, useFipsEndpoint, urlParser } = input;
       return {
         ...input,
         tls: input.tls ?? true,
         endpoint: endpoint
-          ? (0, import_util_middleware.normalizeProvider)(
-              typeof endpoint === "string" ? urlParser(endpoint) : endpoint
-            )
+          ? (0, import_util_middleware.normalizeProvider)(typeof endpoint === "string" ? urlParser(endpoint) : endpoint)
           : () => getEndpointFromRegion({ ...input, useDualstackEndpoint, useFipsEndpoint }),
         isCustomEndpoint: !!endpoint,
         useDualstackEndpoint,
@@ -1828,8 +1754,7 @@ var require_dist_cjs11 = __commonJS({
       preferredFile: "credentials",
     };
     var isFipsRegion = /* @__PURE__ */ __name(
-      (region) =>
-        typeof region === "string" && (region.startsWith("fips-") || region.endsWith("-fips")),
+      (region) => typeof region === "string" && (region.startsWith("fips-") || region.endsWith("-fips")),
       "isFipsRegion"
     );
     var getRealRegion = /* @__PURE__ */ __name(
@@ -1860,25 +1785,18 @@ var require_dist_cjs11 = __commonJS({
           if (isFipsRegion(providedRegion)) {
             return true;
           }
-          return typeof useFipsEndpoint !== "function"
-            ? Promise.resolve(!!useFipsEndpoint)
-            : useFipsEndpoint();
+          return typeof useFipsEndpoint !== "function" ? Promise.resolve(!!useFipsEndpoint) : useFipsEndpoint();
         },
       };
     }, "resolveRegionConfig");
-    var getHostnameFromVariants = /* @__PURE__ */ __name(
-      (variants = [], { useFipsEndpoint, useDualstackEndpoint }) => {
-        var _a;
-        return (_a = variants.find(
-          ({ tags }) =>
-            useFipsEndpoint === tags.includes("fips") &&
-            useDualstackEndpoint === tags.includes("dualstack")
-        )) == null
-          ? void 0
-          : _a.hostname;
-      },
-      "getHostnameFromVariants"
-    );
+    var getHostnameFromVariants = /* @__PURE__ */ __name((variants = [], { useFipsEndpoint, useDualstackEndpoint }) => {
+      var _a;
+      return (_a = variants.find(
+        ({ tags }) => useFipsEndpoint === tags.includes("fips") && useDualstackEndpoint === tags.includes("dualstack")
+      )) == null
+        ? void 0
+        : _a.hostname;
+    }, "getHostnameFromVariants");
     var getResolvedHostname = /* @__PURE__ */ __name(
       (resolvedRegion, { regionHostname, partitionHostname }) =>
         regionHostname
@@ -1890,9 +1808,7 @@ var require_dist_cjs11 = __commonJS({
     );
     var getResolvedPartition = /* @__PURE__ */ __name(
       (region, { partitionHash }) =>
-        Object.keys(partitionHash || {}).find((key) =>
-          partitionHash[key].regions.includes(region)
-        ) ?? "aws",
+        Object.keys(partitionHash || {}).find((key) => partitionHash[key].regions.includes(region)) ?? "aws",
       "getResolvedPartition"
     );
     var getResolvedSigningRegion = /* @__PURE__ */ __name(
@@ -1900,10 +1816,7 @@ var require_dist_cjs11 = __commonJS({
         if (signingRegion) {
           return signingRegion;
         } else if (useFipsEndpoint) {
-          const regionRegexJs = regionRegex
-            .replace("\\\\", "\\")
-            .replace(/^\^/g, "\\.")
-            .replace(/\$$/g, "\\.");
+          const regionRegexJs = regionRegex.replace("\\\\", "\\").replace(/^\^/g, "\\.").replace(/\$$/g, "\\.");
           const regionRegexmatchArray = hostname.match(regionRegexJs);
           if (regionRegexmatchArray) {
             return regionRegexmatchArray[0].slice(1, -1);
@@ -1915,20 +1828,12 @@ var require_dist_cjs11 = __commonJS({
     var getRegionInfo = /* @__PURE__ */ __name(
       (
         region,
-        {
-          useFipsEndpoint = false,
-          useDualstackEndpoint = false,
-          signingService,
-          regionHash,
-          partitionHash,
-        }
+        { useFipsEndpoint = false, useDualstackEndpoint = false, signingService, regionHash, partitionHash }
       ) => {
         var _a, _b, _c, _d, _e;
         const partition = getResolvedPartition(region, { partitionHash });
         const resolvedRegion =
-          region in regionHash
-            ? region
-            : (((_a = partitionHash[partition]) == null ? void 0 : _a.endpoint) ?? region);
+          region in regionHash ? region : (((_a = partitionHash[partition]) == null ? void 0 : _a.endpoint) ?? region);
         const hostnameOptions = { useFipsEndpoint, useDualstackEndpoint };
         const regionHostname = getHostnameFromVariants(
           (_b = regionHash[resolvedRegion]) == null ? void 0 : _b.variants,
@@ -2064,10 +1969,7 @@ var require_dist_cjs12 = __commonJS({
         },
       "chain"
     );
-    var fromStatic = /* @__PURE__ */ __name(
-      (staticValue) => () => Promise.resolve(staticValue),
-      "fromStatic"
-    );
+    var fromStatic = /* @__PURE__ */ __name((staticValue) => () => Promise.resolve(staticValue), "fromStatic");
     var memoize = /* @__PURE__ */ __name((provider, isExpired, requiresRefresh) => {
       let resolved;
       let pending;
@@ -2153,13 +2055,7 @@ var require_getSSOTokenFilepath = __commonJS({
     var getSSOTokenFilepath2 = (id) => {
       const hasher = (0, crypto_1.createHash)("sha1");
       const cacheName = hasher.update(id).digest("hex");
-      return (0, path_1.join)(
-        (0, getHomeDir_1.getHomeDir)(),
-        ".aws",
-        "sso",
-        "cache",
-        `${cacheName}.json`
-      );
+      return (0, path_1.join)((0, getHomeDir_1.getHomeDir)(), ".aws", "sso", "cache", `${cacheName}.json`);
     };
     exports.getSSOTokenFilepath = getSSOTokenFilepath2;
   },
@@ -2191,10 +2087,7 @@ var require_slurpFile = __commonJS({
     var { readFile } = fs_1.promises;
     var filePromisesHash = {};
     var slurpFile = (path, options) => {
-      if (
-        !filePromisesHash[path] ||
-        (options === null || options === void 0 ? void 0 : options.ignoreCache)
-      ) {
+      if (!filePromisesHash[path] || (options === null || options === void 0 ? void 0 : options.ignoreCache)) {
         filePromisesHash[path] = readFile(path, "utf8");
       }
       return filePromisesHash[path];
@@ -2259,9 +2152,7 @@ var require_dist_cjs13 = __commonJS({
             if (indexOfSeparator === -1) {
               return false;
             }
-            return Object.values(import_types.IniSectionType).includes(
-              key.substring(0, indexOfSeparator)
-            );
+            return Object.values(import_types.IniSectionType).includes(key.substring(0, indexOfSeparator));
           })
           .reduce(
             (acc, [key, value]) => {
@@ -2284,8 +2175,7 @@ var require_dist_cjs13 = __commonJS({
     var ENV_CONFIG_PATH = "AWS_CONFIG_FILE";
     var getConfigFilepath = /* @__PURE__ */ __name(
       () =>
-        process.env[ENV_CONFIG_PATH] ||
-        (0, import_path.join)((0, import_getHomeDir.getHomeDir)(), ".aws", "config"),
+        process.env[ENV_CONFIG_PATH] || (0, import_path.join)((0, import_getHomeDir.getHomeDir)(), ".aws", "config"),
       "getConfigFilepath"
     );
     var import_getHomeDir2 = require_getHomeDir();
@@ -2335,9 +2225,7 @@ var require_dist_cjs13 = __commonJS({
                 currentSubSection = void 0;
               }
               map[currentSection] = map[currentSection] || {};
-              const key = currentSubSection
-                ? [currentSubSection, name].join(CONFIG_PREFIX_SEPARATOR)
-                : name;
+              const key = currentSubSection ? [currentSubSection, name].join(CONFIG_PREFIX_SEPARATOR) : name;
               map[currentSection][key] = value;
             }
           }
@@ -2371,9 +2259,7 @@ var require_dist_cjs13 = __commonJS({
     var getSsoSessionData = /* @__PURE__ */ __name(
       (data) =>
         Object.entries(data)
-          .filter(([key]) =>
-            key.startsWith(import_types.IniSectionType.SSO_SESSION + CONFIG_PREFIX_SEPARATOR)
-          )
+          .filter(([key]) => key.startsWith(import_types.IniSectionType.SSO_SESSION + CONFIG_PREFIX_SEPARATOR))
           .reduce(
             (acc, [key, value]) => ({
               ...acc,
@@ -2476,8 +2362,7 @@ var require_dist_cjs14 = __commonJS({
       (configSelector, { preferredFile = "config", ...init } = {}) =>
         async () => {
           const profile = (0, import_shared_ini_file_loader.getProfileName)(init);
-          const { configFile, credentialsFile } = await (0,
-          import_shared_ini_file_loader.loadSharedConfigFiles)(init);
+          const { configFile, credentialsFile } = await (0, import_shared_ini_file_loader.loadSharedConfigFiles)(init);
           const profileFromCredentials = credentialsFile[profile] || {};
           const profileFromConfig = configFile[profile] || {};
           const mergedProfile =
@@ -2510,10 +2395,7 @@ var require_dist_cjs14 = __commonJS({
       "fromStatic"
     );
     var loadConfig = /* @__PURE__ */ __name(
-      (
-        { environmentVariableSelector, configFileSelector, default: defaultValue },
-        configuration = {}
-      ) =>
+      ({ environmentVariableSelector, configFileSelector, default: defaultValue }, configuration = {}) =>
         (0, import_property_provider.memoize)(
           (0, import_property_provider.chain)(
             fromEnv(environmentVariableSelector),
@@ -2546,9 +2428,7 @@ var require_getEndpointUrlConfig = __commonJS({
       configFileSelector: (profile, config) => {
         if (config && profile.services) {
           const servicesSection =
-            config[
-              ["services", profile.services].join(shared_ini_file_loader_1.CONFIG_PREFIX_SEPARATOR)
-            ];
+            config[["services", profile.services].join(shared_ini_file_loader_1.CONFIG_PREFIX_SEPARATOR)];
           if (servicesSection) {
             const servicePrefixParts = serviceId.split(" ").map((w) => w.toLowerCase());
             const endpointUrl2 =
@@ -2578,9 +2458,7 @@ var require_getEndpointFromConfig = __commonJS({
     var node_config_provider_1 = require_dist_cjs14();
     var getEndpointUrlConfig_1 = require_getEndpointUrlConfig();
     var getEndpointFromConfig = async (serviceId) =>
-      (0, node_config_provider_1.loadConfig)(
-        (0, getEndpointUrlConfig_1.getEndpointUrlConfig)(serviceId)
-      )();
+      (0, node_config_provider_1.loadConfig)((0, getEndpointUrlConfig_1.getEndpointUrlConfig)(serviceId))();
     exports.getEndpointFromConfig = getEndpointFromConfig;
   },
 });
@@ -2779,10 +2657,7 @@ var require_dist_cjs17 = __commonJS({
     function getSerdePlugin(config, serializer, deserializer) {
       return {
         applyToStack: (commandStack) => {
-          commandStack.add(
-            deserializerMiddleware(config, deserializer),
-            deserializerMiddlewareOption
-          );
+          commandStack.add(deserializerMiddleware(config, deserializer), deserializerMiddlewareOption);
           commandStack.add(serializerMiddleware(config, serializer), serializerMiddlewareOption);
         },
       };
@@ -2828,9 +2703,7 @@ var require_dist_cjs18 = __commonJS({
     var resolveParamsForS3 = /* @__PURE__ */ __name(async (endpointParams) => {
       const bucket = (endpointParams == null ? void 0 : endpointParams.Bucket) || "";
       if (typeof endpointParams.Bucket === "string") {
-        endpointParams.Bucket = bucket
-          .replace(/#/g, encodeURIComponent("#"))
-          .replace(/\?/g, encodeURIComponent("?"));
+        endpointParams.Bucket = bucket.replace(/#/g, encodeURIComponent("#")).replace(/\?/g, encodeURIComponent("?"));
       }
       if (isArnBucketName(bucket)) {
         if (endpointParams.ForcePathStyle === true) {
@@ -2855,9 +2728,7 @@ var require_dist_cjs18 = __commonJS({
     var DOTS_PATTERN = /\.\./;
     var isDnsCompatibleBucketName = /* @__PURE__ */ __name(
       (bucketName) =>
-        DOMAIN_PATTERN.test(bucketName) &&
-        !IP_ADDRESS_PATTERN.test(bucketName) &&
-        !DOTS_PATTERN.test(bucketName),
+        DOMAIN_PATTERN.test(bucketName) && !IP_ADDRESS_PATTERN.test(bucketName) && !DOTS_PATTERN.test(bucketName),
       "isDnsCompatibleBucketName"
     );
     var isArnBucketName = /* @__PURE__ */ __name((bucketName) => {
@@ -2869,46 +2740,41 @@ var require_dist_cjs18 = __commonJS({
       }
       return isValidArn;
     }, "isArnBucketName");
-    var createConfigValueProvider = /* @__PURE__ */ __name(
-      (configKey, canonicalEndpointParamKey, config) => {
-        const configProvider = /* @__PURE__ */ __name(async () => {
-          const configValue = config[configKey] ?? config[canonicalEndpointParamKey];
-          if (typeof configValue === "function") {
-            return configValue();
-          }
+    var createConfigValueProvider = /* @__PURE__ */ __name((configKey, canonicalEndpointParamKey, config) => {
+      const configProvider = /* @__PURE__ */ __name(async () => {
+        const configValue = config[configKey] ?? config[canonicalEndpointParamKey];
+        if (typeof configValue === "function") {
+          return configValue();
+        }
+        return configValue;
+      }, "configProvider");
+      if (configKey === "credentialScope" || canonicalEndpointParamKey === "CredentialScope") {
+        return async () => {
+          const credentials =
+            typeof config.credentials === "function" ? await config.credentials() : config.credentials;
+          const configValue =
+            (credentials == null ? void 0 : credentials.credentialScope) ??
+            (credentials == null ? void 0 : credentials.CredentialScope);
           return configValue;
-        }, "configProvider");
-        if (configKey === "credentialScope" || canonicalEndpointParamKey === "CredentialScope") {
-          return async () => {
-            const credentials =
-              typeof config.credentials === "function"
-                ? await config.credentials()
-                : config.credentials;
-            const configValue =
-              (credentials == null ? void 0 : credentials.credentialScope) ??
-              (credentials == null ? void 0 : credentials.CredentialScope);
-            return configValue;
-          };
-        }
-        if (configKey === "endpoint" || canonicalEndpointParamKey === "endpoint") {
-          return async () => {
-            const endpoint = await configProvider();
-            if (endpoint && typeof endpoint === "object") {
-              if ("url" in endpoint) {
-                return endpoint.url.href;
-              }
-              if ("hostname" in endpoint) {
-                const { protocol, hostname, port, path } = endpoint;
-                return `${protocol}//${hostname}${port ? ":" + port : ""}${path}`;
-              }
+        };
+      }
+      if (configKey === "endpoint" || canonicalEndpointParamKey === "endpoint") {
+        return async () => {
+          const endpoint = await configProvider();
+          if (endpoint && typeof endpoint === "object") {
+            if ("url" in endpoint) {
+              return endpoint.url.href;
             }
-            return endpoint;
-          };
-        }
-        return configProvider;
-      },
-      "createConfigValueProvider"
-    );
+            if ("hostname" in endpoint) {
+              const { protocol, hostname, port, path } = endpoint;
+              return `${protocol}//${hostname}${port ? ":" + port : ""}${path}`;
+            }
+          }
+          return endpoint;
+        };
+      }
+      return configProvider;
+    }, "createConfigValueProvider");
     var import_getEndpointFromConfig = require_getEndpointFromConfig();
     var import_url_parser = require_dist_cjs16();
     var toEndpointV1 = /* @__PURE__ */ __name((endpoint) => {
@@ -2930,11 +2796,7 @@ var require_dist_cjs18 = __commonJS({
             clientConfig.endpoint = () => Promise.resolve(toEndpointV1(endpointFromConfig));
           }
         }
-        const endpointParams = await resolveParams(
-          commandInput,
-          instructionsSupplier,
-          clientConfig
-        );
+        const endpointParams = await resolveParams(commandInput, instructionsSupplier, clientConfig);
         if (typeof clientConfig.endpointProvider !== "function") {
           throw new Error("config.endpointProvider is not set.");
         }
@@ -2943,49 +2805,37 @@ var require_dist_cjs18 = __commonJS({
       },
       "getEndpointFromInstructions"
     );
-    var resolveParams = /* @__PURE__ */ __name(
-      async (commandInput, instructionsSupplier, clientConfig) => {
-        var _a;
-        const endpointParams = {};
-        const instructions =
-          ((_a =
-            instructionsSupplier == null
-              ? void 0
-              : instructionsSupplier.getEndpointParameterInstructions) == null
-            ? void 0
-            : _a.call(instructionsSupplier)) || {};
-        for (const [name, instruction] of Object.entries(instructions)) {
-          switch (instruction.type) {
-            case "staticContextParams":
-              endpointParams[name] = instruction.value;
-              break;
-            case "contextParams":
-              endpointParams[name] = commandInput[instruction.name];
-              break;
-            case "clientContextParams":
-            case "builtInParams":
-              endpointParams[name] = await createConfigValueProvider(
-                instruction.name,
-                name,
-                clientConfig
-              )();
-              break;
-            default:
-              throw new Error(
-                "Unrecognized endpoint parameter instruction: " + JSON.stringify(instruction)
-              );
-          }
+    var resolveParams = /* @__PURE__ */ __name(async (commandInput, instructionsSupplier, clientConfig) => {
+      var _a;
+      const endpointParams = {};
+      const instructions =
+        ((_a = instructionsSupplier == null ? void 0 : instructionsSupplier.getEndpointParameterInstructions) == null
+          ? void 0
+          : _a.call(instructionsSupplier)) || {};
+      for (const [name, instruction] of Object.entries(instructions)) {
+        switch (instruction.type) {
+          case "staticContextParams":
+            endpointParams[name] = instruction.value;
+            break;
+          case "contextParams":
+            endpointParams[name] = commandInput[instruction.name];
+            break;
+          case "clientContextParams":
+          case "builtInParams":
+            endpointParams[name] = await createConfigValueProvider(instruction.name, name, clientConfig)();
+            break;
+          default:
+            throw new Error("Unrecognized endpoint parameter instruction: " + JSON.stringify(instruction));
         }
-        if (Object.keys(instructions).length === 0) {
-          Object.assign(endpointParams, clientConfig);
-        }
-        if (String(clientConfig.serviceId).toLowerCase() === "s3") {
-          await resolveParamsForS3(endpointParams);
-        }
-        return endpointParams;
-      },
-      "resolveParams"
-    );
+      }
+      if (Object.keys(instructions).length === 0) {
+        Object.assign(endpointParams, clientConfig);
+      }
+      if (String(clientConfig.serviceId).toLowerCase() === "s3") {
+        await resolveParamsForS3(endpointParams);
+      }
+      return endpointParams;
+    }, "resolveParams");
     var import_util_middleware = require_dist_cjs10();
     var endpointMiddleware = /* @__PURE__ */ __name(({ config, instructions }) => {
       return (next, context) => async (args) => {
@@ -3058,8 +2908,7 @@ var require_dist_cjs18 = __commonJS({
       const { endpoint } = input;
       const customEndpointProvider =
         endpoint != null
-          ? async () =>
-              toEndpointV1(await (0, import_util_middleware.normalizeProvider)(endpoint)())
+          ? async () => toEndpointV1(await (0, import_util_middleware.normalizeProvider)(endpoint)())
           : void 0;
       const isCustomEndpoint = !!endpoint;
       return {
@@ -3067,12 +2916,8 @@ var require_dist_cjs18 = __commonJS({
         endpoint: customEndpointProvider,
         tls,
         isCustomEndpoint,
-        useDualstackEndpoint: (0, import_util_middleware.normalizeProvider)(
-          input.useDualstackEndpoint ?? false
-        ),
-        useFipsEndpoint: (0, import_util_middleware.normalizeProvider)(
-          input.useFipsEndpoint ?? false
-        ),
+        useDualstackEndpoint: (0, import_util_middleware.normalizeProvider)(input.useDualstackEndpoint ?? false),
+        useFipsEndpoint: (0, import_util_middleware.normalizeProvider)(input.useFipsEndpoint ?? false),
       };
     }, "resolveEndpointConfig");
   },
@@ -3210,14 +3055,7 @@ var require_v1 = __commonJS({
       if (node == null || clockseq == null) {
         const seedBytes = options.random || (options.rng || _rng.default)();
         if (node == null) {
-          node = _nodeId = [
-            seedBytes[0] | 1,
-            seedBytes[1],
-            seedBytes[2],
-            seedBytes[3],
-            seedBytes[4],
-            seedBytes[5],
-          ];
+          node = _nodeId = [seedBytes[0] | 1, seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]];
         }
         if (clockseq == null) {
           clockseq = _clockseq = ((seedBytes[6] << 8) | seedBytes[7]) & 16383;
@@ -3335,11 +3173,7 @@ var require_v35 = __commonJS({
         if (typeof namespace === "string") {
           namespace = (0, _parse.default)(namespace);
         }
-        if (
-          ((_namespace = namespace) === null || _namespace === void 0
-            ? void 0
-            : _namespace.length) !== 16
-        ) {
+        if (((_namespace = namespace) === null || _namespace === void 0 ? void 0 : _namespace.length) !== 16) {
           throw TypeError("Namespace must be array-like (16 iterable integer values, 0-255)");
         }
         let bytes = new Uint8Array(16 + value.length);
@@ -3655,10 +3489,7 @@ var require_dist_cjs19 = __commonJS({
     var TRANSIENT_ERROR_CODES = ["TimeoutError", "RequestTimeout", "RequestTimeoutException"];
     var TRANSIENT_ERROR_STATUS_CODES = [500, 502, 503, 504];
     var NODEJS_TIMEOUT_ERROR_CODES = ["ECONNRESET", "ECONNREFUSED", "EPIPE", "ETIMEDOUT"];
-    var isRetryableByTrait = /* @__PURE__ */ __name(
-      (error) => error.$retryable !== void 0,
-      "isRetryableByTrait"
-    );
+    var isRetryableByTrait = /* @__PURE__ */ __name((error) => error.$retryable !== void 0, "isRetryableByTrait");
     var isClockSkewError = /* @__PURE__ */ __name(
       (error) => CLOCK_SKEW_ERROR_CODES.includes(error.name),
       "isClockSkewError"
@@ -3681,9 +3512,7 @@ var require_dist_cjs19 = __commonJS({
         isClockSkewCorrectedError(error) ||
         TRANSIENT_ERROR_CODES.includes(error.name) ||
         NODEJS_TIMEOUT_ERROR_CODES.includes((error == null ? void 0 : error.code) || "") ||
-        TRANSIENT_ERROR_STATUS_CODES.includes(
-          ((_a = error.$metadata) == null ? void 0 : _a.httpStatusCode) || 0
-        )
+        TRANSIENT_ERROR_STATUS_CODES.includes(((_a = error.$metadata) == null ? void 0 : _a.httpStatusCode) || 0)
       );
     }, "isTransientError");
     var isServerError = /* @__PURE__ */ __name((error) => {
@@ -3802,9 +3631,7 @@ var require_dist_cjs20 = __commonJS({
         let calculatedRate;
         this.updateMeasuredRate();
         if ((0, import_service_error_classification.isThrottlingError)(response)) {
-          const rateToUse = !this.enabled
-            ? this.measuredTxRate
-            : Math.min(this.measuredTxRate, this.fillRate);
+          const rateToUse = !this.enabled ? this.measuredTxRate : Math.min(this.measuredTxRate, this.fillRate);
           this.lastMaxRate = rateToUse;
           this.calculateTimeWindow();
           this.lastThrottleTime = this.getCurrentTimeInSeconds();
@@ -3818,17 +3645,14 @@ var require_dist_cjs20 = __commonJS({
         this.updateTokenBucketRate(newRate);
       }
       calculateTimeWindow() {
-        this.timeWindow = this.getPrecise(
-          ((this.lastMaxRate * (1 - this.beta)) / this.scaleConstant) ** (1 / 3)
-        );
+        this.timeWindow = this.getPrecise(((this.lastMaxRate * (1 - this.beta)) / this.scaleConstant) ** (1 / 3));
       }
       cubicThrottle(rateToUse) {
         return this.getPrecise(rateToUse * this.beta);
       }
       cubicSuccess(timestamp) {
         return this.getPrecise(
-          this.scaleConstant * (timestamp - this.lastThrottleTime - this.timeWindow) ** 3 +
-            this.lastMaxRate
+          this.scaleConstant * (timestamp - this.lastThrottleTime - this.timeWindow) ** 3 + this.lastMaxRate
         );
       }
       enableTokenBucket() {
@@ -3846,9 +3670,7 @@ var require_dist_cjs20 = __commonJS({
         this.requestCount++;
         if (timeBucket > this.lastTxRateBucket) {
           const currentRate = this.requestCount / (timeBucket - this.lastTxRateBucket);
-          this.measuredTxRate = this.getPrecise(
-            currentRate * this.smooth + this.measuredTxRate * (1 - this.smooth)
-          );
+          this.measuredTxRate = this.getPrecise(currentRate * this.smooth + this.measuredTxRate * (1 - this.smooth));
           this.requestCount = 0;
           this.lastTxRateBucket = timeBucket;
         }
@@ -3881,30 +3703,23 @@ var require_dist_cjs20 = __commonJS({
         setDelayBase,
       };
     }, "getDefaultRetryBackoffStrategy");
-    var createDefaultRetryToken = /* @__PURE__ */ __name(
-      ({ retryDelay, retryCount, retryCost }) => {
-        const getRetryCount = /* @__PURE__ */ __name(() => retryCount, "getRetryCount");
-        const getRetryDelay = /* @__PURE__ */ __name(
-          () => Math.min(MAXIMUM_RETRY_DELAY, retryDelay),
-          "getRetryDelay"
-        );
-        const getRetryCost = /* @__PURE__ */ __name(() => retryCost, "getRetryCost");
-        return {
-          getRetryCount,
-          getRetryDelay,
-          getRetryCost,
-        };
-      },
-      "createDefaultRetryToken"
-    );
+    var createDefaultRetryToken = /* @__PURE__ */ __name(({ retryDelay, retryCount, retryCost }) => {
+      const getRetryCount = /* @__PURE__ */ __name(() => retryCount, "getRetryCount");
+      const getRetryDelay = /* @__PURE__ */ __name(() => Math.min(MAXIMUM_RETRY_DELAY, retryDelay), "getRetryDelay");
+      const getRetryCost = /* @__PURE__ */ __name(() => retryCost, "getRetryCost");
+      return {
+        getRetryCount,
+        getRetryDelay,
+        getRetryCost,
+      };
+    }, "createDefaultRetryToken");
     var _StandardRetryStrategy = class _StandardRetryStrategy {
       constructor(maxAttempts) {
         this.maxAttempts = maxAttempts;
         this.mode = "standard";
         this.capacity = INITIAL_RETRY_TOKENS;
         this.retryBackoffStrategy = getDefaultRetryBackoffStrategy();
-        this.maxAttemptsProvider =
-          typeof maxAttempts === "function" ? maxAttempts : async () => maxAttempts;
+        this.maxAttemptsProvider = typeof maxAttempts === "function" ? maxAttempts : async () => maxAttempts;
       }
       async acquireInitialRetryToken(retryTokenScope) {
         return createDefaultRetryToken({
@@ -3919,9 +3734,7 @@ var require_dist_cjs20 = __commonJS({
           this.retryBackoffStrategy.setDelayBase(
             errorType === "THROTTLING" ? THROTTLING_RETRY_DELAY_BASE : DEFAULT_RETRY_DELAY_BASE
           );
-          const delayFromErrorType = this.retryBackoffStrategy.computeNextBackoffDelay(
-            token.getRetryCount()
-          );
+          const delayFromErrorType = this.retryBackoffStrategy.computeNextBackoffDelay(token.getRetryCount());
           const retryDelay = errorInfo.retryAfterHint
             ? Math.max(errorInfo.retryAfterHint.getTime() - Date.now() || 0, delayFromErrorType)
             : delayFromErrorType;
@@ -3936,10 +3749,7 @@ var require_dist_cjs20 = __commonJS({
         throw new Error("No retry token available");
       }
       recordSuccess(token) {
-        this.capacity = Math.max(
-          INITIAL_RETRY_TOKENS,
-          this.capacity + (token.getRetryCost() ?? NO_RETRY_INCREMENT)
-        );
+        this.capacity = Math.max(INITIAL_RETRY_TOKENS, this.capacity + (token.getRetryCost() ?? NO_RETRY_INCREMENT));
       }
       getCapacity() {
         return this.capacity;
@@ -3948,9 +3758,7 @@ var require_dist_cjs20 = __commonJS({
         try {
           return await this.maxAttemptsProvider();
         } catch (error) {
-          console.warn(
-            `Max attempts provider could not resolve. Using default of ${DEFAULT_MAX_ATTEMPTS}`
-          );
+          console.warn(`Max attempts provider could not resolve. Using default of ${DEFAULT_MAX_ATTEMPTS}`);
           return DEFAULT_MAX_ATTEMPTS;
         }
       }
@@ -4112,9 +3920,7 @@ var require_dist_cjs21 = __commonJS({
         relativeEntries.forEach((entry) => {
           toStack.addRelativeTo(entry.middleware, { ...entry });
         });
-        (_a = toStack.identifyOnResolve) == null
-          ? void 0
-          : _a.call(toStack, stack.identifyOnResolve());
+        (_a = toStack.identifyOnResolve) == null ? void 0 : _a.call(toStack, stack.identifyOnResolve());
         return toStack;
       }, "cloneTo");
       const expandRelativeMiddlewareList = /* @__PURE__ */ __name((from) => {
@@ -4202,15 +4008,12 @@ var require_dist_cjs21 = __commonJS({
           if (aliases.length > 0) {
             if (aliases.some((alias) => entriesNameSet.has(alias))) {
               if (!override)
-                throw new Error(
-                  `Duplicate middleware name '${getMiddlewareNameWithAliases(name, _aliases)}'`
-                );
+                throw new Error(`Duplicate middleware name '${getMiddlewareNameWithAliases(name, _aliases)}'`);
               for (const alias of aliases) {
                 const toOverrideIndex = absoluteEntries.findIndex((entry2) => {
                   var _a;
                   return (
-                    entry2.name === alias ||
-                    ((_a = entry2.aliases) == null ? void 0 : _a.some((a) => a === alias))
+                    entry2.name === alias || ((_a = entry2.aliases) == null ? void 0 : _a.some((a) => a === alias))
                   );
                 });
                 if (toOverrideIndex === -1) {
@@ -4241,25 +4044,19 @@ var require_dist_cjs21 = __commonJS({
           if (aliases.length > 0) {
             if (aliases.some((alias) => entriesNameSet.has(alias))) {
               if (!override)
-                throw new Error(
-                  `Duplicate middleware name '${getMiddlewareNameWithAliases(name, _aliases)}'`
-                );
+                throw new Error(`Duplicate middleware name '${getMiddlewareNameWithAliases(name, _aliases)}'`);
               for (const alias of aliases) {
                 const toOverrideIndex = relativeEntries.findIndex((entry2) => {
                   var _a;
                   return (
-                    entry2.name === alias ||
-                    ((_a = entry2.aliases) == null ? void 0 : _a.some((a) => a === alias))
+                    entry2.name === alias || ((_a = entry2.aliases) == null ? void 0 : _a.some((a) => a === alias))
                   );
                 });
                 if (toOverrideIndex === -1) {
                   continue;
                 }
                 const toOverride = relativeEntries[toOverrideIndex];
-                if (
-                  toOverride.toMiddleware !== entry.toMiddleware ||
-                  toOverride.relation !== entry.relation
-                ) {
+                if (toOverride.toMiddleware !== entry.toMiddleware || toOverride.relation !== entry.relation) {
                   throw new Error(
                     `"${getMiddlewareNameWithAliases(toOverride.name, toOverride.aliases)}" middleware ${toOverride.relation} "${toOverride.toMiddleware}" middleware cannot be overridden by "${getMiddlewareNameWithAliases(name, _aliases)}" middleware ${entry.relation} "${entry.toMiddleware}" middleware.`
                   );
@@ -4418,26 +4215,17 @@ var require_dist_cjs23 = __commonJS({
     module2.exports = __toCommonJS2(src_exports);
     var import_is_array_buffer = require_dist_cjs22();
     var import_buffer = require("buffer");
-    var fromArrayBuffer = /* @__PURE__ */ __name(
-      (input, offset = 0, length = input.byteLength - offset) => {
-        if (!(0, import_is_array_buffer.isArrayBuffer)(input)) {
-          throw new TypeError(
-            `The "input" argument must be ArrayBuffer. Received type ${typeof input} (${input})`
-          );
-        }
-        return import_buffer.Buffer.from(input, offset, length);
-      },
-      "fromArrayBuffer"
-    );
+    var fromArrayBuffer = /* @__PURE__ */ __name((input, offset = 0, length = input.byteLength - offset) => {
+      if (!(0, import_is_array_buffer.isArrayBuffer)(input)) {
+        throw new TypeError(`The "input" argument must be ArrayBuffer. Received type ${typeof input} (${input})`);
+      }
+      return import_buffer.Buffer.from(input, offset, length);
+    }, "fromArrayBuffer");
     var fromString = /* @__PURE__ */ __name((input, encoding) => {
       if (typeof input !== "string") {
-        throw new TypeError(
-          `The "input" argument must be of type string. Received type ${typeof input} (${input})`
-        );
+        throw new TypeError(`The "input" argument must be of type string. Received type ${typeof input} (${input})`);
       }
-      return encoding
-        ? import_buffer.Buffer.from(input, encoding)
-        : import_buffer.Buffer.from(input);
+      return encoding ? import_buffer.Buffer.from(input, encoding) : import_buffer.Buffer.from(input);
     }, "fromString");
   },
 });
@@ -4496,22 +4284,14 @@ var require_dist_cjs24 = __commonJS({
     var import_util_buffer_from = require_dist_cjs23();
     var fromUtf8 = /* @__PURE__ */ __name((input) => {
       const buf = (0, import_util_buffer_from.fromString)(input, "utf8");
-      return new Uint8Array(
-        buf.buffer,
-        buf.byteOffset,
-        buf.byteLength / Uint8Array.BYTES_PER_ELEMENT
-      );
+      return new Uint8Array(buf.buffer, buf.byteOffset, buf.byteLength / Uint8Array.BYTES_PER_ELEMENT);
     }, "fromUtf8");
     var toUint8Array = /* @__PURE__ */ __name((data) => {
       if (typeof data === "string") {
         return fromUtf8(data);
       }
       if (ArrayBuffer.isView(data)) {
-        return new Uint8Array(
-          data.buffer,
-          data.byteOffset,
-          data.byteLength / Uint8Array.BYTES_PER_ELEMENT
-        );
+        return new Uint8Array(data.buffer, data.byteOffset, data.byteLength / Uint8Array.BYTES_PER_ELEMENT);
       }
       return new Uint8Array(data);
     }, "toUint8Array");
@@ -4519,20 +4299,12 @@ var require_dist_cjs24 = __commonJS({
       if (typeof input === "string") {
         return input;
       }
-      if (
-        typeof input !== "object" ||
-        typeof input.byteOffset !== "number" ||
-        typeof input.byteLength !== "number"
-      ) {
-        throw new Error(
-          "@smithy/util-utf8: toUtf8 encoder function only accepts string | Uint8Array."
-        );
+      if (typeof input !== "object" || typeof input.byteOffset !== "number" || typeof input.byteLength !== "number") {
+        throw new Error("@smithy/util-utf8: toUtf8 encoder function only accepts string | Uint8Array.");
       }
-      return (0, import_util_buffer_from.fromArrayBuffer)(
-        input.buffer,
-        input.byteOffset,
-        input.byteLength
-      ).toString("utf8");
+      return (0, import_util_buffer_from.fromArrayBuffer)(input.buffer, input.byteOffset, input.byteLength).toString(
+        "utf8"
+      );
     }, "toUtf8");
   },
 });
@@ -4551,20 +4323,12 @@ var require_toBase64 = __commonJS({
       } else {
         input = _input;
       }
-      if (
-        typeof input !== "object" ||
-        typeof input.byteOffset !== "number" ||
-        typeof input.byteLength !== "number"
-      ) {
-        throw new Error(
-          "@smithy/util-base64: toBase64 encoder function only accepts string | Uint8Array."
-        );
+      if (typeof input !== "object" || typeof input.byteOffset !== "number" || typeof input.byteLength !== "number") {
+        throw new Error("@smithy/util-base64: toBase64 encoder function only accepts string | Uint8Array.");
       }
-      return (0, util_buffer_from_1.fromArrayBuffer)(
-        input.buffer,
-        input.byteOffset,
-        input.byteLength
-      ).toString("base64");
+      return (0, util_buffer_from_1.fromArrayBuffer)(input.buffer, input.byteOffset, input.byteLength).toString(
+        "base64"
+      );
     };
     exports.toBase64 = toBase642;
   },
@@ -4607,13 +4371,7 @@ var require_getAwsChunkedEncodingStream = __commonJS({
     exports.getAwsChunkedEncodingStream = void 0;
     var stream_1 = require("stream");
     var getAwsChunkedEncodingStream2 = (readableStream, options) => {
-      const {
-        base64Encoder,
-        bodyLengthChecker,
-        checksumAlgorithmFn,
-        checksumLocationName,
-        streamHasher,
-      } = options;
+      const { base64Encoder, bodyLengthChecker, checksumAlgorithmFn, checksumLocationName, streamHasher } = options;
       const checksumRequired =
         base64Encoder !== void 0 &&
         checksumAlgorithmFn !== void 0 &&
@@ -4679,14 +4437,8 @@ var require_dist_cjs26 = __commonJS({
       (uri) => encodeURIComponent(uri).replace(/[!'()*]/g, hexEncode),
       "escapeUri"
     );
-    var hexEncode = /* @__PURE__ */ __name(
-      (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`,
-      "hexEncode"
-    );
-    var escapeUriPath = /* @__PURE__ */ __name(
-      (uri) => uri.split("/").map(escapeUri).join("/"),
-      "escapeUriPath"
-    );
+    var hexEncode = /* @__PURE__ */ __name((c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`, "hexEncode");
+    var escapeUriPath = /* @__PURE__ */ __name((uri) => uri.split("/").map(escapeUri).join("/"), "escapeUriPath");
   },
 });
 
@@ -4793,9 +4545,7 @@ var require_dist_cjs28 = __commonJS({
       const transformedHeaders = {};
       for (const name of Object.keys(headers)) {
         const headerValues = headers[name];
-        transformedHeaders[name] = Array.isArray(headerValues)
-          ? headerValues.join(",")
-          : headerValues;
+        transformedHeaders[name] = Array.isArray(headerValues) ? headerValues.join(",") : headerValues;
       }
       return transformedHeaders;
     }, "getTransformedHeaders");
@@ -4806,14 +4556,9 @@ var require_dist_cjs28 = __commonJS({
       const timeoutId = setTimeout(() => {
         request.destroy();
         reject(
-          Object.assign(
-            new Error(
-              `Socket timed out without establishing a connection within ${timeoutInMs} ms`
-            ),
-            {
-              name: "TimeoutError",
-            }
-          )
+          Object.assign(new Error(`Socket timed out without establishing a connection within ${timeoutInMs} ms`), {
+            name: "TimeoutError",
+          })
         );
       }, timeoutInMs);
       request.on("socket", (socket) => {
@@ -4953,8 +4698,7 @@ or increase socketAcquisitionWarningTimeout=(millis) in the NodeHttpHandler conf
         return socketWarningTimestamp;
       }
       resolveDefaultConfig(options) {
-        const { requestTimeout, connectionTimeout, socketTimeout, httpAgent, httpsAgent } =
-          options || {};
+        const { requestTimeout, connectionTimeout, socketTimeout, httpAgent, httpsAgent } = options || {};
         const keepAlive = true;
         const maxSockets = 50;
         return {
@@ -5087,11 +4831,7 @@ or increase socketAcquisitionWarningTimeout=(millis) in the NodeHttpHandler conf
               keepAliveMsecs: httpAgent.keepAliveMsecs,
             });
           }
-          writeRequestBodyPromise = writeRequestBody(
-            req,
-            request,
-            this.config.requestTimeout
-          ).catch((e) => {
+          writeRequestBodyPromise = writeRequestBody(req, request, this.config.requestTimeout).catch((e) => {
             clearTimeout(socketCheckTimeoutId);
             return _reject(e);
           });
@@ -5265,9 +5005,7 @@ or increase socketAcquisitionWarningTimeout=(millis) in the NodeHttpHandler conf
       async handle(request, { abortSignal } = {}) {
         if (!this.config) {
           this.config = await this.configProvider;
-          this.connectionManager.setDisableConcurrentStreams(
-            this.config.disableConcurrentStreams || false
-          );
+          this.connectionManager.setDisableConcurrentStreams(this.config.disableConcurrentStreams || false);
           if (this.config.maxConcurrentStreams) {
             this.connectionManager.setMaxConcurrentStreams(this.config.maxConcurrentStreams);
           }
@@ -5342,9 +5080,7 @@ or increase socketAcquisitionWarningTimeout=(millis) in the NodeHttpHandler conf
           if (requestTimeout) {
             req.setTimeout(requestTimeout, () => {
               req.close();
-              const timeoutError = new Error(
-                `Stream timed out because of no activity for ${requestTimeout} ms`
-              );
+              const timeoutError = new Error(`Stream timed out because of no activity for ${requestTimeout} ms`);
               timeoutError.name = "TimeoutError";
               rejectWithDestroy(timeoutError);
             });
@@ -5363,16 +5099,12 @@ or increase socketAcquisitionWarningTimeout=(millis) in the NodeHttpHandler conf
             }
           }
           req.on("frameError", (type, code, id) => {
-            rejectWithDestroy(
-              new Error(`Frame type id ${type} in stream id ${id} has failed with code ${code}.`)
-            );
+            rejectWithDestroy(new Error(`Frame type id ${type} in stream id ${id} has failed with code ${code}.`));
           });
           req.on("error", rejectWithDestroy);
           req.on("aborted", () => {
             rejectWithDestroy(
-              new Error(
-                `HTTP/2 stream is abnormally aborted in mid-communication with result code ${req.rstCode}.`
-              )
+              new Error(`HTTP/2 stream is abnormally aborted in mid-communication with result code ${req.rstCode}.`)
             );
           });
           req.on("close", () => {
@@ -5381,9 +5113,7 @@ or increase socketAcquisitionWarningTimeout=(millis) in the NodeHttpHandler conf
               session.destroy();
             }
             if (!fulfilled) {
-              rejectWithDestroy(
-                new Error("Unexpected error: http2 request did not get a response")
-              );
+              rejectWithDestroy(new Error("Unexpected error: http2 request did not get a response"));
             }
           });
           writeRequestBodyPromise = writeRequestBody(req, request, requestTimeout);
@@ -5776,15 +5506,12 @@ var require_sdk_stream_mixin_browser = __commonJS({
       if (!isBlobInstance(stream) && !isReadableStreamInstance(stream)) {
         const name =
           ((_b =
-            (_a = stream === null || stream === void 0 ? void 0 : stream.__proto__) === null ||
-            _a === void 0
+            (_a = stream === null || stream === void 0 ? void 0 : stream.__proto__) === null || _a === void 0
               ? void 0
               : _a.constructor) === null || _b === void 0
             ? void 0
             : _b.name) || stream;
-        throw new Error(
-          `Unexpected stream implementation, expect Blob or ReadableStream, got ${name}`
-        );
+        throw new Error(`Unexpected stream implementation, expect Blob or ReadableStream, got ${name}`);
       }
       let transformed = false;
       const transformToByteArray = async () => {
@@ -5835,8 +5562,7 @@ var require_sdk_stream_mixin_browser = __commonJS({
     };
     exports.sdkStreamMixin = sdkStreamMixin2;
     var isBlobInstance = (stream) => typeof Blob === "function" && stream instanceof Blob;
-    var isReadableStreamInstance = (stream) =>
-      typeof ReadableStream === "function" && stream instanceof ReadableStream;
+    var isReadableStreamInstance = (stream) => typeof ReadableStream === "function" && stream instanceof ReadableStream;
   },
 });
 
@@ -5859,15 +5585,12 @@ var require_sdk_stream_mixin = __commonJS({
         } catch (e) {
           const name =
             ((_b =
-              (_a = stream === null || stream === void 0 ? void 0 : stream.__proto__) === null ||
-              _a === void 0
+              (_a = stream === null || stream === void 0 ? void 0 : stream.__proto__) === null || _a === void 0
                 ? void 0
                 : _a.constructor) === null || _b === void 0
               ? void 0
               : _b.name) || stream;
-          throw new Error(
-            `Unexpected stream implementation, expect Stream.Readable instance, got ${name}`
-          );
+          throw new Error(`Unexpected stream implementation, expect Stream.Readable instance, got ${name}`);
         }
       }
       let transformed = false;
@@ -5883,11 +5606,9 @@ var require_sdk_stream_mixin = __commonJS({
         transformToString: async (encoding) => {
           const buf = await transformToByteArray();
           if (encoding === void 0 || Buffer.isEncoding(encoding)) {
-            return (0, util_buffer_from_1.fromArrayBuffer)(
-              buf.buffer,
-              buf.byteOffset,
-              buf.byteLength
-            ).toString(encoding);
+            return (0, util_buffer_from_1.fromArrayBuffer)(buf.buffer, buf.byteOffset, buf.byteLength).toString(
+              encoding
+            );
           } else {
             const decoder = new util_1.TextDecoder(encoding);
             return decoder.decode(buf);
@@ -5968,9 +5689,7 @@ var require_dist_cjs31 = __commonJS({
           case "string":
             return transformFromString(source, encoding);
           default:
-            throw new Error(
-              `Unsupported conversion from ${typeof source} to Uint8ArrayBlobAdapter.`
-            );
+            throw new Error(`Unsupported conversion from ${typeof source} to Uint8ArrayBlobAdapter.`);
         }
       }
       static mutate(source) {
@@ -6144,12 +5863,7 @@ var require_dist_cjs32 = __commonJS({
           CommandCtor,
         }
       ) {
-        for (const mw of middlewareFn.bind(this)(
-          CommandCtor,
-          clientStack,
-          configuration,
-          options
-        )) {
+        for (const mw of middlewareFn.bind(this)(CommandCtor, clientStack, configuration, options)) {
           this.middlewareStack.use(mw);
         }
         const stack = clientStack.concat(this.middlewareStack);
@@ -6273,8 +5987,7 @@ var require_dist_cjs32 = __commonJS({
           if (typeof optionsOrCb === "function") {
             this.send(command2, optionsOrCb);
           } else if (typeof cb === "function") {
-            if (typeof optionsOrCb !== "object")
-              throw new Error(`Expected http options but got ${typeof optionsOrCb}`);
+            if (typeof optionsOrCb !== "object") throw new Error(`Expected http options but got ${typeof optionsOrCb}`);
             this.send(command2, optionsOrCb || {}, cb);
           } else {
             return this.send(command2, optionsOrCb);
@@ -6347,12 +6060,7 @@ var require_dist_cjs32 = __commonJS({
     var MAX_FLOAT = Math.ceil(2 ** 127 * (2 - 2 ** -23));
     var expectFloat32 = /* @__PURE__ */ __name((value) => {
       const expected = expectNumber(value);
-      if (
-        expected !== void 0 &&
-        !Number.isNaN(expected) &&
-        expected !== Infinity &&
-        expected !== -Infinity
-      ) {
+      if (expected !== void 0 && !Number.isNaN(expected) && expected !== Infinity && expected !== -Infinity) {
         if (Math.abs(expected) > MAX_FLOAT) {
           throw new TypeError(`Expected 32-bit float, got ${value}`);
         }
@@ -6433,9 +6141,7 @@ var require_dist_cjs32 = __commonJS({
         throw new TypeError(`Unions must have exactly one non-null member. None were found.`);
       }
       if (setKeys.length > 1) {
-        throw new TypeError(
-          `Unions must have exactly one non-null member. Keys ${setKeys} were not null.`
-        );
+        throw new TypeError(`Unions must have exactly one non-null member. Keys ${setKeys} were not null.`);
       }
       return asObject;
     }, "expectUnion");
@@ -6522,20 +6228,7 @@ var require_dist_cjs32 = __commonJS({
       warn: console.warn,
     };
     var DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    var MONTHS = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
+    var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     function dateToUtcString(date) {
       const year = date.getUTCFullYear();
       const month = date.getUTCMonth();
@@ -6551,9 +6244,7 @@ var require_dist_cjs32 = __commonJS({
       return `${DAYS[dayOfWeek]}, ${dayOfMonthString} ${MONTHS[month]} ${year} ${hoursString}:${minutesString}:${secondsString} GMT`;
     }
     __name(dateToUtcString, "dateToUtcString");
-    var RFC3339 = new RegExp(
-      /^(\d{4})-(\d{2})-(\d{2})[tT](\d{2}):(\d{2}):(\d{2})(?:\.(\d+))?[zZ]$/
-    );
+    var RFC3339 = new RegExp(/^(\d{4})-(\d{2})-(\d{2})[tT](\d{2}):(\d{2}):(\d{2})(?:\.(\d+))?[zZ]$/);
     var parseRfc3339DateTime = /* @__PURE__ */ __name((value) => {
       if (value === null || value === void 0) {
         return void 0;
@@ -6585,17 +6276,7 @@ var require_dist_cjs32 = __commonJS({
       if (!match) {
         throw new TypeError("Invalid RFC-3339 date-time value");
       }
-      const [
-        _,
-        yearStr,
-        monthStr,
-        dayStr,
-        hours,
-        minutes,
-        seconds,
-        fractionalMilliseconds,
-        offsetStr,
-      ] = match;
+      const [_, yearStr, monthStr, dayStr, hours, minutes, seconds, fractionalMilliseconds, offsetStr] = match;
       const year = strictParseShort(stripLeadingZeroes(yearStr));
       const month = parseDateValue(monthStr, "month", 1, 12);
       const day = parseDateValue(dayStr, "day", 1, 31);
@@ -6623,8 +6304,7 @@ var require_dist_cjs32 = __commonJS({
       }
       let match = IMF_FIXDATE.exec(value);
       if (match) {
-        const [_, dayStr, monthStr, yearStr, hours, minutes, seconds, fractionalMilliseconds] =
-          match;
+        const [_, dayStr, monthStr, yearStr, hours, minutes, seconds, fractionalMilliseconds] = match;
         return buildDate(
           strictParseShort(stripLeadingZeroes(yearStr)),
           parseMonthByShortName(monthStr),
@@ -6634,26 +6314,19 @@ var require_dist_cjs32 = __commonJS({
       }
       match = RFC_850_DATE.exec(value);
       if (match) {
-        const [_, dayStr, monthStr, yearStr, hours, minutes, seconds, fractionalMilliseconds] =
-          match;
+        const [_, dayStr, monthStr, yearStr, hours, minutes, seconds, fractionalMilliseconds] = match;
         return adjustRfc850Year(
-          buildDate(
-            parseTwoDigitYear(yearStr),
-            parseMonthByShortName(monthStr),
-            parseDateValue(dayStr, "day", 1, 31),
-            {
-              hours,
-              minutes,
-              seconds,
-              fractionalMilliseconds,
-            }
-          )
+          buildDate(parseTwoDigitYear(yearStr), parseMonthByShortName(monthStr), parseDateValue(dayStr, "day", 1, 31), {
+            hours,
+            minutes,
+            seconds,
+            fractionalMilliseconds,
+          })
         );
       }
       match = ASC_TIME.exec(value);
       if (match) {
-        const [_, monthStr, dayStr, hours, minutes, seconds, fractionalMilliseconds, yearStr] =
-          match;
+        const [_, monthStr, dayStr, hours, minutes, seconds, fractionalMilliseconds, yearStr] = match;
         return buildDate(
           strictParseShort(stripLeadingZeroes(yearStr)),
           parseMonthByShortName(monthStr),
@@ -6677,11 +6350,7 @@ var require_dist_cjs32 = __commonJS({
           "Epoch timestamps must be expressed as floating point numbers or their string representation"
         );
       }
-      if (
-        Number.isNaN(valueAsDouble) ||
-        valueAsDouble === Infinity ||
-        valueAsDouble === -Infinity
-      ) {
+      if (Number.isNaN(valueAsDouble) || valueAsDouble === Infinity || valueAsDouble === -Infinity) {
         throw new TypeError("Epoch timestamps must be valid, non-Infinite, non-NaN numerics");
       }
       return new Date(Math.round(valueAsDouble * 1e3));
@@ -6703,8 +6372,7 @@ var require_dist_cjs32 = __commonJS({
     }, "buildDate");
     var parseTwoDigitYear = /* @__PURE__ */ __name((value) => {
       const thisYear = /* @__PURE__ */ new Date().getUTCFullYear();
-      const valueInThisCentury =
-        Math.floor(thisYear / 100) * 100 + strictParseShort(stripLeadingZeroes(value));
+      const valueInThisCentury = Math.floor(thisYear / 100) * 100 + strictParseShort(stripLeadingZeroes(value));
       if (valueInThisCentury < thisYear) {
         return valueInThisCentury + 100;
       }
@@ -6808,24 +6476,21 @@ var require_dist_cjs32 = __commonJS({
       delete exception.Message;
       return exception;
     }, "decorateServiceException");
-    var throwDefaultError = /* @__PURE__ */ __name(
-      ({ output, parsedBody, exceptionCtor, errorCode }) => {
-        const $metadata = deserializeMetadata(output);
-        const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : void 0;
-        const response = new exceptionCtor({
-          name:
-            (parsedBody == null ? void 0 : parsedBody.code) ||
-            (parsedBody == null ? void 0 : parsedBody.Code) ||
-            errorCode ||
-            statusCode ||
-            "UnknownError",
-          $fault: "client",
-          $metadata,
-        });
-        throw decorateServiceException(response, parsedBody);
-      },
-      "throwDefaultError"
-    );
+    var throwDefaultError = /* @__PURE__ */ __name(({ output, parsedBody, exceptionCtor, errorCode }) => {
+      const $metadata = deserializeMetadata(output);
+      const statusCode = $metadata.httpStatusCode ? $metadata.httpStatusCode + "" : void 0;
+      const response = new exceptionCtor({
+        name:
+          (parsedBody == null ? void 0 : parsedBody.code) ||
+          (parsedBody == null ? void 0 : parsedBody.Code) ||
+          errorCode ||
+          statusCode ||
+          "UnknownError",
+        $fault: "client",
+        $metadata,
+      });
+      throw decorateServiceException(response, parsedBody);
+    }, "throwDefaultError");
     var withBaseException = /* @__PURE__ */ __name((ExceptionCtor) => {
       return ({ output, parsedBody, errorCode }) => {
         throwDefaultError({ output, parsedBody, exceptionCtor: ExceptionCtor, errorCode });
@@ -7064,8 +6729,7 @@ var require_dist_cjs32 = __commonJS({
         let _value;
         const defaultFilterPassed = filter === void 0 && (_value = value()) != null;
         const customFilterPassed =
-          (typeof filter === "function" && !!filter(void 0)) ||
-          (typeof filter !== "function" && !!filter);
+          (typeof filter === "function" && !!filter(void 0)) || (typeof filter !== "function" && !!filter);
         if (defaultFilterPassed) {
           target[targetKey] = _value;
         } else if (customFilterPassed) {
@@ -7074,8 +6738,7 @@ var require_dist_cjs32 = __commonJS({
       } else {
         const defaultFilterPassed = filter === void 0 && value != null;
         const customFilterPassed =
-          (typeof filter === "function" && !!filter(value)) ||
-          (typeof filter !== "function" && !!filter);
+          (typeof filter === "function" && !!filter(value)) || (typeof filter !== "function" && !!filter);
         if (defaultFilterPassed || customFilterPassed) {
           target[targetKey] = value;
         }
@@ -7174,15 +6837,12 @@ var require_dist_cjs32 = __commonJS({
 
 // node_modules/@smithy/middleware-retry/dist-cjs/isStreamingPayload/isStreamingPayload.js
 var require_isStreamingPayload = __commonJS({
-  "node_modules/@smithy/middleware-retry/dist-cjs/isStreamingPayload/isStreamingPayload.js"(
-    exports
-  ) {
+  "node_modules/@smithy/middleware-retry/dist-cjs/isStreamingPayload/isStreamingPayload.js"(exports) {
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.isStreamingPayload = void 0;
     var stream_1 = require("stream");
     var isStreamingPayload = (request) =>
-      (request === null || request === void 0 ? void 0 : request.body) instanceof
-        stream_1.Readable ||
+      (request === null || request === void 0 ? void 0 : request.body) instanceof stream_1.Readable ||
       (typeof ReadableStream !== "undefined" &&
         (request === null || request === void 0 ? void 0 : request.body) instanceof ReadableStream);
     exports.isStreamingPayload = isStreamingPayload;
@@ -7240,13 +6900,10 @@ var require_dist_cjs33 = __commonJS({
     var getDefaultRetryQuota = /* @__PURE__ */ __name((initialRetryTokens, options) => {
       const MAX_CAPACITY = initialRetryTokens;
       const noRetryIncrement =
-        (options == null ? void 0 : options.noRetryIncrement) ??
-        import_util_retry.NO_RETRY_INCREMENT;
-      const retryCost =
-        (options == null ? void 0 : options.retryCost) ?? import_util_retry.RETRY_COST;
+        (options == null ? void 0 : options.noRetryIncrement) ?? import_util_retry.NO_RETRY_INCREMENT;
+      const retryCost = (options == null ? void 0 : options.retryCost) ?? import_util_retry.RETRY_COST;
       const timeoutRetryCost =
-        (options == null ? void 0 : options.timeoutRetryCost) ??
-        import_util_retry.TIMEOUT_RETRY_COST;
+        (options == null ? void 0 : options.timeoutRetryCost) ?? import_util_retry.TIMEOUT_RETRY_COST;
       let availableCapacity = initialRetryTokens;
       const getCapacityAmount = /* @__PURE__ */ __name(
         (error) => (error.name === "TimeoutError" ? timeoutRetryCost : retryCost),
@@ -7276,9 +6933,7 @@ var require_dist_cjs33 = __commonJS({
     }, "getDefaultRetryQuota");
     var defaultDelayDecider = /* @__PURE__ */ __name(
       (delayBase, attempts) =>
-        Math.floor(
-          Math.min(import_util_retry.MAXIMUM_RETRY_DELAY, Math.random() * 2 ** attempts * delayBase)
-        ),
+        Math.floor(Math.min(import_util_retry.MAXIMUM_RETRY_DELAY, Math.random() * 2 ** attempts * delayBase)),
       "defaultDelayDecider"
     );
     var import_service_error_classification = require_dist_cjs19();
@@ -7303,20 +6958,14 @@ var require_dist_cjs33 = __commonJS({
       constructor(maxAttemptsProvider, options) {
         this.maxAttemptsProvider = maxAttemptsProvider;
         this.mode = import_util_retry.RETRY_MODES.STANDARD;
-        this.retryDecider =
-          (options == null ? void 0 : options.retryDecider) ?? defaultRetryDecider;
-        this.delayDecider =
-          (options == null ? void 0 : options.delayDecider) ?? defaultDelayDecider;
+        this.retryDecider = (options == null ? void 0 : options.retryDecider) ?? defaultRetryDecider;
+        this.delayDecider = (options == null ? void 0 : options.delayDecider) ?? defaultDelayDecider;
         this.retryQuota =
           (options == null ? void 0 : options.retryQuota) ??
           getDefaultRetryQuota(import_util_retry.INITIAL_RETRY_TOKENS);
       }
       shouldRetry(error, attempts, maxAttempts) {
-        return (
-          attempts < maxAttempts &&
-          this.retryDecider(error) &&
-          this.retryQuota.hasRetryTokens(error)
-        );
+        return attempts < maxAttempts && this.retryDecider(error) && this.retryQuota.hasRetryTokens(error);
       }
       async getMaxAttempts() {
         let maxAttempts;
@@ -7339,8 +6988,7 @@ var require_dist_cjs33 = __commonJS({
         while (true) {
           try {
             if (import_protocol_http.HttpRequest.isInstance(request)) {
-              request.headers[import_util_retry.REQUEST_HEADER] =
-                `attempt=${attempts + 1}; max=${maxAttempts}`;
+              request.headers[import_util_retry.REQUEST_HEADER] = `attempt=${attempts + 1}; max=${maxAttempts}`;
             }
             if (options == null ? void 0 : options.beforeRequest) {
               await options.beforeRequest();
@@ -7384,9 +7032,7 @@ var require_dist_cjs33 = __commonJS({
     var StandardRetryStrategy = _StandardRetryStrategy;
     var getDelayFromRetryAfterHeader = /* @__PURE__ */ __name((response) => {
       if (!import_protocol_http.HttpResponse.isInstance(response)) return;
-      const retryAfterHeaderName = Object.keys(response.headers).find(
-        (key) => key.toLowerCase() === "retry-after"
-      );
+      const retryAfterHeaderName = Object.keys(response.headers).find((key) => key.toLowerCase() === "retry-after");
       if (!retryAfterHeaderName) return;
       const retryAfter = response.headers[retryAfterHeaderName];
       const retryAfterSeconds = Number(retryAfter);
@@ -7423,9 +7069,7 @@ var require_dist_cjs33 = __commonJS({
         if (!value) return void 0;
         const maxAttempt = parseInt(value);
         if (Number.isNaN(maxAttempt)) {
-          throw new Error(
-            `Environment variable ${ENV_MAX_ATTEMPTS} mast be a number, got "${value}"`
-          );
+          throw new Error(`Environment variable ${ENV_MAX_ATTEMPTS} mast be a number, got "${value}"`);
         }
         return maxAttempt;
       },
@@ -7434,9 +7078,7 @@ var require_dist_cjs33 = __commonJS({
         if (!value) return void 0;
         const maxAttempt = parseInt(value);
         if (Number.isNaN(maxAttempt)) {
-          throw new Error(
-            `Shared config file entry ${CONFIG_MAX_ATTEMPTS} mast be a number, got "${value}"`
-          );
+          throw new Error(`Shared config file entry ${CONFIG_MAX_ATTEMPTS} mast be a number, got "${value}"`);
         }
         return maxAttempt;
       },
@@ -7490,10 +7132,7 @@ var require_dist_cjs33 = __commonJS({
     var getOmitRetryHeadersPlugin = /* @__PURE__ */ __name(
       (options) => ({
         applyToStack: (clientStack) => {
-          clientStack.addRelativeTo(
-            omitRetryHeadersMiddleware(),
-            omitRetryHeadersMiddlewareOptions
-          );
+          clientStack.addRelativeTo(omitRetryHeadersMiddleware(), omitRetryHeadersMiddlewareOptions);
         },
       }),
       "getOmitRetryHeadersPlugin"
@@ -7519,8 +7158,7 @@ var require_dist_cjs33 = __commonJS({
           while (true) {
             try {
               if (isRequest) {
-                request.headers[import_util_retry.REQUEST_HEADER] =
-                  `attempt=${attempts + 1}; max=${maxAttempts}`;
+                request.headers[import_util_retry.REQUEST_HEADER] = `attempt=${attempts + 1}; max=${maxAttempts}`;
               }
               const { response, output } = await next(args);
               retryStrategy.recordSuccess(retryToken);
@@ -7531,19 +7169,13 @@ var require_dist_cjs33 = __commonJS({
               const retryErrorInfo = getRetryErrorInfo(e);
               lastError = asSdkError(e);
               if (isRequest && (0, import_isStreamingPayload.isStreamingPayload)(request)) {
-                (_a =
-                  context.logger instanceof import_smithy_client.NoOpLogger
-                    ? console
-                    : context.logger) == null
+                (_a = context.logger instanceof import_smithy_client.NoOpLogger ? console : context.logger) == null
                   ? void 0
                   : _a.warn("An error was encountered in a non-retryable streaming request.");
                 throw lastError;
               }
               try {
-                retryToken = await retryStrategy.refreshRetryTokenForRetry(
-                  retryToken,
-                  retryErrorInfo
-                );
+                retryToken = await retryStrategy.refreshRetryTokenForRetry(retryToken, retryErrorInfo);
               } catch (refreshError) {
                 if (!lastError.$metadata) {
                   lastError.$metadata = {};
@@ -7561,10 +7193,7 @@ var require_dist_cjs33 = __commonJS({
         } else {
           retryStrategy = retryStrategy;
           if (retryStrategy == null ? void 0 : retryStrategy.mode)
-            context.userAgent = [
-              ...(context.userAgent || []),
-              ["cfg/retry-mode", retryStrategy.mode],
-            ];
+            context.userAgent = [...(context.userAgent || []), ["cfg/retry-mode", retryStrategy.mode]];
           return retryStrategy.retry(next, args);
         }
       },
@@ -7611,9 +7240,7 @@ var require_dist_cjs33 = __commonJS({
     );
     var getRetryAfterHint = /* @__PURE__ */ __name((response) => {
       if (!import_protocol_http.HttpResponse.isInstance(response)) return;
-      const retryAfterHeaderName = Object.keys(response.headers).find(
-        (key) => key.toLowerCase() === "retry-after"
-      );
+      const retryAfterHeaderName = Object.keys(response.headers).find((key) => key.toLowerCase() === "retry-after");
       if (!retryAfterHeaderName) return;
       const retryAfter = response.headers[retryAfterHeaderName];
       const retryAfterSeconds = Number(retryAfter);
@@ -7662,8 +7289,7 @@ var require_dist_cjs34 = __commonJS({
       getHttpAuthSchemePlugin: () => getHttpAuthSchemePlugin,
       getHttpSigningPlugin: () => getHttpSigningPlugin,
       getSmithyContext: () => getSmithyContext3,
-      httpAuthSchemeEndpointRuleSetMiddlewareOptions: () =>
-        httpAuthSchemeEndpointRuleSetMiddlewareOptions,
+      httpAuthSchemeEndpointRuleSetMiddlewareOptions: () => httpAuthSchemeEndpointRuleSetMiddlewareOptions,
       httpAuthSchemeMiddleware: () => httpAuthSchemeMiddleware,
       httpAuthSchemeMiddlewareOptions: () => httpAuthSchemeMiddlewareOptions,
       httpSigningMiddleware: () => httpSigningMiddleware,
@@ -7695,32 +7321,18 @@ var require_dist_cjs34 = __commonJS({
         for (const option of options) {
           const scheme = authSchemes.get(option.schemeId);
           if (!scheme) {
-            failureReasons.push(
-              `HttpAuthScheme \`${option.schemeId}\` was not enabled for this service.`
-            );
+            failureReasons.push(`HttpAuthScheme \`${option.schemeId}\` was not enabled for this service.`);
             continue;
           }
-          const identityProvider = scheme.identityProvider(
-            await mwOptions.identityProviderConfigProvider(config)
-          );
+          const identityProvider = scheme.identityProvider(await mwOptions.identityProviderConfigProvider(config));
           if (!identityProvider) {
-            failureReasons.push(
-              `HttpAuthScheme \`${option.schemeId}\` did not have an IdentityProvider configured.`
-            );
+            failureReasons.push(`HttpAuthScheme \`${option.schemeId}\` did not have an IdentityProvider configured.`);
             continue;
           }
           const { identityProperties = {}, signingProperties = {} } =
-            ((_a = option.propertiesExtractor) == null
-              ? void 0
-              : _a.call(option, config, context)) || {};
-          option.identityProperties = Object.assign(
-            option.identityProperties || {},
-            identityProperties
-          );
-          option.signingProperties = Object.assign(
-            option.signingProperties || {},
-            signingProperties
-          );
+            ((_a = option.propertiesExtractor) == null ? void 0 : _a.call(option, config, context)) || {};
+          option.identityProperties = Object.assign(option.identityProperties || {}, identityProperties);
+          option.signingProperties = Object.assign(option.signingProperties || {}, signingProperties);
           smithyContext.selectedHttpAuthScheme = {
             httpAuthOption: option,
             identity: await identityProvider(option.identityProperties),
@@ -7858,19 +7470,13 @@ var require_dist_cjs34 = __commonJS({
           );
         }
         if (!signingProperties.name) {
-          throw new Error(
-            "request could not be signed with `apiKey` since the `name` signer property is missing"
-          );
+          throw new Error("request could not be signed with `apiKey` since the `name` signer property is missing");
         }
         if (!signingProperties.in) {
-          throw new Error(
-            "request could not be signed with `apiKey` since the `in` signer property is missing"
-          );
+          throw new Error("request could not be signed with `apiKey` since the `in` signer property is missing");
         }
         if (!identity.apiKey) {
-          throw new Error(
-            "request could not be signed with `apiKey` since the `apiKey` is not defined"
-          );
+          throw new Error("request could not be signed with `apiKey` since the `apiKey` is not defined");
         }
         const clonedRequest = httpRequest.clone();
         if (signingProperties.in === import_types.HttpApiKeyAuthLocation.QUERY) {
@@ -7895,9 +7501,7 @@ var require_dist_cjs34 = __commonJS({
       async sign(httpRequest, identity, signingProperties) {
         const clonedRequest = httpRequest.clone();
         if (!identity.token) {
-          throw new Error(
-            "request could not be signed with `token` since the `token` is not defined"
-          );
+          throw new Error("request could not be signed with `token` since the `token` is not defined");
         }
         clonedRequest.headers["Authorization"] = `Bearer ${identity.token}`;
         return clonedRequest;
@@ -7914,8 +7518,7 @@ var require_dist_cjs34 = __commonJS({
     var NoAuthSigner = _NoAuthSigner;
     var createIsIdentityExpiredFunction = /* @__PURE__ */ __name(
       (expirationMs) => (identity) =>
-        doesIdentityRequireRefresh(identity) &&
-        identity.expiration.getTime() - Date.now() < expirationMs,
+        doesIdentityRequireRefresh(identity) && identity.expiration.getTime() - Date.now() < expirationMs,
       "createIsIdentityExpiredFunction"
     );
     var EXPIRATION_MS = 3e5;
@@ -7928,8 +7531,7 @@ var require_dist_cjs34 = __commonJS({
       if (provider === void 0) {
         return void 0;
       }
-      const normalizedProvider =
-        typeof provider !== "function" ? async () => Promise.resolve(provider) : provider;
+      const normalizedProvider = typeof provider !== "function" ? async () => Promise.resolve(provider) : provider;
       let resolved;
       let pending;
       let hasResult;
@@ -7974,8 +7576,7 @@ var require_dist_cjs34 = __commonJS({
       };
     }, "memoizeIdentityProvider");
     var getSmithyContext3 = /* @__PURE__ */ __name(
-      (context) =>
-        context[import_types.SMITHY_CONTEXT_KEY] || (context[import_types.SMITHY_CONTEXT_KEY] = {}),
+      (context) => context[import_types.SMITHY_CONTEXT_KEY] || (context[import_types.SMITHY_CONTEXT_KEY] = {}),
       "getSmithyContext"
     );
     var normalizeProvider = /* @__PURE__ */ __name((input) => {
@@ -8001,12 +7602,7 @@ var require_dist_cjs34 = __commonJS({
         this.resolvePathStack = [];
       }
       async build() {
-        const {
-          hostname,
-          protocol = "https",
-          port,
-          path: basePath,
-        } = await this.context.endpoint();
+        const { hostname, protocol = "https", port, path: basePath } = await this.context.endpoint();
         this.path = basePath;
         for (const resolvePath of this.resolvePathStack) {
           resolvePath(this.path);
@@ -8066,24 +7662,11 @@ var require_dist_cjs34 = __commonJS({
     };
     __name(_RequestBuilder, "RequestBuilder");
     var RequestBuilder = _RequestBuilder;
-    var makePagedClientRequest = /* @__PURE__ */ __name(
-      async (CommandCtor, client, input, ...args) => {
-        return await client.send(new CommandCtor(input), ...args);
-      },
-      "makePagedClientRequest"
-    );
-    function createPaginator(
-      ClientCtor,
-      CommandCtor,
-      inputTokenName,
-      outputTokenName,
-      pageSizeTokenName
-    ) {
-      return /* @__PURE__ */ __name(async function* paginateOperation(
-        config,
-        input,
-        ...additionalArguments
-      ) {
+    var makePagedClientRequest = /* @__PURE__ */ __name(async (CommandCtor, client, input, ...args) => {
+      return await client.send(new CommandCtor(input), ...args);
+    }, "makePagedClientRequest");
+    function createPaginator(ClientCtor, CommandCtor, inputTokenName, outputTokenName, pageSizeTokenName) {
+      return /* @__PURE__ */ __name(async function* paginateOperation(config, input, ...additionalArguments) {
         let token = config.startingToken || void 0;
         let hasNext = true;
         let page;
@@ -8093,12 +7676,7 @@ var require_dist_cjs34 = __commonJS({
             input[pageSizeTokenName] = input[pageSizeTokenName] ?? config.pageSize;
           }
           if (config.client instanceof ClientCtor) {
-            page = await makePagedClientRequest(
-              CommandCtor,
-              config.client,
-              input,
-              ...additionalArguments
-            );
+            page = await makePagedClientRequest(CommandCtor, config.client, input, ...additionalArguments);
           } else {
             throw new Error(`Invalid client, expected instance of ${ClientCtor.name}`);
           }
@@ -8193,10 +7771,7 @@ var require_dist_cjs35 = __commonJS({
     var getContentLengthPlugin = /* @__PURE__ */ __name(
       (options) => ({
         applyToStack: (clientStack) => {
-          clientStack.add(
-            contentLengthMiddleware(options.bodyLengthChecker),
-            contentLengthMiddlewareOptions
-          );
+          clientStack.add(contentLengthMiddleware(options.bodyLengthChecker), contentLengthMiddlewareOptions);
         },
       }),
       "getContentLengthPlugin"
@@ -8240,13 +7815,7 @@ var require_tslib = __commonJS({
     var __disposeResources;
     (function (factory) {
       var root =
-        typeof global === "object"
-          ? global
-          : typeof self === "object"
-            ? self
-            : typeof this === "object"
-              ? this
-              : {};
+        typeof global === "object" ? global : typeof self === "object" ? self : typeof this === "object" ? this : {};
       if (typeof define === "function" && define.amd) {
         define("tslib", ["exports"], (exports2) => {
           factory(createExporter(root, createExporter(exports2)));
@@ -8296,43 +7865,28 @@ var require_tslib = __commonJS({
         });
       __rest = (s, e) => {
         var t = {};
-        for (var p in s)
-          if (Object.hasOwn(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+        for (var p in s) if (Object.hasOwn(s, p) && e.indexOf(p) < 0) t[p] = s[p];
         if (s != null && typeof Object.getOwnPropertySymbols === "function")
           for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-              t[p[i]] = s[p[i]];
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
           }
         return t;
       };
       __decorate = (decorators, target, key, desc) => {
         var c = arguments.length,
-          r =
-            c < 3
-              ? target
-              : desc === null
-                ? (desc = Object.getOwnPropertyDescriptor(target, key))
-                : desc,
+          r = c < 3 ? target : desc === null ? (desc = Object.getOwnPropertyDescriptor(target, key)) : desc,
           d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
           r = Reflect.decorate(decorators, target, key, desc);
         else
           for (var i = decorators.length - 1; i >= 0; i--)
-            if ((d = decorators[i]))
-              r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
+            if ((d = decorators[i])) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return (c > 3 && r && Object.defineProperty(target, key, r), r);
       };
       __param = (paramIndex, decorator) => (target, key) => {
-          decorator(target, key, paramIndex);
-        };
-      __esDecorate = (
-        ctor,
-        descriptorIn,
-        decorators,
-        contextIn,
-        initializers,
-        extraInitializers
-      ) => {
+        decorator(target, key, paramIndex);
+      };
+      __esDecorate = (ctor, descriptorIn, decorators, contextIn, initializers, extraInitializers) => {
         function accept(f) {
           if (f !== void 0 && typeof f !== "function") throw new TypeError("Function expected");
           return f;
@@ -8340,8 +7894,7 @@ var require_tslib = __commonJS({
         var kind = contextIn.kind,
           key = kind === "getter" ? "get" : kind === "setter" ? "set" : "value";
         var target = !descriptorIn && ctor ? (contextIn["static"] ? ctor : ctor.prototype) : null;
-        var descriptor =
-          descriptorIn || (target ? Object.getOwnPropertyDescriptor(target, contextIn.name) : {});
+        var descriptor = descriptorIn || (target ? Object.getOwnPropertyDescriptor(target, contextIn.name) : {});
         var _,
           done = false;
         for (var i = decorators.length - 1; i >= 0; i--) {
@@ -8358,8 +7911,7 @@ var require_tslib = __commonJS({
           );
           if (kind === "accessor") {
             if (result === void 0) continue;
-            if (result === null || typeof result !== "object")
-              throw new TypeError("Object expected");
+            if (result === null || typeof result !== "object") throw new TypeError("Object expected");
             if ((_ = accept(result.get))) descriptor.get = _;
             if ((_ = accept(result.set))) descriptor.set = _;
             if ((_ = accept(result.init))) initializers.unshift(_);
@@ -8378,10 +7930,9 @@ var require_tslib = __commonJS({
         }
         return useValue ? value : void 0;
       };
-      __propKey = (x) => typeof x === "symbol" ? x : "".concat(x);
+      __propKey = (x) => (typeof x === "symbol" ? x : "".concat(x));
       __setFunctionName = (f, name, prefix) => {
-        if (typeof name === "symbol")
-          name = name.description ? "[".concat(name.description, "]") : "";
+        if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
         return Object.defineProperty(f, "name", {
           configurable: true,
           value: prefix ? "".concat(prefix, " ", name) : name,
@@ -8452,12 +8003,7 @@ var require_tslib = __commonJS({
               if (
                 ((f = 1),
                 y &&
-                  (t =
-                    op[0] & 2
-                      ? y["return"]
-                      : op[0]
-                        ? y["throw"] || ((t = y["return"]) && t.call(y), 0)
-                        : y.next) &&
+                  (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) &&
                   !(t = t.call(y, op[1])).done)
               )
                 return t;
@@ -8480,10 +8026,7 @@ var require_tslib = __commonJS({
                   _.trys.pop();
                   continue;
                 default:
-                  if (
-                    !((t = _.trys), (t = t.length > 0 && t[t.length - 1])) &&
-                    (op[0] === 6 || op[0] === 2)
-                  ) {
+                  if (!((t = _.trys), (t = t.length > 0 && t[t.length - 1])) && (op[0] === 6 || op[0] === 2)) {
                     _ = 0;
                     continue;
                   }
@@ -8517,12 +8060,10 @@ var require_tslib = __commonJS({
         }
       };
       __exportStar = (m, o) => {
-        for (var p in m)
-          if (p !== "default" && !Object.hasOwn(o, p))
-            __createBinding(o, m, p);
+        for (var p in m) if (p !== "default" && !Object.hasOwn(o, p)) __createBinding(o, m, p);
       };
       __createBinding = Object.create
-        ? ((o, m, k, k2) => {
+        ? (o, m, k, k2) => {
             if (k2 === void 0) k2 = k;
             var desc = Object.getOwnPropertyDescriptor(m, k);
             if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
@@ -8532,11 +8073,11 @@ var require_tslib = __commonJS({
               };
             }
             Object.defineProperty(o, k2, desc);
-          })
-        : ((o, m, k, k2) => {
+          }
+        : (o, m, k, k2) => {
             if (k2 === void 0) k2 = k;
             o[k2] = m[k];
-          });
+          };
       __values = (o) => {
         var s = typeof Symbol === "function" && Symbol.iterator,
           m = s && o[s],
@@ -8614,7 +8155,8 @@ var require_tslib = __commonJS({
         }
         function verb(n, f) {
           if (g[n]) {
-            i[n] = (v) => new Promise((a, b) => {
+            i[n] = (v) =>
+              new Promise((a, b) => {
                 q.push([n, v, a, b]) > 1 || resume(n, v);
               });
             if (f) i[n] = f(i[n]);
@@ -8628,9 +8170,7 @@ var require_tslib = __commonJS({
           }
         }
         function step(r) {
-          r.value instanceof __await
-            ? Promise.resolve(r.value.v).then(fulfill, reject)
-            : settle(q[0][2], r);
+          r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);
         }
         function fulfill(value) {
           resume("next", value);
@@ -8657,9 +8197,7 @@ var require_tslib = __commonJS({
           i
         );
         function verb(n, f) {
-          i[n] = o[n]
-            ? ((v) => (p = !p) ? { value: __await(o[n](v)), done: false } : f ? f(v) : v)
-            : f;
+          i[n] = o[n] ? (v) => ((p = !p) ? { value: __await(o[n](v)), done: false } : f ? f(v) : v) : f;
         }
       };
       __asyncValues = (o) => {
@@ -8680,8 +8218,9 @@ var require_tslib = __commonJS({
         function verb(n) {
           i[n] =
             o[n] &&
-            ((v) => new Promise((resolve, reject) => {
-                (v = o[n](v)), settle(resolve, reject, v.done, v.value);
+            ((v) =>
+              new Promise((resolve, reject) => {
+                ((v = o[n](v)), settle(resolve, reject, v.done, v.value));
               }));
         }
         function settle(resolve, reject, d, v) {
@@ -8699,55 +8238,34 @@ var require_tslib = __commonJS({
         return cooked;
       };
       var __setModuleDefault = Object.create
-        ? ((o, v) => {
+        ? (o, v) => {
             Object.defineProperty(o, "default", { enumerable: true, value: v });
-          })
-        : ((o, v) => {
+          }
+        : (o, v) => {
             o["default"] = v;
-          });
+          };
       __importStar = (mod) => {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
-          for (var k in mod)
-            if (k !== "default" && Object.hasOwn(mod, k))
-              __createBinding(result, mod, k);
+          for (var k in mod) if (k !== "default" && Object.hasOwn(mod, k)) __createBinding(result, mod, k);
         }
         __setModuleDefault(result, mod);
         return result;
       };
-      __importDefault = (mod) => mod && mod.__esModule ? mod : { default: mod };
+      __importDefault = (mod) => (mod && mod.__esModule ? mod : { default: mod });
       __classPrivateFieldGet = (receiver, state, kind, f) => {
-        if (kind === "a" && !f)
-          throw new TypeError("Private accessor was defined without a getter");
+        if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
         if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
-          throw new TypeError(
-            "Cannot read private member from an object whose class did not declare it"
-          );
-        return kind === "m"
-          ? f
-          : kind === "a"
-            ? f.call(receiver)
-            : f
-              ? f.value
-              : state.get(receiver);
+          throw new TypeError("Cannot read private member from an object whose class did not declare it");
+        return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
       };
       __classPrivateFieldSet = (receiver, state, value, kind, f) => {
         if (kind === "m") throw new TypeError("Private method is not writable");
-        if (kind === "a" && !f)
-          throw new TypeError("Private accessor was defined without a setter");
+        if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
         if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
-          throw new TypeError(
-            "Cannot write private member to an object whose class did not declare it"
-          );
-        return (
-          kind === "a"
-            ? f.call(receiver, value)
-            : f
-              ? (f.value = value)
-              : state.set(receiver, value),
-          value
-        );
+          throw new TypeError("Cannot write private member to an object whose class did not declare it");
+        return (kind === "a" ? f.call(receiver, value) : f ? (f.value = value) : state.set(receiver, value), value);
       };
       __classPrivateFieldIn = (state, receiver) => {
         if (receiver === null || (typeof receiver !== "object" && typeof receiver !== "function"))
@@ -8756,8 +8274,7 @@ var require_tslib = __commonJS({
       };
       __addDisposableResource = (env, value, async) => {
         if (value !== null && value !== void 0) {
-          if (typeof value !== "object" && typeof value !== "function")
-            throw new TypeError("Object expected.");
+          if (typeof value !== "object" && typeof value !== "function") throw new TypeError("Object expected.");
           var dispose, inner;
           if (async) {
             if (!Symbol.asyncDispose) throw new TypeError("Symbol.asyncDispose is not defined.");
@@ -8786,17 +8303,13 @@ var require_tslib = __commonJS({
       var _SuppressedError =
         typeof SuppressedError === "function"
           ? SuppressedError
-          : ((error, suppressed, message) => {
+          : (error, suppressed, message) => {
               var e = new Error(message);
-              return (
-                (e.name = "SuppressedError"), (e.error = error), (e.suppressed = suppressed), e
-              );
-            });
+              return ((e.name = "SuppressedError"), (e.error = error), (e.suppressed = suppressed), e);
+            };
       __disposeResources = (env) => {
         function fail(e) {
-          env.error = env.hasError
-            ? new _SuppressedError(e, env.error, "An error was suppressed during disposal.")
-            : e;
+          env.error = env.hasError ? new _SuppressedError(e, env.error, "An error was suppressed during disposal.") : e;
           env.hasError = true;
         }
         function next() {
@@ -8974,29 +8487,22 @@ var require_dist_cjs36 = __commonJS({
       (shortDate, region, service) => `${shortDate}/${region}/${service}/${KEY_TYPE_IDENTIFIER}`,
       "createScope"
     );
-    var getSigningKey = /* @__PURE__ */ __name(
-      async (sha256Constructor, credentials, shortDate, region, service) => {
-        const credsHash = await hmac(
-          sha256Constructor,
-          credentials.secretAccessKey,
-          credentials.accessKeyId
-        );
-        const cacheKey = `${shortDate}:${region}:${service}:${(0, import_util_hex_encoding.toHex)(credsHash)}:${credentials.sessionToken}`;
-        if (cacheKey in signingKeyCache) {
-          return signingKeyCache[cacheKey];
-        }
-        cacheQueue.push(cacheKey);
-        while (cacheQueue.length > MAX_CACHE_SIZE) {
-          delete signingKeyCache[cacheQueue.shift()];
-        }
-        let key = `AWS4${credentials.secretAccessKey}`;
-        for (const signable of [shortDate, region, service, KEY_TYPE_IDENTIFIER]) {
-          key = await hmac(sha256Constructor, key, signable);
-        }
-        return (signingKeyCache[cacheKey] = key);
-      },
-      "getSigningKey"
-    );
+    var getSigningKey = /* @__PURE__ */ __name(async (sha256Constructor, credentials, shortDate, region, service) => {
+      const credsHash = await hmac(sha256Constructor, credentials.secretAccessKey, credentials.accessKeyId);
+      const cacheKey = `${shortDate}:${region}:${service}:${(0, import_util_hex_encoding.toHex)(credsHash)}:${credentials.sessionToken}`;
+      if (cacheKey in signingKeyCache) {
+        return signingKeyCache[cacheKey];
+      }
+      cacheQueue.push(cacheKey);
+      while (cacheQueue.length > MAX_CACHE_SIZE) {
+        delete signingKeyCache[cacheQueue.shift()];
+      }
+      let key = `AWS4${credentials.secretAccessKey}`;
+      for (const signable of [shortDate, region, service, KEY_TYPE_IDENTIFIER]) {
+        key = await hmac(sha256Constructor, key, signable);
+      }
+      return (signingKeyCache[cacheKey] = key);
+    }, "getSigningKey");
     var clearCredentialCache = /* @__PURE__ */ __name(() => {
       cacheQueue.length = 0;
       Object.keys(signingKeyCache).forEach((cacheKey) => {
@@ -9008,33 +8514,27 @@ var require_dist_cjs36 = __commonJS({
       hash.update((0, import_util_utf8.toUint8Array)(data));
       return hash.digest();
     }, "hmac");
-    var getCanonicalHeaders = /* @__PURE__ */ __name(
-      ({ headers }, unsignableHeaders, signableHeaders) => {
-        const canonical = {};
-        for (const headerName of Object.keys(headers).sort()) {
-          if (headers[headerName] == void 0) {
+    var getCanonicalHeaders = /* @__PURE__ */ __name(({ headers }, unsignableHeaders, signableHeaders) => {
+      const canonical = {};
+      for (const headerName of Object.keys(headers).sort()) {
+        if (headers[headerName] == void 0) {
+          continue;
+        }
+        const canonicalHeaderName = headerName.toLowerCase();
+        if (
+          canonicalHeaderName in ALWAYS_UNSIGNABLE_HEADERS ||
+          (unsignableHeaders == null ? void 0 : unsignableHeaders.has(canonicalHeaderName)) ||
+          PROXY_HEADER_PATTERN.test(canonicalHeaderName) ||
+          SEC_HEADER_PATTERN.test(canonicalHeaderName)
+        ) {
+          if (!signableHeaders || (signableHeaders && !signableHeaders.has(canonicalHeaderName))) {
             continue;
           }
-          const canonicalHeaderName = headerName.toLowerCase();
-          if (
-            canonicalHeaderName in ALWAYS_UNSIGNABLE_HEADERS ||
-            (unsignableHeaders == null ? void 0 : unsignableHeaders.has(canonicalHeaderName)) ||
-            PROXY_HEADER_PATTERN.test(canonicalHeaderName) ||
-            SEC_HEADER_PATTERN.test(canonicalHeaderName)
-          ) {
-            if (
-              !signableHeaders ||
-              (signableHeaders && !signableHeaders.has(canonicalHeaderName))
-            ) {
-              continue;
-            }
-          }
-          canonical[canonicalHeaderName] = headers[headerName].trim().replace(/\s+/g, " ");
         }
-        return canonical;
-      },
-      "getCanonicalHeaders"
-    );
+        canonical[canonicalHeaderName] = headers[headerName].trim().replace(/\s+/g, " ");
+      }
+      return canonical;
+    }, "getCanonicalHeaders");
     var import_util_uri_escape = require_dist_cjs26();
     var getCanonicalQuery = /* @__PURE__ */ __name(({ query = {} }) => {
       const keys = [];
@@ -9094,11 +8594,7 @@ var require_dist_cjs36 = __commonJS({
         const chunks = [];
         for (const headerName of Object.keys(headers)) {
           const bytes = (0, import_util_utf83.fromUtf8)(headerName);
-          chunks.push(
-            Uint8Array.from([bytes.byteLength]),
-            bytes,
-            this.formatHeaderValue(headers[headerName])
-          );
+          chunks.push(Uint8Array.from([bytes.byteLength]), bytes, this.formatHeaderValue(headers[headerName]));
         }
         const out = new Uint8Array(chunks.reduce((carry, bytes) => carry + bytes.byteLength, 0));
         let position = 0;
@@ -9161,10 +8657,7 @@ var require_dist_cjs36 = __commonJS({
             }
             const uuidBytes = new Uint8Array(17);
             uuidBytes[0] = 9;
-            uuidBytes.set(
-              (0, import_util_hex_encoding.fromHex)(header.value.replace(/-/g, "")),
-              1
-            );
+            uuidBytes.set((0, import_util_hex_encoding.fromHex)(header.value.replace(/-/g, "")), 1);
             return uuidBytes;
           }
         }
@@ -9182,16 +8675,10 @@ var require_dist_cjs36 = __commonJS({
       }
       static fromNumber(number) {
         if (number > 9223372036854776e3 || number < -9223372036854776e3) {
-          throw new Error(
-            `${number} is too large (or, if negative, too small) to represent as an Int64`
-          );
+          throw new Error(`${number} is too large (or, if negative, too small) to represent as an Int64`);
         }
         const bytes = new Uint8Array(8);
-        for (
-          let i = 7, remaining = Math.abs(Math.round(number));
-          i > -1 && remaining > 0;
-          i--, remaining /= 256
-        ) {
+        for (let i = 7, remaining = Math.abs(Math.round(number)); i > -1 && remaining > 0; i--, remaining /= 256) {
           bytes[i] = remaining;
         }
         if (number < 0) {
@@ -9253,14 +8740,10 @@ var require_dist_cjs36 = __commonJS({
     );
     var moveHeadersToQuery = /* @__PURE__ */ __name((request, options = {}) => {
       var _a;
-      const { headers, query = {} } =
-        typeof request.clone === "function" ? request.clone() : cloneRequest(request);
+      const { headers, query = {} } = typeof request.clone === "function" ? request.clone() : cloneRequest(request);
       for (const name of Object.keys(headers)) {
         const lname = name.toLowerCase();
-        if (
-          lname.slice(0, 6) === "x-amz-" &&
-          !((_a = options.unhoistableHeaders) == null ? void 0 : _a.has(lname))
-        ) {
+        if (lname.slice(0, 6) === "x-amz-" && !((_a = options.unhoistableHeaders) == null ? void 0 : _a.has(lname))) {
           query[name] = headers[name];
           delete headers[name];
         }
@@ -9343,11 +8826,7 @@ var require_dist_cjs36 = __commonJS({
           longDate,
           scope,
           this.getSigningKey(credentials, region, shortDate, signingService),
-          this.createCanonicalRequest(
-            request,
-            canonicalHeaders,
-            await getPayloadHash(originalRequest, this.sha256)
-          )
+          this.createCanonicalRequest(request, canonicalHeaders, await getPayloadHash(originalRequest, this.sha256))
         );
         return request;
       }
@@ -9387,10 +8866,7 @@ var require_dist_cjs36 = __commonJS({
           signingService,
         });
       }
-      async signMessage(
-        signableMessage,
-        { signingDate = /* @__PURE__ */ new Date(), signingRegion, signingService }
-      ) {
+      async signMessage(signableMessage, { signingDate = /* @__PURE__ */ new Date(), signingRegion, signingService }) {
         const promise = this.signEvent(
           {
             headers: this.headerFormatter.format(signableMessage.message.headers),
@@ -9407,17 +8883,12 @@ var require_dist_cjs36 = __commonJS({
           return { message: signableMessage.message, signature };
         });
       }
-      async signString(
-        stringToSign,
-        { signingDate = /* @__PURE__ */ new Date(), signingRegion, signingService } = {}
-      ) {
+      async signString(stringToSign, { signingDate = /* @__PURE__ */ new Date(), signingRegion, signingService } = {}) {
         const credentials = await this.credentialProvider();
         this.validateResolvedCredentials(credentials);
         const region = signingRegion ?? (await this.regionProvider());
         const { shortDate } = formatDate(signingDate);
-        const hash = new this.sha256(
-          await this.getSigningKey(credentials, region, shortDate, signingService)
-        );
+        const hash = new this.sha256(await this.getSigningKey(credentials, region, shortDate, signingService));
         hash.update((0, import_util_utf84.toUint8Array)(stringToSign));
         return (0, import_util_hex_encoding.toHex)(await hash.digest());
       }
@@ -9494,11 +8965,7 @@ ${(0, import_util_hex_encoding.toHex)(hashedRequest)}`;
         return path;
       }
       async getSignature(longDate, credentialScope, keyPromise, canonicalRequest) {
-        const stringToSign = await this.createStringToSign(
-          longDate,
-          credentialScope,
-          canonicalRequest
-        );
+        const stringToSign = await this.createStringToSign(longDate, credentialScope, canonicalRequest);
         const hash = new this.sha256(await keyPromise);
         hash.update((0, import_util_utf84.toUint8Array)(stringToSign));
         return (0, import_util_hex_encoding.toHex)(await hash.digest());
@@ -9568,8 +9035,7 @@ var require_httpAuthSchemes = __commonJS({
     var getDateHeader = /* @__PURE__ */ __name((response) => {
       var _a, _b;
       return import_protocol_http.HttpResponse.isInstance(response)
-        ? (((_a = response.headers) == null ? void 0 : _a.date) ??
-            ((_b = response.headers) == null ? void 0 : _b.Date))
+        ? (((_a = response.headers) == null ? void 0 : _a.date) ?? ((_b = response.headers) == null ? void 0 : _b.Date))
         : void 0;
     }, "getDateHeader");
     var getSkewCorrectedDate = /* @__PURE__ */ __name(
@@ -9577,20 +9043,16 @@ var require_httpAuthSchemes = __commonJS({
       "getSkewCorrectedDate"
     );
     var isClockSkewed = /* @__PURE__ */ __name(
-      (clockTime, systemClockOffset) =>
-        Math.abs(getSkewCorrectedDate(systemClockOffset).getTime() - clockTime) >= 3e5,
+      (clockTime, systemClockOffset) => Math.abs(getSkewCorrectedDate(systemClockOffset).getTime() - clockTime) >= 3e5,
       "isClockSkewed"
     );
-    var getUpdatedSystemClockOffset = /* @__PURE__ */ __name(
-      (clockTime, currentSystemClockOffset) => {
-        const clockTimeInMs = Date.parse(clockTime);
-        if (isClockSkewed(clockTimeInMs, currentSystemClockOffset)) {
-          return clockTimeInMs - Date.now();
-        }
-        return currentSystemClockOffset;
-      },
-      "getUpdatedSystemClockOffset"
-    );
+    var getUpdatedSystemClockOffset = /* @__PURE__ */ __name((clockTime, currentSystemClockOffset) => {
+      const clockTimeInMs = Date.parse(clockTime);
+      if (isClockSkewed(clockTimeInMs, currentSystemClockOffset)) {
+        return clockTimeInMs - Date.now();
+      }
+      return currentSystemClockOffset;
+    }, "getUpdatedSystemClockOffset");
     var throwSigningPropertyError = /* @__PURE__ */ __name((name, property) => {
       if (!property) {
         throw new Error(`Property \`${name}\` is not resolved for AWS SDK SigV4Auth`);
@@ -9602,10 +9064,8 @@ var require_httpAuthSchemes = __commonJS({
       const context = throwSigningPropertyError("context", signingProperties.context);
       const config = throwSigningPropertyError("config", signingProperties.config);
       const authScheme =
-        (_c =
-          (_b = (_a = context.endpointV2) == null ? void 0 : _a.properties) == null
-            ? void 0
-            : _b.authSchemes) == null
+        (_c = (_b = (_a = context.endpointV2) == null ? void 0 : _a.properties) == null ? void 0 : _b.authSchemes) ==
+        null
           ? void 0
           : _c[0];
       const signerFunction = throwSigningPropertyError("signer", config.signer);
@@ -9624,8 +9084,7 @@ var require_httpAuthSchemes = __commonJS({
         if (!import_protocol_http2.HttpRequest.isInstance(httpRequest)) {
           throw new Error("The request is not an instance of `HttpRequest` and cannot be signed");
         }
-        const { config, signer, signingRegion, signingName } =
-          await validateSigningProperties(signingProperties);
+        const { config, signer, signingRegion, signingName } = await validateSigningProperties(signingProperties);
         const signedRequest = await signer.sign(httpRequest, {
           signingDate: getSkewCorrectedDate(config.systemClockOffset),
           signingRegion,
@@ -9639,10 +9098,7 @@ var require_httpAuthSchemes = __commonJS({
           if (serverTime) {
             const config = throwSigningPropertyError("config", signingProperties.config);
             const initialSystemClockOffset = config.systemClockOffset;
-            config.systemClockOffset = getUpdatedSystemClockOffset(
-              serverTime,
-              config.systemClockOffset
-            );
+            config.systemClockOffset = getUpdatedSystemClockOffset(serverTime, config.systemClockOffset);
             const clockSkewCorrected = config.systemClockOffset !== initialSystemClockOffset;
             if (clockSkewCorrected && error.$metadata) {
               error.$metadata.clockSkewCorrected = true;
@@ -9655,10 +9111,7 @@ var require_httpAuthSchemes = __commonJS({
         const dateHeader = getDateHeader(httpResponse);
         if (dateHeader) {
           const config = throwSigningPropertyError("config", signingProperties.config);
-          config.systemClockOffset = getUpdatedSystemClockOffset(
-            dateHeader,
-            config.systemClockOffset
-          );
+          config.systemClockOffset = getUpdatedSystemClockOffset(dateHeader, config.systemClockOffset);
         }
       }
     };
@@ -9691,11 +9144,7 @@ var require_httpAuthSchemes = __commonJS({
           }, "normalizedCreds");
         }
       }
-      const {
-        signingEscapePath = true,
-        systemClockOffset = config.systemClockOffset || 0,
-        sha256,
-      } = config;
+      const { signingEscapePath = true, systemClockOffset = config.systemClockOffset || 0, sha256 } = config;
       let signer;
       if (config.signer) {
         signer = (0, import_core.normalizeProvider)(config.signer);
@@ -9982,11 +9431,7 @@ var require_validator = __commonJS({
                 i = afterAmp;
               } else {
                 if (reachedRoot === true && !isWhiteSpace(xmlData[i])) {
-                  return getErrorObject(
-                    "InvalidXml",
-                    "Extra text at the end",
-                    getLineNumberForPosition(xmlData, i)
-                  );
+                  return getErrorObject("InvalidXml", "Extra text at the end", getLineNumberForPosition(xmlData, i));
                 }
               }
             }
@@ -10472,15 +9917,8 @@ var require_strnum = __commonJS({
           const leadingZeros = match[2];
           const numTrimmedByZeros = trimZeros(match[3]);
           const eNotation = match[4] || match[6];
-          if (!options.leadingZeros && leadingZeros.length > 0 && sign && trimmedStr[2] !== ".")
-            return str;
-          else if (
-            !options.leadingZeros &&
-            leadingZeros.length > 0 &&
-            !sign &&
-            trimmedStr[1] !== "."
-          )
-            return str;
+          if (!options.leadingZeros && leadingZeros.length > 0 && sign && trimmedStr[2] !== ".") return str;
+          else if (!options.leadingZeros && leadingZeros.length > 0 && !sign && trimmedStr[1] !== ".") return str;
           else {
             const num = Number(trimmedStr);
             const numStr = "" + num;
@@ -10531,11 +9969,10 @@ var require_OrderedObjParser = __commonJS({
     var xmlNode = require_xmlNode();
     var readDocType = require_DocTypeReader();
     var toNumber = require_strnum();
-    var regx =
-      "<((!\\[CDATA\\[([\\s\\S]*?)(]]>))|((NAME:)?(NAME))([^>]*)>|((\\/)(NAME)\\s*>))([^<]*)".replace(
-        /NAME/g,
-        util.nameRegexp
-      );
+    var regx = "<((!\\[CDATA\\[([\\s\\S]*?)(]]>))|((NAME:)?(NAME))([^>]*)>|((\\/)(NAME)\\s*>))([^<]*)".replace(
+      /NAME/g,
+      util.nameRegexp
+    );
     var OrderedObjParser = class {
       constructor(options) {
         this.options = options;
@@ -10581,28 +10018,14 @@ var require_OrderedObjParser = __commonJS({
         };
       }
     }
-    function parseTextData(
-      val2,
-      tagName,
-      jPath,
-      dontTrim,
-      hasAttributes,
-      isLeafNode,
-      escapeEntities
-    ) {
+    function parseTextData(val2, tagName, jPath, dontTrim, hasAttributes, isLeafNode, escapeEntities) {
       if (val2 !== void 0) {
         if (this.options.trimValues && !dontTrim) {
           val2 = val2.trim();
         }
         if (val2.length > 0) {
           if (!escapeEntities) val2 = this.replaceEntitiesValue(val2);
-          const newval = this.options.tagValueProcessor(
-            tagName,
-            val2,
-            jPath,
-            hasAttributes,
-            isLeafNode
-          );
+          const newval = this.options.tagValueProcessor(tagName, val2, jPath, hasAttributes, isLeafNode);
           if (newval === null || newval === void 0) {
             return val2;
           } else if (typeof newval !== typeof val2 || newval !== val2) {
@@ -10659,11 +10082,7 @@ var require_OrderedObjParser = __commonJS({
               } else if (typeof newVal !== typeof oldVal || newVal !== oldVal) {
                 attrs[aName] = newVal;
               } else {
-                attrs[aName] = parseValue(
-                  oldVal,
-                  this.options.parseAttributeValue,
-                  this.options.numberParseOptions
-                );
+                attrs[aName] = parseValue(oldVal, this.options.parseAttributeValue, this.options.numberParseOptions);
               }
             } else if (this.options.allowBooleanAttributes) {
               attrs[aName] = true;
@@ -10724,10 +10143,7 @@ var require_OrderedObjParser = __commonJS({
             const tagData = readTagExp(xmlData, i, false, "?>");
             if (!tagData) throw new Error("Pi Tag is not closed.");
             textData = this.saveTextToParentTag(textData, currentNode, jPath);
-            if (
-              (this.options.ignoreDeclaration && tagData.tagName === "?xml") ||
-              this.options.ignorePiTags
-            ) {
+            if ((this.options.ignoreDeclaration && tagData.tagName === "?xml") || this.options.ignorePiTags) {
             } else {
               const childNode = new xmlNode(tagData.tagName);
               childNode.add(this.options.textNodeName, "");
@@ -10742,9 +10158,7 @@ var require_OrderedObjParser = __commonJS({
             if (this.options.commentPropName) {
               const comment = xmlData.substring(i + 4, endIndex - 2);
               textData = this.saveTextToParentTag(textData, currentNode, jPath);
-              currentNode.add(this.options.commentPropName, [
-                { [this.options.textNodeName]: comment },
-              ]);
+              currentNode.add(this.options.commentPropName, [{ [this.options.textNodeName]: comment }]);
             }
             i = endIndex;
           } else if (xmlData.substr(i + 1, 2) === "!D") {
@@ -10756,9 +10170,7 @@ var require_OrderedObjParser = __commonJS({
             const tagExp = xmlData.substring(i + 9, closeIndex);
             textData = this.saveTextToParentTag(textData, currentNode, jPath);
             if (this.options.cdataPropName) {
-              currentNode.add(this.options.cdataPropName, [
-                { [this.options.textNodeName]: tagExp },
-              ]);
+              currentNode.add(this.options.cdataPropName, [{ [this.options.textNodeName]: tagExp }]);
             } else {
               let val2 = this.parseTextData(tagExp, currentNode.tagname, jPath, true, false, true);
               if (val2 == void 0) val2 = "";
@@ -10804,15 +10216,7 @@ var require_OrderedObjParser = __commonJS({
                 childNode[":@"] = this.buildAttributesMap(tagExp, jPath, tagName);
               }
               if (tagContent) {
-                tagContent = this.parseTextData(
-                  tagContent,
-                  tagName,
-                  jPath,
-                  true,
-                  attrExpPresent,
-                  true,
-                  true
-                );
+                tagContent = this.parseTextData(tagContent, tagName, jPath, true, attrExpPresent, true, true);
               }
               jPath = jPath.substr(0, jPath.lastIndexOf("."));
               childNode.add(this.options.textNodeName, tagContent);
@@ -10894,8 +10298,7 @@ var require_OrderedObjParser = __commonJS({
           currentNode[":@"] ? Object.keys(currentNode[":@"]).length !== 0 : false,
           isLeafNode
         );
-        if (textData !== void 0 && textData !== "")
-          currentNode.add(this.options.textNodeName, textData);
+        if (textData !== void 0 && textData !== "") currentNode.add(this.options.textNodeName, textData);
         textData = "";
       }
       return textData;
@@ -11109,10 +10512,7 @@ var require_node2json = __commonJS({
       if (propCount === 0) {
         return true;
       }
-      if (
-        propCount === 1 &&
-        (obj[textNodeName] || typeof obj[textNodeName] === "boolean" || obj[textNodeName] === 0)
-      ) {
+      if (propCount === 1 && (obj[textNodeName] || typeof obj[textNodeName] === "boolean" || obj[textNodeName] === 0)) {
         return true;
       }
       return false;
@@ -11237,11 +10637,7 @@ var require_orderedJs2Xml = __commonJS({
           xmlStr += tagStart + `>${tagValue}${indentation}</${tagName}>`;
         } else {
           xmlStr += tagStart + ">";
-          if (
-            tagValue &&
-            indentation !== "" &&
-            (tagValue.includes("/>") || tagValue.includes("</"))
-          ) {
+          if (tagValue && indentation !== "" && (tagValue.includes("/>") || tagValue.includes("</"))) {
             xmlStr += indentation + options.indentBy + tagValue + indentation;
           } else {
             xmlStr += tagValue;
@@ -11278,8 +10674,7 @@ var require_orderedJs2Xml = __commonJS({
       jPath = jPath.substr(0, jPath.length - options.textNodeName.length - 1);
       const tagName = jPath.substr(jPath.lastIndexOf(".") + 1);
       for (const index in options.stopNodes) {
-        if (options.stopNodes[index] === jPath || options.stopNodes[index] === "*." + tagName)
-          return true;
+        if (options.stopNodes[index] === jPath || options.stopNodes[index] === "*." + tagName) return true;
       }
       return false;
     }
@@ -11350,11 +10745,7 @@ var require_json2xml = __commonJS({
       if (this.options.preserveOrder) {
         return buildFromOrderedJs(jObj, this.options);
       } else {
-        if (
-          Array.isArray(jObj) &&
-          this.options.arrayNodeName &&
-          this.options.arrayNodeName.length > 1
-        ) {
+        if (Array.isArray(jObj) && this.options.arrayNodeName && this.options.arrayNodeName.length > 1) {
           jObj = {
             [this.options.arrayNodeName]: jObj,
           };
@@ -11438,8 +10829,7 @@ var require_json2xml = __commonJS({
     }
     Builder.prototype.buildObjectNode = function (val2, key, attrStr, level) {
       if (val2 === "") {
-        if (key[0] === "?")
-          return this.indentate(level) + "<" + key + attrStr + "?" + this.tagEndChar;
+        if (key[0] === "?") return this.indentate(level) + "<" + key + attrStr + "?" + this.tagEndChar;
         else {
           return this.indentate(level) + "<" + key + attrStr + this.closeTag(key) + this.tagEndChar;
         }
@@ -11451,9 +10841,7 @@ var require_json2xml = __commonJS({
           tagEndExp = "";
         }
         if (attrStr && val2.indexOf("<") === -1) {
-          return (
-            this.indentate(level) + "<" + key + attrStr + piClosingChar + ">" + val2 + tagEndExp
-          );
+          return this.indentate(level) + "<" + key + attrStr + piClosingChar + ">" + val2 + tagEndExp;
         } else if (
           this.options.commentPropName !== false &&
           key === this.options.commentPropName &&
@@ -11499,17 +10887,7 @@ var require_json2xml = __commonJS({
         if (textValue === "") {
           return this.indentate(level) + "<" + key + attrStr + this.closeTag(key) + this.tagEndChar;
         } else {
-          return (
-            this.indentate(level) +
-            "<" +
-            key +
-            attrStr +
-            ">" +
-            textValue +
-            "</" +
-            key +
-            this.tagEndChar
-          );
+          return this.indentate(level) + "<" + key + attrStr + ">" + textValue + "</" + key + this.tagEndChar;
         }
       }
     };
@@ -11653,9 +11031,7 @@ var require_protocols = __commonJS({
     var import_smithy_client2 = require_dist_cjs32();
     var collectBodyString = /* @__PURE__ */ __name(
       (streamBody, context) =>
-        (0, import_smithy_client2.collectBody)(streamBody, context).then((body) =>
-          context.utf8Encoder(body)
-        ),
+        (0, import_smithy_client2.collectBody)(streamBody, context).then((body) => context.utf8Encoder(body)),
       "collectBodyString"
     );
     var parseJsonBody = /* @__PURE__ */ __name(
@@ -11727,8 +11103,7 @@ var require_protocols = __commonJS({
               ignoreDeclaration: true,
               parseTagValue: false,
               trimValues: false,
-              tagValueProcessor: (_, val2) =>
-                val2.trim() === "" && val2.includes("\n") ? "" : void 0,
+              tagValueProcessor: (_, val2) => (val2.trim() === "" && val2.includes("\n") ? "" : void 0),
             });
             parser.addEntity("#xD", "\r");
             parser.addEntity("#10", "\n");
@@ -11809,8 +11184,7 @@ var require_httpAuthSchemeProvider = __commonJS({
           })(),
       };
     };
-    exports.defaultIoTWirelessHttpAuthSchemeParametersProvider =
-      defaultIoTWirelessHttpAuthSchemeParametersProvider;
+    exports.defaultIoTWirelessHttpAuthSchemeParametersProvider = defaultIoTWirelessHttpAuthSchemeParametersProvider;
     function createAwsAuthSigv4HttpAuthOption(authParameters) {
       return {
         schemeId: "aws.auth#sigv4",
@@ -11851,8 +11225,7 @@ var require_package = __commonJS({
   "node_modules/@aws-sdk/client-iot-wireless/package.json"(exports, module2) {
     module2.exports = {
       name: "@aws-sdk/client-iot-wireless",
-      description:
-        "AWS SDK for JavaScript Iot Wireless Client for Node.js, Browser and React Native",
+      description: "AWS SDK for JavaScript Iot Wireless Client for Node.js, Browser and React Native",
       version: "3.600.0",
       scripts: {
         build: "concurrently 'yarn:build:cjs' 'yarn:build:es' 'yarn:build:types'",
@@ -12075,20 +11448,14 @@ var require_dist_cjs39 = __commonJS({
         req.on("error", (err) => {
           reject(
             Object.assign(
-              new import_property_provider.ProviderError(
-                "Unable to connect to instance metadata service"
-              ),
+              new import_property_provider.ProviderError("Unable to connect to instance metadata service"),
               err
             )
           );
           req.destroy();
         });
         req.on("timeout", () => {
-          reject(
-            new import_property_provider.ProviderError(
-              "TimeoutError from instance metadata service"
-            )
-          );
+          reject(new import_property_provider.ProviderError("TimeoutError from instance metadata service"));
           req.destroy();
         });
         req.on("response", (res) => {
@@ -12096,9 +11463,7 @@ var require_dist_cjs39 = __commonJS({
           if (statusCode < 200 || 300 <= statusCode) {
             reject(
               Object.assign(
-                new import_property_provider.ProviderError(
-                  "Error response received from instance metadata service"
-                ),
+                new import_property_provider.ProviderError("Error response received from instance metadata service"),
                 { statusCode }
               )
             );
@@ -12234,7 +11599,9 @@ var require_dist_cjs39 = __commonJS({
         }
       );
     }, "getCmdsUri");
-    var _InstanceMetadataV1FallbackError = class _InstanceMetadataV1FallbackError2 extends import_property_provider.CredentialsProviderError {
+    var _InstanceMetadataV1FallbackError = class _InstanceMetadataV1FallbackError2
+      extends import_property_provider.CredentialsProviderError
+    {
       constructor(message, tryNextLink = true) {
         super(message, tryNextLink);
         this.tryNextLink = tryNextLink;
@@ -12272,9 +11639,7 @@ var require_dist_cjs39 = __commonJS({
     };
     var getInstanceMetadataEndpoint = /* @__PURE__ */ __name(
       async () =>
-        (0, import_url_parser.parseUrl)(
-          (await getFromEndpointConfig()) || (await getFromEndpointModeConfig())
-        ),
+        (0, import_url_parser.parseUrl)((await getFromEndpointConfig()) || (await getFromEndpointModeConfig())),
       "getInstanceMetadataEndpoint"
     );
     var getFromEndpointConfig = /* @__PURE__ */ __name(
@@ -12282,24 +11647,19 @@ var require_dist_cjs39 = __commonJS({
       "getFromEndpointConfig"
     );
     var getFromEndpointModeConfig = /* @__PURE__ */ __name(async () => {
-      const endpointMode = await (0, import_node_config_provider.loadConfig)(
-        ENDPOINT_MODE_CONFIG_OPTIONS
-      )();
+      const endpointMode = await (0, import_node_config_provider.loadConfig)(ENDPOINT_MODE_CONFIG_OPTIONS)();
       switch (endpointMode) {
         case "IPv4":
           return "http://169.254.169.254";
         case "IPv6":
           return "http://[fd00:ec2::254]";
         default:
-          throw new Error(
-            `Unsupported endpoint mode: ${endpointMode}. Select from ${Object.values(EndpointMode)}`
-          );
+          throw new Error(`Unsupported endpoint mode: ${endpointMode}. Select from ${Object.values(EndpointMode)}`);
       }
     }, "getFromEndpointModeConfig");
     var STATIC_STABILITY_REFRESH_INTERVAL_SECONDS = 5 * 60;
     var STATIC_STABILITY_REFRESH_INTERVAL_JITTER_WINDOW_SECONDS = 5 * 60;
-    var STATIC_STABILITY_DOC_URL =
-      "https://docs.aws.amazon.com/sdkref/latest/guide/feature-static-credentials.html";
+    var STATIC_STABILITY_DOC_URL = "https://docs.aws.amazon.com/sdkref/latest/guide/feature-static-credentials.html";
     var getExtendedInstanceMetadataCredentials = /* @__PURE__ */ __name((credentials, logger) => {
       const refreshInterval =
         STATIC_STABILITY_REFRESH_INTERVAL_SECONDS +
@@ -12344,8 +11704,7 @@ For more information, please visit: ` + STATIC_STABILITY_DOC_URL
     var PROFILE_AWS_EC2_METADATA_V1_DISABLED = "ec2_metadata_v1_disabled";
     var X_AWS_EC2_METADATA_TOKEN = "x-aws-ec2-metadata-token";
     var fromInstanceMetadata = /* @__PURE__ */ __name(
-      (init = {}) =>
-        staticStabilityProvider(getInstanceMetadataProvider(init), { logger: init.logger }),
+      (init = {}) => staticStabilityProvider(getInstanceMetadataProvider(init), { logger: init.logger }),
       "fromInstanceMetadata"
     );
     var getInstanceMetadataProvider = /* @__PURE__ */ __name((init = {}) => {
@@ -12355,8 +11714,7 @@ For more information, please visit: ` + STATIC_STABILITY_DOC_URL
       const getCredentials = /* @__PURE__ */ __name(async (maxRetries2, options) => {
         var _a;
         const isImdsV1Fallback =
-          disableFetchToken ||
-          ((_a = options.headers) == null ? void 0 : _a[X_AWS_EC2_METADATA_TOKEN]) == null;
+          disableFetchToken || ((_a = options.headers) == null ? void 0 : _a[X_AWS_EC2_METADATA_TOKEN]) == null;
         if (isImdsV1Fallback) {
           let fallbackBlockedFromProfile = false;
           let fallbackBlockedFromProcessEnv = false;
@@ -12387,9 +11745,7 @@ For more information, please visit: ` + STATIC_STABILITY_DOC_URL
           if (init.ec2MetadataV1Disabled || configValue) {
             const causes = [];
             if (init.ec2MetadataV1Disabled)
-              causes.push(
-                "credential provider initialization (runtime option ec2MetadataV1Disabled)"
-              );
+              causes.push("credential provider initialization (runtime option ec2MetadataV1Disabled)");
             if (fallbackBlockedFromProfile)
               causes.push(`config file profile (${PROFILE_AWS_EC2_METADATA_V1_DISABLED})`);
             if (fallbackBlockedFromProcessEnv)
@@ -12431,9 +11787,7 @@ For more information, please visit: ` + STATIC_STABILITY_DOC_URL
       return async () => {
         const endpoint = await getInstanceMetadataEndpoint();
         if (disableFetchToken) {
-          logger == null
-            ? void 0
-            : logger.debug("AWS SDK Instance Metadata", "using v1 fallback (no token fetch)");
+          logger == null ? void 0 : logger.debug("AWS SDK Instance Metadata", "using v1 fallback (no token fetch)");
           return getCredentials(maxRetries, { ...endpoint, timeout });
         } else {
           let token;
@@ -12444,15 +11798,10 @@ For more information, please visit: ` + STATIC_STABILITY_DOC_URL
               throw Object.assign(error, {
                 message: "EC2 Metadata token request returned error",
               });
-            } else if (
-              error.message === "TimeoutError" ||
-              [403, 404, 405].includes(error.statusCode)
-            ) {
+            } else if (error.message === "TimeoutError" || [403, 404, 405].includes(error.statusCode)) {
               disableFetchToken = true;
             }
-            logger == null
-              ? void 0
-              : logger.debug("AWS SDK Instance Metadata", "using v1 fallback (initial)");
+            logger == null ? void 0 : logger.debug("AWS SDK Instance Metadata", "using v1 fallback (initial)");
             return getCredentials(maxRetries, { ...endpoint, timeout });
           }
           return getCredentials(maxRetries, {
@@ -12524,10 +11873,7 @@ var require_checkUrl = __commonJS({
         return;
       }
       if (url.hostname.includes("[")) {
-        if (
-          url.hostname === "[::1]" ||
-          url.hostname === "[0000:0000:0000:0000:0000:0000:0000:0001]"
-        ) {
+        if (url.hostname === "[::1]" || url.hostname === "[0000:0000:0000:0000:0000:0000:0000:0001]") {
           return;
         }
       } else {
@@ -12613,20 +11959,18 @@ var require_requestHelpers = __commonJS({
           parsedBody = JSON.parse(str);
         } catch (e) {}
         throw Object.assign(
-          new property_provider_1.CredentialsProviderError(
-            `Server responded with status: ${response.statusCode}`,
-            { logger }
-          ),
+          new property_provider_1.CredentialsProviderError(`Server responded with status: ${response.statusCode}`, {
+            logger,
+          }),
           {
             Code: parsedBody.Code,
             Message: parsedBody.Message,
           }
         );
       }
-      throw new property_provider_1.CredentialsProviderError(
-        `Server responded with status: ${response.statusCode}`,
-        { logger }
-      );
+      throw new property_provider_1.CredentialsProviderError(`Server responded with status: ${response.statusCode}`, {
+        logger,
+      });
     }
     exports.getCredentials = getCredentials;
   },
@@ -12672,24 +12016,17 @@ var require_fromHttp = __commonJS({
     var AWS_CONTAINER_AUTHORIZATION_TOKEN = "AWS_CONTAINER_AUTHORIZATION_TOKEN";
     var fromHttp = (options = {}) => {
       var _a, _b, _c;
-      (_a = options.logger) == null
-        ? void 0
-        : _a.debug("@aws-sdk/credential-provider-http - fromHttp");
+      (_a = options.logger) == null ? void 0 : _a.debug("@aws-sdk/credential-provider-http - fromHttp");
       let host;
       const relative =
-        options.awsContainerCredentialsRelativeUri ??
-        process.env[AWS_CONTAINER_CREDENTIALS_RELATIVE_URI];
-      const full =
-        options.awsContainerCredentialsFullUri ?? process.env[AWS_CONTAINER_CREDENTIALS_FULL_URI];
-      const token =
-        options.awsContainerAuthorizationToken ?? process.env[AWS_CONTAINER_AUTHORIZATION_TOKEN];
+        options.awsContainerCredentialsRelativeUri ?? process.env[AWS_CONTAINER_CREDENTIALS_RELATIVE_URI];
+      const full = options.awsContainerCredentialsFullUri ?? process.env[AWS_CONTAINER_CREDENTIALS_FULL_URI];
+      const token = options.awsContainerAuthorizationToken ?? process.env[AWS_CONTAINER_AUTHORIZATION_TOKEN];
       const tokenFile =
-        options.awsContainerAuthorizationTokenFile ??
-        process.env[AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE];
+        options.awsContainerAuthorizationTokenFile ?? process.env[AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE];
       const warn =
-        ((_c = (_b = options.logger) == null ? void 0 : _b.constructor) == null
-          ? void 0
-          : _c.name) === "NoOpLogger" || !options.logger
+        ((_c = (_b = options.logger) == null ? void 0 : _b.constructor) == null ? void 0 : _c.name) === "NoOpLogger" ||
+        !options.logger
           ? console.warn
           : options.logger.warn;
       if (relative && full) {
@@ -12727,9 +12064,7 @@ Set AWS_CONTAINER_CREDENTIALS_FULL_URI or AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
           if (token) {
             request.headers.Authorization = token;
           } else if (tokenFile) {
-            request.headers.Authorization = (
-              await promises_1.default.readFile(tokenFile)
-            ).toString();
+            request.headers.Authorization = (await promises_1.default.readFile(tokenFile)).toString();
           }
           try {
             const result = await requestHandler.handle(request);
@@ -13078,11 +12413,7 @@ var require_dist_cjs42 = __commonJS({
         return (0, import_util_buffer_from.fromString)(toCast, encoding);
       }
       if (ArrayBuffer.isView(toCast)) {
-        return (0, import_util_buffer_from.fromArrayBuffer)(
-          toCast.buffer,
-          toCast.byteOffset,
-          toCast.byteLength
-        );
+        return (0, import_util_buffer_from.fromArrayBuffer)(toCast.buffer, toCast.byteOffset, toCast.byteLength);
       }
       return (0, import_util_buffer_from.fromArrayBuffer)(toCast);
     }
@@ -13215,8 +12546,7 @@ var require_ruleset = __commonJS({
                       type: f,
                     },
                     {
-                      error:
-                        "FIPS and DualStack are enabled, but this partition does not support one or both",
+                      error: "FIPS and DualStack are enabled, but this partition does not support one or both",
                       type: d,
                     },
                   ],
@@ -13341,8 +12671,7 @@ var require_runtimeConfig_shared = __commonJS({
         base64Encoder: (config == null ? void 0 : config.base64Encoder) ?? util_base64_1.toBase64,
         disableHostPrefix: (config == null ? void 0 : config.disableHostPrefix) ?? false,
         endpointProvider:
-          (config == null ? void 0 : config.endpointProvider) ??
-          endpointResolver_1.defaultEndpointResolver,
+          (config == null ? void 0 : config.endpointProvider) ?? endpointResolver_1.defaultEndpointResolver,
         extensions: (config == null ? void 0 : config.extensions) ?? [],
         httpAuthSchemeProvider:
           (config == null ? void 0 : config.httpAuthSchemeProvider) ??
@@ -13355,8 +12684,7 @@ var require_runtimeConfig_shared = __commonJS({
           },
           {
             schemeId: "smithy.api#noAuth",
-            identityProvider: (ipc) =>
-              ipc.getIdentityProvider("smithy.api#noAuth") || (async () => ({})),
+            identityProvider: (ipc) => ipc.getIdentityProvider("smithy.api#noAuth") || (async () => ({})),
             signer: new core_2.NoAuthSigner(),
           },
         ],
@@ -13432,12 +12760,8 @@ var require_dist_cjs44 = __commonJS({
     };
     var resolveDefaultsModeConfig = /* @__PURE__ */ __name(
       ({
-        region = (0, import_node_config_provider.loadConfig)(
-          import_config_resolver.NODE_REGION_CONFIG_OPTIONS
-        ),
-        defaultsMode = (0, import_node_config_provider.loadConfig)(
-          NODE_DEFAULTS_MODE_CONFIG_OPTIONS
-        ),
+        region = (0, import_node_config_provider.loadConfig)(import_config_resolver.NODE_REGION_CONFIG_OPTIONS),
+        defaultsMode = (0, import_node_config_provider.loadConfig)(NODE_DEFAULTS_MODE_CONFIG_OPTIONS),
       } = {}) =>
         (0, import_property_provider.memoize)(async () => {
           const mode = typeof defaultsMode === "function" ? await defaultsMode() : defaultsMode;
@@ -13462,8 +12786,7 @@ var require_dist_cjs44 = __commonJS({
     );
     var resolveNodeDefaultsModeAuto = /* @__PURE__ */ __name(async (clientRegion) => {
       if (clientRegion) {
-        const resolvedRegion =
-          typeof clientRegion === "function" ? await clientRegion() : clientRegion;
+        const resolvedRegion = typeof clientRegion === "function" ? await clientRegion() : clientRegion;
         const inferredRegion = await inferPhysicalRegion();
         if (!inferredRegion) {
           return "standard";
@@ -13477,10 +12800,7 @@ var require_dist_cjs44 = __commonJS({
       return "standard";
     }, "resolveNodeDefaultsModeAuto");
     var inferPhysicalRegion = /* @__PURE__ */ __name(async () => {
-      if (
-        process.env[AWS_EXECUTION_ENV] &&
-        (process.env[AWS_REGION_ENV] || process.env[AWS_DEFAULT_REGION_ENV])
-      ) {
+      if (process.env[AWS_EXECUTION_ENV] && (process.env[AWS_REGION_ENV] || process.env[AWS_DEFAULT_REGION_ENV])) {
         return process.env[AWS_REGION_ENV] ?? process.env[AWS_DEFAULT_REGION_ENV];
       }
       if (!process.env[ENV_IMDS_DISABLED]) {
@@ -13519,8 +12839,7 @@ var require_runtimeConfig = __commonJS({
     var getRuntimeConfig = (config) => {
       (0, smithy_client_2.emitWarningIfUnsupportedVersion)(process.version);
       const defaultsMode = (0, util_defaults_mode_node_1.resolveDefaultsModeConfig)(config);
-      const defaultConfigProvider = () =>
-        defaultsMode().then(smithy_client_1.loadConfigsForDefaultMode);
+      const defaultConfigProvider = () => defaultsMode().then(smithy_client_1.loadConfigsForDefaultMode);
       const clientSharedValues = (0, runtimeConfig_shared_1.getRuntimeConfig)(config);
       (0, core_1.emitWarningIfUnsupportedVersion)(process.version);
       return {
@@ -13529,8 +12848,7 @@ var require_runtimeConfig = __commonJS({
         runtime: "node",
         defaultsMode,
         bodyLengthChecker:
-          (config == null ? void 0 : config.bodyLengthChecker) ??
-          util_body_length_node_1.calculateBodyLength,
+          (config == null ? void 0 : config.bodyLengthChecker) ?? util_body_length_node_1.calculateBodyLength,
         defaultUserAgentProvider:
           (config == null ? void 0 : config.defaultUserAgentProvider) ??
           (0, util_user_agent_node_1.defaultUserAgent)({
@@ -13539,9 +12857,7 @@ var require_runtimeConfig = __commonJS({
           }),
         maxAttempts:
           (config == null ? void 0 : config.maxAttempts) ??
-          (0, node_config_provider_1.loadConfig)(
-            middleware_retry_1.NODE_MAX_ATTEMPT_CONFIG_OPTIONS
-          ),
+          (0, node_config_provider_1.loadConfig)(middleware_retry_1.NODE_MAX_ATTEMPT_CONFIG_OPTIONS),
         region:
           (config == null ? void 0 : config.region) ??
           (0, node_config_provider_1.loadConfig)(
@@ -13555,22 +12871,16 @@ var require_runtimeConfig = __commonJS({
           (config == null ? void 0 : config.retryMode) ??
           (0, node_config_provider_1.loadConfig)({
             ...middleware_retry_1.NODE_RETRY_MODE_CONFIG_OPTIONS,
-            default: async () =>
-              (await defaultConfigProvider()).retryMode || util_retry_1.DEFAULT_RETRY_MODE,
+            default: async () => (await defaultConfigProvider()).retryMode || util_retry_1.DEFAULT_RETRY_MODE,
           }),
         sha256: (config == null ? void 0 : config.sha256) ?? hash_node_1.Hash.bind(null, "sha256"),
-        streamCollector:
-          (config == null ? void 0 : config.streamCollector) ?? node_http_handler_1.streamCollector,
+        streamCollector: (config == null ? void 0 : config.streamCollector) ?? node_http_handler_1.streamCollector,
         useDualstackEndpoint:
           (config == null ? void 0 : config.useDualstackEndpoint) ??
-          (0, node_config_provider_1.loadConfig)(
-            config_resolver_1.NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS
-          ),
+          (0, node_config_provider_1.loadConfig)(config_resolver_1.NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS),
         useFipsEndpoint:
           (config == null ? void 0 : config.useFipsEndpoint) ??
-          (0, node_config_provider_1.loadConfig)(
-            config_resolver_1.NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS
-          ),
+          (0, node_config_provider_1.loadConfig)(config_resolver_1.NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS),
       };
     };
     exports.getRuntimeConfig = getRuntimeConfig;
@@ -13631,14 +12941,11 @@ var require_dist_cjs45 = __commonJS({
         },
       };
     }, "getAwsRegionExtensionConfiguration");
-    var resolveAwsRegionExtensionConfiguration = /* @__PURE__ */ __name(
-      (awsRegionExtensionConfiguration) => {
-        return {
-          region: awsRegionExtensionConfiguration.region(),
-        };
-      },
-      "resolveAwsRegionExtensionConfiguration"
-    );
+    var resolveAwsRegionExtensionConfiguration = /* @__PURE__ */ __name((awsRegionExtensionConfiguration) => {
+      return {
+        region: awsRegionExtensionConfiguration.region(),
+      };
+    }, "resolveAwsRegionExtensionConfiguration");
     var REGION_ENV_NAME = "AWS_REGION";
     var REGION_INI_NAME = "region";
     var NODE_REGION_CONFIG_OPTIONS = {
@@ -13652,8 +12959,7 @@ var require_dist_cjs45 = __commonJS({
       preferredFile: "credentials",
     };
     var isFipsRegion = /* @__PURE__ */ __name(
-      (region) =>
-        typeof region === "string" && (region.startsWith("fips-") || region.endsWith("-fips")),
+      (region) => typeof region === "string" && (region.startsWith("fips-") || region.endsWith("-fips")),
       "isFipsRegion"
     );
     var getRealRegion = /* @__PURE__ */ __name(
@@ -13684,9 +12990,7 @@ var require_dist_cjs45 = __commonJS({
           if (isFipsRegion(providedRegion)) {
             return true;
           }
-          return typeof useFipsEndpoint !== "function"
-            ? Promise.resolve(!!useFipsEndpoint)
-            : useFipsEndpoint();
+          return typeof useFipsEndpoint !== "function" ? Promise.resolve(!!useFipsEndpoint) : useFipsEndpoint();
         },
       };
     }, "resolveRegionConfig");
@@ -13719,10 +13023,8 @@ var require_dist_cjs46 = __commonJS({
     var src_exports = {};
     __export2(src_exports, {
       GetRoleCredentialsCommand: () => GetRoleCredentialsCommand,
-      GetRoleCredentialsRequestFilterSensitiveLog: () =>
-        GetRoleCredentialsRequestFilterSensitiveLog,
-      GetRoleCredentialsResponseFilterSensitiveLog: () =>
-        GetRoleCredentialsResponseFilterSensitiveLog,
+      GetRoleCredentialsRequestFilterSensitiveLog: () => GetRoleCredentialsRequestFilterSensitiveLog,
+      GetRoleCredentialsResponseFilterSensitiveLog: () => GetRoleCredentialsResponseFilterSensitiveLog,
       InvalidRequestException: () => InvalidRequestException,
       ListAccountRolesCommand: () => ListAccountRolesCommand,
       ListAccountRolesRequestFilterSensitiveLog: () => ListAccountRolesRequestFilterSensitiveLog,
@@ -13776,9 +13078,7 @@ var require_dist_cjs46 = __commonJS({
       let _credentials = runtimeConfig.credentials;
       return {
         setHttpAuthScheme(httpAuthScheme) {
-          const index = _httpAuthSchemes.findIndex(
-            (scheme) => scheme.schemeId === httpAuthScheme.schemeId
-          );
+          const index = _httpAuthSchemes.findIndex((scheme) => scheme.schemeId === httpAuthScheme.schemeId);
           if (index === -1) {
             _httpAuthSchemes.push(httpAuthScheme);
           } else {
@@ -13812,9 +13112,7 @@ var require_dist_cjs46 = __commonJS({
     var asPartial = /* @__PURE__ */ __name((t) => t, "asPartial");
     var resolveRuntimeExtensions = /* @__PURE__ */ __name((runtimeConfig, extensions) => {
       const extensionConfiguration = {
-        ...asPartial(
-          (0, import_region_config_resolver.getAwsRegionExtensionConfiguration)(runtimeConfig)
-        ),
+        ...asPartial((0, import_region_config_resolver.getAwsRegionExtensionConfiguration)(runtimeConfig)),
         ...asPartial((0, import_smithy_client.getDefaultExtensionConfiguration)(runtimeConfig)),
         ...asPartial((0, import_protocol_http.getHttpHandlerExtensionConfiguration)(runtimeConfig)),
         ...asPartial(getHttpAuthExtensionConfiguration(runtimeConfig)),
@@ -13822,9 +13120,7 @@ var require_dist_cjs46 = __commonJS({
       extensions.forEach((extension) => extension.configure(extensionConfiguration));
       return {
         ...runtimeConfig,
-        ...(0, import_region_config_resolver.resolveAwsRegionExtensionConfiguration)(
-          extensionConfiguration
-        ),
+        ...(0, import_region_config_resolver.resolveAwsRegionExtensionConfiguration)(extensionConfiguration),
         ...(0, import_smithy_client.resolveDefaultRuntimeConfig)(extensionConfiguration),
         ...(0, import_protocol_http.resolveHttpHandlerRuntimeConfig)(extensionConfiguration),
         ...resolveHttpAuthRuntimeConfig(extensionConfiguration),
@@ -13847,16 +13143,10 @@ var require_dist_cjs46 = __commonJS({
         super(_config_8);
         this.config = _config_8;
         this.middlewareStack.use((0, import_middleware_retry.getRetryPlugin)(this.config));
-        this.middlewareStack.use(
-          (0, import_middleware_content_length.getContentLengthPlugin)(this.config)
-        );
-        this.middlewareStack.use(
-          (0, import_middleware_host_header.getHostHeaderPlugin)(this.config)
-        );
+        this.middlewareStack.use((0, import_middleware_content_length.getContentLengthPlugin)(this.config));
+        this.middlewareStack.use((0, import_middleware_host_header.getHostHeaderPlugin)(this.config));
         this.middlewareStack.use((0, import_middleware_logger.getLoggerPlugin)(this.config));
-        this.middlewareStack.use(
-          (0, import_middleware_recursion_detection.getRecursionDetectionPlugin)(this.config)
-        );
+        this.middlewareStack.use((0, import_middleware_recursion_detection.getRecursionDetectionPlugin)(this.config));
         this.middlewareStack.use((0, import_middleware_user_agent.getUserAgentPlugin)(this.config));
         this.middlewareStack.use(
           (0, import_core.getHttpAuthSchemeEndpointRuleSetPlugin)(this.config, {
@@ -14053,9 +13343,7 @@ var require_dist_cjs46 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -14072,9 +13360,7 @@ var require_dist_cjs46 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -14092,9 +13378,7 @@ var require_dist_cjs46 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -14234,10 +13518,7 @@ var require_dist_cjs46 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("SWBPortalService", "GetRoleCredentials", {})
@@ -14255,10 +13536,7 @@ var require_dist_cjs46 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("SWBPortalService", "ListAccountRoles", {})
@@ -14276,10 +13554,7 @@ var require_dist_cjs46 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("SWBPortalService", "ListAccounts", {})
@@ -14297,10 +13572,7 @@ var require_dist_cjs46 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("SWBPortalService", "Logout", {})
@@ -14358,8 +13630,7 @@ var require_httpAuthSchemeProvider3 = __commonJS({
           })(),
       };
     };
-    exports.defaultSSOOIDCHttpAuthSchemeParametersProvider =
-      defaultSSOOIDCHttpAuthSchemeParametersProvider;
+    exports.defaultSSOOIDCHttpAuthSchemeParametersProvider = defaultSSOOIDCHttpAuthSchemeParametersProvider;
     function createAwsAuthSigv4HttpAuthOption(authParameters) {
       return {
         schemeId: "aws.auth#sigv4",
@@ -14588,8 +13859,7 @@ var require_ruleset2 = __commonJS({
                       type: f,
                     },
                     {
-                      error:
-                        "FIPS and DualStack are enabled, but this partition does not support one or both",
+                      error: "FIPS and DualStack are enabled, but this partition does not support one or both",
                       type: d,
                     },
                   ],
@@ -14714,8 +13984,7 @@ var require_runtimeConfig_shared2 = __commonJS({
         base64Encoder: (config == null ? void 0 : config.base64Encoder) ?? util_base64_1.toBase64,
         disableHostPrefix: (config == null ? void 0 : config.disableHostPrefix) ?? false,
         endpointProvider:
-          (config == null ? void 0 : config.endpointProvider) ??
-          endpointResolver_1.defaultEndpointResolver,
+          (config == null ? void 0 : config.endpointProvider) ?? endpointResolver_1.defaultEndpointResolver,
         extensions: (config == null ? void 0 : config.extensions) ?? [],
         httpAuthSchemeProvider:
           (config == null ? void 0 : config.httpAuthSchemeProvider) ??
@@ -14728,8 +13997,7 @@ var require_runtimeConfig_shared2 = __commonJS({
           },
           {
             schemeId: "smithy.api#noAuth",
-            identityProvider: (ipc) =>
-              ipc.getIdentityProvider("smithy.api#noAuth") || (async () => ({})),
+            identityProvider: (ipc) => ipc.getIdentityProvider("smithy.api#noAuth") || (async () => ({})),
             signer: new core_2.NoAuthSigner(),
           },
         ],
@@ -14768,8 +14036,7 @@ var require_runtimeConfig2 = __commonJS({
     var getRuntimeConfig = (config) => {
       (0, smithy_client_2.emitWarningIfUnsupportedVersion)(process.version);
       const defaultsMode = (0, util_defaults_mode_node_1.resolveDefaultsModeConfig)(config);
-      const defaultConfigProvider = () =>
-        defaultsMode().then(smithy_client_1.loadConfigsForDefaultMode);
+      const defaultConfigProvider = () => defaultsMode().then(smithy_client_1.loadConfigsForDefaultMode);
       const clientSharedValues = (0, runtimeConfig_shared_1.getRuntimeConfig)(config);
       (0, core_1.emitWarningIfUnsupportedVersion)(process.version);
       return {
@@ -14778,11 +14045,9 @@ var require_runtimeConfig2 = __commonJS({
         runtime: "node",
         defaultsMode,
         bodyLengthChecker:
-          (config == null ? void 0 : config.bodyLengthChecker) ??
-          util_body_length_node_1.calculateBodyLength,
+          (config == null ? void 0 : config.bodyLengthChecker) ?? util_body_length_node_1.calculateBodyLength,
         credentialDefaultProvider:
-          (config == null ? void 0 : config.credentialDefaultProvider) ??
-          credential_provider_node_1.defaultProvider,
+          (config == null ? void 0 : config.credentialDefaultProvider) ?? credential_provider_node_1.defaultProvider,
         defaultUserAgentProvider:
           (config == null ? void 0 : config.defaultUserAgentProvider) ??
           (0, util_user_agent_node_1.defaultUserAgent)({
@@ -14791,9 +14056,7 @@ var require_runtimeConfig2 = __commonJS({
           }),
         maxAttempts:
           (config == null ? void 0 : config.maxAttempts) ??
-          (0, node_config_provider_1.loadConfig)(
-            middleware_retry_1.NODE_MAX_ATTEMPT_CONFIG_OPTIONS
-          ),
+          (0, node_config_provider_1.loadConfig)(middleware_retry_1.NODE_MAX_ATTEMPT_CONFIG_OPTIONS),
         region:
           (config == null ? void 0 : config.region) ??
           (0, node_config_provider_1.loadConfig)(
@@ -14807,22 +14070,16 @@ var require_runtimeConfig2 = __commonJS({
           (config == null ? void 0 : config.retryMode) ??
           (0, node_config_provider_1.loadConfig)({
             ...middleware_retry_1.NODE_RETRY_MODE_CONFIG_OPTIONS,
-            default: async () =>
-              (await defaultConfigProvider()).retryMode || util_retry_1.DEFAULT_RETRY_MODE,
+            default: async () => (await defaultConfigProvider()).retryMode || util_retry_1.DEFAULT_RETRY_MODE,
           }),
         sha256: (config == null ? void 0 : config.sha256) ?? hash_node_1.Hash.bind(null, "sha256"),
-        streamCollector:
-          (config == null ? void 0 : config.streamCollector) ?? node_http_handler_1.streamCollector,
+        streamCollector: (config == null ? void 0 : config.streamCollector) ?? node_http_handler_1.streamCollector,
         useDualstackEndpoint:
           (config == null ? void 0 : config.useDualstackEndpoint) ??
-          (0, node_config_provider_1.loadConfig)(
-            config_resolver_1.NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS
-          ),
+          (0, node_config_provider_1.loadConfig)(config_resolver_1.NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS),
         useFipsEndpoint:
           (config == null ? void 0 : config.useFipsEndpoint) ??
-          (0, node_config_provider_1.loadConfig)(
-            config_resolver_1.NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS
-          ),
+          (0, node_config_provider_1.loadConfig)(config_resolver_1.NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS),
       };
     };
     exports.getRuntimeConfig = getRuntimeConfig;
@@ -14860,10 +14117,8 @@ var require_dist_cjs47 = __commonJS({
       CreateTokenRequestFilterSensitiveLog: () => CreateTokenRequestFilterSensitiveLog,
       CreateTokenResponseFilterSensitiveLog: () => CreateTokenResponseFilterSensitiveLog,
       CreateTokenWithIAMCommand: () => CreateTokenWithIAMCommand,
-      CreateTokenWithIAMRequestFilterSensitiveLog: () =>
-        CreateTokenWithIAMRequestFilterSensitiveLog,
-      CreateTokenWithIAMResponseFilterSensitiveLog: () =>
-        CreateTokenWithIAMResponseFilterSensitiveLog,
+      CreateTokenWithIAMRequestFilterSensitiveLog: () => CreateTokenWithIAMRequestFilterSensitiveLog,
+      CreateTokenWithIAMResponseFilterSensitiveLog: () => CreateTokenWithIAMResponseFilterSensitiveLog,
       ExpiredTokenException: () => ExpiredTokenException,
       InternalServerException: () => InternalServerException,
       InvalidClientException: () => InvalidClientException,
@@ -14880,8 +14135,7 @@ var require_dist_cjs47 = __commonJS({
       SSOOIDCServiceException: () => SSOOIDCServiceException,
       SlowDownException: () => SlowDownException,
       StartDeviceAuthorizationCommand: () => StartDeviceAuthorizationCommand,
-      StartDeviceAuthorizationRequestFilterSensitiveLog: () =>
-        StartDeviceAuthorizationRequestFilterSensitiveLog,
+      StartDeviceAuthorizationRequestFilterSensitiveLog: () => StartDeviceAuthorizationRequestFilterSensitiveLog,
       UnauthorizedClientException: () => UnauthorizedClientException,
       UnsupportedGrantTypeException: () => UnsupportedGrantTypeException,
       __Client: () => import_smithy_client.Client,
@@ -14921,9 +14175,7 @@ var require_dist_cjs47 = __commonJS({
       let _credentials = runtimeConfig.credentials;
       return {
         setHttpAuthScheme(httpAuthScheme) {
-          const index = _httpAuthSchemes.findIndex(
-            (scheme) => scheme.schemeId === httpAuthScheme.schemeId
-          );
+          const index = _httpAuthSchemes.findIndex((scheme) => scheme.schemeId === httpAuthScheme.schemeId);
           if (index === -1) {
             _httpAuthSchemes.push(httpAuthScheme);
           } else {
@@ -14957,9 +14209,7 @@ var require_dist_cjs47 = __commonJS({
     var asPartial = /* @__PURE__ */ __name((t) => t, "asPartial");
     var resolveRuntimeExtensions = /* @__PURE__ */ __name((runtimeConfig, extensions) => {
       const extensionConfiguration = {
-        ...asPartial(
-          (0, import_region_config_resolver.getAwsRegionExtensionConfiguration)(runtimeConfig)
-        ),
+        ...asPartial((0, import_region_config_resolver.getAwsRegionExtensionConfiguration)(runtimeConfig)),
         ...asPartial((0, import_smithy_client.getDefaultExtensionConfiguration)(runtimeConfig)),
         ...asPartial((0, import_protocol_http.getHttpHandlerExtensionConfiguration)(runtimeConfig)),
         ...asPartial(getHttpAuthExtensionConfiguration(runtimeConfig)),
@@ -14967,9 +14217,7 @@ var require_dist_cjs47 = __commonJS({
       extensions.forEach((extension) => extension.configure(extensionConfiguration));
       return {
         ...runtimeConfig,
-        ...(0, import_region_config_resolver.resolveAwsRegionExtensionConfiguration)(
-          extensionConfiguration
-        ),
+        ...(0, import_region_config_resolver.resolveAwsRegionExtensionConfiguration)(extensionConfiguration),
         ...(0, import_smithy_client.resolveDefaultRuntimeConfig)(extensionConfiguration),
         ...(0, import_protocol_http.resolveHttpHandlerRuntimeConfig)(extensionConfiguration),
         ...resolveHttpAuthRuntimeConfig(extensionConfiguration),
@@ -14992,16 +14240,10 @@ var require_dist_cjs47 = __commonJS({
         super(_config_8);
         this.config = _config_8;
         this.middlewareStack.use((0, import_middleware_retry.getRetryPlugin)(this.config));
-        this.middlewareStack.use(
-          (0, import_middleware_content_length.getContentLengthPlugin)(this.config)
-        );
-        this.middlewareStack.use(
-          (0, import_middleware_host_header.getHostHeaderPlugin)(this.config)
-        );
+        this.middlewareStack.use((0, import_middleware_content_length.getContentLengthPlugin)(this.config));
+        this.middlewareStack.use((0, import_middleware_host_header.getHostHeaderPlugin)(this.config));
         this.middlewareStack.use((0, import_middleware_logger.getLoggerPlugin)(this.config));
-        this.middlewareStack.use(
-          (0, import_middleware_recursion_detection.getRecursionDetectionPlugin)(this.config)
-        );
+        this.middlewareStack.use((0, import_middleware_recursion_detection.getRecursionDetectionPlugin)(this.config));
         this.middlewareStack.use((0, import_middleware_user_agent.getUserAgentPlugin)(this.config));
         this.middlewareStack.use(
           (0, import_core.getHttpAuthSchemeEndpointRuleSetPlugin)(this.config, {
@@ -15410,9 +14652,7 @@ var require_dist_cjs47 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -15433,9 +14673,7 @@ var require_dist_cjs47 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -15458,9 +14696,7 @@ var require_dist_cjs47 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -15482,9 +14718,7 @@ var require_dist_cjs47 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -15572,23 +14806,20 @@ var require_dist_cjs47 = __commonJS({
       });
       return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
     }, "de_AccessDeniedExceptionRes");
-    var de_AuthorizationPendingExceptionRes = /* @__PURE__ */ __name(
-      async (parsedOutput, context) => {
-        const contents = (0, import_smithy_client.map)({});
-        const data = parsedOutput.body;
-        const doc = (0, import_smithy_client.take)(data, {
-          error: import_smithy_client.expectString,
-          error_description: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        const exception = new AuthorizationPendingException({
-          $metadata: deserializeMetadata(parsedOutput),
-          ...contents,
-        });
-        return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
-      },
-      "de_AuthorizationPendingExceptionRes"
-    );
+    var de_AuthorizationPendingExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
+      const contents = (0, import_smithy_client.map)({});
+      const data = parsedOutput.body;
+      const doc = (0, import_smithy_client.take)(data, {
+        error: import_smithy_client.expectString,
+        error_description: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      const exception = new AuthorizationPendingException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+      });
+      return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
+    }, "de_AuthorizationPendingExceptionRes");
     var de_ExpiredTokenExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
       const contents = (0, import_smithy_client.map)({});
       const data = parsedOutput.body;
@@ -15631,23 +14862,20 @@ var require_dist_cjs47 = __commonJS({
       });
       return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
     }, "de_InvalidClientExceptionRes");
-    var de_InvalidClientMetadataExceptionRes = /* @__PURE__ */ __name(
-      async (parsedOutput, context) => {
-        const contents = (0, import_smithy_client.map)({});
-        const data = parsedOutput.body;
-        const doc = (0, import_smithy_client.take)(data, {
-          error: import_smithy_client.expectString,
-          error_description: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        const exception = new InvalidClientMetadataException({
-          $metadata: deserializeMetadata(parsedOutput),
-          ...contents,
-        });
-        return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
-      },
-      "de_InvalidClientMetadataExceptionRes"
-    );
+    var de_InvalidClientMetadataExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
+      const contents = (0, import_smithy_client.map)({});
+      const data = parsedOutput.body;
+      const doc = (0, import_smithy_client.take)(data, {
+        error: import_smithy_client.expectString,
+        error_description: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      const exception = new InvalidClientMetadataException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+      });
+      return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
+    }, "de_InvalidClientMetadataExceptionRes");
     var de_InvalidGrantExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
       const contents = (0, import_smithy_client.map)({});
       const data = parsedOutput.body;
@@ -15662,23 +14890,20 @@ var require_dist_cjs47 = __commonJS({
       });
       return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
     }, "de_InvalidGrantExceptionRes");
-    var de_InvalidRedirectUriExceptionRes = /* @__PURE__ */ __name(
-      async (parsedOutput, context) => {
-        const contents = (0, import_smithy_client.map)({});
-        const data = parsedOutput.body;
-        const doc = (0, import_smithy_client.take)(data, {
-          error: import_smithy_client.expectString,
-          error_description: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        const exception = new InvalidRedirectUriException({
-          $metadata: deserializeMetadata(parsedOutput),
-          ...contents,
-        });
-        return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
-      },
-      "de_InvalidRedirectUriExceptionRes"
-    );
+    var de_InvalidRedirectUriExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
+      const contents = (0, import_smithy_client.map)({});
+      const data = parsedOutput.body;
+      const doc = (0, import_smithy_client.take)(data, {
+        error: import_smithy_client.expectString,
+        error_description: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      const exception = new InvalidRedirectUriException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+      });
+      return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
+    }, "de_InvalidRedirectUriExceptionRes");
     var de_InvalidRequestExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
       const contents = (0, import_smithy_client.map)({});
       const data = parsedOutput.body;
@@ -15693,25 +14918,22 @@ var require_dist_cjs47 = __commonJS({
       });
       return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
     }, "de_InvalidRequestExceptionRes");
-    var de_InvalidRequestRegionExceptionRes = /* @__PURE__ */ __name(
-      async (parsedOutput, context) => {
-        const contents = (0, import_smithy_client.map)({});
-        const data = parsedOutput.body;
-        const doc = (0, import_smithy_client.take)(data, {
-          endpoint: import_smithy_client.expectString,
-          error: import_smithy_client.expectString,
-          error_description: import_smithy_client.expectString,
-          region: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        const exception = new InvalidRequestRegionException({
-          $metadata: deserializeMetadata(parsedOutput),
-          ...contents,
-        });
-        return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
-      },
-      "de_InvalidRequestRegionExceptionRes"
-    );
+    var de_InvalidRequestRegionExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
+      const contents = (0, import_smithy_client.map)({});
+      const data = parsedOutput.body;
+      const doc = (0, import_smithy_client.take)(data, {
+        endpoint: import_smithy_client.expectString,
+        error: import_smithy_client.expectString,
+        error_description: import_smithy_client.expectString,
+        region: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      const exception = new InvalidRequestRegionException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+      });
+      return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
+    }, "de_InvalidRequestRegionExceptionRes");
     var de_InvalidScopeExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
       const contents = (0, import_smithy_client.map)({});
       const data = parsedOutput.body;
@@ -15740,40 +14962,34 @@ var require_dist_cjs47 = __commonJS({
       });
       return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
     }, "de_SlowDownExceptionRes");
-    var de_UnauthorizedClientExceptionRes = /* @__PURE__ */ __name(
-      async (parsedOutput, context) => {
-        const contents = (0, import_smithy_client.map)({});
-        const data = parsedOutput.body;
-        const doc = (0, import_smithy_client.take)(data, {
-          error: import_smithy_client.expectString,
-          error_description: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        const exception = new UnauthorizedClientException({
-          $metadata: deserializeMetadata(parsedOutput),
-          ...contents,
-        });
-        return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
-      },
-      "de_UnauthorizedClientExceptionRes"
-    );
-    var de_UnsupportedGrantTypeExceptionRes = /* @__PURE__ */ __name(
-      async (parsedOutput, context) => {
-        const contents = (0, import_smithy_client.map)({});
-        const data = parsedOutput.body;
-        const doc = (0, import_smithy_client.take)(data, {
-          error: import_smithy_client.expectString,
-          error_description: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        const exception = new UnsupportedGrantTypeException({
-          $metadata: deserializeMetadata(parsedOutput),
-          ...contents,
-        });
-        return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
-      },
-      "de_UnsupportedGrantTypeExceptionRes"
-    );
+    var de_UnauthorizedClientExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
+      const contents = (0, import_smithy_client.map)({});
+      const data = parsedOutput.body;
+      const doc = (0, import_smithy_client.take)(data, {
+        error: import_smithy_client.expectString,
+        error_description: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      const exception = new UnauthorizedClientException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+      });
+      return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
+    }, "de_UnauthorizedClientExceptionRes");
+    var de_UnsupportedGrantTypeExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
+      const contents = (0, import_smithy_client.map)({});
+      const data = parsedOutput.body;
+      const doc = (0, import_smithy_client.take)(data, {
+        error: import_smithy_client.expectString,
+        error_description: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      const exception = new UnsupportedGrantTypeException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...contents,
+      });
+      return (0, import_smithy_client.decorateServiceException)(exception, parsedOutput.body);
+    }, "de_UnsupportedGrantTypeExceptionRes");
     var deserializeMetadata = /* @__PURE__ */ __name(
       (output) => ({
         httpStatusCode: output.statusCode,
@@ -15794,10 +15010,7 @@ var require_dist_cjs47 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("AWSSSOOIDCService", "CreateToken", {})
@@ -15815,10 +15028,7 @@ var require_dist_cjs47 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("AWSSSOOIDCService", "CreateTokenWithIAM", {})
@@ -15836,10 +15046,7 @@ var require_dist_cjs47 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("AWSSSOOIDCService", "RegisterClient", {})
@@ -15857,10 +15064,7 @@ var require_dist_cjs47 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("AWSSSOOIDCService", "StartDeviceAuthorization", {})
@@ -15938,9 +15142,7 @@ var require_dist_cjs48 = __commonJS({
       return ssoOidcClient;
     }, "getSsoOidcClient");
     var getNewSsoOidcToken = /* @__PURE__ */ __name(async (ssoToken, ssoRegion) => {
-      const { CreateTokenCommand } = await Promise.resolve().then(() =>
-        __toESM2(require_dist_cjs47())
-      );
+      const { CreateTokenCommand } = await Promise.resolve().then(() => __toESM2(require_dist_cjs47()));
       const ssoOidcClient = await getSsoOidcClient(ssoRegion);
       return ssoOidcClient.send(
         new CreateTokenCommand({
@@ -15954,10 +15156,7 @@ var require_dist_cjs48 = __commonJS({
     var import_property_provider = require_dist_cjs12();
     var validateTokenExpiry = /* @__PURE__ */ __name((token) => {
       if (token.expiration && token.expiration.getTime() < Date.now()) {
-        throw new import_property_provider.TokenProviderError(
-          `Token is expired. ${REFRESH_MESSAGE}`,
-          false
-        );
+        throw new import_property_provider.TokenProviderError(`Token is expired. ${REFRESH_MESSAGE}`, false);
       }
     }, "validateTokenExpiry");
     var validateTokenKey = /* @__PURE__ */ __name((key, value, forRefresh = false) => {
@@ -16067,10 +15266,7 @@ var require_dist_cjs48 = __commonJS({
         async () => {
           logger == null ? void 0 : logger.debug("@aws-sdk/token-providers - fromStatic");
           if (!token || !token.token) {
-            throw new import_property_provider.TokenProviderError(
-              `Please pass a valid token to fromStatic`,
-              false
-            );
+            throw new import_property_provider.TokenProviderError(`Please pass a valid token to fromStatic`, false);
           }
           return token;
         },
@@ -16080,10 +15276,7 @@ var require_dist_cjs48 = __commonJS({
       (init = {}) =>
         (0, import_property_provider.memoize)(
           (0, import_property_provider.chain)(fromSso(init), async () => {
-            throw new import_property_provider.TokenProviderError(
-              "Could not load token from any providers",
-              false
-            );
+            throw new import_property_provider.TokenProviderError("Could not load token from any providers", false);
           }),
           (token) => token.expiration !== void 0 && token.expiration.getTime() - Date.now() < 3e5,
           (token) => token.expiration !== void 0
@@ -16103,7 +15296,7 @@ var require_dist_cjs49 = __commonJS({
     var __name = (target, value) => __defProp2(target, "name", { value, configurable: true });
     var __esm = (fn, res) =>
       function __init() {
-        return fn && (res = (0, fn[__getOwnPropNames2(fn)[0]])((fn = 0))), res;
+        return (fn && (res = (0, fn[__getOwnPropNames2(fn)[0]])((fn = 0))), res);
       };
     var __export2 = (target, all) => {
       for (var name in all) __defProp2(target, name, { get: all[name], enumerable: true });
@@ -16226,23 +15419,13 @@ var require_dist_cjs49 = __commonJS({
             logger,
           });
         }
-        const {
-          roleCredentials: {
-            accessKeyId,
-            secretAccessKey,
-            sessionToken,
-            expiration,
-            credentialScope,
-          } = {},
-        } = ssoResp;
+        const { roleCredentials: { accessKeyId, secretAccessKey, sessionToken, expiration, credentialScope } = {} } =
+          ssoResp;
         if (!accessKeyId || !secretAccessKey || !sessionToken || !expiration) {
-          throw new import_property_provider.CredentialsProviderError(
-            "SSO returns an invalid temporary credential.",
-            {
-              tryNextLink: SHOULD_FAIL_CREDENTIAL_CHAIN,
-              logger,
-            }
-          );
+          throw new import_property_provider.CredentialsProviderError("SSO returns an invalid temporary credential.", {
+            tryNextLink: SHOULD_FAIL_CREDENTIAL_CHAIN,
+            logger,
+          });
         }
         return {
           accessKeyId,
@@ -16271,9 +15454,7 @@ Reference: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.ht
       (init = {}) =>
         async () => {
           var _a;
-          (_a = init.logger) == null
-            ? void 0
-            : _a.debug("@aws-sdk/credential-provider-sso - fromSSO");
+          (_a = init.logger) == null ? void 0 : _a.debug("@aws-sdk/credential-provider-sso - fromSSO");
           const { ssoStartUrl, ssoAccountId, ssoRegion, ssoRoleName, ssoSession } = init;
           const { ssoClient } = init;
           const profileName = (0, import_shared_ini_file_loader.getProfileName)(init);
@@ -16281,10 +15462,9 @@ Reference: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.ht
             const profiles = await (0, import_shared_ini_file_loader.parseKnownFiles)(init);
             const profile = profiles[profileName];
             if (!profile) {
-              throw new import_property_provider.CredentialsProviderError(
-                `Profile ${profileName} was not found.`,
-                { logger: init.logger }
-              );
+              throw new import_property_provider.CredentialsProviderError(`Profile ${profileName} was not found.`, {
+                logger: init.logger,
+              });
             }
             if (!isSsoProfile(profile)) {
               throw new import_property_provider.CredentialsProviderError(
@@ -16299,28 +15479,24 @@ Reference: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.ht
               const session = ssoSessions[profile.sso_session];
               const conflictMsg = ` configurations in profile ${profileName} and sso-session ${profile.sso_session}`;
               if (ssoRegion && ssoRegion !== session.sso_region) {
-                throw new import_property_provider.CredentialsProviderError(
-                  `Conflicting SSO region` + conflictMsg,
-                  {
-                    tryNextLink: false,
-                    logger: init.logger,
-                  }
-                );
+                throw new import_property_provider.CredentialsProviderError(`Conflicting SSO region` + conflictMsg, {
+                  tryNextLink: false,
+                  logger: init.logger,
+                });
               }
               if (ssoStartUrl && ssoStartUrl !== session.sso_start_url) {
-                throw new import_property_provider.CredentialsProviderError(
-                  `Conflicting SSO start_url` + conflictMsg,
-                  {
-                    tryNextLink: false,
-                    logger: init.logger,
-                  }
-                );
+                throw new import_property_provider.CredentialsProviderError(`Conflicting SSO start_url` + conflictMsg, {
+                  tryNextLink: false,
+                  logger: init.logger,
+                });
               }
               profile.sso_region = session.sso_region;
               profile.sso_start_url = session.sso_start_url;
             }
-            const { sso_start_url, sso_account_id, sso_region, sso_role_name, sso_session } =
-              validateSsoProfile(profile, init.logger);
+            const { sso_start_url, sso_account_id, sso_region, sso_role_name, sso_session } = validateSsoProfile(
+              profile,
+              init.logger
+            );
             return resolveSSOCredentials({
               ssoStartUrl: sso_start_url,
               ssoSession: sso_session,
@@ -16468,8 +15644,7 @@ var require_package4 = __commonJS({
         "build:cjs": "node ../../scripts/compilation/inline client-sts",
         "build:es": "tsc -p tsconfig.es.json",
         "build:include:deps": "lerna run --scope $npm_package_name --include-dependencies build",
-        "build:types":
-          "rimraf ./dist-types tsconfig.types.tsbuildinfo && tsc -p tsconfig.types.json",
+        "build:types": "rimraf ./dist-types tsconfig.types.tsbuildinfo && tsc -p tsconfig.types.json",
         "build:types:downlevel": "downlevel-dts dist-types dist-types/ts3.4",
         clean: "rimraf ./dist-* && rimraf *.tsbuildinfo",
         "extract:docs": "api-extractor run --local",
@@ -16690,8 +15865,7 @@ var require_ruleset3 = __commonJS({
                       [G]: j,
                     },
                     {
-                      error:
-                        "FIPS and DualStack are enabled, but this partition does not support one or both",
+                      error: "FIPS and DualStack are enabled, but this partition does not support one or both",
                       [G]: k,
                     },
                   ],
@@ -16704,9 +15878,7 @@ var require_ruleset3 = __commonJS({
                       conditions: [{ [H]: c, [I]: [z, b] }],
                       rules: [
                         {
-                          conditions: [
-                            { [H]: d, [I]: [{ [H]: l, [I]: [A, "name"] }, "aws-us-gov"] },
-                          ],
+                          conditions: [{ [H]: d, [I]: [{ [H]: l, [I]: [A, "name"] }, "aws-us-gov"] }],
                           endpoint: {
                             url: "https://sts.{Region}.amazonaws.com",
                             properties: v,
@@ -16807,8 +15979,7 @@ var require_runtimeConfig_shared3 = __commonJS({
         base64Encoder: (config == null ? void 0 : config.base64Encoder) ?? util_base64_1.toBase64,
         disableHostPrefix: (config == null ? void 0 : config.disableHostPrefix) ?? false,
         endpointProvider:
-          (config == null ? void 0 : config.endpointProvider) ??
-          endpointResolver_1.defaultEndpointResolver,
+          (config == null ? void 0 : config.endpointProvider) ?? endpointResolver_1.defaultEndpointResolver,
         extensions: (config == null ? void 0 : config.extensions) ?? [],
         httpAuthSchemeProvider:
           (config == null ? void 0 : config.httpAuthSchemeProvider) ??
@@ -16821,8 +15992,7 @@ var require_runtimeConfig_shared3 = __commonJS({
           },
           {
             schemeId: "smithy.api#noAuth",
-            identityProvider: (ipc) =>
-              ipc.getIdentityProvider("smithy.api#noAuth") || (async () => ({})),
+            identityProvider: (ipc) => ipc.getIdentityProvider("smithy.api#noAuth") || (async () => ({})),
             signer: new core_2.NoAuthSigner(),
           },
         ],
@@ -16862,8 +16032,7 @@ var require_runtimeConfig3 = __commonJS({
     var getRuntimeConfig = (config) => {
       (0, smithy_client_2.emitWarningIfUnsupportedVersion)(process.version);
       const defaultsMode = (0, util_defaults_mode_node_1.resolveDefaultsModeConfig)(config);
-      const defaultConfigProvider = () =>
-        defaultsMode().then(smithy_client_1.loadConfigsForDefaultMode);
+      const defaultConfigProvider = () => defaultsMode().then(smithy_client_1.loadConfigsForDefaultMode);
       const clientSharedValues = (0, runtimeConfig_shared_1.getRuntimeConfig)(config);
       (0, core_1.emitWarningIfUnsupportedVersion)(process.version);
       return {
@@ -16872,11 +16041,9 @@ var require_runtimeConfig3 = __commonJS({
         runtime: "node",
         defaultsMode,
         bodyLengthChecker:
-          (config == null ? void 0 : config.bodyLengthChecker) ??
-          util_body_length_node_1.calculateBodyLength,
+          (config == null ? void 0 : config.bodyLengthChecker) ?? util_body_length_node_1.calculateBodyLength,
         credentialDefaultProvider:
-          (config == null ? void 0 : config.credentialDefaultProvider) ??
-          credential_provider_node_1.defaultProvider,
+          (config == null ? void 0 : config.credentialDefaultProvider) ?? credential_provider_node_1.defaultProvider,
         defaultUserAgentProvider:
           (config == null ? void 0 : config.defaultUserAgentProvider) ??
           (0, util_user_agent_node_1.defaultUserAgent)({
@@ -16896,16 +16063,13 @@ var require_runtimeConfig3 = __commonJS({
           },
           {
             schemeId: "smithy.api#noAuth",
-            identityProvider: (ipc) =>
-              ipc.getIdentityProvider("smithy.api#noAuth") || (async () => ({})),
+            identityProvider: (ipc) => ipc.getIdentityProvider("smithy.api#noAuth") || (async () => ({})),
             signer: new core_2.NoAuthSigner(),
           },
         ],
         maxAttempts:
           (config == null ? void 0 : config.maxAttempts) ??
-          (0, node_config_provider_1.loadConfig)(
-            middleware_retry_1.NODE_MAX_ATTEMPT_CONFIG_OPTIONS
-          ),
+          (0, node_config_provider_1.loadConfig)(middleware_retry_1.NODE_MAX_ATTEMPT_CONFIG_OPTIONS),
         region:
           (config == null ? void 0 : config.region) ??
           (0, node_config_provider_1.loadConfig)(
@@ -16919,22 +16083,16 @@ var require_runtimeConfig3 = __commonJS({
           (config == null ? void 0 : config.retryMode) ??
           (0, node_config_provider_1.loadConfig)({
             ...middleware_retry_1.NODE_RETRY_MODE_CONFIG_OPTIONS,
-            default: async () =>
-              (await defaultConfigProvider()).retryMode || util_retry_1.DEFAULT_RETRY_MODE,
+            default: async () => (await defaultConfigProvider()).retryMode || util_retry_1.DEFAULT_RETRY_MODE,
           }),
         sha256: (config == null ? void 0 : config.sha256) ?? hash_node_1.Hash.bind(null, "sha256"),
-        streamCollector:
-          (config == null ? void 0 : config.streamCollector) ?? node_http_handler_1.streamCollector,
+        streamCollector: (config == null ? void 0 : config.streamCollector) ?? node_http_handler_1.streamCollector,
         useDualstackEndpoint:
           (config == null ? void 0 : config.useDualstackEndpoint) ??
-          (0, node_config_provider_1.loadConfig)(
-            config_resolver_1.NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS
-          ),
+          (0, node_config_provider_1.loadConfig)(config_resolver_1.NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS),
         useFipsEndpoint:
           (config == null ? void 0 : config.useFipsEndpoint) ??
-          (0, node_config_provider_1.loadConfig)(
-            config_resolver_1.NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS
-          ),
+          (0, node_config_provider_1.loadConfig)(config_resolver_1.NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS),
       };
     };
     exports.getRuntimeConfig = getRuntimeConfig;
@@ -16952,9 +16110,7 @@ var require_httpAuthExtensionConfiguration = __commonJS({
       let _credentials = runtimeConfig.credentials;
       return {
         setHttpAuthScheme(httpAuthScheme) {
-          const index = _httpAuthSchemes.findIndex(
-            (scheme) => scheme.schemeId === httpAuthScheme.schemeId
-          );
+          const index = _httpAuthSchemes.findIndex((scheme) => scheme.schemeId === httpAuthScheme.schemeId);
           if (index === -1) {
             _httpAuthSchemes.push(httpAuthScheme);
           } else {
@@ -17002,26 +16158,18 @@ var require_runtimeExtensions = __commonJS({
     var asPartial = (t) => t;
     var resolveRuntimeExtensions = (runtimeConfig, extensions) => {
       const extensionConfiguration = {
-        ...asPartial(
-          (0, region_config_resolver_1.getAwsRegionExtensionConfiguration)(runtimeConfig)
-        ),
+        ...asPartial((0, region_config_resolver_1.getAwsRegionExtensionConfiguration)(runtimeConfig)),
         ...asPartial((0, smithy_client_1.getDefaultExtensionConfiguration)(runtimeConfig)),
         ...asPartial((0, protocol_http_1.getHttpHandlerExtensionConfiguration)(runtimeConfig)),
-        ...asPartial(
-          (0, httpAuthExtensionConfiguration_1.getHttpAuthExtensionConfiguration)(runtimeConfig)
-        ),
+        ...asPartial((0, httpAuthExtensionConfiguration_1.getHttpAuthExtensionConfiguration)(runtimeConfig)),
       };
       extensions.forEach((extension) => extension.configure(extensionConfiguration));
       return {
         ...runtimeConfig,
-        ...(0, region_config_resolver_1.resolveAwsRegionExtensionConfiguration)(
-          extensionConfiguration
-        ),
+        ...(0, region_config_resolver_1.resolveAwsRegionExtensionConfiguration)(extensionConfiguration),
         ...(0, smithy_client_1.resolveDefaultRuntimeConfig)(extensionConfiguration),
         ...(0, protocol_http_1.resolveHttpHandlerRuntimeConfig)(extensionConfiguration),
-        ...(0, httpAuthExtensionConfiguration_1.resolveHttpAuthRuntimeConfig)(
-          extensionConfiguration
-        ),
+        ...(0, httpAuthExtensionConfiguration_1.resolveHttpAuthRuntimeConfig)(extensionConfiguration),
       };
     };
     exports.resolveRuntimeExtensions = resolveRuntimeExtensions;
@@ -17068,14 +16216,10 @@ var require_STSClient = __commonJS({
         super(_config_8);
         this.config = _config_8;
         this.middlewareStack.use((0, middleware_retry_1.getRetryPlugin)(this.config));
-        this.middlewareStack.use(
-          (0, middleware_content_length_1.getContentLengthPlugin)(this.config)
-        );
+        this.middlewareStack.use((0, middleware_content_length_1.getContentLengthPlugin)(this.config));
         this.middlewareStack.use((0, middleware_host_header_1.getHostHeaderPlugin)(this.config));
         this.middlewareStack.use((0, middleware_logger_1.getLoggerPlugin)(this.config));
-        this.middlewareStack.use(
-          (0, middleware_recursion_detection_1.getRecursionDetectionPlugin)(this.config)
-        );
+        this.middlewareStack.use((0, middleware_recursion_detection_1.getRecursionDetectionPlugin)(this.config));
         this.middlewareStack.use((0, middleware_user_agent_1.getUserAgentPlugin)(this.config));
         this.middlewareStack.use(
           (0, core_1.getHttpAuthSchemeEndpointRuleSetPlugin)(this.config, {
@@ -17134,15 +16278,11 @@ var require_dist_cjs50 = __commonJS({
       AssumeRoleCommand: () => AssumeRoleCommand,
       AssumeRoleResponseFilterSensitiveLog: () => AssumeRoleResponseFilterSensitiveLog,
       AssumeRoleWithSAMLCommand: () => AssumeRoleWithSAMLCommand,
-      AssumeRoleWithSAMLRequestFilterSensitiveLog: () =>
-        AssumeRoleWithSAMLRequestFilterSensitiveLog,
-      AssumeRoleWithSAMLResponseFilterSensitiveLog: () =>
-        AssumeRoleWithSAMLResponseFilterSensitiveLog,
+      AssumeRoleWithSAMLRequestFilterSensitiveLog: () => AssumeRoleWithSAMLRequestFilterSensitiveLog,
+      AssumeRoleWithSAMLResponseFilterSensitiveLog: () => AssumeRoleWithSAMLResponseFilterSensitiveLog,
       AssumeRoleWithWebIdentityCommand: () => AssumeRoleWithWebIdentityCommand,
-      AssumeRoleWithWebIdentityRequestFilterSensitiveLog: () =>
-        AssumeRoleWithWebIdentityRequestFilterSensitiveLog,
-      AssumeRoleWithWebIdentityResponseFilterSensitiveLog: () =>
-        AssumeRoleWithWebIdentityResponseFilterSensitiveLog,
+      AssumeRoleWithWebIdentityRequestFilterSensitiveLog: () => AssumeRoleWithWebIdentityRequestFilterSensitiveLog,
+      AssumeRoleWithWebIdentityResponseFilterSensitiveLog: () => AssumeRoleWithWebIdentityResponseFilterSensitiveLog,
       ClientInputEndpointParameters: () => import_EndpointParameters9.ClientInputEndpointParameters,
       CredentialsFilterSensitiveLog: () => CredentialsFilterSensitiveLog,
       DecodeAuthorizationMessageCommand: () => DecodeAuthorizationMessageCommand,
@@ -17150,8 +16290,7 @@ var require_dist_cjs50 = __commonJS({
       GetAccessKeyInfoCommand: () => GetAccessKeyInfoCommand,
       GetCallerIdentityCommand: () => GetCallerIdentityCommand,
       GetFederationTokenCommand: () => GetFederationTokenCommand,
-      GetFederationTokenResponseFilterSensitiveLog: () =>
-        GetFederationTokenResponseFilterSensitiveLog,
+      GetFederationTokenResponseFilterSensitiveLog: () => GetFederationTokenResponseFilterSensitiveLog,
       GetSessionTokenCommand: () => GetSessionTokenCommand,
       GetSessionTokenResponseFilterSensitiveLog: () => GetSessionTokenResponseFilterSensitiveLog,
       IDPCommunicationErrorException: () => IDPCommunicationErrorException,
@@ -17463,10 +16602,7 @@ var require_dist_cjs50 = __commonJS({
       }
       const data = await (0, import_core.parseXmlBody)(output.body, context);
       let contents = {};
-      contents = de_AssumeRoleWithWebIdentityResponse(
-        data.AssumeRoleWithWebIdentityResult,
-        context
-      );
+      contents = de_AssumeRoleWithWebIdentityResponse(data.AssumeRoleWithWebIdentityResult, context);
       const response = {
         $metadata: deserializeMetadata(output),
         ...contents,
@@ -17479,10 +16615,7 @@ var require_dist_cjs50 = __commonJS({
       }
       const data = await (0, import_core.parseXmlBody)(output.body, context);
       let contents = {};
-      contents = de_DecodeAuthorizationMessageResponse(
-        data.DecodeAuthorizationMessageResult,
-        context
-      );
+      contents = de_DecodeAuthorizationMessageResponse(data.DecodeAuthorizationMessageResult, context);
       const response = {
         $metadata: deserializeMetadata(output),
         ...contents,
@@ -17591,18 +16724,15 @@ var require_dist_cjs50 = __commonJS({
       });
       return (0, import_smithy_client.decorateServiceException)(exception, body);
     }, "de_ExpiredTokenExceptionRes");
-    var de_IDPCommunicationErrorExceptionRes = /* @__PURE__ */ __name(
-      async (parsedOutput, context) => {
-        const body = parsedOutput.body;
-        const deserialized = de_IDPCommunicationErrorException(body.Error, context);
-        const exception = new IDPCommunicationErrorException({
-          $metadata: deserializeMetadata(parsedOutput),
-          ...deserialized,
-        });
-        return (0, import_smithy_client.decorateServiceException)(exception, body);
-      },
-      "de_IDPCommunicationErrorExceptionRes"
-    );
+    var de_IDPCommunicationErrorExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
+      const body = parsedOutput.body;
+      const deserialized = de_IDPCommunicationErrorException(body.Error, context);
+      const exception = new IDPCommunicationErrorException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...deserialized,
+      });
+      return (0, import_smithy_client.decorateServiceException)(exception, body);
+    }, "de_IDPCommunicationErrorExceptionRes");
     var de_IDPRejectedClaimExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
       const body = parsedOutput.body;
       const deserialized = de_IDPRejectedClaimException(body.Error, context);
@@ -17612,54 +16742,42 @@ var require_dist_cjs50 = __commonJS({
       });
       return (0, import_smithy_client.decorateServiceException)(exception, body);
     }, "de_IDPRejectedClaimExceptionRes");
-    var de_InvalidAuthorizationMessageExceptionRes = /* @__PURE__ */ __name(
-      async (parsedOutput, context) => {
-        const body = parsedOutput.body;
-        const deserialized = de_InvalidAuthorizationMessageException(body.Error, context);
-        const exception = new InvalidAuthorizationMessageException({
-          $metadata: deserializeMetadata(parsedOutput),
-          ...deserialized,
-        });
-        return (0, import_smithy_client.decorateServiceException)(exception, body);
-      },
-      "de_InvalidAuthorizationMessageExceptionRes"
-    );
-    var de_InvalidIdentityTokenExceptionRes = /* @__PURE__ */ __name(
-      async (parsedOutput, context) => {
-        const body = parsedOutput.body;
-        const deserialized = de_InvalidIdentityTokenException(body.Error, context);
-        const exception = new InvalidIdentityTokenException({
-          $metadata: deserializeMetadata(parsedOutput),
-          ...deserialized,
-        });
-        return (0, import_smithy_client.decorateServiceException)(exception, body);
-      },
-      "de_InvalidIdentityTokenExceptionRes"
-    );
-    var de_MalformedPolicyDocumentExceptionRes = /* @__PURE__ */ __name(
-      async (parsedOutput, context) => {
-        const body = parsedOutput.body;
-        const deserialized = de_MalformedPolicyDocumentException(body.Error, context);
-        const exception = new MalformedPolicyDocumentException({
-          $metadata: deserializeMetadata(parsedOutput),
-          ...deserialized,
-        });
-        return (0, import_smithy_client.decorateServiceException)(exception, body);
-      },
-      "de_MalformedPolicyDocumentExceptionRes"
-    );
-    var de_PackedPolicyTooLargeExceptionRes = /* @__PURE__ */ __name(
-      async (parsedOutput, context) => {
-        const body = parsedOutput.body;
-        const deserialized = de_PackedPolicyTooLargeException(body.Error, context);
-        const exception = new PackedPolicyTooLargeException({
-          $metadata: deserializeMetadata(parsedOutput),
-          ...deserialized,
-        });
-        return (0, import_smithy_client.decorateServiceException)(exception, body);
-      },
-      "de_PackedPolicyTooLargeExceptionRes"
-    );
+    var de_InvalidAuthorizationMessageExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
+      const body = parsedOutput.body;
+      const deserialized = de_InvalidAuthorizationMessageException(body.Error, context);
+      const exception = new InvalidAuthorizationMessageException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...deserialized,
+      });
+      return (0, import_smithy_client.decorateServiceException)(exception, body);
+    }, "de_InvalidAuthorizationMessageExceptionRes");
+    var de_InvalidIdentityTokenExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
+      const body = parsedOutput.body;
+      const deserialized = de_InvalidIdentityTokenException(body.Error, context);
+      const exception = new InvalidIdentityTokenException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...deserialized,
+      });
+      return (0, import_smithy_client.decorateServiceException)(exception, body);
+    }, "de_InvalidIdentityTokenExceptionRes");
+    var de_MalformedPolicyDocumentExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
+      const body = parsedOutput.body;
+      const deserialized = de_MalformedPolicyDocumentException(body.Error, context);
+      const exception = new MalformedPolicyDocumentException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...deserialized,
+      });
+      return (0, import_smithy_client.decorateServiceException)(exception, body);
+    }, "de_MalformedPolicyDocumentExceptionRes");
+    var de_PackedPolicyTooLargeExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
+      const body = parsedOutput.body;
+      const deserialized = de_PackedPolicyTooLargeException(body.Error, context);
+      const exception = new PackedPolicyTooLargeException({
+        $metadata: deserializeMetadata(parsedOutput),
+        ...deserialized,
+      });
+      return (0, import_smithy_client.decorateServiceException)(exception, body);
+    }, "de_PackedPolicyTooLargeExceptionRes");
     var de_RegionDisabledExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
       const body = parsedOutput.body;
       const deserialized = de_RegionDisabledException(body.Error, context);
@@ -18176,27 +17294,24 @@ var require_dist_cjs50 = __commonJS({
       "deserializeMetadata"
     );
     var throwDefaultError = (0, import_smithy_client.withBaseException)(STSServiceException);
-    var buildHttpRpcRequest = /* @__PURE__ */ __name(
-      async (context, headers, path, resolvedHostname, body) => {
-        const { hostname, protocol = "https", port, path: basePath } = await context.endpoint();
-        const contents = {
-          protocol,
-          hostname,
-          port,
-          method: "POST",
-          path: basePath.endsWith("/") ? basePath.slice(0, -1) + path : basePath + path,
-          headers,
-        };
-        if (resolvedHostname !== void 0) {
-          contents.hostname = resolvedHostname;
-        }
-        if (body !== void 0) {
-          contents.body = body;
-        }
-        return new import_protocol_http.HttpRequest(contents);
-      },
-      "buildHttpRpcRequest"
-    );
+    var buildHttpRpcRequest = /* @__PURE__ */ __name(async (context, headers, path, resolvedHostname, body) => {
+      const { hostname, protocol = "https", port, path: basePath } = await context.endpoint();
+      const contents = {
+        protocol,
+        hostname,
+        port,
+        method: "POST",
+        path: basePath.endsWith("/") ? basePath.slice(0, -1) + path : basePath + path,
+        headers,
+      };
+      if (resolvedHostname !== void 0) {
+        contents.hostname = resolvedHostname;
+      }
+      if (body !== void 0) {
+        contents.body = body;
+      }
+      return new import_protocol_http.HttpRequest(contents);
+    }, "buildHttpRpcRequest");
     var SHARED_HEADERS = {
       "content-type": "application/x-www-form-urlencoded",
     };
@@ -18284,10 +17399,7 @@ var require_dist_cjs50 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("AWSSecurityTokenServiceV20110615", "AssumeRole", {})
@@ -18306,10 +17418,7 @@ var require_dist_cjs50 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("AWSSecurityTokenServiceV20110615", "AssumeRoleWithSAML", {})
@@ -18328,18 +17437,12 @@ var require_dist_cjs50 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("AWSSecurityTokenServiceV20110615", "AssumeRoleWithWebIdentity", {})
       .n("STSClient", "AssumeRoleWithWebIdentityCommand")
-      .f(
-        AssumeRoleWithWebIdentityRequestFilterSensitiveLog,
-        AssumeRoleWithWebIdentityResponseFilterSensitiveLog
-      )
+      .f(AssumeRoleWithWebIdentityRequestFilterSensitiveLog, AssumeRoleWithWebIdentityResponseFilterSensitiveLog)
       .ser(se_AssumeRoleWithWebIdentityCommand)
       .de(de_AssumeRoleWithWebIdentityCommand)
       .build() {};
@@ -18353,10 +17456,7 @@ var require_dist_cjs50 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("AWSSecurityTokenServiceV20110615", "DecodeAuthorizationMessage", {})
@@ -18375,10 +17475,7 @@ var require_dist_cjs50 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("AWSSecurityTokenServiceV20110615", "GetAccessKeyInfo", {})
@@ -18397,10 +17494,7 @@ var require_dist_cjs50 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("AWSSecurityTokenServiceV20110615", "GetCallerIdentity", {})
@@ -18419,10 +17513,7 @@ var require_dist_cjs50 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("AWSSecurityTokenServiceV20110615", "GetFederationToken", {})
@@ -18441,10 +17532,7 @@ var require_dist_cjs50 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("AWSSecurityTokenServiceV20110615", "GetSessionToken", {})
@@ -18472,26 +17560,22 @@ var require_dist_cjs50 = __commonJS({
     (0, import_smithy_client.createAggregatedClient)(commands, STS);
     var import_EndpointParameters9 = require_EndpointParameters();
     var ASSUME_ROLE_DEFAULT_REGION = "us-east-1";
-    var resolveRegion = /* @__PURE__ */ __name(
-      async (_region, _parentRegion, credentialProviderLogger) => {
-        var _a2;
-        const region = typeof _region === "function" ? await _region() : _region;
-        const parentRegion =
-          typeof _parentRegion === "function" ? await _parentRegion() : _parentRegion;
-        (_a2 = credentialProviderLogger == null ? void 0 : credentialProviderLogger.debug) == null
-          ? void 0
-          : _a2.call(
-              credentialProviderLogger,
-              "@aws-sdk/client-sts::resolveRegion",
-              "accepting first of:",
-              `${region} (provider)`,
-              `${parentRegion} (parent client)`,
-              `${ASSUME_ROLE_DEFAULT_REGION} (STS default)`
-            );
-        return region ?? parentRegion ?? ASSUME_ROLE_DEFAULT_REGION;
-      },
-      "resolveRegion"
-    );
+    var resolveRegion = /* @__PURE__ */ __name(async (_region, _parentRegion, credentialProviderLogger) => {
+      var _a2;
+      const region = typeof _region === "function" ? await _region() : _region;
+      const parentRegion = typeof _parentRegion === "function" ? await _parentRegion() : _parentRegion;
+      (_a2 = credentialProviderLogger == null ? void 0 : credentialProviderLogger.debug) == null
+        ? void 0
+        : _a2.call(
+            credentialProviderLogger,
+            "@aws-sdk/client-sts::resolveRegion",
+            "accepting first of:",
+            `${region} (provider)`,
+            `${parentRegion} (parent client)`,
+            `${ASSUME_ROLE_DEFAULT_REGION} (STS default)`
+          );
+      return region ?? parentRegion ?? ASSUME_ROLE_DEFAULT_REGION;
+    }, "resolveRegion");
     var getDefaultRoleAssumer = /* @__PURE__ */ __name((stsOptions, stsClientCtor) => {
       let stsClient;
       let closureSourceCreds;
@@ -18500,21 +17584,16 @@ var require_dist_cjs50 = __commonJS({
         closureSourceCreds = sourceCreds;
         if (!stsClient) {
           const {
-            logger = (_a2 = stsOptions == null ? void 0 : stsOptions.parentClientConfig) == null
-              ? void 0
-              : _a2.logger,
+            logger = (_a2 = stsOptions == null ? void 0 : stsOptions.parentClientConfig) == null ? void 0 : _a2.logger,
             region,
-            requestHandler = (_b = stsOptions == null ? void 0 : stsOptions.parentClientConfig) ==
-            null
+            requestHandler = (_b = stsOptions == null ? void 0 : stsOptions.parentClientConfig) == null
               ? void 0
               : _b.requestHandler,
             credentialProviderLogger,
           } = stsOptions;
           const resolvedRegion = await resolveRegion(
             region,
-            (_c = stsOptions == null ? void 0 : stsOptions.parentClientConfig) == null
-              ? void 0
-              : _c.region,
+            (_c = stsOptions == null ? void 0 : stsOptions.parentClientConfig) == null ? void 0 : _c.region,
             credentialProviderLogger
           );
           stsClient = new stsClientCtor({
@@ -18537,55 +17616,43 @@ var require_dist_cjs50 = __commonJS({
         };
       };
     }, "getDefaultRoleAssumer");
-    var getDefaultRoleAssumerWithWebIdentity = /* @__PURE__ */ __name(
-      (stsOptions, stsClientCtor) => {
-        let stsClient;
-        return async (params) => {
-          var _a2, _b, _c;
-          if (!stsClient) {
-            const {
-              logger = (_a2 = stsOptions == null ? void 0 : stsOptions.parentClientConfig) == null
-                ? void 0
-                : _a2.logger,
-              region,
-              requestHandler = (_b = stsOptions == null ? void 0 : stsOptions.parentClientConfig) ==
-              null
-                ? void 0
-                : _b.requestHandler,
-              credentialProviderLogger,
-            } = stsOptions;
-            const resolvedRegion = await resolveRegion(
-              region,
-              (_c = stsOptions == null ? void 0 : stsOptions.parentClientConfig) == null
-                ? void 0
-                : _c.region,
-              credentialProviderLogger
-            );
-            stsClient = new stsClientCtor({
-              region: resolvedRegion,
-              requestHandler,
-              logger,
-            });
-          }
-          const { Credentials: Credentials2 } = await stsClient.send(
-            new AssumeRoleWithWebIdentityCommand(params)
+    var getDefaultRoleAssumerWithWebIdentity = /* @__PURE__ */ __name((stsOptions, stsClientCtor) => {
+      let stsClient;
+      return async (params) => {
+        var _a2, _b, _c;
+        if (!stsClient) {
+          const {
+            logger = (_a2 = stsOptions == null ? void 0 : stsOptions.parentClientConfig) == null ? void 0 : _a2.logger,
+            region,
+            requestHandler = (_b = stsOptions == null ? void 0 : stsOptions.parentClientConfig) == null
+              ? void 0
+              : _b.requestHandler,
+            credentialProviderLogger,
+          } = stsOptions;
+          const resolvedRegion = await resolveRegion(
+            region,
+            (_c = stsOptions == null ? void 0 : stsOptions.parentClientConfig) == null ? void 0 : _c.region,
+            credentialProviderLogger
           );
-          if (!Credentials2 || !Credentials2.AccessKeyId || !Credentials2.SecretAccessKey) {
-            throw new Error(
-              `Invalid response from STS.assumeRoleWithWebIdentity call with role ${params.RoleArn}`
-            );
-          }
-          return {
-            accessKeyId: Credentials2.AccessKeyId,
-            secretAccessKey: Credentials2.SecretAccessKey,
-            sessionToken: Credentials2.SessionToken,
-            expiration: Credentials2.Expiration,
-            credentialScope: Credentials2.CredentialScope,
-          };
+          stsClient = new stsClientCtor({
+            region: resolvedRegion,
+            requestHandler,
+            logger,
+          });
+        }
+        const { Credentials: Credentials2 } = await stsClient.send(new AssumeRoleWithWebIdentityCommand(params));
+        if (!Credentials2 || !Credentials2.AccessKeyId || !Credentials2.SecretAccessKey) {
+          throw new Error(`Invalid response from STS.assumeRoleWithWebIdentity call with role ${params.RoleArn}`);
+        }
+        return {
+          accessKeyId: Credentials2.AccessKeyId,
+          secretAccessKey: Credentials2.SecretAccessKey,
+          sessionToken: Credentials2.SessionToken,
+          expiration: Credentials2.Expiration,
+          credentialScope: Credentials2.CredentialScope,
         };
-      },
-      "getDefaultRoleAssumerWithWebIdentity"
-    );
+      };
+    }, "getDefaultRoleAssumerWithWebIdentity");
     var import_STSClient2 = require_STSClient();
     var getCustomizableStsClientCtor = /* @__PURE__ */ __name((baseCtor, customizations) => {
       var _a2;
@@ -18606,10 +17673,7 @@ var require_dist_cjs50 = __commonJS({
     }, "getCustomizableStsClientCtor");
     var getDefaultRoleAssumer2 = /* @__PURE__ */ __name(
       (stsOptions = {}, stsPlugins) =>
-        getDefaultRoleAssumer(
-          stsOptions,
-          getCustomizableStsClientCtor(import_STSClient2.STSClient, stsPlugins)
-        ),
+        getDefaultRoleAssumer(stsOptions, getCustomizableStsClientCtor(import_STSClient2.STSClient, stsPlugins)),
       "getDefaultRoleAssumer"
     );
     var getDefaultRoleAssumerWithWebIdentity2 = /* @__PURE__ */ __name(
@@ -18686,51 +17750,46 @@ var require_dist_cjs51 = __commonJS({
         ...(data.CredentialScope && { credentialScope: data.CredentialScope }),
       };
     }, "getValidatedProcessCredentials");
-    var resolveProcessCredentials = /* @__PURE__ */ __name(
-      async (profileName, profiles, logger) => {
-        const profile = profiles[profileName];
-        if (profiles[profileName]) {
-          const credentialProcess = profile["credential_process"];
-          if (credentialProcess !== void 0) {
-            const execPromise = (0, import_util.promisify)(import_child_process.exec);
+    var resolveProcessCredentials = /* @__PURE__ */ __name(async (profileName, profiles, logger) => {
+      const profile = profiles[profileName];
+      if (profiles[profileName]) {
+        const credentialProcess = profile["credential_process"];
+        if (credentialProcess !== void 0) {
+          const execPromise = (0, import_util.promisify)(import_child_process.exec);
+          try {
+            const { stdout } = await execPromise(credentialProcess);
+            let data;
             try {
-              const { stdout } = await execPromise(credentialProcess);
-              let data;
-              try {
-                data = JSON.parse(stdout.trim());
-              } catch {
-                throw Error(`Profile ${profileName} credential_process returned invalid JSON.`);
-              }
-              return getValidatedProcessCredentials(profileName, data);
-            } catch (error) {
-              throw new import_property_provider.CredentialsProviderError(error.message, {
-                logger,
-              });
+              data = JSON.parse(stdout.trim());
+            } catch {
+              throw Error(`Profile ${profileName} credential_process returned invalid JSON.`);
             }
-          } else {
-            throw new import_property_provider.CredentialsProviderError(
-              `Profile ${profileName} did not contain credential_process.`,
-              { logger }
-            );
+            return getValidatedProcessCredentials(profileName, data);
+          } catch (error) {
+            throw new import_property_provider.CredentialsProviderError(error.message, {
+              logger,
+            });
           }
         } else {
           throw new import_property_provider.CredentialsProviderError(
-            `Profile ${profileName} could not be found in shared credentials file.`,
-            {
-              logger,
-            }
+            `Profile ${profileName} did not contain credential_process.`,
+            { logger }
           );
         }
-      },
-      "resolveProcessCredentials"
-    );
+      } else {
+        throw new import_property_provider.CredentialsProviderError(
+          `Profile ${profileName} could not be found in shared credentials file.`,
+          {
+            logger,
+          }
+        );
+      }
+    }, "resolveProcessCredentials");
     var fromProcess = /* @__PURE__ */ __name(
       (init = {}) =>
         async () => {
           var _a;
-          (_a = init.logger) == null
-            ? void 0
-            : _a.debug("@aws-sdk/credential-provider-process - fromProcess");
+          (_a = init.logger) == null ? void 0 : _a.debug("@aws-sdk/credential-provider-process - fromProcess");
           const profiles = await (0, import_shared_ini_file_loader.parseKnownFiles)(init);
           return resolveProcessCredentials(
             (0, import_shared_ini_file_loader.getProfileName)(init),
@@ -18749,7 +17808,7 @@ var require_fromWebToken = __commonJS({
     var __createBinding =
       (exports && exports.__createBinding) ||
       (Object.create
-        ? ((o, m, k, k2) => {
+        ? (o, m, k, k2) => {
             if (k2 === void 0) k2 = k;
             var desc = Object.getOwnPropertyDescriptor(m, k);
             if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
@@ -18759,29 +17818,27 @@ var require_fromWebToken = __commonJS({
               };
             }
             Object.defineProperty(o, k2, desc);
-          })
-        : ((o, m, k, k2) => {
+          }
+        : (o, m, k, k2) => {
             if (k2 === void 0) k2 = k;
             o[k2] = m[k];
-          }));
+          });
     var __setModuleDefault =
       (exports && exports.__setModuleDefault) ||
       (Object.create
-        ? ((o, v) => {
+        ? (o, v) => {
             Object.defineProperty(o, "default", { enumerable: true, value: v });
-          })
-        : ((o, v) => {
+          }
+        : (o, v) => {
             o["default"] = v;
-          }));
+          });
     var __importStar =
       (exports && exports.__importStar) ||
       ((mod) => {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
-          for (var k in mod)
-            if (k !== "default" && Object.hasOwn(mod, k))
-              __createBinding(result, mod, k);
+          for (var k in mod) if (k !== "default" && Object.hasOwn(mod, k)) __createBinding(result, mod, k);
         }
         __setModuleDefault(result, mod);
         return result;
@@ -18790,18 +17847,8 @@ var require_fromWebToken = __commonJS({
     exports.fromWebToken = void 0;
     var fromWebToken2 = (init) => async () => {
       var _a;
-      (_a = init.logger) == null
-        ? void 0
-        : _a.debug("@aws-sdk/credential-provider-web-identity - fromWebToken");
-      const {
-        roleArn,
-        roleSessionName,
-        webIdentityToken,
-        providerId,
-        policyArns,
-        policy,
-        durationSeconds,
-      } = init;
+      (_a = init.logger) == null ? void 0 : _a.debug("@aws-sdk/credential-provider-web-identity - fromWebToken");
+      const { roleArn, roleSessionName, webIdentityToken, providerId, policyArns, policy, durationSeconds } = init;
       let { roleAssumerWithWebIdentity } = init;
       if (!roleAssumerWithWebIdentity) {
         const { getDefaultRoleAssumerWithWebIdentity } = await Promise.resolve().then(() =>
@@ -18845,21 +17892,14 @@ var require_fromTokenFile = __commonJS({
       (init = {}) =>
       async () => {
         var _a;
-        (_a = init.logger) == null
-          ? void 0
-          : _a.debug("@aws-sdk/credential-provider-web-identity - fromTokenFile");
-        const webIdentityTokenFile =
-          (init == null ? void 0 : init.webIdentityTokenFile) ?? process.env[ENV_TOKEN_FILE];
+        (_a = init.logger) == null ? void 0 : _a.debug("@aws-sdk/credential-provider-web-identity - fromTokenFile");
+        const webIdentityTokenFile = (init == null ? void 0 : init.webIdentityTokenFile) ?? process.env[ENV_TOKEN_FILE];
         const roleArn = (init == null ? void 0 : init.roleArn) ?? process.env[ENV_ROLE_ARN];
-        const roleSessionName =
-          (init == null ? void 0 : init.roleSessionName) ?? process.env[ENV_ROLE_SESSION_NAME];
+        const roleSessionName = (init == null ? void 0 : init.roleSessionName) ?? process.env[ENV_ROLE_SESSION_NAME];
         if (!webIdentityTokenFile || !roleArn) {
-          throw new property_provider_1.CredentialsProviderError(
-            "Web identity configuration not specified",
-            {
-              logger: init.logger,
-            }
-          );
+          throw new property_provider_1.CredentialsProviderError("Web identity configuration not specified", {
+            logger: init.logger,
+          });
         }
         return (0, fromWebToken_1.fromWebToken)({
           ...init,
@@ -18943,80 +17983,56 @@ var require_dist_cjs53 = __commonJS({
     module2.exports = __toCommonJS2(src_exports);
     var import_shared_ini_file_loader = require_dist_cjs13();
     var import_property_provider = require_dist_cjs12();
-    var resolveCredentialSource = /* @__PURE__ */ __name(
-      (credentialSource, profileName, logger) => {
-        const sourceProvidersMap = {
-          EcsContainer: async (options) => {
-            const { fromHttp } = await Promise.resolve().then(() => __toESM2(require_dist_cjs40()));
-            const { fromContainerMetadata } = await Promise.resolve().then(() =>
-              __toESM2(require_dist_cjs39())
-            );
-            logger == null
-              ? void 0
-              : logger.debug(
-                  "@aws-sdk/credential-provider-ini - credential_source is EcsContainer"
-                );
-            return (0, import_property_provider.chain)(
-              fromHttp(options ?? {}),
-              fromContainerMetadata(options)
-            );
-          },
-          Ec2InstanceMetadata: async (options) => {
-            logger == null
-              ? void 0
-              : logger.debug(
-                  "@aws-sdk/credential-provider-ini - credential_source is Ec2InstanceMetadata"
-                );
-            const { fromInstanceMetadata } = await Promise.resolve().then(() =>
-              __toESM2(require_dist_cjs39())
-            );
-            return fromInstanceMetadata(options);
-          },
-          Environment: async (options) => {
-            logger == null
-              ? void 0
-              : logger.debug("@aws-sdk/credential-provider-ini - credential_source is Environment");
-            const { fromEnv } = await Promise.resolve().then(() => __toESM2(require_dist_cjs38()));
-            return fromEnv(options);
-          },
-        };
-        if (credentialSource in sourceProvidersMap) {
-          return sourceProvidersMap[credentialSource];
-        } else {
-          throw new import_property_provider.CredentialsProviderError(
-            `Unsupported credential source in profile ${profileName}. Got ${credentialSource}, expected EcsContainer or Ec2InstanceMetadata or Environment.`,
-            { logger }
-          );
-        }
-      },
-      "resolveCredentialSource"
-    );
-    var isAssumeRoleProfile = /* @__PURE__ */ __name(
-      (arg, { profile = "default", logger } = {}) => {
-        return (
-          Boolean(arg) &&
-          typeof arg === "object" &&
-          typeof arg.role_arn === "string" &&
-          ["undefined", "string"].indexOf(typeof arg.role_session_name) > -1 &&
-          ["undefined", "string"].indexOf(typeof arg.external_id) > -1 &&
-          ["undefined", "string"].indexOf(typeof arg.mfa_serial) > -1 &&
-          (isAssumeRoleWithSourceProfile(arg, { profile, logger }) ||
-            isCredentialSourceProfile(arg, { profile, logger }))
+    var resolveCredentialSource = /* @__PURE__ */ __name((credentialSource, profileName, logger) => {
+      const sourceProvidersMap = {
+        EcsContainer: async (options) => {
+          const { fromHttp } = await Promise.resolve().then(() => __toESM2(require_dist_cjs40()));
+          const { fromContainerMetadata } = await Promise.resolve().then(() => __toESM2(require_dist_cjs39()));
+          logger == null
+            ? void 0
+            : logger.debug("@aws-sdk/credential-provider-ini - credential_source is EcsContainer");
+          return (0, import_property_provider.chain)(fromHttp(options ?? {}), fromContainerMetadata(options));
+        },
+        Ec2InstanceMetadata: async (options) => {
+          logger == null
+            ? void 0
+            : logger.debug("@aws-sdk/credential-provider-ini - credential_source is Ec2InstanceMetadata");
+          const { fromInstanceMetadata } = await Promise.resolve().then(() => __toESM2(require_dist_cjs39()));
+          return fromInstanceMetadata(options);
+        },
+        Environment: async (options) => {
+          logger == null ? void 0 : logger.debug("@aws-sdk/credential-provider-ini - credential_source is Environment");
+          const { fromEnv } = await Promise.resolve().then(() => __toESM2(require_dist_cjs38()));
+          return fromEnv(options);
+        },
+      };
+      if (credentialSource in sourceProvidersMap) {
+        return sourceProvidersMap[credentialSource];
+      } else {
+        throw new import_property_provider.CredentialsProviderError(
+          `Unsupported credential source in profile ${profileName}. Got ${credentialSource}, expected EcsContainer or Ec2InstanceMetadata or Environment.`,
+          { logger }
         );
-      },
-      "isAssumeRoleProfile"
-    );
+      }
+    }, "resolveCredentialSource");
+    var isAssumeRoleProfile = /* @__PURE__ */ __name((arg, { profile = "default", logger } = {}) => {
+      return (
+        Boolean(arg) &&
+        typeof arg === "object" &&
+        typeof arg.role_arn === "string" &&
+        ["undefined", "string"].indexOf(typeof arg.role_session_name) > -1 &&
+        ["undefined", "string"].indexOf(typeof arg.external_id) > -1 &&
+        ["undefined", "string"].indexOf(typeof arg.mfa_serial) > -1 &&
+        (isAssumeRoleWithSourceProfile(arg, { profile, logger }) || isCredentialSourceProfile(arg, { profile, logger }))
+      );
+    }, "isAssumeRoleProfile");
     var isAssumeRoleWithSourceProfile = /* @__PURE__ */ __name((arg, { profile, logger }) => {
       var _a;
-      const withSourceProfile =
-        typeof arg.source_profile === "string" && typeof arg.credential_source === "undefined";
+      const withSourceProfile = typeof arg.source_profile === "string" && typeof arg.credential_source === "undefined";
       if (withSourceProfile) {
         (_a = logger == null ? void 0 : logger.debug) == null
           ? void 0
-          : _a.call(
-              logger,
-              `    ${profile} isAssumeRoleWithSourceProfile source_profile=${arg.source_profile}`
-            );
+          : _a.call(logger, `    ${profile} isAssumeRoleWithSourceProfile source_profile=${arg.source_profile}`);
       }
       return withSourceProfile;
     }, "isAssumeRoleWithSourceProfile");
@@ -19027,10 +18043,7 @@ var require_dist_cjs53 = __commonJS({
       if (withProviderProfile) {
         (_a = logger == null ? void 0 : logger.debug) == null
           ? void 0
-          : _a.call(
-              logger,
-              `    ${profile} isCredentialSourceProfile credential_source=${arg.credential_source}`
-            );
+          : _a.call(logger, `    ${profile} isCredentialSourceProfile credential_source=${arg.credential_source}`);
       }
       return withProviderProfile;
     }, "isCredentialSourceProfile");
@@ -19042,9 +18055,7 @@ var require_dist_cjs53 = __commonJS({
           : _a.debug("@aws-sdk/credential-provider-ini - resolveAssumeRoleCredentials (STS)");
         const data = profiles[profileName];
         if (!options.roleAssumer) {
-          const { getDefaultRoleAssumer } = await Promise.resolve().then(() =>
-            __toESM2(require_dist_cjs50())
-          );
+          const { getDefaultRoleAssumer } = await Promise.resolve().then(() => __toESM2(require_dist_cjs50()));
           options.roleAssumer = getDefaultRoleAssumer(
             {
               ...options.clientConfig,
@@ -19083,13 +18094,7 @@ var require_dist_cjs53 = __commonJS({
                 [source_profile]: true,
               }
             )
-          : (
-              await resolveCredentialSource(
-                data.credential_source,
-                profileName,
-                options.logger
-              )(options)
-            )();
+          : (await resolveCredentialSource(data.credential_source, profileName, options.logger)(options))();
         const params = {
           RoleArn: data.role_arn,
           RoleSessionName: data.role_session_name || `aws-sdk-js-${Date.now()}`,
@@ -19113,8 +18118,7 @@ var require_dist_cjs53 = __commonJS({
       "resolveAssumeRoleCredentials"
     );
     var isProcessProfile = /* @__PURE__ */ __name(
-      (arg) =>
-        Boolean(arg) && typeof arg === "object" && typeof arg.credential_process === "string",
+      (arg) => Boolean(arg) && typeof arg === "object" && typeof arg.credential_process === "string",
       "isProcessProfile"
     );
     var resolveProcessCredentials = /* @__PURE__ */ __name(
@@ -19192,47 +18196,38 @@ var require_dist_cjs53 = __commonJS({
           ),
       "resolveWebIdentityCredentials"
     );
-    var resolveProfileData = /* @__PURE__ */ __name(
-      async (profileName, profiles, options, visitedProfiles = {}) => {
-        const data = profiles[profileName];
-        if (Object.keys(visitedProfiles).length > 0 && isStaticCredsProfile(data)) {
-          return resolveStaticCredentials(data, options);
-        }
-        if (isAssumeRoleProfile(data, { profile: profileName, logger: options.logger })) {
-          return resolveAssumeRoleCredentials(profileName, profiles, options, visitedProfiles);
-        }
-        if (isStaticCredsProfile(data)) {
-          return resolveStaticCredentials(data, options);
-        }
-        if (isWebIdentityProfile(data)) {
-          return resolveWebIdentityCredentials(data, options);
-        }
-        if (isProcessProfile(data)) {
-          return resolveProcessCredentials(options, profileName);
-        }
-        if (isSsoProfile(data)) {
-          return await resolveSsoCredentials(profileName, options);
-        }
-        throw new import_property_provider.CredentialsProviderError(
-          `Could not resolve credentials using profile: [${profileName}] in configuration/credentials file(s).`,
-          { logger: options.logger }
-        );
-      },
-      "resolveProfileData"
-    );
+    var resolveProfileData = /* @__PURE__ */ __name(async (profileName, profiles, options, visitedProfiles = {}) => {
+      const data = profiles[profileName];
+      if (Object.keys(visitedProfiles).length > 0 && isStaticCredsProfile(data)) {
+        return resolveStaticCredentials(data, options);
+      }
+      if (isAssumeRoleProfile(data, { profile: profileName, logger: options.logger })) {
+        return resolveAssumeRoleCredentials(profileName, profiles, options, visitedProfiles);
+      }
+      if (isStaticCredsProfile(data)) {
+        return resolveStaticCredentials(data, options);
+      }
+      if (isWebIdentityProfile(data)) {
+        return resolveWebIdentityCredentials(data, options);
+      }
+      if (isProcessProfile(data)) {
+        return resolveProcessCredentials(options, profileName);
+      }
+      if (isSsoProfile(data)) {
+        return await resolveSsoCredentials(profileName, options);
+      }
+      throw new import_property_provider.CredentialsProviderError(
+        `Could not resolve credentials using profile: [${profileName}] in configuration/credentials file(s).`,
+        { logger: options.logger }
+      );
+    }, "resolveProfileData");
     var fromIni = /* @__PURE__ */ __name(
       (init = {}) =>
         async () => {
           var _a;
-          (_a = init.logger) == null
-            ? void 0
-            : _a.debug("@aws-sdk/credential-provider-ini - fromIni");
+          (_a = init.logger) == null ? void 0 : _a.debug("@aws-sdk/credential-provider-ini - fromIni");
           const profiles = await (0, import_shared_ini_file_loader.parseKnownFiles)(init);
-          return resolveProfileData(
-            (0, import_shared_ini_file_loader.getProfileName)(init),
-            profiles,
-            init
-          );
+          return resolveProfileData((0, import_shared_ini_file_loader.getProfileName)(init), profiles, init);
         },
       "fromIni"
     );
@@ -19286,27 +18281,20 @@ var require_dist_cjs54 = __commonJS({
     var ENV_IMDS_DISABLED = "AWS_EC2_METADATA_DISABLED";
     var remoteProvider = /* @__PURE__ */ __name(async (init) => {
       var _a, _b;
-      const {
-        ENV_CMDS_FULL_URI,
-        ENV_CMDS_RELATIVE_URI,
-        fromContainerMetadata,
-        fromInstanceMetadata,
-      } = await Promise.resolve().then(() => __toESM2(require_dist_cjs39()));
+      const { ENV_CMDS_FULL_URI, ENV_CMDS_RELATIVE_URI, fromContainerMetadata, fromInstanceMetadata } =
+        await Promise.resolve().then(() => __toESM2(require_dist_cjs39()));
       if (process.env[ENV_CMDS_RELATIVE_URI] || process.env[ENV_CMDS_FULL_URI]) {
         (_a = init.logger) == null
           ? void 0
-          : _a.debug(
-              "@aws-sdk/credential-provider-node - remoteProvider::fromHttp/fromContainerMetadata"
-            );
+          : _a.debug("@aws-sdk/credential-provider-node - remoteProvider::fromHttp/fromContainerMetadata");
         const { fromHttp } = await Promise.resolve().then(() => __toESM2(require_dist_cjs40()));
         return (0, import_property_provider.chain)(fromHttp(init), fromContainerMetadata(init));
       }
       if (process.env[ENV_IMDS_DISABLED]) {
         return async () => {
-          throw new import_property_provider.CredentialsProviderError(
-            "EC2 Instance Metadata Service access disabled",
-            { logger: init.logger }
-          );
+          throw new import_property_provider.CredentialsProviderError("EC2 Instance Metadata Service access disabled", {
+            logger: init.logger,
+          });
         };
       }
       (_b = init.logger) == null
@@ -19341,9 +18329,7 @@ var require_dist_cjs54 = __commonJS({
                   { logger: init.logger }
                 );
               }
-              const { fromSSO } = await Promise.resolve().then(() =>
-                __toESM2(require_dist_cjs49())
-              );
+              const { fromSSO } = await Promise.resolve().then(() => __toESM2(require_dist_cjs49()));
               return fromSSO(init)();
             },
             async () => {
@@ -19351,9 +18337,7 @@ var require_dist_cjs54 = __commonJS({
               (_a = init.logger) == null
                 ? void 0
                 : _a.debug("@aws-sdk/credential-provider-node - defaultProvider::fromIni");
-              const { fromIni } = await Promise.resolve().then(() =>
-                __toESM2(require_dist_cjs53())
-              );
+              const { fromIni } = await Promise.resolve().then(() => __toESM2(require_dist_cjs53()));
               return fromIni(init)();
             },
             async () => {
@@ -19361,9 +18345,7 @@ var require_dist_cjs54 = __commonJS({
               (_a = init.logger) == null
                 ? void 0
                 : _a.debug("@aws-sdk/credential-provider-node - defaultProvider::fromProcess");
-              const { fromProcess } = await Promise.resolve().then(() =>
-                __toESM2(require_dist_cjs51())
-              );
+              const { fromProcess } = await Promise.resolve().then(() => __toESM2(require_dist_cjs51()));
               return fromProcess(init)();
             },
             async () => {
@@ -19483,8 +18465,7 @@ var require_ruleset4 = __commonJS({
                       type: f,
                     },
                     {
-                      error:
-                        "FIPS and DualStack are enabled, but this partition does not support one or both",
+                      error: "FIPS and DualStack are enabled, but this partition does not support one or both",
                       type: d,
                     },
                   ],
@@ -19594,8 +18575,7 @@ var require_runtimeConfig_shared4 = __commonJS({
         base64Encoder: (config == null ? void 0 : config.base64Encoder) ?? util_base64_1.toBase64,
         disableHostPrefix: (config == null ? void 0 : config.disableHostPrefix) ?? false,
         endpointProvider:
-          (config == null ? void 0 : config.endpointProvider) ??
-          endpointResolver_1.defaultEndpointResolver,
+          (config == null ? void 0 : config.endpointProvider) ?? endpointResolver_1.defaultEndpointResolver,
         extensions: (config == null ? void 0 : config.extensions) ?? [],
         httpAuthSchemeProvider:
           (config == null ? void 0 : config.httpAuthSchemeProvider) ??
@@ -19642,8 +18622,7 @@ var require_runtimeConfig4 = __commonJS({
     var getRuntimeConfig = (config) => {
       (0, smithy_client_2.emitWarningIfUnsupportedVersion)(process.version);
       const defaultsMode = (0, util_defaults_mode_node_1.resolveDefaultsModeConfig)(config);
-      const defaultConfigProvider = () =>
-        defaultsMode().then(smithy_client_1.loadConfigsForDefaultMode);
+      const defaultConfigProvider = () => defaultsMode().then(smithy_client_1.loadConfigsForDefaultMode);
       const clientSharedValues = (0, runtimeConfig_shared_1.getRuntimeConfig)(config);
       (0, core_1.emitWarningIfUnsupportedVersion)(process.version);
       return {
@@ -19652,11 +18631,9 @@ var require_runtimeConfig4 = __commonJS({
         runtime: "node",
         defaultsMode,
         bodyLengthChecker:
-          (config == null ? void 0 : config.bodyLengthChecker) ??
-          util_body_length_node_1.calculateBodyLength,
+          (config == null ? void 0 : config.bodyLengthChecker) ?? util_body_length_node_1.calculateBodyLength,
         credentialDefaultProvider:
-          (config == null ? void 0 : config.credentialDefaultProvider) ??
-          credential_provider_node_1.defaultProvider,
+          (config == null ? void 0 : config.credentialDefaultProvider) ?? credential_provider_node_1.defaultProvider,
         defaultUserAgentProvider:
           (config == null ? void 0 : config.defaultUserAgentProvider) ??
           (0, util_user_agent_node_1.defaultUserAgent)({
@@ -19665,9 +18642,7 @@ var require_runtimeConfig4 = __commonJS({
           }),
         maxAttempts:
           (config == null ? void 0 : config.maxAttempts) ??
-          (0, node_config_provider_1.loadConfig)(
-            middleware_retry_1.NODE_MAX_ATTEMPT_CONFIG_OPTIONS
-          ),
+          (0, node_config_provider_1.loadConfig)(middleware_retry_1.NODE_MAX_ATTEMPT_CONFIG_OPTIONS),
         region:
           (config == null ? void 0 : config.region) ??
           (0, node_config_provider_1.loadConfig)(
@@ -19681,22 +18656,16 @@ var require_runtimeConfig4 = __commonJS({
           (config == null ? void 0 : config.retryMode) ??
           (0, node_config_provider_1.loadConfig)({
             ...middleware_retry_1.NODE_RETRY_MODE_CONFIG_OPTIONS,
-            default: async () =>
-              (await defaultConfigProvider()).retryMode || util_retry_1.DEFAULT_RETRY_MODE,
+            default: async () => (await defaultConfigProvider()).retryMode || util_retry_1.DEFAULT_RETRY_MODE,
           }),
         sha256: (config == null ? void 0 : config.sha256) ?? hash_node_1.Hash.bind(null, "sha256"),
-        streamCollector:
-          (config == null ? void 0 : config.streamCollector) ?? node_http_handler_1.streamCollector,
+        streamCollector: (config == null ? void 0 : config.streamCollector) ?? node_http_handler_1.streamCollector,
         useDualstackEndpoint:
           (config == null ? void 0 : config.useDualstackEndpoint) ??
-          (0, node_config_provider_1.loadConfig)(
-            config_resolver_1.NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS
-          ),
+          (0, node_config_provider_1.loadConfig)(config_resolver_1.NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS),
         useFipsEndpoint:
           (config == null ? void 0 : config.useFipsEndpoint) ??
-          (0, node_config_provider_1.loadConfig)(
-            config_resolver_1.NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS
-          ),
+          (0, node_config_provider_1.loadConfig)(config_resolver_1.NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS),
       };
     };
     exports.getRuntimeConfig = getRuntimeConfig;
@@ -19731,21 +18700,16 @@ var require_dist_cjs55 = __commonJS({
       AccessDeniedException: () => AccessDeniedException,
       AggregationPeriod: () => AggregationPeriod,
       ApplicationConfigType: () => ApplicationConfigType,
-      AssociateAwsAccountWithPartnerAccountCommand: () =>
-        AssociateAwsAccountWithPartnerAccountCommand,
+      AssociateAwsAccountWithPartnerAccountCommand: () => AssociateAwsAccountWithPartnerAccountCommand,
       AssociateAwsAccountWithPartnerAccountRequestFilterSensitiveLog: () =>
         AssociateAwsAccountWithPartnerAccountRequestFilterSensitiveLog,
       AssociateAwsAccountWithPartnerAccountResponseFilterSensitiveLog: () =>
         AssociateAwsAccountWithPartnerAccountResponseFilterSensitiveLog,
-      AssociateMulticastGroupWithFuotaTaskCommand: () =>
-        AssociateMulticastGroupWithFuotaTaskCommand,
-      AssociateWirelessDeviceWithFuotaTaskCommand: () =>
-        AssociateWirelessDeviceWithFuotaTaskCommand,
-      AssociateWirelessDeviceWithMulticastGroupCommand: () =>
-        AssociateWirelessDeviceWithMulticastGroupCommand,
+      AssociateMulticastGroupWithFuotaTaskCommand: () => AssociateMulticastGroupWithFuotaTaskCommand,
+      AssociateWirelessDeviceWithFuotaTaskCommand: () => AssociateWirelessDeviceWithFuotaTaskCommand,
+      AssociateWirelessDeviceWithMulticastGroupCommand: () => AssociateWirelessDeviceWithMulticastGroupCommand,
       AssociateWirelessDeviceWithThingCommand: () => AssociateWirelessDeviceWithThingCommand,
-      AssociateWirelessGatewayWithCertificateCommand: () =>
-        AssociateWirelessGatewayWithCertificateCommand,
+      AssociateWirelessGatewayWithCertificateCommand: () => AssociateWirelessGatewayWithCertificateCommand,
       AssociateWirelessGatewayWithThingCommand: () => AssociateWirelessGatewayWithThingCommand,
       BatteryLevel: () => BatteryLevel,
       CancelMulticastGroupSessionCommand: () => CancelMulticastGroupSessionCommand,
@@ -19777,19 +18741,13 @@ var require_dist_cjs55 = __commonJS({
       DeviceProfileType: () => DeviceProfileType,
       DeviceState: () => DeviceState,
       DimensionName: () => DimensionName,
-      DisassociateAwsAccountFromPartnerAccountCommand: () =>
-        DisassociateAwsAccountFromPartnerAccountCommand,
-      DisassociateMulticastGroupFromFuotaTaskCommand: () =>
-        DisassociateMulticastGroupFromFuotaTaskCommand,
-      DisassociateWirelessDeviceFromFuotaTaskCommand: () =>
-        DisassociateWirelessDeviceFromFuotaTaskCommand,
-      DisassociateWirelessDeviceFromMulticastGroupCommand: () =>
-        DisassociateWirelessDeviceFromMulticastGroupCommand,
+      DisassociateAwsAccountFromPartnerAccountCommand: () => DisassociateAwsAccountFromPartnerAccountCommand,
+      DisassociateMulticastGroupFromFuotaTaskCommand: () => DisassociateMulticastGroupFromFuotaTaskCommand,
+      DisassociateWirelessDeviceFromFuotaTaskCommand: () => DisassociateWirelessDeviceFromFuotaTaskCommand,
+      DisassociateWirelessDeviceFromMulticastGroupCommand: () => DisassociateWirelessDeviceFromMulticastGroupCommand,
       DisassociateWirelessDeviceFromThingCommand: () => DisassociateWirelessDeviceFromThingCommand,
-      DisassociateWirelessGatewayFromCertificateCommand: () =>
-        DisassociateWirelessGatewayFromCertificateCommand,
-      DisassociateWirelessGatewayFromThingCommand: () =>
-        DisassociateWirelessGatewayFromThingCommand,
+      DisassociateWirelessGatewayFromCertificateCommand: () => DisassociateWirelessGatewayFromCertificateCommand,
+      DisassociateWirelessGatewayFromThingCommand: () => DisassociateWirelessGatewayFromThingCommand,
       DlClass: () => DlClass,
       DownlinkMode: () => DownlinkMode,
       Event: () => Event,
@@ -19802,8 +18760,7 @@ var require_dist_cjs55 = __commonJS({
       GetDestinationCommand: () => GetDestinationCommand,
       GetDeviceProfileCommand: () => GetDeviceProfileCommand,
       GetDeviceProfileResponseFilterSensitiveLog: () => GetDeviceProfileResponseFilterSensitiveLog,
-      GetEventConfigurationByResourceTypesCommand: () =>
-        GetEventConfigurationByResourceTypesCommand,
+      GetEventConfigurationByResourceTypesCommand: () => GetEventConfigurationByResourceTypesCommand,
       GetFuotaTaskCommand: () => GetFuotaTaskCommand,
       GetLogLevelsByResourceTypesCommand: () => GetLogLevelsByResourceTypesCommand,
       GetMetricConfigurationCommand: () => GetMetricConfigurationCommand,
@@ -19812,8 +18769,7 @@ var require_dist_cjs55 = __commonJS({
       GetMulticastGroupSessionCommand: () => GetMulticastGroupSessionCommand,
       GetNetworkAnalyzerConfigurationCommand: () => GetNetworkAnalyzerConfigurationCommand,
       GetPartnerAccountCommand: () => GetPartnerAccountCommand,
-      GetPartnerAccountResponseFilterSensitiveLog: () =>
-        GetPartnerAccountResponseFilterSensitiveLog,
+      GetPartnerAccountResponseFilterSensitiveLog: () => GetPartnerAccountResponseFilterSensitiveLog,
       GetPositionCommand: () => GetPositionCommand,
       GetPositionConfigurationCommand: () => GetPositionConfigurationCommand,
       GetPositionEstimateCommand: () => GetPositionEstimateCommand2,
@@ -19827,8 +18783,7 @@ var require_dist_cjs55 = __commonJS({
       GetWirelessDeviceStatisticsCommand: () => GetWirelessDeviceStatisticsCommand,
       GetWirelessGatewayCertificateCommand: () => GetWirelessGatewayCertificateCommand,
       GetWirelessGatewayCommand: () => GetWirelessGatewayCommand,
-      GetWirelessGatewayFirmwareInformationCommand: () =>
-        GetWirelessGatewayFirmwareInformationCommand,
+      GetWirelessGatewayFirmwareInformationCommand: () => GetWirelessGatewayFirmwareInformationCommand,
       GetWirelessGatewayStatisticsCommand: () => GetWirelessGatewayStatisticsCommand,
       GetWirelessGatewayTaskCommand: () => GetWirelessGatewayTaskCommand,
       GetWirelessGatewayTaskDefinitionCommand: () => GetWirelessGatewayTaskDefinitionCommand,
@@ -19840,16 +18795,14 @@ var require_dist_cjs55 = __commonJS({
       IoTWirelessServiceException: () => IoTWirelessServiceException,
       ListDestinationsCommand: () => ListDestinationsCommand,
       ListDeviceProfilesCommand: () => ListDeviceProfilesCommand,
-      ListDevicesForWirelessDeviceImportTaskCommand: () =>
-        ListDevicesForWirelessDeviceImportTaskCommand,
+      ListDevicesForWirelessDeviceImportTaskCommand: () => ListDevicesForWirelessDeviceImportTaskCommand,
       ListEventConfigurationsCommand: () => ListEventConfigurationsCommand,
       ListFuotaTasksCommand: () => ListFuotaTasksCommand,
       ListMulticastGroupsByFuotaTaskCommand: () => ListMulticastGroupsByFuotaTaskCommand,
       ListMulticastGroupsCommand: () => ListMulticastGroupsCommand,
       ListNetworkAnalyzerConfigurationsCommand: () => ListNetworkAnalyzerConfigurationsCommand,
       ListPartnerAccountsCommand: () => ListPartnerAccountsCommand,
-      ListPartnerAccountsResponseFilterSensitiveLog: () =>
-        ListPartnerAccountsResponseFilterSensitiveLog,
+      ListPartnerAccountsResponseFilterSensitiveLog: () => ListPartnerAccountsResponseFilterSensitiveLog,
       ListPositionConfigurationsCommand: () => ListPositionConfigurationsCommand,
       ListQueuedMessagesCommand: () => ListQueuedMessagesCommand,
       ListServiceProfilesCommand: () => ListServiceProfilesCommand,
@@ -19879,8 +18832,7 @@ var require_dist_cjs55 = __commonJS({
       SendDataToMulticastGroupCommand: () => SendDataToMulticastGroupCommand,
       SendDataToWirelessDeviceCommand: () => SendDataToWirelessDeviceCommand,
       SidewalkAccountInfoFilterSensitiveLog: () => SidewalkAccountInfoFilterSensitiveLog,
-      SidewalkAccountInfoWithFingerprintFilterSensitiveLog: () =>
-        SidewalkAccountInfoWithFingerprintFilterSensitiveLog,
+      SidewalkAccountInfoWithFingerprintFilterSensitiveLog: () => SidewalkAccountInfoWithFingerprintFilterSensitiveLog,
       SidewalkGetDeviceProfileFilterSensitiveLog: () => SidewalkGetDeviceProfileFilterSensitiveLog,
       SidewalkUpdateAccountFilterSensitiveLog: () => SidewalkUpdateAccountFilterSensitiveLog,
       SigningAlg: () => SigningAlg,
@@ -19900,16 +18852,14 @@ var require_dist_cjs55 = __commonJS({
       TooManyTagsException: () => TooManyTagsException,
       UntagResourceCommand: () => UntagResourceCommand,
       UpdateDestinationCommand: () => UpdateDestinationCommand,
-      UpdateEventConfigurationByResourceTypesCommand: () =>
-        UpdateEventConfigurationByResourceTypesCommand,
+      UpdateEventConfigurationByResourceTypesCommand: () => UpdateEventConfigurationByResourceTypesCommand,
       UpdateFuotaTaskCommand: () => UpdateFuotaTaskCommand,
       UpdateLogLevelsByResourceTypesCommand: () => UpdateLogLevelsByResourceTypesCommand,
       UpdateMetricConfigurationCommand: () => UpdateMetricConfigurationCommand,
       UpdateMulticastGroupCommand: () => UpdateMulticastGroupCommand,
       UpdateNetworkAnalyzerConfigurationCommand: () => UpdateNetworkAnalyzerConfigurationCommand,
       UpdatePartnerAccountCommand: () => UpdatePartnerAccountCommand,
-      UpdatePartnerAccountRequestFilterSensitiveLog: () =>
-        UpdatePartnerAccountRequestFilterSensitiveLog,
+      UpdatePartnerAccountRequestFilterSensitiveLog: () => UpdatePartnerAccountRequestFilterSensitiveLog,
       UpdatePositionCommand: () => UpdatePositionCommand,
       UpdateResourceEventConfigurationCommand: () => UpdateResourceEventConfigurationCommand,
       UpdateResourcePositionCommand: () => UpdateResourcePositionCommand,
@@ -19976,9 +18926,7 @@ var require_dist_cjs55 = __commonJS({
       let _credentials = runtimeConfig.credentials;
       return {
         setHttpAuthScheme(httpAuthScheme) {
-          const index = _httpAuthSchemes.findIndex(
-            (scheme) => scheme.schemeId === httpAuthScheme.schemeId
-          );
+          const index = _httpAuthSchemes.findIndex((scheme) => scheme.schemeId === httpAuthScheme.schemeId);
           if (index === -1) {
             _httpAuthSchemes.push(httpAuthScheme);
           } else {
@@ -20012,9 +18960,7 @@ var require_dist_cjs55 = __commonJS({
     var asPartial = /* @__PURE__ */ __name((t) => t, "asPartial");
     var resolveRuntimeExtensions = /* @__PURE__ */ __name((runtimeConfig, extensions) => {
       const extensionConfiguration = {
-        ...asPartial(
-          (0, import_region_config_resolver.getAwsRegionExtensionConfiguration)(runtimeConfig)
-        ),
+        ...asPartial((0, import_region_config_resolver.getAwsRegionExtensionConfiguration)(runtimeConfig)),
         ...asPartial((0, import_smithy_client.getDefaultExtensionConfiguration)(runtimeConfig)),
         ...asPartial((0, import_protocol_http.getHttpHandlerExtensionConfiguration)(runtimeConfig)),
         ...asPartial(getHttpAuthExtensionConfiguration(runtimeConfig)),
@@ -20022,9 +18968,7 @@ var require_dist_cjs55 = __commonJS({
       extensions.forEach((extension) => extension.configure(extensionConfiguration));
       return {
         ...runtimeConfig,
-        ...(0, import_region_config_resolver.resolveAwsRegionExtensionConfiguration)(
-          extensionConfiguration
-        ),
+        ...(0, import_region_config_resolver.resolveAwsRegionExtensionConfiguration)(extensionConfiguration),
         ...(0, import_smithy_client.resolveDefaultRuntimeConfig)(extensionConfiguration),
         ...(0, import_protocol_http.resolveHttpHandlerRuntimeConfig)(extensionConfiguration),
         ...resolveHttpAuthRuntimeConfig(extensionConfiguration),
@@ -20047,16 +18991,10 @@ var require_dist_cjs55 = __commonJS({
         super(_config_8);
         this.config = _config_8;
         this.middlewareStack.use((0, import_middleware_retry.getRetryPlugin)(this.config));
-        this.middlewareStack.use(
-          (0, import_middleware_content_length.getContentLengthPlugin)(this.config)
-        );
-        this.middlewareStack.use(
-          (0, import_middleware_host_header.getHostHeaderPlugin)(this.config)
-        );
+        this.middlewareStack.use((0, import_middleware_content_length.getContentLengthPlugin)(this.config));
+        this.middlewareStack.use((0, import_middleware_host_header.getHostHeaderPlugin)(this.config));
         this.middlewareStack.use((0, import_middleware_logger.getLoggerPlugin)(this.config));
-        this.middlewareStack.use(
-          (0, import_middleware_recursion_detection.getRecursionDetectionPlugin)(this.config)
-        );
+        this.middlewareStack.use((0, import_middleware_recursion_detection.getRecursionDetectionPlugin)(this.config));
         this.middlewareStack.use((0, import_middleware_user_agent.getUserAgentPlugin)(this.config));
         this.middlewareStack.use(
           (0, import_core.getHttpAuthSchemeEndpointRuleSetPlugin)(this.config, {
@@ -20082,7 +19020,9 @@ var require_dist_cjs55 = __commonJS({
     __name(_IoTWirelessClient, "IoTWirelessClient");
     var IoTWirelessClient2 = _IoTWirelessClient;
     var import_middleware_serde = require_dist_cjs17();
-    var _IoTWirelessServiceException = class _IoTWirelessServiceException2 extends import_smithy_client.ServiceException {
+    var _IoTWirelessServiceException = class _IoTWirelessServiceException2
+      extends import_smithy_client.ServiceException
+    {
       constructor(options) {
         super(options);
         Object.setPrototypeOf(this, _IoTWirelessServiceException2.prototype);
@@ -20494,9 +19434,7 @@ var require_dist_cjs55 = __commonJS({
       (obj) => ({
         ...obj,
         ...(obj.Sidewalk && {
-          Sidewalk: obj.Sidewalk.map((item) =>
-            SidewalkAccountInfoWithFingerprintFilterSensitiveLog(item)
-          ),
+          Sidewalk: obj.Sidewalk.map((item) => SidewalkAccountInfoWithFingerprintFilterSensitiveLog(item)),
         }),
       }),
       "ListPartnerAccountsResponseFilterSensitiveLog"
@@ -20544,140 +19482,119 @@ var require_dist_cjs55 = __commonJS({
       }),
       "UpdatePartnerAccountRequestFilterSensitiveLog"
     );
-    var se_AssociateAwsAccountWithPartnerAccountCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/partner-accounts");
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            ClientRequestToken: [true, (_) => _ ?? (0, import_uuid.v4)()],
-            Sidewalk: (_) => (0, import_smithy_client._json)(_),
-            Tags: (_) => (0, import_smithy_client._json)(_),
-          })
-        );
-        b.m("POST").h(headers).b(body);
-        return b.build();
-      },
-      "se_AssociateAwsAccountWithPartnerAccountCommand"
-    );
-    var se_AssociateMulticastGroupWithFuotaTaskCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/fuota-tasks/{Id}/multicast-group");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            MulticastGroupId: [],
-          })
-        );
-        b.m("PUT").h(headers).b(body);
-        return b.build();
-      },
-      "se_AssociateMulticastGroupWithFuotaTaskCommand"
-    );
-    var se_AssociateWirelessDeviceWithFuotaTaskCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/fuota-tasks/{Id}/wireless-device");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            WirelessDeviceId: [],
-          })
-        );
-        b.m("PUT").h(headers).b(body);
-        return b.build();
-      },
-      "se_AssociateWirelessDeviceWithFuotaTaskCommand"
-    );
-    var se_AssociateWirelessDeviceWithMulticastGroupCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/multicast-groups/{Id}/wireless-device");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            WirelessDeviceId: [],
-          })
-        );
-        b.m("PUT").h(headers).b(body);
-        return b.build();
-      },
-      "se_AssociateWirelessDeviceWithMulticastGroupCommand"
-    );
-    var se_AssociateWirelessDeviceWithThingCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/wireless-devices/{Id}/thing");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            ThingArn: [],
-          })
-        );
-        b.m("PUT").h(headers).b(body);
-        return b.build();
-      },
-      "se_AssociateWirelessDeviceWithThingCommand"
-    );
-    var se_AssociateWirelessGatewayWithCertificateCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/wireless-gateways/{Id}/certificate");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            IotCertificateId: [],
-          })
-        );
-        b.m("PUT").h(headers).b(body);
-        return b.build();
-      },
-      "se_AssociateWirelessGatewayWithCertificateCommand"
-    );
-    var se_AssociateWirelessGatewayWithThingCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/wireless-gateways/{Id}/thing");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            ThingArn: [],
-          })
-        );
-        b.m("PUT").h(headers).b(body);
-        return b.build();
-      },
-      "se_AssociateWirelessGatewayWithThingCommand"
-    );
+    var se_AssociateAwsAccountWithPartnerAccountCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/partner-accounts");
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          ClientRequestToken: [true, (_) => _ ?? (0, import_uuid.v4)()],
+          Sidewalk: (_) => (0, import_smithy_client._json)(_),
+          Tags: (_) => (0, import_smithy_client._json)(_),
+        })
+      );
+      b.m("POST").h(headers).b(body);
+      return b.build();
+    }, "se_AssociateAwsAccountWithPartnerAccountCommand");
+    var se_AssociateMulticastGroupWithFuotaTaskCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/fuota-tasks/{Id}/multicast-group");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          MulticastGroupId: [],
+        })
+      );
+      b.m("PUT").h(headers).b(body);
+      return b.build();
+    }, "se_AssociateMulticastGroupWithFuotaTaskCommand");
+    var se_AssociateWirelessDeviceWithFuotaTaskCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/fuota-tasks/{Id}/wireless-device");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          WirelessDeviceId: [],
+        })
+      );
+      b.m("PUT").h(headers).b(body);
+      return b.build();
+    }, "se_AssociateWirelessDeviceWithFuotaTaskCommand");
+    var se_AssociateWirelessDeviceWithMulticastGroupCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/multicast-groups/{Id}/wireless-device");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          WirelessDeviceId: [],
+        })
+      );
+      b.m("PUT").h(headers).b(body);
+      return b.build();
+    }, "se_AssociateWirelessDeviceWithMulticastGroupCommand");
+    var se_AssociateWirelessDeviceWithThingCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/wireless-devices/{Id}/thing");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          ThingArn: [],
+        })
+      );
+      b.m("PUT").h(headers).b(body);
+      return b.build();
+    }, "se_AssociateWirelessDeviceWithThingCommand");
+    var se_AssociateWirelessGatewayWithCertificateCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/wireless-gateways/{Id}/certificate");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          IotCertificateId: [],
+        })
+      );
+      b.m("PUT").h(headers).b(body);
+      return b.build();
+    }, "se_AssociateWirelessGatewayWithCertificateCommand");
+    var se_AssociateWirelessGatewayWithThingCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/wireless-gateways/{Id}/thing");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          ThingArn: [],
+        })
+      );
+      b.m("PUT").h(headers).b(body);
+      return b.build();
+    }, "se_AssociateWirelessGatewayWithThingCommand");
     var se_CancelMulticastGroupSessionCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {};
@@ -20770,31 +19687,28 @@ var require_dist_cjs55 = __commonJS({
       b.m("POST").h(headers).b(body);
       return b.build();
     }, "se_CreateMulticastGroupCommand");
-    var se_CreateNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/network-analyzer-configurations");
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            ClientRequestToken: [true, (_) => _ ?? (0, import_uuid.v4)()],
-            Description: [],
-            MulticastGroups: (_) => (0, import_smithy_client._json)(_),
-            Name: [],
-            Tags: (_) => (0, import_smithy_client._json)(_),
-            TraceContent: (_) => (0, import_smithy_client._json)(_),
-            WirelessDevices: (_) => (0, import_smithy_client._json)(_),
-            WirelessGateways: (_) => (0, import_smithy_client._json)(_),
-          })
-        );
-        b.m("POST").h(headers).b(body);
-        return b.build();
-      },
-      "se_CreateNetworkAnalyzerConfigurationCommand"
-    );
+    var se_CreateNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/network-analyzer-configurations");
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          ClientRequestToken: [true, (_) => _ ?? (0, import_uuid.v4)()],
+          Description: [],
+          MulticastGroups: (_) => (0, import_smithy_client._json)(_),
+          Name: [],
+          Tags: (_) => (0, import_smithy_client._json)(_),
+          TraceContent: (_) => (0, import_smithy_client._json)(_),
+          WirelessDevices: (_) => (0, import_smithy_client._json)(_),
+          WirelessGateways: (_) => (0, import_smithy_client._json)(_),
+        })
+      );
+      b.m("POST").h(headers).b(body);
+      return b.build();
+    }, "se_CreateNetworkAnalyzerConfigurationCommand");
     var se_CreateServiceProfileCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {
@@ -20871,28 +19785,25 @@ var require_dist_cjs55 = __commonJS({
       b.m("POST").h(headers).b(body);
       return b.build();
     }, "se_CreateWirelessGatewayTaskCommand");
-    var se_CreateWirelessGatewayTaskDefinitionCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/wireless-gateway-task-definitions");
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            AutoCreateTasks: [],
-            ClientRequestToken: [true, (_) => _ ?? (0, import_uuid.v4)()],
-            Name: [],
-            Tags: (_) => (0, import_smithy_client._json)(_),
-            Update: (_) => (0, import_smithy_client._json)(_),
-          })
-        );
-        b.m("POST").h(headers).b(body);
-        return b.build();
-      },
-      "se_CreateWirelessGatewayTaskDefinitionCommand"
-    );
+    var se_CreateWirelessGatewayTaskDefinitionCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/wireless-gateway-task-definitions");
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          AutoCreateTasks: [],
+          ClientRequestToken: [true, (_) => _ ?? (0, import_uuid.v4)()],
+          Name: [],
+          Tags: (_) => (0, import_smithy_client._json)(_),
+          Update: (_) => (0, import_smithy_client._json)(_),
+        })
+      );
+      b.m("POST").h(headers).b(body);
+      return b.build();
+    }, "se_CreateWirelessGatewayTaskDefinitionCommand");
     var se_DeleteDestinationCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {};
@@ -20929,18 +19840,15 @@ var require_dist_cjs55 = __commonJS({
       b.m("DELETE").h(headers).b(body);
       return b.build();
     }, "se_DeleteMulticastGroupCommand");
-    var se_DeleteNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/network-analyzer-configurations/{ConfigurationName}");
-        b.p("ConfigurationName", () => input.ConfigurationName, "{ConfigurationName}", false);
-        let body;
-        b.m("DELETE").h(headers).b(body);
-        return b.build();
-      },
-      "se_DeleteNetworkAnalyzerConfigurationCommand"
-    );
+    var se_DeleteNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/network-analyzer-configurations/{ConfigurationName}");
+      b.p("ConfigurationName", () => input.ConfigurationName, "{ConfigurationName}", false);
+      let body;
+      b.m("DELETE").h(headers).b(body);
+      return b.build();
+    }, "se_DeleteNetworkAnalyzerConfigurationCommand");
     var se_DeleteQueuedMessagesCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {};
@@ -20972,18 +19880,15 @@ var require_dist_cjs55 = __commonJS({
       b.m("DELETE").h(headers).b(body);
       return b.build();
     }, "se_DeleteWirelessDeviceCommand");
-    var se_DeleteWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/wireless_device_import_task/{Id}");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        b.m("DELETE").h(headers).b(body);
-        return b.build();
-      },
-      "se_DeleteWirelessDeviceImportTaskCommand"
-    );
+    var se_DeleteWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/wireless_device_import_task/{Id}");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      b.m("DELETE").h(headers).b(body);
+      return b.build();
+    }, "se_DeleteWirelessDeviceImportTaskCommand");
     var se_DeleteWirelessGatewayCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {};
@@ -21002,18 +19907,15 @@ var require_dist_cjs55 = __commonJS({
       b.m("DELETE").h(headers).b(body);
       return b.build();
     }, "se_DeleteWirelessGatewayTaskCommand");
-    var se_DeleteWirelessGatewayTaskDefinitionCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/wireless-gateway-task-definitions/{Id}");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        b.m("DELETE").h(headers).b(body);
-        return b.build();
-      },
-      "se_DeleteWirelessGatewayTaskDefinitionCommand"
-    );
+    var se_DeleteWirelessGatewayTaskDefinitionCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/wireless-gateway-task-definitions/{Id}");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      b.m("DELETE").h(headers).b(body);
+      return b.build();
+    }, "se_DeleteWirelessGatewayTaskDefinitionCommand");
     var se_DeregisterWirelessDeviceCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {};
@@ -21026,96 +19928,75 @@ var require_dist_cjs55 = __commonJS({
       b.m("PATCH").h(headers).q(query).b(body);
       return b.build();
     }, "se_DeregisterWirelessDeviceCommand");
-    var se_DisassociateAwsAccountFromPartnerAccountCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/partner-accounts/{PartnerAccountId}");
-        b.p("PartnerAccountId", () => input.PartnerAccountId, "{PartnerAccountId}", false);
-        const query = (0, import_smithy_client.map)({
-          [_pT]: [, (0, import_smithy_client.expectNonNull)(input[_PT], `PartnerType`)],
-        });
-        let body;
-        b.m("DELETE").h(headers).q(query).b(body);
-        return b.build();
-      },
-      "se_DisassociateAwsAccountFromPartnerAccountCommand"
-    );
-    var se_DisassociateMulticastGroupFromFuotaTaskCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/fuota-tasks/{Id}/multicast-groups/{MulticastGroupId}");
-        b.p("Id", () => input.Id, "{Id}", false);
-        b.p("MulticastGroupId", () => input.MulticastGroupId, "{MulticastGroupId}", false);
-        let body;
-        b.m("DELETE").h(headers).b(body);
-        return b.build();
-      },
-      "se_DisassociateMulticastGroupFromFuotaTaskCommand"
-    );
-    var se_DisassociateWirelessDeviceFromFuotaTaskCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/fuota-tasks/{Id}/wireless-devices/{WirelessDeviceId}");
-        b.p("Id", () => input.Id, "{Id}", false);
-        b.p("WirelessDeviceId", () => input.WirelessDeviceId, "{WirelessDeviceId}", false);
-        let body;
-        b.m("DELETE").h(headers).b(body);
-        return b.build();
-      },
-      "se_DisassociateWirelessDeviceFromFuotaTaskCommand"
-    );
-    var se_DisassociateWirelessDeviceFromMulticastGroupCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/multicast-groups/{Id}/wireless-devices/{WirelessDeviceId}");
-        b.p("Id", () => input.Id, "{Id}", false);
-        b.p("WirelessDeviceId", () => input.WirelessDeviceId, "{WirelessDeviceId}", false);
-        let body;
-        b.m("DELETE").h(headers).b(body);
-        return b.build();
-      },
-      "se_DisassociateWirelessDeviceFromMulticastGroupCommand"
-    );
-    var se_DisassociateWirelessDeviceFromThingCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/wireless-devices/{Id}/thing");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        b.m("DELETE").h(headers).b(body);
-        return b.build();
-      },
-      "se_DisassociateWirelessDeviceFromThingCommand"
-    );
-    var se_DisassociateWirelessGatewayFromCertificateCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/wireless-gateways/{Id}/certificate");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        b.m("DELETE").h(headers).b(body);
-        return b.build();
-      },
-      "se_DisassociateWirelessGatewayFromCertificateCommand"
-    );
-    var se_DisassociateWirelessGatewayFromThingCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/wireless-gateways/{Id}/thing");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        b.m("DELETE").h(headers).b(body);
-        return b.build();
-      },
-      "se_DisassociateWirelessGatewayFromThingCommand"
-    );
+    var se_DisassociateAwsAccountFromPartnerAccountCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/partner-accounts/{PartnerAccountId}");
+      b.p("PartnerAccountId", () => input.PartnerAccountId, "{PartnerAccountId}", false);
+      const query = (0, import_smithy_client.map)({
+        [_pT]: [, (0, import_smithy_client.expectNonNull)(input[_PT], `PartnerType`)],
+      });
+      let body;
+      b.m("DELETE").h(headers).q(query).b(body);
+      return b.build();
+    }, "se_DisassociateAwsAccountFromPartnerAccountCommand");
+    var se_DisassociateMulticastGroupFromFuotaTaskCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/fuota-tasks/{Id}/multicast-groups/{MulticastGroupId}");
+      b.p("Id", () => input.Id, "{Id}", false);
+      b.p("MulticastGroupId", () => input.MulticastGroupId, "{MulticastGroupId}", false);
+      let body;
+      b.m("DELETE").h(headers).b(body);
+      return b.build();
+    }, "se_DisassociateMulticastGroupFromFuotaTaskCommand");
+    var se_DisassociateWirelessDeviceFromFuotaTaskCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/fuota-tasks/{Id}/wireless-devices/{WirelessDeviceId}");
+      b.p("Id", () => input.Id, "{Id}", false);
+      b.p("WirelessDeviceId", () => input.WirelessDeviceId, "{WirelessDeviceId}", false);
+      let body;
+      b.m("DELETE").h(headers).b(body);
+      return b.build();
+    }, "se_DisassociateWirelessDeviceFromFuotaTaskCommand");
+    var se_DisassociateWirelessDeviceFromMulticastGroupCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/multicast-groups/{Id}/wireless-devices/{WirelessDeviceId}");
+      b.p("Id", () => input.Id, "{Id}", false);
+      b.p("WirelessDeviceId", () => input.WirelessDeviceId, "{WirelessDeviceId}", false);
+      let body;
+      b.m("DELETE").h(headers).b(body);
+      return b.build();
+    }, "se_DisassociateWirelessDeviceFromMulticastGroupCommand");
+    var se_DisassociateWirelessDeviceFromThingCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/wireless-devices/{Id}/thing");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      b.m("DELETE").h(headers).b(body);
+      return b.build();
+    }, "se_DisassociateWirelessDeviceFromThingCommand");
+    var se_DisassociateWirelessGatewayFromCertificateCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/wireless-gateways/{Id}/certificate");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      b.m("DELETE").h(headers).b(body);
+      return b.build();
+    }, "se_DisassociateWirelessGatewayFromCertificateCommand");
+    var se_DisassociateWirelessGatewayFromThingCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/wireless-gateways/{Id}/thing");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      b.m("DELETE").h(headers).b(body);
+      return b.build();
+    }, "se_DisassociateWirelessGatewayFromThingCommand");
     var se_GetDestinationCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {};
@@ -21134,20 +20015,17 @@ var require_dist_cjs55 = __commonJS({
       b.m("GET").h(headers).b(body);
       return b.build();
     }, "se_GetDeviceProfileCommand");
-    var se_GetEventConfigurationByResourceTypesCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/event-configurations-resource-types");
-        let body;
-        body = "";
-        b.m("GET").h(headers).b(body);
-        return b.build();
-      },
-      "se_GetEventConfigurationByResourceTypesCommand"
-    );
+    var se_GetEventConfigurationByResourceTypesCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/event-configurations-resource-types");
+      let body;
+      body = "";
+      b.m("GET").h(headers).b(body);
+      return b.build();
+    }, "se_GetEventConfigurationByResourceTypesCommand");
     var se_GetFuotaTaskCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {};
@@ -21212,18 +20090,15 @@ var require_dist_cjs55 = __commonJS({
       b.m("GET").h(headers).b(body);
       return b.build();
     }, "se_GetMulticastGroupSessionCommand");
-    var se_GetNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/network-analyzer-configurations/{ConfigurationName}");
-        b.p("ConfigurationName", () => input.ConfigurationName, "{ConfigurationName}", false);
-        let body;
-        b.m("GET").h(headers).b(body);
-        return b.build();
-      },
-      "se_GetNetworkAnalyzerConfigurationCommand"
-    );
+    var se_GetNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/network-analyzer-configurations/{ConfigurationName}");
+      b.p("ConfigurationName", () => input.ConfigurationName, "{ConfigurationName}", false);
+      let body;
+      b.m("GET").h(headers).b(body);
+      return b.build();
+    }, "se_GetNetworkAnalyzerConfigurationCommand");
     var se_GetPartnerAccountCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {};
@@ -21387,18 +20262,15 @@ var require_dist_cjs55 = __commonJS({
       b.m("GET").h(headers).b(body);
       return b.build();
     }, "se_GetWirelessGatewayCertificateCommand");
-    var se_GetWirelessGatewayFirmwareInformationCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/wireless-gateways/{Id}/firmware-information");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        b.m("GET").h(headers).b(body);
-        return b.build();
-      },
-      "se_GetWirelessGatewayFirmwareInformationCommand"
-    );
+    var se_GetWirelessGatewayFirmwareInformationCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/wireless-gateways/{Id}/firmware-information");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      b.m("GET").h(headers).b(body);
+      return b.build();
+    }, "se_GetWirelessGatewayFirmwareInformationCommand");
     var se_GetWirelessGatewayStatisticsCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {};
@@ -21417,18 +20289,15 @@ var require_dist_cjs55 = __commonJS({
       b.m("GET").h(headers).b(body);
       return b.build();
     }, "se_GetWirelessGatewayTaskCommand");
-    var se_GetWirelessGatewayTaskDefinitionCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/wireless-gateway-task-definitions/{Id}");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        b.m("GET").h(headers).b(body);
-        return b.build();
-      },
-      "se_GetWirelessGatewayTaskDefinitionCommand"
-    );
+    var se_GetWirelessGatewayTaskDefinitionCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/wireless-gateway-task-definitions/{Id}");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      b.m("GET").h(headers).b(body);
+      return b.build();
+    }, "se_GetWirelessGatewayTaskDefinitionCommand");
     var se_ListDestinationsCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {};
@@ -21454,23 +20323,20 @@ var require_dist_cjs55 = __commonJS({
       b.m("GET").h(headers).q(query).b(body);
       return b.build();
     }, "se_ListDeviceProfilesCommand");
-    var se_ListDevicesForWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/wireless_device_import_task");
-        const query = (0, import_smithy_client.map)({
-          [_i]: [, (0, import_smithy_client.expectNonNull)(input[_I], `Id`)],
-          [_mR]: [() => input.MaxResults !== void 0, () => input[_MR].toString()],
-          [_nT]: [, input[_NT]],
-          [_s]: [, input[_S]],
-        });
-        let body;
-        b.m("GET").h(headers).q(query).b(body);
-        return b.build();
-      },
-      "se_ListDevicesForWirelessDeviceImportTaskCommand"
-    );
+    var se_ListDevicesForWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/wireless_device_import_task");
+      const query = (0, import_smithy_client.map)({
+        [_i]: [, (0, import_smithy_client.expectNonNull)(input[_I], `Id`)],
+        [_mR]: [() => input.MaxResults !== void 0, () => input[_MR].toString()],
+        [_nT]: [, input[_NT]],
+        [_s]: [, input[_S]],
+      });
+      let body;
+      b.m("GET").h(headers).q(query).b(body);
+      return b.build();
+    }, "se_ListDevicesForWirelessDeviceImportTaskCommand");
     var se_ListEventConfigurationsCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {};
@@ -21508,37 +20374,31 @@ var require_dist_cjs55 = __commonJS({
       b.m("GET").h(headers).q(query).b(body);
       return b.build();
     }, "se_ListMulticastGroupsCommand");
-    var se_ListMulticastGroupsByFuotaTaskCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/fuota-tasks/{Id}/multicast-groups");
-        b.p("Id", () => input.Id, "{Id}", false);
-        const query = (0, import_smithy_client.map)({
-          [_nT]: [, input[_NT]],
-          [_mR]: [() => input.MaxResults !== void 0, () => input[_MR].toString()],
-        });
-        let body;
-        b.m("GET").h(headers).q(query).b(body);
-        return b.build();
-      },
-      "se_ListMulticastGroupsByFuotaTaskCommand"
-    );
-    var se_ListNetworkAnalyzerConfigurationsCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/network-analyzer-configurations");
-        const query = (0, import_smithy_client.map)({
-          [_mR]: [() => input.MaxResults !== void 0, () => input[_MR].toString()],
-          [_nT]: [, input[_NT]],
-        });
-        let body;
-        b.m("GET").h(headers).q(query).b(body);
-        return b.build();
-      },
-      "se_ListNetworkAnalyzerConfigurationsCommand"
-    );
+    var se_ListMulticastGroupsByFuotaTaskCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/fuota-tasks/{Id}/multicast-groups");
+      b.p("Id", () => input.Id, "{Id}", false);
+      const query = (0, import_smithy_client.map)({
+        [_nT]: [, input[_NT]],
+        [_mR]: [() => input.MaxResults !== void 0, () => input[_MR].toString()],
+      });
+      let body;
+      b.m("GET").h(headers).q(query).b(body);
+      return b.build();
+    }, "se_ListMulticastGroupsByFuotaTaskCommand");
+    var se_ListNetworkAnalyzerConfigurationsCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/network-analyzer-configurations");
+      const query = (0, import_smithy_client.map)({
+        [_mR]: [() => input.MaxResults !== void 0, () => input[_MR].toString()],
+        [_nT]: [, input[_NT]],
+      });
+      let body;
+      b.m("GET").h(headers).q(query).b(body);
+      return b.build();
+    }, "se_ListNetworkAnalyzerConfigurationsCommand");
     var se_ListPartnerAccountsCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {};
@@ -21643,22 +20503,19 @@ var require_dist_cjs55 = __commonJS({
       b.m("GET").h(headers).q(query).b(body);
       return b.build();
     }, "se_ListWirelessGatewaysCommand");
-    var se_ListWirelessGatewayTaskDefinitionsCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {};
-        b.bp("/wireless-gateway-task-definitions");
-        const query = (0, import_smithy_client.map)({
-          [_mR]: [() => input.MaxResults !== void 0, () => input[_MR].toString()],
-          [_nT]: [, input[_NT]],
-          [_tDT]: [, input[_TDT]],
-        });
-        let body;
-        b.m("GET").h(headers).q(query).b(body);
-        return b.build();
-      },
-      "se_ListWirelessGatewayTaskDefinitionsCommand"
-    );
+    var se_ListWirelessGatewayTaskDefinitionsCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {};
+      b.bp("/wireless-gateway-task-definitions");
+      const query = (0, import_smithy_client.map)({
+        [_mR]: [() => input.MaxResults !== void 0, () => input[_MR].toString()],
+        [_nT]: [, input[_NT]],
+        [_tDT]: [, input[_TDT]],
+      });
+      let body;
+      b.m("GET").h(headers).q(query).b(body);
+      return b.build();
+    }, "se_ListWirelessGatewayTaskDefinitionsCommand");
     var se_PutPositionConfigurationCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {
@@ -21828,28 +20685,25 @@ var require_dist_cjs55 = __commonJS({
       b.m("PUT").h(headers).b(body);
       return b.build();
     }, "se_StartMulticastGroupSessionCommand");
-    var se_StartSingleWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/wireless_single_device_import_task");
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            ClientRequestToken: [true, (_) => _ ?? (0, import_uuid.v4)()],
-            DestinationName: [],
-            DeviceName: [],
-            Sidewalk: (_) => (0, import_smithy_client._json)(_),
-            Tags: (_) => (0, import_smithy_client._json)(_),
-          })
-        );
-        b.m("POST").h(headers).b(body);
-        return b.build();
-      },
-      "se_StartSingleWirelessDeviceImportTaskCommand"
-    );
+    var se_StartSingleWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/wireless_single_device_import_task");
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          ClientRequestToken: [true, (_) => _ ?? (0, import_uuid.v4)()],
+          DestinationName: [],
+          DeviceName: [],
+          Sidewalk: (_) => (0, import_smithy_client._json)(_),
+          Tags: (_) => (0, import_smithy_client._json)(_),
+        })
+      );
+      b.m("POST").h(headers).b(body);
+      return b.build();
+    }, "se_StartSingleWirelessDeviceImportTaskCommand");
     var se_StartWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {
@@ -21929,28 +20783,25 @@ var require_dist_cjs55 = __commonJS({
       b.m("PATCH").h(headers).b(body);
       return b.build();
     }, "se_UpdateDestinationCommand");
-    var se_UpdateEventConfigurationByResourceTypesCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/event-configurations-resource-types");
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            ConnectionStatus: (_) => (0, import_smithy_client._json)(_),
-            DeviceRegistrationState: (_) => (0, import_smithy_client._json)(_),
-            Join: (_) => (0, import_smithy_client._json)(_),
-            MessageDeliveryStatus: (_) => (0, import_smithy_client._json)(_),
-            Proximity: (_) => (0, import_smithy_client._json)(_),
-          })
-        );
-        b.m("PATCH").h(headers).b(body);
-        return b.build();
-      },
-      "se_UpdateEventConfigurationByResourceTypesCommand"
-    );
+    var se_UpdateEventConfigurationByResourceTypesCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/event-configurations-resource-types");
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          ConnectionStatus: (_) => (0, import_smithy_client._json)(_),
+          DeviceRegistrationState: (_) => (0, import_smithy_client._json)(_),
+          Join: (_) => (0, import_smithy_client._json)(_),
+          MessageDeliveryStatus: (_) => (0, import_smithy_client._json)(_),
+          Proximity: (_) => (0, import_smithy_client._json)(_),
+        })
+      );
+      b.m("PATCH").h(headers).b(body);
+      return b.build();
+    }, "se_UpdateEventConfigurationByResourceTypesCommand");
     var se_UpdateFuotaTaskCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {
@@ -21974,26 +20825,23 @@ var require_dist_cjs55 = __commonJS({
       b.m("PATCH").h(headers).b(body);
       return b.build();
     }, "se_UpdateFuotaTaskCommand");
-    var se_UpdateLogLevelsByResourceTypesCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/log-levels");
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            DefaultLogLevel: [],
-            WirelessDeviceLogOptions: (_) => (0, import_smithy_client._json)(_),
-            WirelessGatewayLogOptions: (_) => (0, import_smithy_client._json)(_),
-          })
-        );
-        b.m("POST").h(headers).b(body);
-        return b.build();
-      },
-      "se_UpdateLogLevelsByResourceTypesCommand"
-    );
+    var se_UpdateLogLevelsByResourceTypesCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/log-levels");
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          DefaultLogLevel: [],
+          WirelessDeviceLogOptions: (_) => (0, import_smithy_client._json)(_),
+          WirelessGatewayLogOptions: (_) => (0, import_smithy_client._json)(_),
+        })
+      );
+      b.m("POST").h(headers).b(body);
+      return b.build();
+    }, "se_UpdateLogLevelsByResourceTypesCommand");
     var se_UpdateMetricConfigurationCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {
@@ -22027,32 +20875,29 @@ var require_dist_cjs55 = __commonJS({
       b.m("PATCH").h(headers).b(body);
       return b.build();
     }, "se_UpdateMulticastGroupCommand");
-    var se_UpdateNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/network-analyzer-configurations/{ConfigurationName}");
-        b.p("ConfigurationName", () => input.ConfigurationName, "{ConfigurationName}", false);
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            Description: [],
-            MulticastGroupsToAdd: (_) => (0, import_smithy_client._json)(_),
-            MulticastGroupsToRemove: (_) => (0, import_smithy_client._json)(_),
-            TraceContent: (_) => (0, import_smithy_client._json)(_),
-            WirelessDevicesToAdd: (_) => (0, import_smithy_client._json)(_),
-            WirelessDevicesToRemove: (_) => (0, import_smithy_client._json)(_),
-            WirelessGatewaysToAdd: (_) => (0, import_smithy_client._json)(_),
-            WirelessGatewaysToRemove: (_) => (0, import_smithy_client._json)(_),
-          })
-        );
-        b.m("PATCH").h(headers).b(body);
-        return b.build();
-      },
-      "se_UpdateNetworkAnalyzerConfigurationCommand"
-    );
+    var se_UpdateNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/network-analyzer-configurations/{ConfigurationName}");
+      b.p("ConfigurationName", () => input.ConfigurationName, "{ConfigurationName}", false);
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          Description: [],
+          MulticastGroupsToAdd: (_) => (0, import_smithy_client._json)(_),
+          MulticastGroupsToRemove: (_) => (0, import_smithy_client._json)(_),
+          TraceContent: (_) => (0, import_smithy_client._json)(_),
+          WirelessDevicesToAdd: (_) => (0, import_smithy_client._json)(_),
+          WirelessDevicesToRemove: (_) => (0, import_smithy_client._json)(_),
+          WirelessGatewaysToAdd: (_) => (0, import_smithy_client._json)(_),
+          WirelessGatewaysToRemove: (_) => (0, import_smithy_client._json)(_),
+        })
+      );
+      b.m("PATCH").h(headers).b(body);
+      return b.build();
+    }, "se_UpdateNetworkAnalyzerConfigurationCommand");
     var se_UpdatePartnerAccountCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {
@@ -22091,33 +20936,30 @@ var require_dist_cjs55 = __commonJS({
       b.m("PATCH").h(headers).q(query).b(body);
       return b.build();
     }, "se_UpdatePositionCommand");
-    var se_UpdateResourceEventConfigurationCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/event-configurations/{Identifier}");
-        b.p("Identifier", () => input.Identifier, "{Identifier}", false);
-        const query = (0, import_smithy_client.map)({
-          [_iT]: [, (0, import_smithy_client.expectNonNull)(input[_IT], `IdentifierType`)],
-          [_pT]: [, input[_PT]],
-        });
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            ConnectionStatus: (_) => (0, import_smithy_client._json)(_),
-            DeviceRegistrationState: (_) => (0, import_smithy_client._json)(_),
-            Join: (_) => (0, import_smithy_client._json)(_),
-            MessageDeliveryStatus: (_) => (0, import_smithy_client._json)(_),
-            Proximity: (_) => (0, import_smithy_client._json)(_),
-          })
-        );
-        b.m("PATCH").h(headers).q(query).b(body);
-        return b.build();
-      },
-      "se_UpdateResourceEventConfigurationCommand"
-    );
+    var se_UpdateResourceEventConfigurationCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/event-configurations/{Identifier}");
+      b.p("Identifier", () => input.Identifier, "{Identifier}", false);
+      const query = (0, import_smithy_client.map)({
+        [_iT]: [, (0, import_smithy_client.expectNonNull)(input[_IT], `IdentifierType`)],
+        [_pT]: [, input[_PT]],
+      });
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          ConnectionStatus: (_) => (0, import_smithy_client._json)(_),
+          DeviceRegistrationState: (_) => (0, import_smithy_client._json)(_),
+          Join: (_) => (0, import_smithy_client._json)(_),
+          MessageDeliveryStatus: (_) => (0, import_smithy_client._json)(_),
+          Proximity: (_) => (0, import_smithy_client._json)(_),
+        })
+      );
+      b.m("PATCH").h(headers).q(query).b(body);
+      return b.build();
+    }, "se_UpdateResourceEventConfigurationCommand");
     var se_UpdateResourcePositionCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {
@@ -22155,25 +20997,22 @@ var require_dist_cjs55 = __commonJS({
       b.m("PATCH").h(headers).b(body);
       return b.build();
     }, "se_UpdateWirelessDeviceCommand");
-    var se_UpdateWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(
-      async (input, context) => {
-        const b = (0, import_core.requestBuilder)(input, context);
-        const headers = {
-          "content-type": "application/json",
-        };
-        b.bp("/wireless_device_import_task/{Id}");
-        b.p("Id", () => input.Id, "{Id}", false);
-        let body;
-        body = JSON.stringify(
-          (0, import_smithy_client.take)(input, {
-            Sidewalk: (_) => (0, import_smithy_client._json)(_),
-          })
-        );
-        b.m("PATCH").h(headers).b(body);
-        return b.build();
-      },
-      "se_UpdateWirelessDeviceImportTaskCommand"
-    );
+    var se_UpdateWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(async (input, context) => {
+      const b = (0, import_core.requestBuilder)(input, context);
+      const headers = {
+        "content-type": "application/json",
+      };
+      b.bp("/wireless_device_import_task/{Id}");
+      b.p("Id", () => input.Id, "{Id}", false);
+      let body;
+      body = JSON.stringify(
+        (0, import_smithy_client.take)(input, {
+          Sidewalk: (_) => (0, import_smithy_client._json)(_),
+        })
+      );
+      b.m("PATCH").h(headers).b(body);
+      return b.build();
+    }, "se_UpdateWirelessDeviceImportTaskCommand");
     var se_UpdateWirelessGatewayCommand = /* @__PURE__ */ __name(async (input, context) => {
       const b = (0, import_core.requestBuilder)(input, context);
       const headers = {
@@ -22194,116 +21033,91 @@ var require_dist_cjs55 = __commonJS({
       b.m("PATCH").h(headers).b(body);
       return b.build();
     }, "se_UpdateWirelessGatewayCommand");
-    var de_AssociateAwsAccountWithPartnerAccountCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          Arn: import_smithy_client.expectString,
-          Sidewalk: import_smithy_client._json,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_AssociateAwsAccountWithPartnerAccountCommand"
-    );
-    var de_AssociateMulticastGroupWithFuotaTaskCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_AssociateMulticastGroupWithFuotaTaskCommand"
-    );
-    var de_AssociateWirelessDeviceWithFuotaTaskCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_AssociateWirelessDeviceWithFuotaTaskCommand"
-    );
-    var de_AssociateWirelessDeviceWithMulticastGroupCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_AssociateWirelessDeviceWithMulticastGroupCommand"
-    );
-    var de_AssociateWirelessDeviceWithThingCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_AssociateWirelessDeviceWithThingCommand"
-    );
-    var de_AssociateWirelessGatewayWithCertificateCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          IotCertificateId: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_AssociateWirelessGatewayWithCertificateCommand"
-    );
-    var de_AssociateWirelessGatewayWithThingCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_AssociateWirelessGatewayWithThingCommand"
-    );
+    var de_AssociateAwsAccountWithPartnerAccountCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        Arn: import_smithy_client.expectString,
+        Sidewalk: import_smithy_client._json,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_AssociateAwsAccountWithPartnerAccountCommand");
+    var de_AssociateMulticastGroupWithFuotaTaskCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_AssociateMulticastGroupWithFuotaTaskCommand");
+    var de_AssociateWirelessDeviceWithFuotaTaskCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_AssociateWirelessDeviceWithFuotaTaskCommand");
+    var de_AssociateWirelessDeviceWithMulticastGroupCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_AssociateWirelessDeviceWithMulticastGroupCommand");
+    var de_AssociateWirelessDeviceWithThingCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_AssociateWirelessDeviceWithThingCommand");
+    var de_AssociateWirelessGatewayWithCertificateCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        IotCertificateId: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_AssociateWirelessGatewayWithCertificateCommand");
+    var de_AssociateWirelessGatewayWithThingCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_AssociateWirelessGatewayWithThingCommand");
     var de_CancelMulticastGroupSessionCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 204 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -22322,9 +21136,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22342,9 +21154,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22362,9 +21172,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22382,9 +21190,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22394,29 +21200,24 @@ var require_dist_cjs55 = __commonJS({
       Object.assign(contents, doc);
       return contents;
     }, "de_CreateMulticastGroupCommand");
-    var de_CreateNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 201 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          Arn: import_smithy_client.expectString,
-          Name: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_CreateNetworkAnalyzerConfigurationCommand"
-    );
+    var de_CreateNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 201 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        Arn: import_smithy_client.expectString,
+        Name: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_CreateNetworkAnalyzerConfigurationCommand");
     var de_CreateServiceProfileCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 201 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -22425,9 +21226,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22445,9 +21244,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22465,9 +21262,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22485,9 +21280,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22497,29 +21290,24 @@ var require_dist_cjs55 = __commonJS({
       Object.assign(contents, doc);
       return contents;
     }, "de_CreateWirelessGatewayTaskCommand");
-    var de_CreateWirelessGatewayTaskDefinitionCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 201 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          Arn: import_smithy_client.expectString,
-          Id: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_CreateWirelessGatewayTaskDefinitionCommand"
-    );
+    var de_CreateWirelessGatewayTaskDefinitionCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 201 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        Arn: import_smithy_client.expectString,
+        Id: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_CreateWirelessGatewayTaskDefinitionCommand");
     var de_DeleteDestinationCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 204 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -22560,19 +21348,16 @@ var require_dist_cjs55 = __commonJS({
       await (0, import_smithy_client.collectBody)(output.body, context);
       return contents;
     }, "de_DeleteMulticastGroupCommand");
-    var de_DeleteNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_DeleteNetworkAnalyzerConfigurationCommand"
-    );
+    var de_DeleteNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_DeleteNetworkAnalyzerConfigurationCommand");
     var de_DeleteQueuedMessagesCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 204 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -22603,19 +21388,16 @@ var require_dist_cjs55 = __commonJS({
       await (0, import_smithy_client.collectBody)(output.body, context);
       return contents;
     }, "de_DeleteWirelessDeviceCommand");
-    var de_DeleteWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_DeleteWirelessDeviceImportTaskCommand"
-    );
+    var de_DeleteWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_DeleteWirelessDeviceImportTaskCommand");
     var de_DeleteWirelessGatewayCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 204 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -22636,19 +21418,16 @@ var require_dist_cjs55 = __commonJS({
       await (0, import_smithy_client.collectBody)(output.body, context);
       return contents;
     }, "de_DeleteWirelessGatewayTaskCommand");
-    var de_DeleteWirelessGatewayTaskDefinitionCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_DeleteWirelessGatewayTaskDefinitionCommand"
-    );
+    var de_DeleteWirelessGatewayTaskDefinitionCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_DeleteWirelessGatewayTaskDefinitionCommand");
     var de_DeregisterWirelessDeviceCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 200 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -22659,97 +21438,76 @@ var require_dist_cjs55 = __commonJS({
       await (0, import_smithy_client.collectBody)(output.body, context);
       return contents;
     }, "de_DeregisterWirelessDeviceCommand");
-    var de_DisassociateAwsAccountFromPartnerAccountCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_DisassociateAwsAccountFromPartnerAccountCommand"
-    );
-    var de_DisassociateMulticastGroupFromFuotaTaskCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_DisassociateMulticastGroupFromFuotaTaskCommand"
-    );
-    var de_DisassociateWirelessDeviceFromFuotaTaskCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_DisassociateWirelessDeviceFromFuotaTaskCommand"
-    );
-    var de_DisassociateWirelessDeviceFromMulticastGroupCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_DisassociateWirelessDeviceFromMulticastGroupCommand"
-    );
-    var de_DisassociateWirelessDeviceFromThingCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_DisassociateWirelessDeviceFromThingCommand"
-    );
-    var de_DisassociateWirelessGatewayFromCertificateCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_DisassociateWirelessGatewayFromCertificateCommand"
-    );
-    var de_DisassociateWirelessGatewayFromThingCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_DisassociateWirelessGatewayFromThingCommand"
-    );
+    var de_DisassociateAwsAccountFromPartnerAccountCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_DisassociateAwsAccountFromPartnerAccountCommand");
+    var de_DisassociateMulticastGroupFromFuotaTaskCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_DisassociateMulticastGroupFromFuotaTaskCommand");
+    var de_DisassociateWirelessDeviceFromFuotaTaskCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_DisassociateWirelessDeviceFromFuotaTaskCommand");
+    var de_DisassociateWirelessDeviceFromMulticastGroupCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_DisassociateWirelessDeviceFromMulticastGroupCommand");
+    var de_DisassociateWirelessDeviceFromThingCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_DisassociateWirelessDeviceFromThingCommand");
+    var de_DisassociateWirelessGatewayFromCertificateCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_DisassociateWirelessGatewayFromCertificateCommand");
+    var de_DisassociateWirelessGatewayFromThingCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_DisassociateWirelessGatewayFromThingCommand");
     var de_GetDestinationCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 200 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -22758,9 +21516,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22782,9 +21538,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22797,32 +21551,27 @@ var require_dist_cjs55 = __commonJS({
       Object.assign(contents, doc);
       return contents;
     }, "de_GetDeviceProfileCommand");
-    var de_GetEventConfigurationByResourceTypesCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          ConnectionStatus: import_smithy_client._json,
-          DeviceRegistrationState: import_smithy_client._json,
-          Join: import_smithy_client._json,
-          MessageDeliveryStatus: import_smithy_client._json,
-          Proximity: import_smithy_client._json,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_GetEventConfigurationByResourceTypesCommand"
-    );
+    var de_GetEventConfigurationByResourceTypesCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        ConnectionStatus: import_smithy_client._json,
+        DeviceRegistrationState: import_smithy_client._json,
+        Join: import_smithy_client._json,
+        MessageDeliveryStatus: import_smithy_client._json,
+        Proximity: import_smithy_client._json,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_GetEventConfigurationByResourceTypesCommand");
     var de_GetFuotaTaskCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 200 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -22831,9 +21580,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22864,9 +21611,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22885,9 +21630,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22904,9 +21647,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22923,9 +21664,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22951,9 +21690,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -22962,34 +21699,29 @@ var require_dist_cjs55 = __commonJS({
       Object.assign(contents, doc);
       return contents;
     }, "de_GetMulticastGroupSessionCommand");
-    var de_GetNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          Arn: import_smithy_client.expectString,
-          Description: import_smithy_client.expectString,
-          MulticastGroups: import_smithy_client._json,
-          Name: import_smithy_client.expectString,
-          TraceContent: import_smithy_client._json,
-          WirelessDevices: import_smithy_client._json,
-          WirelessGateways: import_smithy_client._json,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_GetNetworkAnalyzerConfigurationCommand"
-    );
+    var de_GetNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        Arn: import_smithy_client.expectString,
+        Description: import_smithy_client.expectString,
+        MulticastGroups: import_smithy_client._json,
+        Name: import_smithy_client.expectString,
+        TraceContent: import_smithy_client._json,
+        WirelessDevices: import_smithy_client._json,
+        WirelessGateways: import_smithy_client._json,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_GetNetworkAnalyzerConfigurationCommand");
     var de_GetPartnerAccountCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 200 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -22998,9 +21730,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23018,9 +21748,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23042,9 +21770,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23065,32 +21791,27 @@ var require_dist_cjs55 = __commonJS({
       contents.GeoJsonPayload = data;
       return contents;
     }, "de_GetPositionEstimateCommand");
-    var de_GetResourceEventConfigurationCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          ConnectionStatus: import_smithy_client._json,
-          DeviceRegistrationState: import_smithy_client._json,
-          Join: import_smithy_client._json,
-          MessageDeliveryStatus: import_smithy_client._json,
-          Proximity: import_smithy_client._json,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_GetResourceEventConfigurationCommand"
-    );
+    var de_GetResourceEventConfigurationCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        ConnectionStatus: import_smithy_client._json,
+        DeviceRegistrationState: import_smithy_client._json,
+        Join: import_smithy_client._json,
+        MessageDeliveryStatus: import_smithy_client._json,
+        Proximity: import_smithy_client._json,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_GetResourceEventConfigurationCommand");
     var de_GetResourceLogLevelCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 200 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -23099,9 +21820,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23129,9 +21848,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23150,9 +21867,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23172,9 +21887,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23201,17 +21914,13 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
         Arn: import_smithy_client.expectString,
         CreationTime: (_) =>
-          (0, import_smithy_client.expectNonNull)(
-            (0, import_smithy_client.parseRfc3339DateTimeWithOffset)(_)
-          ),
+          (0, import_smithy_client.expectNonNull)((0, import_smithy_client.parseRfc3339DateTimeWithOffset)(_)),
         DestinationName: import_smithy_client.expectString,
         FailedImportedDeviceCount: import_smithy_client.expectLong,
         Id: import_smithy_client.expectString,
@@ -23233,9 +21942,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23255,9 +21962,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23272,51 +21977,41 @@ var require_dist_cjs55 = __commonJS({
       Object.assign(contents, doc);
       return contents;
     }, "de_GetWirelessGatewayCommand");
-    var de_GetWirelessGatewayCertificateCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          IotCertificateId: import_smithy_client.expectString,
-          LoRaWANNetworkServerCertificateId: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_GetWirelessGatewayCertificateCommand"
-    );
-    var de_GetWirelessGatewayFirmwareInformationCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          LoRaWAN: import_smithy_client._json,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_GetWirelessGatewayFirmwareInformationCommand"
-    );
+    var de_GetWirelessGatewayCertificateCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        IotCertificateId: import_smithy_client.expectString,
+        LoRaWANNetworkServerCertificateId: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_GetWirelessGatewayCertificateCommand");
+    var de_GetWirelessGatewayFirmwareInformationCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        LoRaWAN: import_smithy_client._json,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_GetWirelessGatewayFirmwareInformationCommand");
     var de_GetWirelessGatewayStatisticsCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 200 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -23325,9 +22020,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23346,9 +22039,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23361,31 +22052,26 @@ var require_dist_cjs55 = __commonJS({
       Object.assign(contents, doc);
       return contents;
     }, "de_GetWirelessGatewayTaskCommand");
-    var de_GetWirelessGatewayTaskDefinitionCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          Arn: import_smithy_client.expectString,
-          AutoCreateTasks: import_smithy_client.expectBoolean,
-          Name: import_smithy_client.expectString,
-          Update: import_smithy_client._json,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_GetWirelessGatewayTaskDefinitionCommand"
-    );
+    var de_GetWirelessGatewayTaskDefinitionCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        Arn: import_smithy_client.expectString,
+        AutoCreateTasks: import_smithy_client.expectBoolean,
+        Name: import_smithy_client.expectString,
+        Update: import_smithy_client._json,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_GetWirelessGatewayTaskDefinitionCommand");
     var de_ListDestinationsCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 200 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -23394,9 +22080,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23414,9 +22098,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23426,30 +22108,25 @@ var require_dist_cjs55 = __commonJS({
       Object.assign(contents, doc);
       return contents;
     }, "de_ListDeviceProfilesCommand");
-    var de_ListDevicesForWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          DestinationName: import_smithy_client.expectString,
-          ImportedWirelessDeviceList: (_) => de_ImportedWirelessDeviceList(_, context),
-          NextToken: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_ListDevicesForWirelessDeviceImportTaskCommand"
-    );
+    var de_ListDevicesForWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        DestinationName: import_smithy_client.expectString,
+        ImportedWirelessDeviceList: (_) => de_ImportedWirelessDeviceList(_, context),
+        NextToken: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_ListDevicesForWirelessDeviceImportTaskCommand");
     var de_ListEventConfigurationsCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 200 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -23458,9 +22135,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23478,9 +22153,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23498,9 +22171,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23510,52 +22181,42 @@ var require_dist_cjs55 = __commonJS({
       Object.assign(contents, doc);
       return contents;
     }, "de_ListMulticastGroupsCommand");
-    var de_ListMulticastGroupsByFuotaTaskCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          MulticastGroupList: import_smithy_client._json,
-          NextToken: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_ListMulticastGroupsByFuotaTaskCommand"
-    );
-    var de_ListNetworkAnalyzerConfigurationsCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          NetworkAnalyzerConfigurationList: import_smithy_client._json,
-          NextToken: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_ListNetworkAnalyzerConfigurationsCommand"
-    );
+    var de_ListMulticastGroupsByFuotaTaskCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        MulticastGroupList: import_smithy_client._json,
+        NextToken: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_ListMulticastGroupsByFuotaTaskCommand");
+    var de_ListNetworkAnalyzerConfigurationsCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        NetworkAnalyzerConfigurationList: import_smithy_client._json,
+        NextToken: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_ListNetworkAnalyzerConfigurationsCommand");
     var de_ListPartnerAccountsCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 200 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -23564,9 +22225,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23584,9 +22243,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23604,9 +22261,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23624,9 +22279,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23644,9 +22297,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23655,29 +22306,24 @@ var require_dist_cjs55 = __commonJS({
       Object.assign(contents, doc);
       return contents;
     }, "de_ListTagsForResourceCommand");
-    var de_ListWirelessDeviceImportTasksCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          NextToken: import_smithy_client.expectString,
-          WirelessDeviceImportTaskList: (_) => de_WirelessDeviceImportTaskList(_, context),
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_ListWirelessDeviceImportTasksCommand"
-    );
+    var de_ListWirelessDeviceImportTasksCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        NextToken: import_smithy_client.expectString,
+        WirelessDeviceImportTaskList: (_) => de_WirelessDeviceImportTaskList(_, context),
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_ListWirelessDeviceImportTasksCommand");
     var de_ListWirelessDevicesCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 200 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -23686,9 +22332,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23706,9 +22350,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23718,29 +22360,24 @@ var require_dist_cjs55 = __commonJS({
       Object.assign(contents, doc);
       return contents;
     }, "de_ListWirelessGatewaysCommand");
-    var de_ListWirelessGatewayTaskDefinitionsCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          NextToken: import_smithy_client.expectString,
-          TaskDefinitions: import_smithy_client._json,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_ListWirelessGatewayTaskDefinitionsCommand"
-    );
+    var de_ListWirelessGatewayTaskDefinitionsCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        NextToken: import_smithy_client.expectString,
+        TaskDefinitions: import_smithy_client._json,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_ListWirelessGatewayTaskDefinitionsCommand");
     var de_PutPositionConfigurationCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 200 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -23789,9 +22426,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23808,9 +22443,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23865,52 +22498,42 @@ var require_dist_cjs55 = __commonJS({
       await (0, import_smithy_client.collectBody)(output.body, context);
       return contents;
     }, "de_StartMulticastGroupSessionCommand");
-    var de_StartSingleWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 201 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          Arn: import_smithy_client.expectString,
-          Id: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_StartSingleWirelessDeviceImportTaskCommand"
-    );
-    var de_StartWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 201 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        const data = (0, import_smithy_client.expectNonNull)(
-          (0, import_smithy_client.expectObject)(
-            await (0, import_core2.parseJsonBody)(output.body, context)
-          ),
-          "body"
-        );
-        const doc = (0, import_smithy_client.take)(data, {
-          Arn: import_smithy_client.expectString,
-          Id: import_smithy_client.expectString,
-        });
-        Object.assign(contents, doc);
-        return contents;
-      },
-      "de_StartWirelessDeviceImportTaskCommand"
-    );
+    var de_StartSingleWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 201 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        Arn: import_smithy_client.expectString,
+        Id: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_StartSingleWirelessDeviceImportTaskCommand");
+    var de_StartWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 201 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      const data = (0, import_smithy_client.expectNonNull)(
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
+        "body"
+      );
+      const doc = (0, import_smithy_client.take)(data, {
+        Arn: import_smithy_client.expectString,
+        Id: import_smithy_client.expectString,
+      });
+      Object.assign(contents, doc);
+      return contents;
+    }, "de_StartWirelessDeviceImportTaskCommand");
     var de_TagResourceCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 204 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -23929,9 +22552,7 @@ var require_dist_cjs55 = __commonJS({
         $metadata: deserializeMetadata(output),
       });
       const data = (0, import_smithy_client.expectNonNull)(
-        (0, import_smithy_client.expectObject)(
-          await (0, import_core2.parseJsonBody)(output.body, context)
-        ),
+        (0, import_smithy_client.expectObject)(await (0, import_core2.parseJsonBody)(output.body, context)),
         "body"
       );
       const doc = (0, import_smithy_client.take)(data, {
@@ -23960,19 +22581,16 @@ var require_dist_cjs55 = __commonJS({
       await (0, import_smithy_client.collectBody)(output.body, context);
       return contents;
     }, "de_UpdateDestinationCommand");
-    var de_UpdateEventConfigurationByResourceTypesCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_UpdateEventConfigurationByResourceTypesCommand"
-    );
+    var de_UpdateEventConfigurationByResourceTypesCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_UpdateEventConfigurationByResourceTypesCommand");
     var de_UpdateFuotaTaskCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 204 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -23983,19 +22601,16 @@ var require_dist_cjs55 = __commonJS({
       await (0, import_smithy_client.collectBody)(output.body, context);
       return contents;
     }, "de_UpdateFuotaTaskCommand");
-    var de_UpdateLogLevelsByResourceTypesCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 200 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_UpdateLogLevelsByResourceTypesCommand"
-    );
+    var de_UpdateLogLevelsByResourceTypesCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 200 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_UpdateLogLevelsByResourceTypesCommand");
     var de_UpdateMetricConfigurationCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 204 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -24016,19 +22631,16 @@ var require_dist_cjs55 = __commonJS({
       await (0, import_smithy_client.collectBody)(output.body, context);
       return contents;
     }, "de_UpdateMulticastGroupCommand");
-    var de_UpdateNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_UpdateNetworkAnalyzerConfigurationCommand"
-    );
+    var de_UpdateNetworkAnalyzerConfigurationCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_UpdateNetworkAnalyzerConfigurationCommand");
     var de_UpdatePartnerAccountCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 204 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -24049,19 +22661,16 @@ var require_dist_cjs55 = __commonJS({
       await (0, import_smithy_client.collectBody)(output.body, context);
       return contents;
     }, "de_UpdatePositionCommand");
-    var de_UpdateResourceEventConfigurationCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_UpdateResourceEventConfigurationCommand"
-    );
+    var de_UpdateResourceEventConfigurationCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_UpdateResourceEventConfigurationCommand");
     var de_UpdateResourcePositionCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 204 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -24082,19 +22691,16 @@ var require_dist_cjs55 = __commonJS({
       await (0, import_smithy_client.collectBody)(output.body, context);
       return contents;
     }, "de_UpdateWirelessDeviceCommand");
-    var de_UpdateWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(
-      async (output, context) => {
-        if (output.statusCode !== 204 && output.statusCode >= 300) {
-          return de_CommandError(output, context);
-        }
-        const contents = (0, import_smithy_client.map)({
-          $metadata: deserializeMetadata(output),
-        });
-        await (0, import_smithy_client.collectBody)(output.body, context);
-        return contents;
-      },
-      "de_UpdateWirelessDeviceImportTaskCommand"
-    );
+    var de_UpdateWirelessDeviceImportTaskCommand = /* @__PURE__ */ __name(async (output, context) => {
+      if (output.statusCode !== 204 && output.statusCode >= 300) {
+        return de_CommandError(output, context);
+      }
+      const contents = (0, import_smithy_client.map)({
+        $metadata: deserializeMetadata(output),
+      });
+      await (0, import_smithy_client.collectBody)(output.body, context);
+      return contents;
+    }, "de_UpdateWirelessDeviceImportTaskCommand");
     var de_UpdateWirelessGatewayCommand = /* @__PURE__ */ __name(async (output, context) => {
       if (output.statusCode !== 204 && output.statusCode >= 300) {
         return de_CommandError(output, context);
@@ -24143,9 +22749,7 @@ var require_dist_cjs55 = __commonJS({
         }
       }
     }, "de_CommandError");
-    var throwDefaultError = (0, import_smithy_client.withBaseException)(
-      IoTWirelessServiceException
-    );
+    var throwDefaultError = (0, import_smithy_client.withBaseException)(IoTWirelessServiceException);
     var de_AccessDeniedExceptionRes = /* @__PURE__ */ __name(async (parsedOutput, context) => {
       const contents = (0, import_smithy_client.map)({});
       const data = parsedOutput.body;
@@ -24383,9 +22987,7 @@ var require_dist_cjs55 = __commonJS({
     var de_ImportedSidewalkDevice = /* @__PURE__ */ __name((output, context) => {
       return (0, import_smithy_client.take)(output, {
         LastUpdateTime: (_) =>
-          (0, import_smithy_client.expectNonNull)(
-            (0, import_smithy_client.parseRfc3339DateTimeWithOffset)(_)
-          ),
+          (0, import_smithy_client.expectNonNull)((0, import_smithy_client.parseRfc3339DateTimeWithOffset)(_)),
         OnboardingStatus: import_smithy_client.expectString,
         OnboardingStatusReason: import_smithy_client.expectString,
         SidewalkManufacturingSn: import_smithy_client.expectString,
@@ -24419,9 +23021,7 @@ var require_dist_cjs55 = __commonJS({
       return (0, import_smithy_client.take)(output, {
         RfRegion: import_smithy_client.expectString,
         StartTime: (_) =>
-          (0, import_smithy_client.expectNonNull)(
-            (0, import_smithy_client.parseRfc3339DateTimeWithOffset)(_)
-          ),
+          (0, import_smithy_client.expectNonNull)((0, import_smithy_client.parseRfc3339DateTimeWithOffset)(_)),
       });
     }, "de_LoRaWANFuotaTaskGetInfo");
     var de_LoRaWANGateway = /* @__PURE__ */ __name((output, context) => {
@@ -24456,9 +23056,7 @@ var require_dist_cjs55 = __commonJS({
         DlFreq: import_smithy_client.expectInt32,
         PingSlotPeriod: import_smithy_client.expectInt32,
         SessionStartTime: (_) =>
-          (0, import_smithy_client.expectNonNull)(
-            (0, import_smithy_client.parseRfc3339DateTimeWithOffset)(_)
-          ),
+          (0, import_smithy_client.expectNonNull)((0, import_smithy_client.parseRfc3339DateTimeWithOffset)(_)),
         SessionTimeout: import_smithy_client.expectInt32,
       });
     }, "de_LoRaWANMulticastSession");
@@ -24485,9 +23083,7 @@ var require_dist_cjs55 = __commonJS({
         .filter((e) => e != null)
         .map((entry) => {
           return (0, import_smithy_client.expectNonNull)(
-            (0, import_smithy_client.parseEpochTimestamp)(
-              (0, import_smithy_client.expectNumber)(entry)
-            )
+            (0, import_smithy_client.parseEpochTimestamp)((0, import_smithy_client.expectNumber)(entry))
           );
         });
       return retVal;
@@ -24551,9 +23147,7 @@ var require_dist_cjs55 = __commonJS({
       return (0, import_smithy_client.take)(output, {
         Arn: import_smithy_client.expectString,
         CreationTime: (_) =>
-          (0, import_smithy_client.expectNonNull)(
-            (0, import_smithy_client.parseRfc3339DateTimeWithOffset)(_)
-          ),
+          (0, import_smithy_client.expectNonNull)((0, import_smithy_client.parseRfc3339DateTimeWithOffset)(_)),
         DestinationName: import_smithy_client.expectString,
         FailedImportedDeviceCount: import_smithy_client.expectLong,
         Id: import_smithy_client.expectString,
@@ -24648,10 +23242,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "AssociateAwsAccountWithPartnerAccount", {})
@@ -24663,12 +23254,8 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_AssociateAwsAccountWithPartnerAccountCommand)
       .de(de_AssociateAwsAccountWithPartnerAccountCommand)
       .build() {};
-    __name(
-      _AssociateAwsAccountWithPartnerAccountCommand,
-      "AssociateAwsAccountWithPartnerAccountCommand"
-    );
-    var AssociateAwsAccountWithPartnerAccountCommand =
-      _AssociateAwsAccountWithPartnerAccountCommand;
+    __name(_AssociateAwsAccountWithPartnerAccountCommand, "AssociateAwsAccountWithPartnerAccountCommand");
+    var AssociateAwsAccountWithPartnerAccountCommand = _AssociateAwsAccountWithPartnerAccountCommand;
     var _AssociateMulticastGroupWithFuotaTaskCommand = class _AssociateMulticastGroupWithFuotaTaskCommand extends import_smithy_client.Command.classBuilder()
       .ep({
         ...commonParams,
@@ -24676,10 +23263,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "AssociateMulticastGroupWithFuotaTask", {})
@@ -24688,10 +23272,7 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_AssociateMulticastGroupWithFuotaTaskCommand)
       .de(de_AssociateMulticastGroupWithFuotaTaskCommand)
       .build() {};
-    __name(
-      _AssociateMulticastGroupWithFuotaTaskCommand,
-      "AssociateMulticastGroupWithFuotaTaskCommand"
-    );
+    __name(_AssociateMulticastGroupWithFuotaTaskCommand, "AssociateMulticastGroupWithFuotaTaskCommand");
     var AssociateMulticastGroupWithFuotaTaskCommand = _AssociateMulticastGroupWithFuotaTaskCommand;
     var _AssociateWirelessDeviceWithFuotaTaskCommand = class _AssociateWirelessDeviceWithFuotaTaskCommand extends import_smithy_client.Command.classBuilder()
       .ep({
@@ -24700,10 +23281,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "AssociateWirelessDeviceWithFuotaTask", {})
@@ -24712,10 +23290,7 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_AssociateWirelessDeviceWithFuotaTaskCommand)
       .de(de_AssociateWirelessDeviceWithFuotaTaskCommand)
       .build() {};
-    __name(
-      _AssociateWirelessDeviceWithFuotaTaskCommand,
-      "AssociateWirelessDeviceWithFuotaTaskCommand"
-    );
+    __name(_AssociateWirelessDeviceWithFuotaTaskCommand, "AssociateWirelessDeviceWithFuotaTaskCommand");
     var AssociateWirelessDeviceWithFuotaTaskCommand = _AssociateWirelessDeviceWithFuotaTaskCommand;
     var _AssociateWirelessDeviceWithMulticastGroupCommand = class _AssociateWirelessDeviceWithMulticastGroupCommand extends import_smithy_client.Command.classBuilder()
       .ep({
@@ -24724,10 +23299,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "AssociateWirelessDeviceWithMulticastGroup", {})
@@ -24736,12 +23308,8 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_AssociateWirelessDeviceWithMulticastGroupCommand)
       .de(de_AssociateWirelessDeviceWithMulticastGroupCommand)
       .build() {};
-    __name(
-      _AssociateWirelessDeviceWithMulticastGroupCommand,
-      "AssociateWirelessDeviceWithMulticastGroupCommand"
-    );
-    var AssociateWirelessDeviceWithMulticastGroupCommand =
-      _AssociateWirelessDeviceWithMulticastGroupCommand;
+    __name(_AssociateWirelessDeviceWithMulticastGroupCommand, "AssociateWirelessDeviceWithMulticastGroupCommand");
+    var AssociateWirelessDeviceWithMulticastGroupCommand = _AssociateWirelessDeviceWithMulticastGroupCommand;
     var _AssociateWirelessDeviceWithThingCommand = class _AssociateWirelessDeviceWithThingCommand extends import_smithy_client.Command.classBuilder()
       .ep({
         ...commonParams,
@@ -24749,10 +23317,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "AssociateWirelessDeviceWithThing", {})
@@ -24770,10 +23335,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "AssociateWirelessGatewayWithCertificate", {})
@@ -24782,12 +23344,8 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_AssociateWirelessGatewayWithCertificateCommand)
       .de(de_AssociateWirelessGatewayWithCertificateCommand)
       .build() {};
-    __name(
-      _AssociateWirelessGatewayWithCertificateCommand,
-      "AssociateWirelessGatewayWithCertificateCommand"
-    );
-    var AssociateWirelessGatewayWithCertificateCommand =
-      _AssociateWirelessGatewayWithCertificateCommand;
+    __name(_AssociateWirelessGatewayWithCertificateCommand, "AssociateWirelessGatewayWithCertificateCommand");
+    var AssociateWirelessGatewayWithCertificateCommand = _AssociateWirelessGatewayWithCertificateCommand;
     var _AssociateWirelessGatewayWithThingCommand = class _AssociateWirelessGatewayWithThingCommand extends import_smithy_client.Command.classBuilder()
       .ep({
         ...commonParams,
@@ -24795,10 +23353,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "AssociateWirelessGatewayWithThing", {})
@@ -24816,10 +23371,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "CancelMulticastGroupSession", {})
@@ -24837,10 +23389,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "CreateDestination", {})
@@ -24858,10 +23407,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "CreateDeviceProfile", {})
@@ -24879,10 +23425,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "CreateFuotaTask", {})
@@ -24900,10 +23443,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "CreateMulticastGroup", {})
@@ -24921,10 +23461,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "CreateNetworkAnalyzerConfiguration", {})
@@ -24942,10 +23479,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "CreateServiceProfile", {})
@@ -24963,10 +23497,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "CreateWirelessDevice", {})
@@ -24984,10 +23515,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "CreateWirelessGateway", {})
@@ -25005,10 +23533,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "CreateWirelessGatewayTask", {})
@@ -25026,10 +23551,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "CreateWirelessGatewayTaskDefinition", {})
@@ -25038,10 +23560,7 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_CreateWirelessGatewayTaskDefinitionCommand)
       .de(de_CreateWirelessGatewayTaskDefinitionCommand)
       .build() {};
-    __name(
-      _CreateWirelessGatewayTaskDefinitionCommand,
-      "CreateWirelessGatewayTaskDefinitionCommand"
-    );
+    __name(_CreateWirelessGatewayTaskDefinitionCommand, "CreateWirelessGatewayTaskDefinitionCommand");
     var CreateWirelessGatewayTaskDefinitionCommand = _CreateWirelessGatewayTaskDefinitionCommand;
     var _DeleteDestinationCommand = class _DeleteDestinationCommand extends import_smithy_client.Command.classBuilder()
       .ep({
@@ -25050,10 +23569,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeleteDestination", {})
@@ -25071,10 +23587,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeleteDeviceProfile", {})
@@ -25092,10 +23605,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeleteFuotaTask", {})
@@ -25113,10 +23623,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeleteMulticastGroup", {})
@@ -25134,10 +23641,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeleteNetworkAnalyzerConfiguration", {})
@@ -25155,10 +23659,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeleteQueuedMessages", {})
@@ -25176,10 +23677,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeleteServiceProfile", {})
@@ -25197,10 +23695,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeleteWirelessDevice", {})
@@ -25218,10 +23713,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeleteWirelessDeviceImportTask", {})
@@ -25239,10 +23731,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeleteWirelessGateway", {})
@@ -25260,10 +23749,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeleteWirelessGatewayTask", {})
@@ -25281,10 +23767,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeleteWirelessGatewayTaskDefinition", {})
@@ -25293,10 +23776,7 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_DeleteWirelessGatewayTaskDefinitionCommand)
       .de(de_DeleteWirelessGatewayTaskDefinitionCommand)
       .build() {};
-    __name(
-      _DeleteWirelessGatewayTaskDefinitionCommand,
-      "DeleteWirelessGatewayTaskDefinitionCommand"
-    );
+    __name(_DeleteWirelessGatewayTaskDefinitionCommand, "DeleteWirelessGatewayTaskDefinitionCommand");
     var DeleteWirelessGatewayTaskDefinitionCommand = _DeleteWirelessGatewayTaskDefinitionCommand;
     var _DeregisterWirelessDeviceCommand = class _DeregisterWirelessDeviceCommand extends import_smithy_client.Command.classBuilder()
       .ep({
@@ -25305,10 +23785,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DeregisterWirelessDevice", {})
@@ -25326,10 +23803,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DisassociateAwsAccountFromPartnerAccount", {})
@@ -25338,12 +23812,8 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_DisassociateAwsAccountFromPartnerAccountCommand)
       .de(de_DisassociateAwsAccountFromPartnerAccountCommand)
       .build() {};
-    __name(
-      _DisassociateAwsAccountFromPartnerAccountCommand,
-      "DisassociateAwsAccountFromPartnerAccountCommand"
-    );
-    var DisassociateAwsAccountFromPartnerAccountCommand =
-      _DisassociateAwsAccountFromPartnerAccountCommand;
+    __name(_DisassociateAwsAccountFromPartnerAccountCommand, "DisassociateAwsAccountFromPartnerAccountCommand");
+    var DisassociateAwsAccountFromPartnerAccountCommand = _DisassociateAwsAccountFromPartnerAccountCommand;
     var _DisassociateMulticastGroupFromFuotaTaskCommand = class _DisassociateMulticastGroupFromFuotaTaskCommand extends import_smithy_client.Command.classBuilder()
       .ep({
         ...commonParams,
@@ -25351,10 +23821,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DisassociateMulticastGroupFromFuotaTask", {})
@@ -25363,12 +23830,8 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_DisassociateMulticastGroupFromFuotaTaskCommand)
       .de(de_DisassociateMulticastGroupFromFuotaTaskCommand)
       .build() {};
-    __name(
-      _DisassociateMulticastGroupFromFuotaTaskCommand,
-      "DisassociateMulticastGroupFromFuotaTaskCommand"
-    );
-    var DisassociateMulticastGroupFromFuotaTaskCommand =
-      _DisassociateMulticastGroupFromFuotaTaskCommand;
+    __name(_DisassociateMulticastGroupFromFuotaTaskCommand, "DisassociateMulticastGroupFromFuotaTaskCommand");
+    var DisassociateMulticastGroupFromFuotaTaskCommand = _DisassociateMulticastGroupFromFuotaTaskCommand;
     var _DisassociateWirelessDeviceFromFuotaTaskCommand = class _DisassociateWirelessDeviceFromFuotaTaskCommand extends import_smithy_client.Command.classBuilder()
       .ep({
         ...commonParams,
@@ -25376,10 +23839,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DisassociateWirelessDeviceFromFuotaTask", {})
@@ -25388,12 +23848,8 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_DisassociateWirelessDeviceFromFuotaTaskCommand)
       .de(de_DisassociateWirelessDeviceFromFuotaTaskCommand)
       .build() {};
-    __name(
-      _DisassociateWirelessDeviceFromFuotaTaskCommand,
-      "DisassociateWirelessDeviceFromFuotaTaskCommand"
-    );
-    var DisassociateWirelessDeviceFromFuotaTaskCommand =
-      _DisassociateWirelessDeviceFromFuotaTaskCommand;
+    __name(_DisassociateWirelessDeviceFromFuotaTaskCommand, "DisassociateWirelessDeviceFromFuotaTaskCommand");
+    var DisassociateWirelessDeviceFromFuotaTaskCommand = _DisassociateWirelessDeviceFromFuotaTaskCommand;
     var _DisassociateWirelessDeviceFromMulticastGroupCommand = class _DisassociateWirelessDeviceFromMulticastGroupCommand extends import_smithy_client.Command.classBuilder()
       .ep({
         ...commonParams,
@@ -25401,10 +23857,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DisassociateWirelessDeviceFromMulticastGroup", {})
@@ -25413,12 +23866,8 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_DisassociateWirelessDeviceFromMulticastGroupCommand)
       .de(de_DisassociateWirelessDeviceFromMulticastGroupCommand)
       .build() {};
-    __name(
-      _DisassociateWirelessDeviceFromMulticastGroupCommand,
-      "DisassociateWirelessDeviceFromMulticastGroupCommand"
-    );
-    var DisassociateWirelessDeviceFromMulticastGroupCommand =
-      _DisassociateWirelessDeviceFromMulticastGroupCommand;
+    __name(_DisassociateWirelessDeviceFromMulticastGroupCommand, "DisassociateWirelessDeviceFromMulticastGroupCommand");
+    var DisassociateWirelessDeviceFromMulticastGroupCommand = _DisassociateWirelessDeviceFromMulticastGroupCommand;
     var _DisassociateWirelessDeviceFromThingCommand = class _DisassociateWirelessDeviceFromThingCommand extends import_smithy_client.Command.classBuilder()
       .ep({
         ...commonParams,
@@ -25426,10 +23875,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DisassociateWirelessDeviceFromThing", {})
@@ -25438,10 +23884,7 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_DisassociateWirelessDeviceFromThingCommand)
       .de(de_DisassociateWirelessDeviceFromThingCommand)
       .build() {};
-    __name(
-      _DisassociateWirelessDeviceFromThingCommand,
-      "DisassociateWirelessDeviceFromThingCommand"
-    );
+    __name(_DisassociateWirelessDeviceFromThingCommand, "DisassociateWirelessDeviceFromThingCommand");
     var DisassociateWirelessDeviceFromThingCommand = _DisassociateWirelessDeviceFromThingCommand;
     var _DisassociateWirelessGatewayFromCertificateCommand = class _DisassociateWirelessGatewayFromCertificateCommand extends import_smithy_client.Command.classBuilder()
       .ep({
@@ -25450,10 +23893,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DisassociateWirelessGatewayFromCertificate", {})
@@ -25462,12 +23902,8 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_DisassociateWirelessGatewayFromCertificateCommand)
       .de(de_DisassociateWirelessGatewayFromCertificateCommand)
       .build() {};
-    __name(
-      _DisassociateWirelessGatewayFromCertificateCommand,
-      "DisassociateWirelessGatewayFromCertificateCommand"
-    );
-    var DisassociateWirelessGatewayFromCertificateCommand =
-      _DisassociateWirelessGatewayFromCertificateCommand;
+    __name(_DisassociateWirelessGatewayFromCertificateCommand, "DisassociateWirelessGatewayFromCertificateCommand");
+    var DisassociateWirelessGatewayFromCertificateCommand = _DisassociateWirelessGatewayFromCertificateCommand;
     var _DisassociateWirelessGatewayFromThingCommand = class _DisassociateWirelessGatewayFromThingCommand extends import_smithy_client.Command.classBuilder()
       .ep({
         ...commonParams,
@@ -25475,10 +23911,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "DisassociateWirelessGatewayFromThing", {})
@@ -25487,10 +23920,7 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_DisassociateWirelessGatewayFromThingCommand)
       .de(de_DisassociateWirelessGatewayFromThingCommand)
       .build() {};
-    __name(
-      _DisassociateWirelessGatewayFromThingCommand,
-      "DisassociateWirelessGatewayFromThingCommand"
-    );
+    __name(_DisassociateWirelessGatewayFromThingCommand, "DisassociateWirelessGatewayFromThingCommand");
     var DisassociateWirelessGatewayFromThingCommand = _DisassociateWirelessGatewayFromThingCommand;
     var _GetDestinationCommand = class _GetDestinationCommand extends import_smithy_client.Command.classBuilder()
       .ep({
@@ -25499,10 +23929,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetDestination", {})
@@ -25520,10 +23947,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetDeviceProfile", {})
@@ -25541,10 +23965,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetEventConfigurationByResourceTypes", {})
@@ -25553,10 +23974,7 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_GetEventConfigurationByResourceTypesCommand)
       .de(de_GetEventConfigurationByResourceTypesCommand)
       .build() {};
-    __name(
-      _GetEventConfigurationByResourceTypesCommand,
-      "GetEventConfigurationByResourceTypesCommand"
-    );
+    __name(_GetEventConfigurationByResourceTypesCommand, "GetEventConfigurationByResourceTypesCommand");
     var GetEventConfigurationByResourceTypesCommand = _GetEventConfigurationByResourceTypesCommand;
     var _GetFuotaTaskCommand = class _GetFuotaTaskCommand extends import_smithy_client.Command.classBuilder()
       .ep({
@@ -25565,10 +23983,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetFuotaTask", {})
@@ -25586,10 +24001,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetLogLevelsByResourceTypes", {})
@@ -25607,10 +24019,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetMetricConfiguration", {})
@@ -25628,10 +24037,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetMetrics", {})
@@ -25649,10 +24055,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetMulticastGroup", {})
@@ -25670,10 +24073,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetMulticastGroupSession", {})
@@ -25691,10 +24091,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetNetworkAnalyzerConfiguration", {})
@@ -25712,10 +24109,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetPartnerAccount", {})
@@ -25733,10 +24127,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetPosition", {})
@@ -25754,10 +24145,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetPositionConfiguration", {})
@@ -25775,10 +24163,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetPositionEstimate", {})
@@ -25796,10 +24181,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetResourceEventConfiguration", {})
@@ -25817,10 +24199,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetResourceLogLevel", {})
@@ -25838,10 +24217,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetResourcePosition", {})
@@ -25859,10 +24235,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetServiceEndpoint", {})
@@ -25880,10 +24253,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetServiceProfile", {})
@@ -25901,10 +24271,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetWirelessDevice", {})
@@ -25922,10 +24289,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetWirelessDeviceImportTask", {})
@@ -25943,10 +24307,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetWirelessDeviceStatistics", {})
@@ -25964,10 +24325,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetWirelessGatewayCertificate", {})
@@ -25985,10 +24343,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetWirelessGateway", {})
@@ -26006,10 +24361,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetWirelessGatewayFirmwareInformation", {})
@@ -26018,12 +24370,8 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_GetWirelessGatewayFirmwareInformationCommand)
       .de(de_GetWirelessGatewayFirmwareInformationCommand)
       .build() {};
-    __name(
-      _GetWirelessGatewayFirmwareInformationCommand,
-      "GetWirelessGatewayFirmwareInformationCommand"
-    );
-    var GetWirelessGatewayFirmwareInformationCommand =
-      _GetWirelessGatewayFirmwareInformationCommand;
+    __name(_GetWirelessGatewayFirmwareInformationCommand, "GetWirelessGatewayFirmwareInformationCommand");
+    var GetWirelessGatewayFirmwareInformationCommand = _GetWirelessGatewayFirmwareInformationCommand;
     var _GetWirelessGatewayStatisticsCommand = class _GetWirelessGatewayStatisticsCommand extends import_smithy_client.Command.classBuilder()
       .ep({
         ...commonParams,
@@ -26031,10 +24379,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetWirelessGatewayStatistics", {})
@@ -26052,10 +24397,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetWirelessGatewayTask", {})
@@ -26073,10 +24415,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "GetWirelessGatewayTaskDefinition", {})
@@ -26094,10 +24433,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListDestinations", {})
@@ -26115,10 +24451,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListDeviceProfiles", {})
@@ -26136,10 +24469,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListDevicesForWirelessDeviceImportTask", {})
@@ -26148,12 +24478,8 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_ListDevicesForWirelessDeviceImportTaskCommand)
       .de(de_ListDevicesForWirelessDeviceImportTaskCommand)
       .build() {};
-    __name(
-      _ListDevicesForWirelessDeviceImportTaskCommand,
-      "ListDevicesForWirelessDeviceImportTaskCommand"
-    );
-    var ListDevicesForWirelessDeviceImportTaskCommand =
-      _ListDevicesForWirelessDeviceImportTaskCommand;
+    __name(_ListDevicesForWirelessDeviceImportTaskCommand, "ListDevicesForWirelessDeviceImportTaskCommand");
+    var ListDevicesForWirelessDeviceImportTaskCommand = _ListDevicesForWirelessDeviceImportTaskCommand;
     var _ListEventConfigurationsCommand = class _ListEventConfigurationsCommand extends import_smithy_client.Command.classBuilder()
       .ep({
         ...commonParams,
@@ -26161,10 +24487,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListEventConfigurations", {})
@@ -26182,10 +24505,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListFuotaTasks", {})
@@ -26203,10 +24523,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListMulticastGroupsByFuotaTask", {})
@@ -26224,10 +24541,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListMulticastGroups", {})
@@ -26245,10 +24559,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListNetworkAnalyzerConfigurations", {})
@@ -26266,10 +24577,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListPartnerAccounts", {})
@@ -26287,10 +24595,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListPositionConfigurations", {})
@@ -26308,10 +24613,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListQueuedMessages", {})
@@ -26329,10 +24631,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListServiceProfiles", {})
@@ -26350,10 +24649,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListTagsForResource", {})
@@ -26371,10 +24667,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListWirelessDeviceImportTasks", {})
@@ -26392,10 +24685,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListWirelessDevices", {})
@@ -26413,10 +24703,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListWirelessGateways", {})
@@ -26434,10 +24721,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ListWirelessGatewayTaskDefinitions", {})
@@ -26455,10 +24739,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "PutPositionConfiguration", {})
@@ -26476,10 +24757,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "PutResourceLogLevel", {})
@@ -26497,10 +24775,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ResetAllResourceLogLevels", {})
@@ -26518,10 +24793,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "ResetResourceLogLevel", {})
@@ -26539,10 +24811,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "SendDataToMulticastGroup", {})
@@ -26560,10 +24829,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "SendDataToWirelessDevice", {})
@@ -26581,10 +24847,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "StartBulkAssociateWirelessDeviceWithMulticastGroup", {})
@@ -26606,10 +24869,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "StartBulkDisassociateWirelessDeviceFromMulticastGroup", {})
@@ -26631,10 +24891,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "StartFuotaTask", {})
@@ -26652,10 +24909,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "StartMulticastGroupSession", {})
@@ -26673,10 +24927,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "StartSingleWirelessDeviceImportTask", {})
@@ -26685,10 +24936,7 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_StartSingleWirelessDeviceImportTaskCommand)
       .de(de_StartSingleWirelessDeviceImportTaskCommand)
       .build() {};
-    __name(
-      _StartSingleWirelessDeviceImportTaskCommand,
-      "StartSingleWirelessDeviceImportTaskCommand"
-    );
+    __name(_StartSingleWirelessDeviceImportTaskCommand, "StartSingleWirelessDeviceImportTaskCommand");
     var StartSingleWirelessDeviceImportTaskCommand = _StartSingleWirelessDeviceImportTaskCommand;
     var _StartWirelessDeviceImportTaskCommand = class _StartWirelessDeviceImportTaskCommand extends import_smithy_client.Command.classBuilder()
       .ep({
@@ -26697,10 +24945,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "StartWirelessDeviceImportTask", {})
@@ -26718,10 +24963,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "TagResource", {})
@@ -26739,10 +24981,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "TestWirelessDevice", {})
@@ -26760,10 +24999,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UntagResource", {})
@@ -26781,10 +25017,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdateDestination", {})
@@ -26802,10 +25035,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdateEventConfigurationByResourceTypes", {})
@@ -26814,12 +25044,8 @@ var require_dist_cjs55 = __commonJS({
       .ser(se_UpdateEventConfigurationByResourceTypesCommand)
       .de(de_UpdateEventConfigurationByResourceTypesCommand)
       .build() {};
-    __name(
-      _UpdateEventConfigurationByResourceTypesCommand,
-      "UpdateEventConfigurationByResourceTypesCommand"
-    );
-    var UpdateEventConfigurationByResourceTypesCommand =
-      _UpdateEventConfigurationByResourceTypesCommand;
+    __name(_UpdateEventConfigurationByResourceTypesCommand, "UpdateEventConfigurationByResourceTypesCommand");
+    var UpdateEventConfigurationByResourceTypesCommand = _UpdateEventConfigurationByResourceTypesCommand;
     var _UpdateFuotaTaskCommand = class _UpdateFuotaTaskCommand extends import_smithy_client.Command.classBuilder()
       .ep({
         ...commonParams,
@@ -26827,10 +25053,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdateFuotaTask", {})
@@ -26848,10 +25071,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdateLogLevelsByResourceTypes", {})
@@ -26869,10 +25089,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdateMetricConfiguration", {})
@@ -26890,10 +25107,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdateMulticastGroup", {})
@@ -26911,10 +25125,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdateNetworkAnalyzerConfiguration", {})
@@ -26932,10 +25143,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdatePartnerAccount", {})
@@ -26953,10 +25161,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdatePosition", {})
@@ -26974,10 +25179,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdateResourceEventConfiguration", {})
@@ -26995,10 +25197,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdateResourcePosition", {})
@@ -27016,10 +25215,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdateWirelessDevice", {})
@@ -27037,10 +25233,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdateWirelessDeviceImportTask", {})
@@ -27058,10 +25251,7 @@ var require_dist_cjs55 = __commonJS({
       .m(function (Command, cs, config, o) {
         return [
           (0, import_middleware_serde.getSerdePlugin)(config, this.serialize, this.deserialize),
-          (0, import_middleware_endpoint.getEndpointPlugin)(
-            config,
-            Command.getEndpointParameterInstructions()
-          ),
+          (0, import_middleware_endpoint.getEndpointPlugin)(config, Command.getEndpointParameterInstructions()),
         ];
       })
       .s("iotwireless", "UpdateWirelessGateway", {})
@@ -27297,26 +25487,15 @@ function _getEstimatedLocation(response) {
 function _getConfiguration(context) {
   var _a, _b, _c, _d;
   const configuration = {
-    awsAccessKeyId:
-      (_a = context.environment.find((x) => x.key === "AWS_ACCESSKEYID")) == null
-        ? void 0
-        : _a.value,
+    awsAccessKeyId: (_a = context.environment.find((x) => x.key === "AWS_ACCESSKEYID")) == null ? void 0 : _a.value,
     awsSecretAccessKey:
-      (_b = context.environment.find((x) => x.key === "AWS_SECRETACCESSKEY")) == null
-        ? void 0
-        : _b.value,
-    awsRegion:
-      (_c = context.environment.find((x) => x.key === "AWS_REGION")) == null ? void 0 : _c.value,
+      (_b = context.environment.find((x) => x.key === "AWS_SECRETACCESSKEY")) == null ? void 0 : _b.value,
+    awsRegion: (_c = context.environment.find((x) => x.key === "AWS_REGION")) == null ? void 0 : _c.value,
     desireableAccuracyPercent:
-      ((_d = context.environment.find((x) => x.key === "DESIREABLE_ACCURACY_PERCENT")) == null
-        ? void 0
-        : _d.value) || "0",
+      ((_d = context.environment.find((x) => x.key === "DESIREABLE_ACCURACY_PERCENT")) == null ? void 0 : _d.value) ||
+      "0",
   };
-  if (
-    !configuration.awsRegion ||
-    !configuration.awsAccessKeyId ||
-    !configuration.awsSecretAccessKey
-  ) {
+  if (!configuration.awsRegion || !configuration.awsAccessKeyId || !configuration.awsSecretAccessKey) {
     let missing = "";
     if (!configuration.awsRegion) {
       missing += "AWS_REGION ";
@@ -27374,8 +25553,7 @@ function _createDataForDevice(scope, desireableAccuracy, estimatedLocation) {
   const horizontalAccuracy = estimatedLocation.properties.horizontalConfidenceLevel;
   const verticalAccuracy = estimatedLocation.properties.verticalConfidenceLevel;
   const accuracy =
-    horizontalAccuracy >= parseFloat(desireableAccuracy) ||
-    verticalAccuracy >= parseFloat(desireableAccuracy);
+    horizontalAccuracy >= parseFloat(desireableAccuracy) || verticalAccuracy >= parseFloat(desireableAccuracy);
   const dataReturn = {
     variable: "estimated_location",
     value: lat + ";" + lng,
@@ -27404,26 +25582,20 @@ async function getEstimatedDeviceLocation(context, scope) {
     return;
   }
   const gnssSolverVariable =
-    ((_a = context.environment.find((x) => x.key === "GNSS_SOLVER_VARIABLE")) == null
-      ? void 0
-      : _a.value) || "gnss_solver";
+    ((_a = context.environment.find((x) => x.key === "GNSS_SOLVER_VARIABLE")) == null ? void 0 : _a.value) ||
+    "gnss_solver";
   const ipAddressVariable =
-    ((_b = context.environment.find((x) => x.key === "IP_ADDRESS_VARIABLE")) == null
-      ? void 0
-      : _b.value) || "ip_addresses";
+    ((_b = context.environment.find((x) => x.key === "IP_ADDRESS_VARIABLE")) == null ? void 0 : _b.value) ||
+    "ip_addresses";
   const wifiAdressesVariable =
-    ((_c = context.environment.find((x) => x.key === "WIFI_ADDRESSES_VARIABLE")) == null
-      ? void 0
-      : _c.value) || "wifi_addresses";
-  const gnssValue =
-    (_d = scope.find((x) => x.variable === gnssSolverVariable)) == null ? void 0 : _d.value;
+    ((_c = context.environment.find((x) => x.key === "WIFI_ADDRESSES_VARIABLE")) == null ? void 0 : _c.value) ||
+    "wifi_addresses";
+  const gnssValue = (_d = scope.find((x) => x.variable === gnssSolverVariable)) == null ? void 0 : _d.value;
   const ipAddress =
-    (_f = (_e = scope.find((x) => x.variable === ipAddressVariable)) == null ? void 0 : _e.value) ==
-    null
+    (_f = (_e = scope.find((x) => x.variable === ipAddressVariable)) == null ? void 0 : _e.value) == null
       ? void 0
       : _f.split(";");
-  const wifiAddresses =
-    (_g = scope.find((x) => x.variable === wifiAdressesVariable)) == null ? void 0 : _g.metadata;
+  const wifiAddresses = (_g = scope.find((x) => x.variable === wifiAdressesVariable)) == null ? void 0 : _g.metadata;
   try {
     const payload = _createAWSPayload(gnssValue, ipAddress[0], wifiAddresses);
     const client = new import_client_iot_wireless.IoTWirelessClient({

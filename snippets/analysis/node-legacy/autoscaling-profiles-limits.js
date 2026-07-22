@@ -68,9 +68,7 @@ function getNextTier(serviceValues, accountLimit) {
   if (!accountLimit) {
     return undefined;
   }
-  const nextValue = serviceValues
-    .sort((a, b) => a.amount - b.amount)
-    .find(({ amount }) => amount > accountLimit);
+  const nextValue = serviceValues.sort((a, b) => a.amount - b.amount).find(({ amount }) => amount > accountLimit);
 
   return nextValue?.amount || undefined;
 }
@@ -129,17 +127,11 @@ function calculateAutoScale(prices, profileLimit, profileLimitUsed, accountLimit
     }
 
     if (isNaN(scale)) {
-      console.error(
-        `[ERROR] Ignoring ${statisticKey}, because the environment variable value is not a number.\n`
-      );
+      console.error(`[ERROR] Ignoring ${statisticKey}, because the environment variable value is not a number.\n`);
       continue;
     }
 
-    const needAutoScale = checkAutoScale(
-      profileLimitUsed[statisticKey],
-      profileLimit[statisticKey],
-      scale
-    );
+    const needAutoScale = checkAutoScale(profileLimitUsed[statisticKey], profileLimit[statisticKey], scale);
 
     if (!needAutoScale) {
       continue;
@@ -224,13 +216,7 @@ async function startAnalysis(context) {
   const billing = await account.billing.getPrices();
 
   // Check each service to see if it needs scaling
-  const autoScaleServices = calculateAutoScale(
-    billing,
-    limit,
-    limit_used,
-    accountLimit,
-    environment
-  );
+  const autoScaleServices = calculateAutoScale(billing, limit, limit_used, accountLimit, environment);
 
   // Stop if no auto-scale needed
   if (!autoScaleServices) {
@@ -240,9 +226,7 @@ async function startAnalysis(context) {
 
   console.info("Auto-scaling the services:");
   for (const service in autoScaleServices) {
-    console.info(
-      `${service} from ${accountLimit?.[service]?.limit} to ${autoScaleServices?.[service]?.limit}`
-    );
+    console.info(`${service} from ${accountLimit?.[service]?.limit} to ${autoScaleServices?.[service]?.limit}`);
   }
 
   // Update our subscription, so we are actually scaling the account.

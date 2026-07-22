@@ -22,8 +22,7 @@ const moment = require("moment-timezone");
 // set the timezone to show up on dashboard. TagoIO may handle ISOString automatically in a future update.
 let timezone = "America/New_York";
 
-const getParam = (params, key) =>
-  params.find((x) => x.key === key) || { key, value: "-", sent: false };
+const getParam = (params, key) => params.find((x) => x.key === key) || { key, value: "-", sent: false };
 async function applyDeviceCalculation({ id: deviceID, name }) {
   const deviceInfoText = `${name}(${deviceID}`;
   console.info(`Processing Device ${deviceInfoText})`);

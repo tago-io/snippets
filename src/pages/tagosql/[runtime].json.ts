@@ -17,7 +17,7 @@ export const GET: APIRoute = async ({ params }) => {
     return new Response("Runtime not found", { status: 404 });
   }
 
-  const metadata = runtimeData.snippets.map(({ code, ...meta }: any) => meta);
+  const metadata = runtimeData.snippets.map(({ code: _code, ...meta }) => meta);
 
   const data = {
     runtime,

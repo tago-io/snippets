@@ -112,7 +112,7 @@ export async function collectSnippets(runtime: RuntimeConfig): Promise<SnippetDa
       const ext = path.extname(file).toLowerCase();
       return runtime.exts.includes(ext);
     })
-    .sort();
+    .toSorted();
 
   const snippets: SnippetData[] = [];
 

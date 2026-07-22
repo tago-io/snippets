@@ -39,9 +39,7 @@ function parseValue(value) {
 }
 
 // Find string payload in the data
-const payload_raw = payload.find(
-  (x) => x.variable === "payload" || x.variable === "data" || x.variable === "message"
-);
+const payload_raw = payload.find((x) => x.variable === "payload" || x.variable === "data" || x.variable === "message");
 
 if (payload_raw && typeof payload_raw.value === "string") {
   const data = [];
