@@ -146,6 +146,37 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </section>
 
+    <!-- TagoSQL Snippets Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-6">TagoSQL Snippets</h2>
+      <p class="text-muted-foreground mb-8">
+        Ready-to-use TagoSQL queries for the /sql routes of the TagoIO API, from a simple device read to fleet-wide queries by tag.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- SQL -->
+        <div class="border rounded-lg p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-semibold">SQL</h3>
+            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">TagoSQL</span>
+          </div>
+          <p class="text-sm text-muted-foreground mb-4">
+            Read-only SQL over your device and entity data, with positional parameters
+          </p>
+          <div class="flex flex-col space-y-2">
+            <a href="/tagosql/sql.json" class="text-primary hover:underline text-sm">
+              📄 sql.json (metadata)
+            </a>
+            <a href="/tagosql/sql/" class="text-primary hover:underline text-sm">
+              📁 Browse query files
+            </a>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
     <!-- Usage Examples Section -->
     <section class="mb-16">
       <h2 class="text-3xl font-bold mb-6">Usage Examples</h2>
@@ -190,6 +221,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               <div class="text-xs text-muted-foreground mt-2">
                 Runtimes: javascript
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold mb-4">TagoSQL Snippets</h3>
+          <div class="bg-muted p-4 rounded-lg">
+            <div class="grid gap-2 text-sm font-mono">
+              <div><span class="text-muted-foreground">JSON:</span> /tagosql/sql.json</div>
+              <div><span class="text-muted-foreground">Files:</span> /tagosql/sql/&#123;filename&#125;</div>
             </div>
           </div>
         </div>

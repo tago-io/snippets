@@ -188,3 +188,13 @@ export const PAYLOAD_PARSER_RUNTIMES: RuntimeConfig[] = [
     sourceDir: "snippets/payload-parser",
   },
 ];
+
+export const TAGOSQL_RUNTIMES: RuntimeConfig[] = [
+  {
+    name: "sql",
+    displayName: "SQL",
+    language: "sql",
+    exts: [".sql"],
+    sourceDir: "snippets/tagosql",
+  },
+];
