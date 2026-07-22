@@ -44,13 +44,13 @@ pnpm exec tsx ./scripts/prepare-data.ts
 
 ## Analysis runtimes
 
-| Runtime | Language | Extensions | Notes |
-|---------|----------|------------|--------|
-| node-legacy | JS ES5/ES6 | .js, .cjs | Pre-installed libraries only |
-| node-rt2025 | modern JS | .js | fetch API |
-| deno-rt2025 | TS/JS | .ts, .tsx, .js | Native TS, URL modules |
-| python-legacy | Python 3 | .py | Pre-installed libraries only |
-| python-rt2025 | Python 3 | .py | UV, PyPI |
+| Runtime       | Language   | Extensions     | Notes                        |
+| ------------- | ---------- | -------------- | ---------------------------- |
+| node-legacy   | JS ES5/ES6 | .js, .cjs      | Pre-installed libraries only |
+| node-rt2025   | modern JS  | .js            | fetch API                    |
+| deno-rt2025   | TS/JS      | .ts, .tsx, .js | Native TS, URL modules       |
+| python-legacy | Python 3   | .py            | Pre-installed libraries only |
+| python-rt2025 | Python 3   | .py            | UV, PyPI                     |
 
 ## Payload Parser
 
