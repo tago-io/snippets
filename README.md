@@ -8,6 +8,8 @@ This repository hosts code snippets for TagoIO, combining both Analysis and Payl
 - Analysis files: https://snippets.tago.io/analysis/{runtime}/{filename}
 - Payload Parser JSON: https://snippets.tago.io/payload-parser/{runtime}.json (javascript)
 - Payload Parser files: https://snippets.tago.io/payload-parser/{runtime}/{filename}
+- TagoSQL JSON: https://snippets.tago.io/tagosql/sql.json
+- TagoSQL files: https://snippets.tago.io/tagosql/sql/{filename}
 
 The JSON files contain metadata only. The code is served as individual files from their runtime directories.
 
@@ -22,6 +24,8 @@ The JSON files contain metadata only. The code is served as individual files fro
     - python-rt2025/
   - payload-parser/
     - javascript/
+  - tagosql/
+    - sql/
 - scripts/
   - prepare-snippets.mjs (build pre-step that generates JSON and exposes files)
 - src/ (Astro site)
@@ -61,7 +65,7 @@ Each per-runtime JSON produced in `public/{category}/` has the following shape:
 - Build site: `npm run build`
 
 The build will:
-- Collect snippet metadata and write JSON + code files to `public/analysis/` and `public/payload-parser/`
+- Collect snippet metadata and write JSON + code files to `public/analysis/`, `public/payload-parser/`, and `public/tagosql/`
 - Also write backward-compatible Analysis JSON/files to `public/{runtime}.json` and `public/{runtime}/`
 - Build the Astro site into `dist/`
 

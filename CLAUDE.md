@@ -4,9 +4,10 @@ This document provides development guidelines and automation details for the uni
 
 ## Project Overview
 
-This repository contains code snippets for TagoIO, covering two categories:
+This repository contains code snippets for TagoIO, covering three categories:
 - Analysis snippets (multiple runtimes)
 - Payload Parser snippets (JavaScript)
+- TagoSQL snippets (SQL queries for the /sql routes of the TagoIO API; metadata uses `--` comments)
 
 Outputs are exposed as JSON metadata and file endpoints via the Astro site and deployed to GitHub Pages at snippets.tago.io.
 

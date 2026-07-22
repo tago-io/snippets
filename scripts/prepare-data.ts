@@ -8,6 +8,7 @@ import {
   PAYLOAD_PARSER_RUNTIMES,
   type RuntimeConfig,
   type SnippetData,
+  TAGOSQL_RUNTIMES,
 } from "../src/lib/snippets.ts";
 
 const root = process.cwd();
@@ -20,12 +21,14 @@ type RuntimeBundle = {
 interface StaticData {
   analysis: Record<string, RuntimeBundle>;
   payloadParser: Record<string, RuntimeBundle>;
+  tagosql: Record<string, RuntimeBundle>;
 }
 
 async function generateStaticData() {
   const data: StaticData = {
     analysis: {},
     payloadParser: {},
+    tagosql: {},
   };
 
   for (const runtime of ANALYSIS_RUNTIMES) {
@@ -39,6 +42,14 @@ async function generateStaticData() {
   for (const runtime of PAYLOAD_PARSER_RUNTIMES) {
     const snippets = await collectSnippets(runtime);
     data.payloadParser[runtime.name] = {
+      runtime,
+      snippets,
+    };
+  }
+
+  for (const runtime of TAGOSQL_RUNTIMES) {
+    const snippets = await collectSnippets(runtime);
+    data.tagosql[runtime.name] = {
       runtime,
       snippets,
     };

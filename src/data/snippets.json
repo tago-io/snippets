@@ -715,6 +715,22 @@
           "filename": "notifications.ts",
           "file_path": "deno-rt2025/notifications.ts",
           "code": "import type { TagoContext } from \"npm:@tago-io/sdk\";\nimport { Analysis, Services, Utils } from \"npm:@tago-io/sdk\";\n\n/**\n * The main function used by Tago to run the script.\n * It sends a notification to the account and another one linked to a dashboard.\n * Optional: You can set a dashboard_id using an environment variable\n * this will show a button on the notification to send the user directly to the dashboard\n */\nasync function startAnalysis(context: TagoContext): Promise<void> {\n  // reads the values from the environment variables and saves it in the variable env_vars\n  const env_var = Utils.envToJson(context.environment);\n\n  const notification = new Services({ token: context.token }).Notification;\n\n  // In this variable, you type the title of the notification\n  const title = \"Your title\";\n\n  // In this variable, you type the message that you will send on the notification\n  const message = \"Your message\";\n\n  try {\n    const notificationData = {\n      message,\n      title,\n      ref_id: env_var.dashboard_id || undefined,\n    };\n\n    const service_response = await notification.send(notificationData);\n\n    context.log(service_response);\n  } catch (error) {\n    context.log(error);\n  }\n}\n\nAnalysis.use(startAnalysis);\n\n// To run analysis on your machine (external)\n// Analysis.use(myAnalysis, { token: \"YOUR-TOKEN\" });\n"
+        },
+        {
+          "id": "tagosql-execute-stored-query",
+          "title": "TagoSQL - Execute a Stored Query",
+          "description": "Execute a stored TagoSQL query from an analysis using an Access Management grant",
+          "language": "typescript",
+          "tags": [
+            "tagosql",
+            "sql",
+            "stored query",
+            "access management",
+            "query"
+          ],
+          "filename": "tagosql-execute-stored-query.ts",
+          "file_path": "deno-rt2025/tagosql-execute-stored-query.ts",
+          "code": "/*\n ** Analysis Example\n ** TagoSQL - Execute a Stored Query\n **\n ** Executes a stored TagoSQL query (POST /sql/{id}/execute) with the analysis' own token,\n ** overriding one of the query's saved parameter defaults. Stored queries are the recommended\n ** way to reuse SQL: they are versioned, can be cached, and can be granted to analyses and\n ** Run users through Access Management.\n **\n ** How to use:\n ** 1 - Create a stored query with POST /sql (or from the admin) that uses a $1 parameter,\n **     for example: SELECT variable, value, time FROM device_tag('type', 'sensor') AS d\n **     WHERE variable = $1 ORDER BY time DESC LIMIT 10\n ** 2 - Grant this analysis access to it at https://admin.tago.io/am:\n **     - Click \"Add Policy\";\n **     - In the Target selector, select Analysis with the field set as \"ID\" and choose this analysis;\n **     - Click \"Click to add a new permission\", select \"SQL Query\" with the rule \"Execute\",\n **       matching the query by ID (or by tag to grant a group of queries);\n **     - Save the policy.\n ** 3 - Add the stored query id to the analysis environment variables:\n **     sql_id = your stored query id\n **\n ** Granting execution of a query grants its full result set: the query runs with the\n ** profile's data access, so only grant queries whose results the target may see.\n */\n\nimport type { TagoContext } from \"npm:@tago-io/sdk\";\nimport { Analysis, Utils } from \"npm:@tago-io/sdk\";\n\nconst TAGOIO_API = \"https://api.tago.io\";\n\nasync function startAnalysis(context: TagoContext): Promise<void> {\n  const envVars = Utils.envToJson(context.environment);\n  if (!envVars.sql_id) {\n    return context.log(\"Add a sql_id to the analysis environment variables\");\n  }\n\n  const response = await fetch(`${TAGOIO_API}/sql/${envVars.sql_id}/execute`, {\n    method: \"POST\",\n    headers: { token: context.token, \"Content-Type\": \"application/json\" },\n    // The body is optional: a bare POST runs the query with its saved parameter defaults.\n    // Values sent here override the saved defaults per key.\n    body: JSON.stringify({\n      params: [{ key: \"$1\", value: \"temperature\" }],\n    }),\n  });\n\n  const body = await response.json();\n  if (!response.ok || !body.status) {\n    // A 403 here means this analysis has no Access Management policy granting\n    // the Execute action on this query. See the instructions above.\n    return context.log(`Query failed (${response.status}): ${body.message}`);\n  }\n\n  const { rows, row_count, served_from_cache } = body.result;\n  context.log(`Got ${row_count} rows (served_from_cache: ${served_from_cache})`);\n  for (const row of rows) {\n    context.log(JSON.stringify(row));\n  }\n}\n\nAnalysis.use(startAnalysis);\n"
         }
       ]
     },
@@ -1523,6 +1539,114 @@
           "filename": "timezone-data-processor.js",
           "file_path": "javascript/timezone-data-processor.js",
           "code": "/**\n * This snippet demonstrates timezone conversion using TagoIO's timeUtils and dayjs.\n * It converts timestamps to different timezones and formats them.\n *\n * Testing:\n * You can test with the Device Emulator using:\n * [{ \"variable\": \"timestamp\", \"value\": \"2023-06-15T14:30:00.000Z\" }]\n */\n\n// Find timestamp data in payload\nconst timestampItem = payload.find(\n  (item) =>\n    item.variable?.toLowerCase().includes(\"timestamp\") ||\n    item.variable?.toLowerCase().includes(\"time\")\n);\n\nif (timestampItem?.value) {\n  try {\n    const originalTime = timestampItem.value;\n    const group = timestampItem.group || String(Date.now());\n\n    // Use dayjs for basic formatting\n    const dayjsTime = dayjs(originalTime);\n\n    // Add formatted timestamp using dayjs\n    payload.push({\n      variable: \"formatted_time\",\n      value: dayjsTime.format(\"YYYY-MM-DD HH:mm:ss\"),\n      group,\n    });\n\n    // Use timeUtils for timezone conversion (if available)\n    if (typeof timeUtils !== \"undefined\") {\n      try {\n        // Convert to New York timezone\n        const nyTime = timeUtils.formatInTimezone(\n          originalTime,\n          \"America/New_York\",\n          \"%Y-%m-%d %H:%M:%S %z\"\n        );\n        payload.push({\n          variable: \"time_ny\",\n          value: nyTime,\n          group,\n        });\n\n        // Convert to Tokyo timezone\n        const tokyoTime = timeUtils.formatInTimezone(\n          originalTime,\n          \"Asia/Tokyo\",\n          \"%Y-%m-%d %H:%M:%S %z\"\n        );\n        payload.push({\n          variable: \"time_tokyo\",\n          value: tokyoTime,\n          group,\n        });\n      } catch (conversionError) {\n        console.log(\"Timezone conversion error:\", conversionError.message);\n      }\n    }\n\n    console.log(`Processed timestamp: ${originalTime}`);\n  } catch (error) {\n    console.error(\"Timestamp processing error:\", error.message);\n\n    payload.push({\n      variable: \"timestamp_error\",\n      value: `Processing failed: ${error.message}`,\n      group: String(Date.now()),\n    });\n  }\n}\n"
+        }
+      ]
+    }
+  },
+  "tagosql": {
+    "sql": {
+      "runtime": {
+        "name": "sql",
+        "displayName": "SQL",
+        "language": "sql",
+        "exts": [
+          ".sql"
+        ],
+        "sourceDir": "snippets/tagosql"
+      },
+      "snippets": [
+        {
+          "id": "aggregate-min-max-avg",
+          "title": "Aggregate Min, Max And Average",
+          "description": "Compute per-variable statistics on the server instead of fetching raw data",
+          "language": "sql",
+          "tags": [
+            "device",
+            "aggregation",
+            "average",
+            "min",
+            "max",
+            "group by"
+          ],
+          "filename": "aggregate-min-max-avg.sql",
+          "file_path": "sql/aggregate-min-max-avg.sql",
+          "code": "-- Aggregations run on the server: one small result row per variable instead of\n-- thousands of raw readings.\n--   $1 = device id\n--   $2 = start of the time window, ISO 8601\nSELECT variable,\n       COUNT(*) AS readings,\n       MIN(value) AS min_value,\n       MAX(value) AS max_value,\n       AVG(value) AS avg_value\nFROM device($1) AS d\nWHERE time > $2\nGROUP BY variable\nORDER BY variable\n"
+        },
+        {
+          "id": "device-inventory",
+          "title": "Device Inventory",
+          "description": "List your devices with their type, network, and last activity",
+          "language": "sql",
+          "tags": [
+            "devices",
+            "inventory",
+            "list",
+            "metadata"
+          ],
+          "filename": "device-inventory.sql",
+          "file_path": "sql/device-inventory.sql",
+          "code": "-- devices() lists your device inventory (metadata, not stored data). Useful to\n-- find silent devices: sort by last_input to see which stopped reporting.\n-- devices_tag('key','value') is the same table restricted to one tag.\nSELECT id, name, active, type, last_input\nFROM devices() AS d\nWHERE active = true\nORDER BY last_input DESC\nLIMIT 100\n"
+        },
+        {
+          "id": "filter-by-variable-and-time",
+          "title": "Filter By Variable And Time Window",
+          "description": "Read one variable from a device inside a time window using query parameters",
+          "language": "sql",
+          "tags": [
+            "device",
+            "data",
+            "parameters",
+            "filter",
+            "time"
+          ],
+          "filename": "filter-by-variable-and-time.sql",
+          "file_path": "sql/filter-by-variable-and-time.sql",
+          "code": "-- Positional parameters ($1, $2, ...) keep values out of the query text: store the\n-- query once and send different values on each execution.\n--   $1 = device id        (example: \"6a033c5b0528f6000c2ac5ee\")\n--   $2 = variable name    (example: \"temperature\")\n--   $3 = start of the time window, ISO 8601 (example: \"2026-07-01T00:00:00Z\")\nSELECT variable, value, unit, time\nFROM device($1) AS d\nWHERE variable = $2\n  AND time > $3\nORDER BY time DESC\nLIMIT 100\n"
+        },
+        {
+          "id": "fleet-latest-by-tag",
+          "title": "Latest Value Across A Fleet By Tag",
+          "description": "Get the newest reading of a variable from every device matching a tag, in one query",
+          "language": "sql",
+          "tags": [
+            "fleet",
+            "tags",
+            "multiple devices",
+            "device_data_by_tag"
+          ],
+          "filename": "fleet-latest-by-tag.sql",
+          "file_path": "sql/fleet-latest-by-tag.sql",
+          "code": "-- device_data_by_tag('key','value') is the fleet function: one row per active device\n-- carrying the tag, each with that device's newest reading matching your filters.\n-- A variable filter and a time lower bound are required; up to 5 tag pairs can be\n-- listed (AND-combined). For fleets above your plan's device cap, page with the\n-- after_device field of the execute request body.\n--   $1 = start of the time window, ISO 8601 (devices silent since then are skipped)\nSELECT device, device_name, variable, value, unit, time\nFROM device_data_by_tag('type', 'sensor') AS f\nWHERE variable = 'temperature'\n  AND time > $1\nORDER BY device\n"
+        },
+        {
+          "id": "join-two-devices",
+          "title": "Correlate Two Devices With A JOIN",
+          "description": "Match readings from two devices by time to compare them side by side",
+          "language": "sql",
+          "tags": [
+            "device",
+            "join",
+            "correlation",
+            "multiple devices"
+          ],
+          "filename": "join-two-devices.sql",
+          "file_path": "sql/join-two-devices.sql",
+          "code": "-- JOINs combine data from multiple devices in one result (Starter plan or above).\n-- Here a sensor's temperature is paired with an actuator's state recorded at the\n-- same instant. Replace SENSOR_ID and ACTUATOR_ID with your device ids.\nSELECT a.time,\n       a.value AS temperature,\n       b.value AS actuator_state\nFROM device('SENSOR_ID') AS a\nJOIN device('ACTUATOR_ID') AS b ON a.time = b.time\nWHERE a.variable = 'temperature'\nORDER BY a.time DESC\nLIMIT 50\n"
+        },
+        {
+          "id": "select-latest-device-data",
+          "title": "Latest Data From One Device",
+          "description": "Read the most recent readings stored on a single device",
+          "language": "sql",
+          "tags": [
+            "device",
+            "data",
+            "select",
+            "basic"
+          ],
+          "filename": "select-latest-device-data.sql",
+          "file_path": "sql/select-latest-device-data.sql",
+          "code": "-- The simplest TagoSQL query: the last 10 readings of a device, newest first.\n-- device('id') reads the time-series data stored on that device.\n-- Replace DEVICE_ID with a device id from your profile.\nSELECT variable, value, unit, time\nFROM device('DEVICE_ID') AS d\nORDER BY time DESC\nLIMIT 10\n"
         }
       ]
     }
