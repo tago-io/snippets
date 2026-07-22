@@ -105,7 +105,7 @@ src/          # Astro site, layouts, components
 public/       # static assets
 .github/workflows/
   ci.yml      # lint/format/build on every push and PR
-  deploy.yml  # build + gh-pages on main
+  deploy.yml  # build + deploy-pages on main
 ```
 
 ## Public URLs

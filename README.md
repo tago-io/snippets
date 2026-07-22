@@ -84,7 +84,7 @@ pnpm lint      # oxlint + ruff check
 
 ## Deployment
 
-GitHub Actions builds with pnpm and deploys `dist/` to the `gh-pages` branch on push to `main`.
+GitHub Actions builds with pnpm and deploys `dist/` to GitHub Pages (Actions source) on push to `main`.
 
 ## License
 
