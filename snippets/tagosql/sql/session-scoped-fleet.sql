@@ -6,11 +6,11 @@
 -- executing the query: tag your devices and your Run users with the same key
 -- (customer=acme on both) and every user sees only their fleet. The value never
 -- comes from the request, and a user without the tag gets an empty result.
--- The second argument is an optional default, used only when the profile owner
--- runs the query while authoring.
+-- The COALESCE fallback is standard SQL and applies only when the profile owner
+-- runs the query while authoring; for a signed-in user it never fires.
 --   $1 = start of the time window, ISO 8601
 SELECT device, device_name, variable, value, unit, time
-FROM device_data_by_tag('customer', session_user_tag('customer', 'acme')) AS f
+FROM device_data_by_tag('customer', COALESCE(session_user_tag('customer'), 'acme')) AS f
 WHERE variable = 'temperature'
   AND time > $1
 ORDER BY device
