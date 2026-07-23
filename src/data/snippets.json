@@ -1647,6 +1647,37 @@
           "filename": "select-latest-device-data.sql",
           "file_path": "sql/select-latest-device-data.sql",
           "code": "-- The simplest TagoSQL query: the last 10 readings of a device, newest first.\n-- device('id') reads the time-series data stored on that device.\n-- Replace DEVICE_ID with a device id from your profile.\nSELECT variable, value, unit, time\nFROM device('DEVICE_ID') AS d\nORDER BY time DESC\nLIMIT 10\n"
+        },
+        {
+          "id": "session-scoped-fleet",
+          "title": "Fleet Scoped To The Signed-In User",
+          "description": "One stored query that shows each Run user only the devices carrying their own customer tag",
+          "language": "sql",
+          "tags": [
+            "session",
+            "run user",
+            "fleet",
+            "device_data_by_tag",
+            "session_user_tag"
+          ],
+          "filename": "session-scoped-fleet.sql",
+          "file_path": "sql/session-scoped-fleet.sql",
+          "code": "-- session_user_tag('key') is filled by the server with the tag value of the user\n-- executing the query: tag your devices and your Run users with the same key\n-- (customer=acme on both) and every user sees only their fleet. The value never\n-- comes from the request, and a user without the tag gets an empty result.\n-- The second argument is an optional default, used only when the profile owner\n-- runs the query while authoring.\n--   $1 = start of the time window, ISO 8601\nSELECT device, device_name, variable, value, unit, time\nFROM device_data_by_tag('customer', session_user_tag('customer', 'acme')) AS f\nWHERE variable = 'temperature'\n  AND time > $1\nORDER BY device\n"
+        },
+        {
+          "id": "session-user-own-device",
+          "title": "Latest Data From The Signed-In User's Device",
+          "description": "Read recent data from the device tagged with the executing Run user's id",
+          "language": "sql",
+          "tags": [
+            "session",
+            "run user",
+            "device_tag",
+            "session_user_id"
+          ],
+          "filename": "session-user-own-device.sql",
+          "file_path": "sql/session-user-own-device.sql",
+          "code": "-- session_user_id() is filled by the server with the id of the Run user executing\n-- the query. Tag each user's device as owner=<run user id> and this one stored\n-- query serves every user with only their own readings. The optional argument is\n-- a default id for the profile owner while authoring; real users always resolve\n-- to their own id, and a user with no matching device gets an empty result.\n--   $1 = start of the time window, ISO 8601\nSELECT variable, value, unit, time\nFROM device_tag('owner', session_user_id('6a4ff908be1ad0000bf49a2d')) AS d\nWHERE time > $1\nORDER BY time DESC\nLIMIT 50\n"
         }
       ]
     }
