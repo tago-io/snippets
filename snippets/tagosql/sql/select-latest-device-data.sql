@@ -3,7 +3,7 @@
 -- @tags: device, data, select, basic
 
 -- The simplest TagoSQL query: the last 10 readings of a device, newest first.
--- device('id') reads the time-series data stored on that device.
+-- device('DEVICE_ID') reads the time-series data stored on that device.
 -- Replace DEVICE_ID with a device id from your profile.
 SELECT variable, value, unit, time
 FROM device('DEVICE_ID') AS d

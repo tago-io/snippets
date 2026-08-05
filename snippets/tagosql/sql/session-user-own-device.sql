@@ -7,10 +7,10 @@
 -- and this one stored query serves every user with only their own readings.
 -- The COALESCE fallback is standard SQL and applies only when the profile owner
 -- runs the query while authoring; a user with no matching device gets an empty
--- result.
---   $1 = start of the time window, ISO 8601
+-- result. Replace RUN_USER_ID with a Run user id from your profile.
+--   $1 = start of the time window, ISO 8601 (example: "2026-01-01T00:00:00Z")
 SELECT variable, value, unit, time
-FROM device_tag('owner', COALESCE(session_user_id(), '6a4ff908be1ad0000bf49a2d')) AS d
+FROM device_tag('owner', COALESCE(session_user_id(), 'RUN_USER_ID')) AS d
 WHERE time > $1
 ORDER BY time DESC
 LIMIT 50
