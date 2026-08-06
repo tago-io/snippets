@@ -7,9 +7,10 @@
 -- A variable filter and a time lower bound are required; up to 5 tag pairs can be
 -- listed (AND-combined). For fleets above your plan's device cap, page with the
 -- after_device field of the execute request body.
---   $1 = start of the time window, ISO 8601 (devices silent since then are skipped)
+--   $1 = start of the time window, ISO 8601 (example: "2026-01-01T00:00:00Z")
+--        devices silent since then are skipped
 SELECT device, device_name, variable, value, unit, time
-FROM device_data_by_tag('type', 'sensor') AS f
+FROM device_data_by_tag('device_type', 'sensor') AS f
 WHERE variable = 'temperature'
   AND time > $1
 ORDER BY device

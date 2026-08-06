@@ -8,9 +8,9 @@
 -- comes from the request, and a user without the tag gets an empty result.
 -- The COALESCE fallback is standard SQL and applies only when the profile owner
 -- runs the query while authoring; for a signed-in user it never fires.
---   $1 = start of the time window, ISO 8601
+--   $1 = start of the time window, ISO 8601 (example: "2026-01-01T00:00:00Z")
 SELECT device, device_name, variable, value, unit, time
 FROM device_data_by_tag('customer', COALESCE(session_user_tag('customer'), 'acme')) AS f
-WHERE variable = 'temperature'
+WHERE variable = 'battery_level'
   AND time > $1
 ORDER BY device

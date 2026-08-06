@@ -6,7 +6,7 @@
 -- query once and send different values on each execution.
 --   $1 = device id        (example: "6a033c5b0528f6000c2ac5ee")
 --   $2 = variable name    (example: "temperature")
---   $3 = start of the time window, ISO 8601 (example: "2026-07-01T00:00:00Z")
+--   $3 = start of the time window, ISO 8601 (example: "2026-01-01T00:00:00Z")
 SELECT variable, value, unit, time
 FROM device($1) AS d
 WHERE variable = $2

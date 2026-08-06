@@ -5,7 +5,8 @@
 -- devices() lists your device inventory (metadata, not stored data). Useful to
 -- find silent devices: sort by last_input to see which stopped reporting.
 -- devices_tag('key','value') is the same table restricted to one tag.
-SELECT id, name, active, type, last_input
+-- To read each device's configuration parameters, see device-configuration-params.
+SELECT id, name, active, type, network, last_input
 FROM devices() AS d
 WHERE active = true
 ORDER BY last_input DESC

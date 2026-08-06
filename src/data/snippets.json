@@ -1570,7 +1570,22 @@
           ],
           "filename": "aggregate-min-max-avg.sql",
           "file_path": "sql/aggregate-min-max-avg.sql",
-          "code": "-- Aggregations run on the server: one small result row per variable instead of\n-- thousands of raw readings.\n--   $1 = device id\n--   $2 = start of the time window, ISO 8601\nSELECT variable,\n       COUNT(*) AS readings,\n       MIN(value) AS min_value,\n       MAX(value) AS max_value,\n       AVG(value) AS avg_value\nFROM device($1) AS d\nWHERE time > $2\nGROUP BY variable\nORDER BY variable\n"
+          "code": "-- Aggregations run on the server: one small result row per variable instead of\n-- thousands of raw readings.\n--   $1 = device id (example: \"6a033c5b0528f6000c2ac5ee\")\n--   $2 = start of the time window, ISO 8601 (example: \"2026-01-01T00:00:00Z\")\nSELECT variable,\n       COUNT(*) AS readings,\n       MIN(value) AS min_value,\n       MAX(value) AS max_value,\n       AVG(value) AS avg_value\nFROM device($1) AS d\nWHERE time > $2\nGROUP BY variable\nORDER BY variable\n"
+        },
+        {
+          "id": "device-configuration-params",
+          "title": "Device Configuration Parameters",
+          "description": "Read the key/value configuration parameters stored on each device",
+          "language": "sql",
+          "tags": [
+            "devices",
+            "params",
+            "configuration",
+            "json"
+          ],
+          "filename": "device-configuration-params.sql",
+          "file_path": "sql/device-configuration-params.sql",
+          "code": "-- The params column returns one json element per device parameter, ordered by key,\n-- in the same shape as the REST params API: { id, key, value, sent }. A device with\n-- no parameters returns an empty array. The element id is the parameter row id, so\n-- the values you read here can be edited or deleted through the REST params\n-- endpoints. params is selectable only: it carries no comparison semantics, so it\n-- cannot appear in WHERE, GROUP BY, ORDER BY, or inside an aggregate.\nSELECT id, name, params\nFROM devices() AS d\nWHERE d.active = true\nLIMIT 100\n"
         },
         {
           "id": "device-inventory",
@@ -1585,7 +1600,53 @@
           ],
           "filename": "device-inventory.sql",
           "file_path": "sql/device-inventory.sql",
-          "code": "-- devices() lists your device inventory (metadata, not stored data). Useful to\n-- find silent devices: sort by last_input to see which stopped reporting.\n-- devices_tag('key','value') is the same table restricted to one tag.\nSELECT id, name, active, type, last_input\nFROM devices() AS d\nWHERE active = true\nORDER BY last_input DESC\nLIMIT 100\n"
+          "code": "-- devices() lists your device inventory (metadata, not stored data). Useful to\n-- find silent devices: sort by last_input to see which stopped reporting.\n-- devices_tag('key','value') is the same table restricted to one tag.\n-- To read each device's configuration parameters, see device-configuration-params.\nSELECT id, name, active, type, network, last_input\nFROM devices() AS d\nWHERE active = true\nORDER BY last_input DESC\nLIMIT 100\n"
+        },
+        {
+          "id": "devices-by-tag",
+          "title": "Devices Filtered By Tag",
+          "description": "List the devices carrying one tag and spot the ones that stopped reporting",
+          "language": "sql",
+          "tags": [
+            "devices",
+            "devices_tag",
+            "tags",
+            "inventory",
+            "params"
+          ],
+          "filename": "devices-by-tag.sql",
+          "file_path": "sql/devices-by-tag.sql",
+          "code": "-- devices_tag('key','value') is the device inventory restricted to devices carrying\n-- that tag. Sorting by last_input ascending puts the silent devices first, which is\n-- the quickest way to audit a group of sensors. params comes back as the device's\n-- configuration array, so you can check firmware or mode alongside activity.\nSELECT id, name, active, last_input, params\nFROM devices_tag('device_type', 'sensor') AS d\nORDER BY last_input ASC\nLIMIT 100\n"
+        },
+        {
+          "id": "entity-inventory",
+          "title": "Entity Inventory",
+          "description": "List the entities on your profile with their tags and last update",
+          "language": "sql",
+          "tags": [
+            "entities",
+            "inventory",
+            "list",
+            "metadata"
+          ],
+          "filename": "entity-inventory.sql",
+          "file_path": "sql/entity-inventory.sql",
+          "code": "-- entities() lists your entities (metadata, not their rows), which is how you find\n-- the id to pass to entity('ENTITY_ID'). entities_tag('key','value') is the same\n-- table restricted to entities carrying one tag.\nSELECT id, name, tags, updated_at\nFROM entities() AS e\nORDER BY updated_at DESC\nLIMIT 100\n"
+        },
+        {
+          "id": "entity-rows",
+          "title": "Rows From One Entity",
+          "description": "Read the newest rows stored in a single entity",
+          "language": "sql",
+          "tags": [
+            "entity",
+            "data",
+            "select",
+            "basic"
+          ],
+          "filename": "entity-rows.sql",
+          "file_path": "sql/entity-rows.sql",
+          "code": "-- entity('ENTITY_ID') reads the rows of one entity you own. Its columns are the\n-- entity's own schema, returned with their native types, so SELECT * is the safe\n-- starting point; you can only reference columns the entity actually defines.\n-- Call GET /sql/tables?entity_id=<id> to discover those columns.\nSELECT *\nFROM entity('ENTITY_ID') AS e\nORDER BY created_at DESC\nLIMIT 50\n"
         },
         {
           "id": "filter-by-variable-and-time",
@@ -1601,7 +1662,7 @@
           ],
           "filename": "filter-by-variable-and-time.sql",
           "file_path": "sql/filter-by-variable-and-time.sql",
-          "code": "-- Positional parameters ($1, $2, ...) keep values out of the query text: store the\n-- query once and send different values on each execution.\n--   $1 = device id        (example: \"6a033c5b0528f6000c2ac5ee\")\n--   $2 = variable name    (example: \"temperature\")\n--   $3 = start of the time window, ISO 8601 (example: \"2026-07-01T00:00:00Z\")\nSELECT variable, value, unit, time\nFROM device($1) AS d\nWHERE variable = $2\n  AND time > $3\nORDER BY time DESC\nLIMIT 100\n"
+          "code": "-- Positional parameters ($1, $2, ...) keep values out of the query text: store the\n-- query once and send different values on each execution.\n--   $1 = device id        (example: \"6a033c5b0528f6000c2ac5ee\")\n--   $2 = variable name    (example: \"temperature\")\n--   $3 = start of the time window, ISO 8601 (example: \"2026-01-01T00:00:00Z\")\nSELECT variable, value, unit, time\nFROM device($1) AS d\nWHERE variable = $2\n  AND time > $3\nORDER BY time DESC\nLIMIT 100\n"
         },
         {
           "id": "fleet-latest-by-tag",
@@ -1616,7 +1677,7 @@
           ],
           "filename": "fleet-latest-by-tag.sql",
           "file_path": "sql/fleet-latest-by-tag.sql",
-          "code": "-- device_data_by_tag('key','value') is the fleet function: one row per active device\n-- carrying the tag, each with that device's newest reading matching your filters.\n-- A variable filter and a time lower bound are required; up to 5 tag pairs can be\n-- listed (AND-combined). For fleets above your plan's device cap, page with the\n-- after_device field of the execute request body.\n--   $1 = start of the time window, ISO 8601 (devices silent since then are skipped)\nSELECT device, device_name, variable, value, unit, time\nFROM device_data_by_tag('type', 'sensor') AS f\nWHERE variable = 'temperature'\n  AND time > $1\nORDER BY device\n"
+          "code": "-- device_data_by_tag('key','value') is the fleet function: one row per active device\n-- carrying the tag, each with that device's newest reading matching your filters.\n-- A variable filter and a time lower bound are required; up to 5 tag pairs can be\n-- listed (AND-combined). For fleets above your plan's device cap, page with the\n-- after_device field of the execute request body.\n--   $1 = start of the time window, ISO 8601 (example: \"2026-01-01T00:00:00Z\")\n--        devices silent since then are skipped\nSELECT device, device_name, variable, value, unit, time\nFROM device_data_by_tag('device_type', 'sensor') AS f\nWHERE variable = 'temperature'\n  AND time > $1\nORDER BY device\n"
         },
         {
           "id": "join-two-devices",
@@ -1631,7 +1692,7 @@
           ],
           "filename": "join-two-devices.sql",
           "file_path": "sql/join-two-devices.sql",
-          "code": "-- JOINs combine data from multiple devices in one result (Starter plan or above).\n-- Here a sensor's temperature is paired with an actuator's state recorded at the\n-- same instant. Replace SENSOR_ID and ACTUATOR_ID with your device ids.\nSELECT a.time,\n       a.value AS temperature,\n       b.value AS actuator_state\nFROM device('SENSOR_ID') AS a\nJOIN device('ACTUATOR_ID') AS b ON a.time = b.time\nWHERE a.variable = 'temperature'\nORDER BY a.time DESC\nLIMIT 50\n"
+          "code": "-- JOINs combine data from multiple devices in one result (Starter plan or above).\n-- Here a sensor's humidity is paired with an actuator's state recorded at the\n-- same instant. Replace SENSOR_ID and ACTUATOR_ID with your device ids.\nSELECT a.time,\n       a.value AS humidity,\n       b.value AS actuator_state\nFROM device('SENSOR_ID') AS a\nJOIN device('ACTUATOR_ID') AS b ON a.time = b.time\nWHERE a.variable = 'humidity'\nORDER BY a.time DESC\nLIMIT 50\n"
         },
         {
           "id": "select-latest-device-data",
@@ -1646,7 +1707,7 @@
           ],
           "filename": "select-latest-device-data.sql",
           "file_path": "sql/select-latest-device-data.sql",
-          "code": "-- The simplest TagoSQL query: the last 10 readings of a device, newest first.\n-- device('id') reads the time-series data stored on that device.\n-- Replace DEVICE_ID with a device id from your profile.\nSELECT variable, value, unit, time\nFROM device('DEVICE_ID') AS d\nORDER BY time DESC\nLIMIT 10\n"
+          "code": "-- The simplest TagoSQL query: the last 10 readings of a device, newest first.\n-- device('DEVICE_ID') reads the time-series data stored on that device.\n-- Replace DEVICE_ID with a device id from your profile.\nSELECT variable, value, unit, time\nFROM device('DEVICE_ID') AS d\nORDER BY time DESC\nLIMIT 10\n"
         },
         {
           "id": "session-scoped-fleet",
@@ -1662,7 +1723,7 @@
           ],
           "filename": "session-scoped-fleet.sql",
           "file_path": "sql/session-scoped-fleet.sql",
-          "code": "-- session_user_tag('key') is filled by the server with the tag value of the user\n-- executing the query: tag your devices and your Run users with the same key\n-- (customer=acme on both) and every user sees only their fleet. The value never\n-- comes from the request, and a user without the tag gets an empty result.\n-- The COALESCE fallback is standard SQL and applies only when the profile owner\n-- runs the query while authoring; for a signed-in user it never fires.\n--   $1 = start of the time window, ISO 8601\nSELECT device, device_name, variable, value, unit, time\nFROM device_data_by_tag('customer', COALESCE(session_user_tag('customer'), 'acme')) AS f\nWHERE variable = 'temperature'\n  AND time > $1\nORDER BY device\n"
+          "code": "-- session_user_tag('key') is filled by the server with the tag value of the user\n-- executing the query: tag your devices and your Run users with the same key\n-- (customer=acme on both) and every user sees only their fleet. The value never\n-- comes from the request, and a user without the tag gets an empty result.\n-- The COALESCE fallback is standard SQL and applies only when the profile owner\n-- runs the query while authoring; for a signed-in user it never fires.\n--   $1 = start of the time window, ISO 8601 (example: \"2026-01-01T00:00:00Z\")\nSELECT device, device_name, variable, value, unit, time\nFROM device_data_by_tag('customer', COALESCE(session_user_tag('customer'), 'acme')) AS f\nWHERE variable = 'battery_level'\n  AND time > $1\nORDER BY device\n"
         },
         {
           "id": "session-user-own-device",
@@ -1677,7 +1738,22 @@
           ],
           "filename": "session-user-own-device.sql",
           "file_path": "sql/session-user-own-device.sql",
-          "code": "-- session_user_id() takes no arguments: the server fills it with the id of the\n-- Run user executing the query. Tag each user's device as owner=<run user id>\n-- and this one stored query serves every user with only their own readings.\n-- The COALESCE fallback is standard SQL and applies only when the profile owner\n-- runs the query while authoring; a user with no matching device gets an empty\n-- result.\n--   $1 = start of the time window, ISO 8601\nSELECT variable, value, unit, time\nFROM device_tag('owner', COALESCE(session_user_id(), '6a4ff908be1ad0000bf49a2d')) AS d\nWHERE time > $1\nORDER BY time DESC\nLIMIT 50\n"
+          "code": "-- session_user_id() takes no arguments: the server fills it with the id of the\n-- Run user executing the query. Tag each user's device as owner=<run user id>\n-- and this one stored query serves every user with only their own readings.\n-- The COALESCE fallback is standard SQL and applies only when the profile owner\n-- runs the query while authoring; a user with no matching device gets an empty\n-- result. Replace RUN_USER_ID with a Run user id from your profile.\n--   $1 = start of the time window, ISO 8601 (example: \"2026-01-01T00:00:00Z\")\nSELECT variable, value, unit, time\nFROM device_tag('owner', COALESCE(session_user_id(), 'RUN_USER_ID')) AS d\nWHERE time > $1\nORDER BY time DESC\nLIMIT 50\n"
+        },
+        {
+          "id": "single-device-by-tag",
+          "title": "Data From One Device Selected By Tag",
+          "description": "Read recent data from the single device that carries a given tag",
+          "language": "sql",
+          "tags": [
+            "device_tag",
+            "tags",
+            "device",
+            "data"
+          ],
+          "filename": "single-device-by-tag.sql",
+          "file_path": "sql/single-device-by-tag.sql",
+          "code": "-- device_tag('key','value') resolves to the FIRST device in your profile carrying\n-- the tag, deterministic by device id, and reads its stored data. Use it for tags\n-- that identify exactly one device (one gateway per site, for example). When\n-- several devices share the tag, only one is read: use device('DEVICE_ID') for a\n-- specific device, or device_data_by_tag to fan out across all of them.\nSELECT variable, value, unit, time\nFROM device_tag('device_type', 'gateway') AS d\nORDER BY time DESC\nLIMIT 50\n"
         }
       ]
     }
