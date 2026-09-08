@@ -32,6 +32,7 @@ export const GET: APIRoute = async ({ params }) => {
     ts: "text/typescript; charset=utf-8",
     tsx: "text/typescript; charset=utf-8",
     py: "text/x-python; charset=utf-8",
+    luau: "text/x-lua; charset=utf-8",
   };
   const contentType = (ext && map[ext]) || "text/plain; charset=utf-8";
 
