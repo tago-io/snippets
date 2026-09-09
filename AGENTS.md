@@ -10,7 +10,7 @@ Follow `tagoio:repo-standards` for README headers, section packs, LICENSE.md, CO
 
 Three snippet categories:
 
-- Analysis (node-legacy, node-rt2025, deno-rt2025, python-legacy, python-rt2025)
+- Analysis (node-legacy, node-rt2025, deno-rt2025, python-legacy, python-rt2025, luau-rt2026)
 - Payload Parser (javascript)
 - TagoSQL (sql; metadata uses `--` comments)
 
@@ -51,6 +51,7 @@ pnpm exec tsx ./scripts/prepare-data.ts
 | deno-rt2025   | TS/JS      | .ts, .tsx, .js | Native TS, URL modules       |
 | python-legacy | Python 3   | .py            | Pre-installed libraries only |
 | python-rt2025 | Python 3   | .py            | UV, PyPI                     |
+| luau-rt2026   | Luau       | .luau          | Sandbox, no network or SDK   |
 
 ## Payload Parser
 
@@ -83,9 +84,17 @@ pnpm exec tsx ./scripts/prepare-data.ts
 -- @tags: tag1, tag2
 ```
 
+```lua
+-- @title: Title
+-- @description: What it does
+-- @tags: tag1, tag2
+```
+
 3. Run `pnpm build`.
 
 Metadata fields: `@title` (falls back to filename), `@description`, `@tags` (comma-separated).
+
+Luau snippets target the `luau-rt2026` Sandbox runtime. The SDK does not exist there: scripts use the `Analysis.use` callback, the `Devices` global, and the host utilities (`Json`, `Base64`, `Hex`, `Uuid`, `Date`). Declarations live in `packages/sandbox-rs/runtime/sdk/luau-rt2026/globals.d.luau` in the server repository.
 
 For Deno/TypeScript analyses, import types from the TagoIO SDK when useful:
 
@@ -97,7 +106,7 @@ import type { AnalysisConstructorParams, Data } from "npm:@tago-io/sdk";
 
 ```
 snippets/
-├── analysis/{node-legacy,node-rt2025,deno-rt2025,python-legacy,python-rt2025}/
+├── analysis/{node-legacy,node-rt2025,deno-rt2025,python-legacy,python-rt2025,luau-rt2026}/
 ├── payload-parser/javascript/
 └── tagosql/sql/
 scripts/prepare-data.ts

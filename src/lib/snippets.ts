@@ -177,6 +177,13 @@ export const ANALYSIS_RUNTIMES: RuntimeConfig[] = [
     exts: [".py"],
     sourceDir: "snippets/analysis",
   },
+  {
+    name: "luau-rt2026",
+    displayName: "Luau rt2026",
+    language: "luau",
+    exts: [".luau"],
+    sourceDir: "snippets/analysis",
+  },
 ];
 
 export const PAYLOAD_PARSER_RUNTIMES: RuntimeConfig[] = [
