@@ -40,23 +40,23 @@ end
 
 Analysis.use(function(context, scope)
   if type(scope) ~= "table" then
-    return context.log("no trigger payload")
+    return print("no trigger payload")
   end
 
   local payload = findVariable(scope, "payload")
   if not payload then
-    return context.log("variable payload not found in scope")
+    return print("variable payload not found in scope")
   end
 
   local device = Devices.get(payload.device)
   local temperature = decodeTemperature(payload.value)
 
-  context.log("decoded", temperature)
+  print("decoded", temperature)
 
   local result = device:addData({
     { variable = "temperature", value = temperature, unit = "C", time = payload.time },
     { variable = "temperature_status", value = if temperature > 30 then "high" else "normal" },
   })
 
-  context.log(result)
+  print(result)
 end)

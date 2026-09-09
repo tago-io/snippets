@@ -20,23 +20,23 @@
 Analysis.use(function(context, scope)
   local device = Devices.get(context.environment.device_id)
 
-  context.log("device", device.name, device.type)
+  print("device", device.name, device.type)
 
   local rows = device:getData({ variables = "temperature", query = "last_value" })
   local last = rows[1]
 
   if not last then
-    return context.log("no temperature yet")
+    return print("no temperature yet")
   end
 
-  context.log("last value", last.value, "at", last.time)
+  print("last value", last.value, "at", last.time)
 
   local celsius = tonumber(last.value)
   if not celsius then
-    return context.log("temperature is not numeric")
+    return print("temperature is not numeric")
   end
 
-  context.log(device:addData({
+  print(device:addData({
     variable = "temperature_f",
     value = celsius * 1.8 + 32,
     unit = "F",

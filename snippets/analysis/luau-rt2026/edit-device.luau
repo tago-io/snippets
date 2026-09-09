@@ -33,11 +33,11 @@ Analysis.use(function(context, scope)
     },
   })
 
-  context.log("before", device.name)
-  context.log("after", renamed.name)
+  print("before", device.name)
+  print("after", renamed.name)
 
   for _, tag in renamed.tags do
-    context.log("tag", tag.key, tag.value)
+    print("tag", tag.key, tag.value)
   end
 
   -- Uncomment to drop every tag from the device.

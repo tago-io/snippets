@@ -25,7 +25,7 @@
 local function attempt(context, label, fn)
   local ok, result = pcall(fn)
   if not ok then
-    context.log(label, "failed:", tostring(result))
+    print(label, "failed:", tostring(result))
     return nil
   end
   return result
@@ -46,12 +46,12 @@ Analysis.use(function(context, scope)
 
   local last = rows and rows[1]
   if not last then
-    return context.log("no reading to forward")
+    return print("no reading to forward")
   end
 
   local written = attempt(context, "addData", function()
     return device:addData({ variable = "temperature_copy", value = last.value, time = last.time })
   end)
 
-  context.log("result", written or "not written")
+  print("result", written or "not written")
 end)

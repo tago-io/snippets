@@ -18,23 +18,23 @@ Analysis.use(function(context, scope)
 
   -- Json round trip. metadata travels as a table, not as a string.
   local settings = Json.decode(context.environment.settings or "{}")
-  context.log("settings", Json.encode(settings))
+  print("settings", Json.encode(settings))
 
   -- Base64 for text.
   local encoded = Base64.encode("firmware=2.4.1")
-  context.log("base64", encoded, buffer.tostring(Base64.decode(encoded)))
+  print("base64", encoded, buffer.tostring(Base64.decode(encoded)))
 
   -- Hex for binary frames. Read fields with the buffer library.
   local frame = Hex.decode("0a1f00c8")
-  context.log("frame bytes", buffer.len(frame))
-  context.log("battery", buffer.readu8(frame, 0))
-  context.log("counter", bit32.lshift(buffer.readu8(frame, 2), 8) + buffer.readu8(frame, 3))
+  print("frame bytes", buffer.len(frame))
+  print("battery", buffer.readu8(frame, 0))
+  print("counter", bit32.lshift(buffer.readu8(frame, 2), 8) + buffer.readu8(frame, 3))
 
   -- A run has no shared state, so generate correlation IDs when you need them.
   local runId = Uuid.v4()
-  context.log("run", runId)
+  print("run", runId)
 
-  context.log(device:addData({
+  print(device:addData({
     variable = "heartbeat",
     value = 1,
     metadata = { run = runId, settings = settings },

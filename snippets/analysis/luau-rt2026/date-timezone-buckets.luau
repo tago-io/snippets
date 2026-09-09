@@ -44,8 +44,8 @@ Analysis.use(function(context, scope)
   local today = Date.startOf(Date.now(), "day", timezone)
   local weekAgo = Date.sub(today, { days = 7 })
 
-  context.log("window", Date.format(weekAgo, timezone), Date.format(today, timezone))
-  context.log("offset minutes", Date.offsetMinutes(today, timezone))
+  print("window", Date.format(weekAgo, timezone), Date.format(today, timezone))
+  print("offset minutes", Date.offsetMinutes(today, timezone))
 
   -- Sum each local day, keyed by its own start of day.
   local totals = {}
@@ -80,8 +80,8 @@ Analysis.use(function(context, scope)
   end
 
   if #batch == 0 then
-    return context.log("no energy readings in the last 7 days")
+    return print("no energy readings in the last 7 days")
   end
 
-  context.log(device:addData(batch))
+  print(device:addData(batch))
 end)

@@ -26,7 +26,7 @@ end
 local function handleTemperature(context, device, item)
   local celsius = toNumber(item)
   if not celsius then
-    return context.log("temperature is not numeric")
+    return print("temperature is not numeric")
   end
 
   return {
@@ -41,7 +41,7 @@ local function handleBattery(context, device, item)
     return nil
   end
 
-  context.log("battery low on", device.name)
+  print("battery low on", device.name)
   return { { variable = "battery_alert", value = percent, unit = "%", time = item.time } }
 end
 
@@ -52,7 +52,7 @@ local handlers = {
 
 Analysis.use(function(context, scope)
   if type(scope) ~= "table" or #scope == 0 then
-    return context.log("nothing to process")
+    return print("nothing to process")
   end
 
   local batch = {}
@@ -69,9 +69,9 @@ Analysis.use(function(context, scope)
   end
 
   if #batch == 0 then
-    return context.log("no output for this trigger")
+    return print("no output for this trigger")
   end
 
   -- One call for the whole batch: one request and one rate limit token.
-  context.log(device:addData(batch))
+  print(device:addData(batch))
 end)

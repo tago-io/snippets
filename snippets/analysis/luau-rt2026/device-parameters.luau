@@ -30,11 +30,11 @@ Analysis.use(function(context, scope)
   local device = Devices.get(context.environment.device_id)
 
   local all = byKey(device:params())
-  context.log("interval", all.reading_interval and all.reading_interval.value or "unset")
+  print("interval", all.reading_interval and all.reading_interval.value or "unset")
 
   local pending = device:params({ sent_status = false })
   for _, param in pending do
-    context.log("pending", param.key, param.value)
+    print("pending", param.key, param.value)
   end
 
   -- Create or update by key, then flag the pending downlink as delivered.
@@ -46,5 +46,5 @@ Analysis.use(function(context, scope)
     table.insert(changes, { id = param.id, key = param.key, value = param.value, sent = true })
   end
 
-  context.log(device:setParams(changes))
+  print(device:setParams(changes))
 end)

@@ -30,7 +30,7 @@ Analysis.use(function(context, scope)
   })
 
   if existing[1] then
-    return context.log("device already exists", existing[1].id)
+    return print("device already exists", existing[1].id)
   end
 
   local device = Devices.create({
@@ -45,10 +45,10 @@ Analysis.use(function(context, scope)
     },
   })
 
-  context.log("created", device.id, device.name)
+  print("created", device.id, device.name)
 
   -- Parameters are set after create, so a failure here is visible.
-  context.log(device:setParams({
+  print(device:setParams({
     { key = "reading_interval", value = "300" },
     { key = "serial", value = SERIAL, sent = true },
   }))

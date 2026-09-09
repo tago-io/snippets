@@ -50,7 +50,7 @@ Analysis.use(function(context, scope)
 
       if silentFor > 24 then
         offline += 1
-        context.log("offline", device.name, device.id)
+        print("offline", device.name, device.id)
         device:addData({ variable = "offline", value = true })
       end
     end
@@ -61,5 +61,5 @@ Analysis.use(function(context, scope)
     page += 1
   end
 
-  context.log("offline devices", offline)
+  print("offline devices", offline)
 end)

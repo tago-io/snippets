@@ -32,10 +32,10 @@ Analysis.use(function(context, scope)
   local device_id = required(context, "device_id")
   local threshold = tonumber(context.environment.threshold) or 30
 
-  context.log("device_id", device_id)
-  context.log("threshold", threshold)
+  print("device_id", device_id)
+  print("threshold", threshold)
 
   for key, value in context.environment do
-    context.log("env", key, value)
+    print("env", key, value)
   end
 end)

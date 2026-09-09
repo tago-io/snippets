@@ -30,10 +30,10 @@ Analysis.use(function(context, scope)
   local maximum = scalar(device:getData({ variables = "temperature", query = "max", start_date = window }))
 
   if not minimum or not maximum then
-    return context.log("no temperature in the last day")
+    return print("no temperature in the last day")
   end
 
-  context.log("min", minimum, "max", maximum)
+  print("min", minimum, "max", maximum)
 
   -- One bucket per hour over the same window.
   local hourly = device:getData({
@@ -45,7 +45,7 @@ Analysis.use(function(context, scope)
     start_date = window,
   })
 
-  context.log("buckets", #hourly)
+  print("buckets", #hourly)
 
   local batch = {
     { variable = "temperature_minimum", value = minimum, unit = "C" },
@@ -62,5 +62,5 @@ Analysis.use(function(context, scope)
   end
 
   -- A batch lands whole or the call fails. There is no partial write.
-  context.log(device:addData(batch))
+  print(device:addData(batch))
 end)
