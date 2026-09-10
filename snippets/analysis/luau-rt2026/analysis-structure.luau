@@ -23,7 +23,7 @@ local function toNumber(item)
   return tonumber(item.value)
 end
 
-local function handleTemperature(context, device, item)
+local function handleTemperature(device, item)
   local celsius = toNumber(item)
   if not celsius then
     return print("temperature is not numeric")
@@ -35,7 +35,7 @@ local function handleTemperature(context, device, item)
   }
 end
 
-local function handleBattery(context, device, item)
+local function handleBattery(device, item)
   local percent = toNumber(item)
   if not percent or percent > 20 then
     return nil
@@ -61,7 +61,7 @@ Analysis.use(function(context, scope)
   for _, item in scope do
     local handler = handlers[item.variable]
     if handler then
-      local produced = handler(context, device, item)
+      local produced = handler(device, item)
       for _, row in produced or {} do
         table.insert(batch, row)
       end

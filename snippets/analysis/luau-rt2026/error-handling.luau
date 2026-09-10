@@ -22,7 +22,7 @@
   fails. Write idempotent scripts.
 ]]
 
-local function attempt(context, label, fn)
+local function attempt(label, fn)
   local ok, result = pcall(fn)
   if not ok then
     print(label, "failed:", tostring(result))
@@ -32,7 +32,7 @@ local function attempt(context, label, fn)
 end
 
 Analysis.use(function(context, scope)
-  local device = attempt(context, "get", function()
+  local device = attempt("get", function()
     return Devices.get(context.environment.device_id)
   end)
 
@@ -40,7 +40,7 @@ Analysis.use(function(context, scope)
     return
   end
 
-  local rows = attempt(context, "getData", function()
+  local rows = attempt("getData", function()
     return device:getData({ variables = "temperature", query = "last_value" })
   end)
 
@@ -49,7 +49,7 @@ Analysis.use(function(context, scope)
     return print("no reading to forward")
   end
 
-  local written = attempt(context, "addData", function()
+  local written = attempt("addData", function()
     return device:addData({ variable = "temperature_copy", value = last.value, time = last.time })
   end)
 
