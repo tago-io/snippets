@@ -10,7 +10,7 @@ Follow `tagoio:repo-standards` for README headers, section packs, LICENSE.md, CO
 
 Three snippet categories:
 
-- Analysis (node-legacy, node-rt2025, deno-rt2025, python-legacy, python-rt2025, luau-rt2026)
+- Analysis (node-legacy, node-rt2025, deno-rt2025, bun-rt2026, python-legacy, python-rt2025, luau-rt2026)
 - Payload Parser (javascript)
 - TagoSQL (sql; metadata uses `--` comments)
 
@@ -49,6 +49,7 @@ pnpm exec tsx ./scripts/prepare-data.ts
 | node-legacy   | JS ES5/ES6 | .js, .cjs      | Pre-installed libraries only |
 | node-rt2025   | modern JS  | .js            | fetch API                    |
 | deno-rt2025   | TS/JS      | .ts, .tsx, .js | Native TS, URL modules       |
+| bun-rt2026    | TS/JS      | .ts, .tsx      | Bare imports, auto-install   |
 | python-legacy | Python 3   | .py            | Pre-installed libraries only |
 | python-rt2025 | Python 3   | .py            | UV, PyPI                     |
 | luau-rt2026   | Luau       | .luau          | Sandbox, no network or SDK   |
@@ -106,7 +107,7 @@ import type { AnalysisConstructorParams, Data } from "npm:@tago-io/sdk";
 
 ```
 snippets/
-├── analysis/{node-legacy,node-rt2025,deno-rt2025,python-legacy,python-rt2025,luau-rt2026}/
+├── analysis/{node-legacy,node-rt2025,deno-rt2025,bun-rt2026,python-legacy,python-rt2025,luau-rt2026}/
 ├── payload-parser/javascript/
 └── tagosql/sql/
 scripts/prepare-data.ts
