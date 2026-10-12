@@ -164,6 +164,13 @@ export const ANALYSIS_RUNTIMES: RuntimeConfig[] = [
     sourceDir: "snippets/analysis",
   },
   {
+    name: "bun-rt2026",
+    displayName: "Bun rt2026",
+    language: "typescript",
+    exts: [".ts", ".tsx"],
+    sourceDir: "snippets/analysis",
+  },
+  {
     name: "python-legacy",
     displayName: "Python Legacy",
     language: "python",

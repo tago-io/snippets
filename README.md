@@ -28,6 +28,7 @@ snippets/
 │   ├── node-legacy/
 │   ├── node-rt2025/
 │   ├── deno-rt2025/
+│   ├── bun-rt2026/
 │   ├── python-legacy/
 │   ├── python-rt2025/
 │   └── luau-rt2026/
